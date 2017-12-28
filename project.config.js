@@ -1,4 +1,4 @@
-const NODE_ENV = process.env.NODE_ENV || 'development'
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   /** The environment to use when building the project */
@@ -28,6 +28,6 @@ module.exports = {
     'redux',
     'react-redux',
     'redux-thunk',
-    'react-router',
-  ],
-}
+    'react-router'
+  ]
+};
