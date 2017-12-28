@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './redux/store/create-store';
-import './styles/main.scss';
 import 'semantic-ui-css/semantic.min.css';
+import './styles/main.scss';
+
 // Store Initialization
 // ------------------------------------
 const store = createStore(window.__INITIAL_STATE__);

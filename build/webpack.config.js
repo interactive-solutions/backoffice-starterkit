@@ -121,7 +121,7 @@ config.module.rules.push({
             sourcemap: project.sourcemaps
           },
           includePaths: [
-            /node_modules/
+            inProjectSrc('styles')
           ]
         }
       },

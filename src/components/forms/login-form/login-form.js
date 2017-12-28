@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form, Message } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+
+// update this to redux-form
 
 export const LoginForm = (props) => {
-  // const getErrorMessage = props.error.response.data.error_description;
   return (
     <div className="main-container">
       <div className="center">
@@ -37,27 +39,37 @@ export const LoginForm = (props) => {
                   Submit
                 </div>
               {
-                  props.errorFlag
+                  props.errorMessage
                     ? <Message
                       error
                       visible
-                      content={getErrorMessage()}
+                      content={props.errorMessage}
                     />
                     : null
                 }
             </Form.Field>
-          </div>
-          <div className="m20 block">
-            <div
-              role="link"
-              className="mb5 ui basic button secondary fluid"
-              onClick={props.onResetPasswordClick}
-            >
-              Forgot password?
+            <div className="m20 block">
+              <div
+                role="link"
+                className="mb5 ui basic button secondary fluid"
+                onClick={props.resetPassword}
+              >
+                Forgot password?
+              </div>
             </div>
           </div>
         </Form>
       </div>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  username: PropTypes.string,
+  onChangeUsername: PropTypes.func,
+  password: PropTypes.string,
+  onChangePassword: PropTypes.func,
+  onSubmit: PropTypes.func,
+  resetPassword: PropTypes.func,
+  errorMessage: PropTypes.string
 };

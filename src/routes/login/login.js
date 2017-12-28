@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { LoginForm } from 'components/forms';
 
 export class Login extends Component { //eslint-disable-line
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     this.state = {
@@ -20,15 +19,19 @@ export class Login extends Component { //eslint-disable-line
     this.setState({ password: event.target.value });
   };
 
-  onSubmit = () => {};
-  //  this.props.onSubmit(this.state.username, this.state.password)
+  // replace as soon as auth is in place
+  onSubmit = () => { this.props.router.push('/dashboard'); };
 
   render() {
     return (
       <LoginForm
-        {...this.state}
-        {...(_.omit(this.props, 'onSubmit'))}
-        {...this.handlers}
+        username={this.state.username}
+        password={this.state.password}
+        onChangeUsername={this.onChangeUsername}
+        onChangePassword={this.onChangePassword}
+        onSubmit={this.onSubmit}
+        resetPassword={null}
+        errorMessage={null}
       />
     );
   }
