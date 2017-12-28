@@ -1,13 +1,5 @@
 # Updated to webpack 3, and latest node-modules
-
-
-# OLD Deprecation Warning
-
-This project was started at the advent of the Redux ecosystem, and was intended to help users get up and running quickly. Since then, tooling and best practices have evolved tremendously. In order to get the most modern experience possible, I recommend checking out something like [create-react-app](https://github.com/facebookincubator/create-react-app) which is supported by many core React and Redux developers.
-
-You are welcome to use this project if it is a better fit for your needs, but if you are brand new to the ecosystem I highly recommend checking out something that has received more recent updates.
-
-Thank you to everyone who made this project possible over the past year(s).
+Built upon React Redux Starter Kit https://github.com/davezuko/react-redux-starter-kit.git
 
 # React Redux Starter Kit
 
@@ -46,7 +38,7 @@ Finally, This project wouldn't be possible without the help of our many contribu
 After confirming that your environment meets the above [requirements](#requirements), you can create a new project based on `react-redux-starter-kit` by doing the following:
 
 ```bash
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git <my-project-name>
+$ git clone git@github.com:interactive-solutions/backoffice-starterkit.git <my-project-name>
 $ cd <my-project-name>
 ```
 
@@ -92,22 +84,14 @@ The project structure presented in this boilerplate is **fractal**, where functi
 │   ├── components           # Global Reusable Components
 │   ├── containers           # Global Reusable Container Components
 │   ├── layouts              # Components that dictate major page structure
-│   │   └── PageLayout       # Global application layout in which to render routes
+│   │   └── core-layout      # Global application layout in which to render routes
 │   ├── routes               # Main route definitions and async split points
 │   │   ├── index.js         # Bootstrap main application routes with store
-│   │   ├── Home             # Fractal route
-│   │   │   ├── index.js     # Route definitions and async split points
-│   │   │   ├── assets       # Assets required to render components
-│   │   │   ├── components   # Presentational React Components
-│   │   │   └── routes **    # Fractal sub-routes (** optional)
-│   │   └── Counter          # Fractal route
-│   │       ├── index.js     # Counter route definition
-│   │       ├── container    # Connect components to actions and store
-│   │       ├── modules      # Collections of reducers/constants/actions
-│   │       └── routes **    # Fractal sub-routes (** optional)
-│   ├── store                # Redux-specific pieces
-│   │   ├── createStore.js   # Create and instrument redux store
-│   │   └── reducers.js      # Reducer registry and injection
+│   │   ├── Login            # Fractal route
+│   │   │   └── login.js     # Route definitions and async split points
+│   ├── redux                # Redux-specific pieces
+│   │   ├── store            # Contains create and instrument redux store
+│   │   └── reducers         # Reducers registry and injection
 │   └── styles               # Application-wide styles (generally settings)
 └── tests                    # Unit tests
 ```
