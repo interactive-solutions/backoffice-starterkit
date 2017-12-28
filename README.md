@@ -1,5 +1,5 @@
 # Updated to webpack 3, and latest node-modules
-Built upon React Redux Starter Kit https://github.com/davezuko/react-redux-starter-kit.git
+Built upon React Redux Starter Kit https://github.com/davezuko/react-redux-starter-kit
 
 # React Redux Starter Kit
 
@@ -35,7 +35,7 @@ Finally, This project wouldn't be possible without the help of our many contribu
 
 ## Installation
 
-After confirming that your environment meets the above [requirements](#requirements), you can create a new project based on `react-redux-starter-kit` by doing the following:
+After confirming that your environment meets the above [requirements](#requirements), you can create a new project based on `backoffice-starterkit` by doing the following:
 
 ```bash
 $ git clone git@github.com:interactive-solutions/backoffice-starterkit.git <my-project-name>
