@@ -1,4 +1,4 @@
-import { createStore } from 'redux/store/createStore';
+import { createStore } from 'redux/store/create-store';
 
 describe('(Store) createStore', () => {
   let store;
