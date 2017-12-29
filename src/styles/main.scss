@@ -1,5 +1,7 @@
 @import 'base';
 @import '../routes/login/style/login.scss';
+@import '../components/footer/style/footer.scss';
+@import '../components/header/style/header.scss';
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
@@ -60,18 +62,6 @@ body {
   height: 41px;
   margin-bottom: -13px;
   cursor: pointer;
-}
-
-.footer {
-  border-top: 1px solid #dcdde3;
-  color: #c0c1cc;
-  position: absolute;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  bottom: 0;
-  width: 100%;
-  height: 75px;
-  padding: 28px 15px;
 }
 
 .main-container {

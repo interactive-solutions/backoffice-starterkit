@@ -18,12 +18,11 @@ export const LoginForm = (props) => {
         <Form>
           <Header as="h3">Sign in to Backoffice</Header>
           <Form.Input
-            placeholder="E-mail"
+            placeholder="Username"
             icon="users"
             iconposition="left"
             value={props.username}
             onChange={props.onChangeUsername}
-            type="email"
           />
           <Form.Input
             placeholder="Password"
@@ -31,7 +30,7 @@ export const LoginForm = (props) => {
             onChange={props.onChangePassword}
             type="password"
           />
-          <Button color="blue" fluid size="large" onClick={props.onSubmit}>Login</Button>
+          <Button type="button" color="blue" fluid size="large" onClick={props.onSubmit}>Login</Button>
           <Message
             error
             visible={!!error}

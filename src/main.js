@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import createStore from './redux/store/create-store';
 import 'semantic-ui-css/semantic.min.css';
 import './styles/main.scss';
-
+import 'api';
 // Store Initialization
 // ------------------------------------
 const store = createStore(window.__INITIAL_STATE__);

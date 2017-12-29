@@ -4,10 +4,11 @@ import {
 } from 'components';
 
 export class Dashboard extends Component { // eslint-disable-line
+
   render() {
     return (
       <div>
-        <Header title="is-backoffice" icon="assets/images/interactive-solutions.png"/>
+        <Header title={'is-backoffice '}/>
       </div>
     );
   }
