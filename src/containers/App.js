@@ -16,9 +16,7 @@ export class App extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <div>
-          <Router history={browserHistory} children={this.props.routes}/>
-        </div>
+        <Router history={browserHistory} children={this.props.routes}/>
       </Provider>
     );
   }

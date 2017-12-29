@@ -97,7 +97,7 @@ const extractStyles = new ExtractTextPlugin({
 });
 
 config.module.rules.push({
-  test: /\.(sass|scss|less|css)$/,
+  test: /\.(sass|scss|css)$/,
   loader: extractStyles.extract({
     fallback: 'style-loader',
     use: [
@@ -133,15 +133,6 @@ config.module.rules.push({
             inProjectSrc('styles')
           ]
         }
-      },
-      {
-        loader: 'less-loader',
-        options: {
-          sourceMap: project.sourcemaps,
-          includePaths: [
-            inProjectSrc('styles')
-          ]
-        }
       }
     ]
   })
@@ -151,7 +142,7 @@ config.plugins.push(extractStyles);
 // Images
 // ------------------------------------
 config.module.rules.push({
-  test    : /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+  test    : /\.(png|jpg|gif)$/,
   loader  : 'url-loader',
   options : {
     limit : 8192

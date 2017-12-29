@@ -1,5 +1,5 @@
 @import 'base';
-
+@import '../routes/login/style/login.scss';
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want
@@ -53,7 +53,7 @@ body {
 }
 
 .main-header .logo {
-  background: no-repeat url("../assets/images/interactive-solutions.png") center center;
+  background: no-repeat url("/assets/images/logo.png") center center;
   background-size: contain;
   display: inline-block;
   width: 300px;
@@ -114,7 +114,7 @@ body {
 }
 
 .main-container .center .logo {
-  background: no-repeat url("../assets/images/interactive-solutions.png") center center;
+  background: no-repeat url("/assets/images/logo.png") center center;
   background-size: contain;
   display: block;
   width: 410px;

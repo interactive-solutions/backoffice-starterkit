@@ -3,12 +3,13 @@ import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import rootReducer from '../reducers/index';
 import { updateLocation } from '../reducers/location';
+import { promiseMiddleware } from '../middleware/promise-middleware';
 
 const createStore = (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [thunk];
+  const middleware = [thunk, promiseMiddleware];
 
   // ======================================================
   // Store Enhancers

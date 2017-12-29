@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 
 export class Login extends Component { //eslint-disable-line
@@ -24,15 +25,23 @@ export class Login extends Component { //eslint-disable-line
 
   render() {
     return (
-      <LoginForm
-        username={this.state.username}
-        password={this.state.password}
-        onChangeUsername={this.onChangeUsername}
-        onChangePassword={this.onChangePassword}
-        onSubmit={this.onSubmit}
-        resetPassword={null}
-        errorMessage={null}
-      />
+      <Grid
+         textAlign="center"
+         className="login-container"
+         verticalAlign="middle"
+         >
+        <Grid.Column className="center-grid">
+          <LoginForm
+            username={this.state.username}
+            password={this.state.password}
+            onChangeUsername={this.onChangeUsername}
+            onChangePassword={this.onChangePassword}
+            onSubmit={this.onSubmit}
+            resetPassword={null}
+            errorMessage={null}
+          />
+        </Grid.Column>
+      </Grid>
     );
   }
 }
