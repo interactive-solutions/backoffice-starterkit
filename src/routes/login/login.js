@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
 
-export class Login extends Component { //eslint-disable-line
+export class Login extends Component {
+  static propTypes = {
+    push: PropTypes.func.isRequired
+  };
+
   constructor(props, context) {
     super(props);
 
@@ -24,7 +29,7 @@ export class Login extends Component { //eslint-disable-line
   // replace as soon as auth is in place
   onSubmit = () => {
     authenticationService.login({ username: this.state.username, password:this.state.password })
-      .then((response) => this.props.router.push('/dashboard'))
+      .then((response) => this.props.push('/dashboard'))
       .catch((e) => console.warn(e));
   };
   // this.props.router.push('/dashboard'); };

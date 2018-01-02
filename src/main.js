@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './redux/store/create-store';
+import history from 'utils/history';
 import 'semantic-ui-css/semantic.min.css';
 import './styles/main.scss';
 import 'api';
@@ -17,7 +18,7 @@ let render = () => {
   const routes = require('./routes/index').default(store);
 
   ReactDOM.render(
-    <App store={store} routes={routes}/>,
+    <App store={store} routes={routes} history={history}/>,
     MOUNT_NODE
   );
 };

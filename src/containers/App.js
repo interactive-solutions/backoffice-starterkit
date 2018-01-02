@@ -1,12 +1,13 @@
 import React from 'react';
-import { browserHistory, Router } from 'react-router';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
+import { ConnectedRouter } from 'react-router-redux';
 
 export class App extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
-    routes: PropTypes.object.isRequired
+    routes: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
   }
 
   shouldComponentUpdate() {
@@ -16,7 +17,7 @@ export class App extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <Router history={browserHistory} children={this.props.routes}/>
+        <ConnectedRouter history={this.props.history} children={this.props.routes}/>
       </Provider>
     );
   }

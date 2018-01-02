@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import locationReducer from './location';
 import { userReducer } from './user';
+import { routerReducer } from 'react-router-redux';
 
 export const rootReducer = (asyncReducers) => {
   return combineReducers({
-    location: locationReducer,
+    location: routerReducer,
     user: userReducer.handle.bind(userReducer),
     ...asyncReducers
   });

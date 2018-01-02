@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Button, Form, Header, Image, Message, Segment } from 'semantic-ui-react';
 
 // update this to redux-form

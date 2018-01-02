@@ -28,6 +28,9 @@ module.exports = {
     'redux',
     'react-redux',
     'redux-thunk',
-    'react-router'
+    'react-router',
+    'react-router-dom',
+    'react-router-redux'
+
   ]
 };
