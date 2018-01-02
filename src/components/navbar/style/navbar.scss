@@ -1,0 +1,12 @@
+.navbar {
+
+  .ui.left.push.sidebar {
+      transform: translate3d(-90%,0,0);
+  }
+  .ui.left.visible.push.sidebar {
+      transform: translate3d(0,0,0);
+  }
+  .ui.sidebar {
+    visibility: visible;
+  }
+}
