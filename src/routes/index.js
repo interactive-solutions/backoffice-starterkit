@@ -6,13 +6,16 @@ import { Dashboard } from './dashboard/dashboard';
 import { requiresAuthentication } from './utils';
 import { Navbar } from 'components/navbar/navbar';
 
+export const renderpage = () => { return (<div><h1>page1</h1></div>); };
+export const renderpage1 = () => { return (<div><h1>page2</h1></div>); };
+export const renderpage2 = () => { return (<div><h1>page3</h1></div>); };
+
 export const createRoutes = () => {
   return (
     <CoreLayout>
       <Route exact path="/" component={LoginContainer}/>
       <Switch>
         <Route exact path="/login" component={LoginContainer}/>
-
         <Navbar>
           <Switch>
             <Route exact path="/dashboard" component={requiresAuthentication(Dashboard)}/>
