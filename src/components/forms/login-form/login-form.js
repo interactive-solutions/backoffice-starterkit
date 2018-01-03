@@ -2,39 +2,58 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Form, Header, Image, Message, Segment } from 'semantic-ui-react';
-
+import { Input } from 'components/forms';
+import { reduxForm, Field } from 'redux-form';
+import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 // update this to redux-form
 
-export const LoginForm = (props) => {
-  let error = null;
-  if (props.errorMessage) {
-    error = props.errorMessage;
+const validate = (values, props) => {
+  let errors = {};
+
+  if (!values.username || values.username.length === 0) {
+    errors.username = FORM_ERROR_REQUIRED_FIELD;
   }
 
+  if (!props.submitting && (!values.password || (values.password && values.password.length === 0))) {
+    errors.password = FORM_ERROR_REQUIRED_FIELD;
+  }
+
+  return errors;
+};
+
+const LoginReduxForm = (props) => {
+  const { submitting, onSubmit, handleSubmit, error } = props;
+  console.warn(props);
   return (
     <div>
       <Image centered size="large" src="/assets/images/logo.png"/>
       <Segment stacked>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <Header as="h3">Sign in to Backoffice</Header>
-          <Form.Input
+          <Field
+            name="username"
+            component={Input}
             placeholder="Username"
             icon="users"
-            iconposition="left"
-            value={props.username}
-            onChange={props.onChangeUsername}
-          />
-          <Form.Input
+            iconposition="left"/>
+          <Field
+            name="password"
+            component={Input}
             placeholder="Password"
-            value={props.password}
-            onChange={props.onChangePassword}
-            type="password"
-          />
-          <Button type="button" color="blue" fluid size="large" onClick={props.onSubmit}>Login</Button>
+            icon="users"
+            iconposition="left"
+            type="password"/>
+          <Button
+            type="submit"
+            color="blue"
+            fluid size="large"
+            loading={submitting}>
+              Login
+          </Button>
           <Message
             error
             visible={!!error}
-            content={props.errorMessage}/>
+            content={error ? error._error : null}/>
         </Form>
         <Message>
           <Link to="/reset-password">Forgot password?</Link>
@@ -44,11 +63,15 @@ export const LoginForm = (props) => {
   );
 };
 
-LoginForm.propTypes = {
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
-  password: PropTypes.string,
-  onChangePassword: PropTypes.func,
+export const LoginForm = reduxForm({
+  form: 'login-form',
+  fields: ['username', 'password'],
+  validate
+})(LoginReduxForm);
+
+LoginReduxForm.propTypes = {
   onSubmit: PropTypes.func,
-  errorMessage: PropTypes.string
+  handleSubmit: PropTypes.func,
+  error: PropTypes.object,
+  submitting: PropTypes.bool
 };

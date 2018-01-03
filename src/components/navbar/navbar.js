@@ -21,6 +21,7 @@ export class Navbar extends Component {
   createSubMenuLink = (text) => {
     return (
       <Menu.Item
+        key={text}
         color="red"
         name={text}
         active={this.state.activeItem === text}
@@ -31,7 +32,7 @@ export class Navbar extends Component {
   }
 
   createAllSubMenuLinks = (textArray) => {
-    if (textArray === undefined || textArray === null || textArray.length === 0) {
+    if (!textArray || textArray.length === 0) {
       return null;
     }
     return (
@@ -45,24 +46,25 @@ export class Navbar extends Component {
     if (sideMenuJson) {
       return sideMenuJson.map((menu) => {
         const name = menu.menuTitle.caption;
+        let topLevelMenuItemProps = {};
 
         if (menu.menuTitle.link) {
-          let topLevelMenuItemProps = {
+          topLevelMenuItemProps = {
             active: menu.menuTitle.caption === this.state.activeItem,
             onClick: this.setActiveItem
           };
-
-          return (
-            <Menu.Item color="red"
-              name={name}
-              {...topLevelMenuItemProps}
-            >
-              <Icon name={menu.menuTitle.icon}/>
-              {menu.menuTitle.caption}
-              {this.createAllSubMenuLinks(menu.subMenu)}
-            </Menu.Item>
-          );
         }
+
+        return (
+          <Menu.Item color="red"
+            name={name}
+            {...topLevelMenuItemProps}
+          >
+            <Icon name={menu.menuTitle.icon}/>
+            {menu.menuTitle.caption}
+            {this.createAllSubMenuLinks(menu.subMenu)}
+          </Menu.Item>
+        );
       });
     }
   }

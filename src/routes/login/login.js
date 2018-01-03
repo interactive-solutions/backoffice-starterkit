@@ -3,36 +3,20 @@ import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
+import { SubmissionError } from 'redux-form';
 
 export class Login extends Component {
   static propTypes = {
     push: PropTypes.func.isRequired
   };
 
-  constructor(props, context) {
-    super(props);
-
-    this.state = {
-      username: 'woopi goldberg',
-      password: ''
-    };
-  }
-
-  onChangeUsername = (event) => {
-    this.setState({ username: event.target.value });
-  };
-
-  onChangePassword = (event) => {
-    this.setState({ password: event.target.value });
-  };
-
   // replace as soon as auth is in place
-  onSubmit = () => {
-    authenticationService.login({ username: this.state.username, password:this.state.password })
+  onSubmit = (values) => {
+    return authenticationService.login({ username: values.username, password: values.password })
       .then((response) => this.props.push('/dashboard'))
-      .catch((e) => console.warn(e));
-  };
-  // this.props.router.push('/dashboard'); };
+      .catch((e) => { throw new SubmissionError({ _error: 'Login failed!' }); }
+      );
+  }
 
   render() {
     return (
@@ -43,13 +27,7 @@ export class Login extends Component {
       >
         <Grid.Column className="center-grid">
           <LoginForm
-            username={this.state.username}
-            password={this.state.password}
-            onChangeUsername={this.onChangeUsername}
-            onChangePassword={this.onChangePassword}
             onSubmit={this.onSubmit}
-            resetPassword={null}
-            errorMessage={null}
           />
         </Grid.Column>
       </Grid>

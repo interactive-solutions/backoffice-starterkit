@@ -14,8 +14,8 @@ export const createRoutes = () => {
         <Route exact path="/login" component={LoginContainer}/>
         <Navbar>
           <Switch>
-            <Route exact path="/dashboard" component={requiresAuthentication(Dashboard)}/>
-            <Redirect path="*" to="/"/>
+            <Route navKey="Dashboard" exact path="/dashboard" component={requiresAuthentication(Dashboard)}/>
+
           </Switch>
         </Navbar>
         <Redirect path="*" to="/"/>

@@ -41,7 +41,6 @@ export class AuthenticationService {
       }]
     })
       .then((response: any) => {
-        console.warn(response);
         // Time is returned in ms.
         const now = new Date().getTime() / 1000;
 
