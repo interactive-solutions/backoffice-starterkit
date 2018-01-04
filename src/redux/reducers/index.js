@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
-import { userReducer } from './user';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
+import { userReducer } from './user';
+import { resellerReducer } from './resellers';
 
 export const rootReducer = (asyncReducers) => {
   return combineReducers({
     location: routerReducer,
     form: formReducer,
     user: userReducer.handle.bind(userReducer),
+    resellers: resellerReducer.handle.bind(resellerReducer),
     ...asyncReducers
   });
 };

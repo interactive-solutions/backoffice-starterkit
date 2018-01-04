@@ -4,6 +4,7 @@ import createStore from './redux/store/create-store';
 import history from 'utils/history';
 import 'semantic-ui-css/semantic.min.css';
 import './styles/main.scss';
+import 'react-table/react-table.css';
 import 'api';
 // Store Initialization
 // ------------------------------------

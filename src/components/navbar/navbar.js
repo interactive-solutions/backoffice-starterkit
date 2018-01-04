@@ -33,12 +33,12 @@ export class Navbar extends Component {
     );
   }
 
-  createAllSubMenuLinks = (textArray) => {
+  createAllSubMenuLinks = (textArray, index) => {
     if (!textArray || textArray.length === 0) {
       return null;
     }
     return (
-      <Menu.Menu>
+      <Menu.Menu key={index}>
         {textArray.map(this.createSubMenuLink)}
       </Menu.Menu>
     );
@@ -46,7 +46,7 @@ export class Navbar extends Component {
 
   createSideMenu() {
     if (sideMenuJson) {
-      return sideMenuJson.map((menu) => {
+      return sideMenuJson.map((menu, index) => {
         const name = menu.menuTitle.caption;
         let topLevelMenuItemProps = {};
 
@@ -60,7 +60,9 @@ export class Navbar extends Component {
         }
 
         return (
-          <Menu.Item color="red"
+          <Menu.Item
+            key={index}
+            color="red"
             name={name}
             {...topLevelMenuItemProps}
           >
@@ -101,9 +103,9 @@ export class Navbar extends Component {
         <Sidebar.Pusher>
           <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
             <Header callback={this.toggleVisibility} title="Interactive Solutions"/>
-
-            {this.props.children}
-
+            <Container fluid className="side-padded">
+              {this.props.children}
+            </Container>
             <Footer/>
           </Container>
         </Sidebar.Pusher>

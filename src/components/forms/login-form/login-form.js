@@ -23,7 +23,7 @@ const validate = (values, props) => {
 
 const LoginReduxForm = (props) => {
   const { submitting, onSubmit, handleSubmit, error } = props;
-  console.warn(props);
+
   return (
     <div>
       <Image centered size="large" src="/assets/images/logo.png"/>

@@ -18,14 +18,14 @@ export class MinifiedNavbar extends Component {
 
   createSideMenu() {
     if (sideMenuJson) {
-      return sideMenuJson.map((menu) => {
+      return sideMenuJson.map((menu, index) => {
         const topLevelMenuItemProps = {
           active: menu.menuTitle.caption === this.state.activeItem,
           onClick: this.setActiveItem
         };
 
         return (
-          <Menu.Item color="red" name={menu.menuTitle.caption} {...topLevelMenuItemProps}>
+          <Menu.Item key={index} color="red" name={menu.menuTitle.caption} {...topLevelMenuItemProps}>
             <Header as="h2" textAlign="center" inverted>
               <Icon name={menu.menuTitle.icon} size="small" fitted/>
             </Header>
