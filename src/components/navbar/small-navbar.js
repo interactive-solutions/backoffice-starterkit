@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Sidebar, Image } from 'semantic-ui-react';
+import { Icon, Menu, Sidebar, Image, Header } from 'semantic-ui-react';
 import { sideMenuJson } from './sideMenuJson';
 
 export class MinifiedNavbar extends Component {
@@ -19,26 +19,23 @@ export class MinifiedNavbar extends Component {
   createSideMenu() {
     if (sideMenuJson) {
       return sideMenuJson.map((menu) => {
-        let topLevelMenuItemProps = {};
+        const topLevelMenuItemProps = {
+          active: menu.menuTitle.caption === this.state.activeItem,
+          onClick: this.setActiveItem
+        };
 
-        if (menu.menuTitle.link) {
-          topLevelMenuItemProps = {
-            active: menu.menuTitle.caption === this.state.activeItem,
-            onClick: this.setActiveItem
-          };
-        }
         return (
-          <Menu.Item color="red"
-            {...topLevelMenuItemProps}>
-            <Icon name={menu.menuTitle.icon} size="large" fitted/>
+          <Menu.Item color="red" name={menu.menuTitle.caption} {...topLevelMenuItemProps}>
+            <Header as="h2" textAlign="center" inverted>
+              <Icon name={menu.menuTitle.icon} size="small" fitted/>
+            </Header>
           </Menu.Item>
         );
       });
     }
   }
 
-  setActiveItem =(e, { name }) => {
-    e.stopPropagation();
+  setActiveItem = (e, { name }) => {
     this.setState({ activeItem: name });
   }
 
@@ -53,8 +50,6 @@ export class MinifiedNavbar extends Component {
         visible={visible}
         vertical
         animation="slide along"
-        attached
-        onClick={this.toggleVisibility}
       >
         <Image centered size="small" src="/assets/images/logo.png"/>
         {this.createSideMenu()}

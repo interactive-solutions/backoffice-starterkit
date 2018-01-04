@@ -50,9 +50,11 @@ export class Navbar extends Component {
         const name = menu.menuTitle.caption;
         let topLevelMenuItemProps = {};
 
+        const active = menu.menuTitle.caption === this.state.activeItem;
+
         if (menu.menuTitle.link) {
           topLevelMenuItemProps = {
-            active: menu.menuTitle.caption === this.state.activeItem,
+            active: active,
             onClick: this.setActiveItem
           };
         }
@@ -91,7 +93,6 @@ export class Navbar extends Component {
           visible={sidebarIsVisible}
           vertical
           animation="push"
-          onClick={this.toggleVisibility}
         >
           <Image centered size="small" src="/assets/images/logo.png"/>
           {this.createSideMenu()}
@@ -100,9 +101,9 @@ export class Navbar extends Component {
         <Sidebar.Pusher>
           <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
             <Header callback={this.toggleVisibility} title="Interactive Solutions"/>
-          </Container>
-          {this.props.children}
-          <Container fluid>
+
+            {this.props.children}
+
             <Footer/>
           </Container>
         </Sidebar.Pusher>
