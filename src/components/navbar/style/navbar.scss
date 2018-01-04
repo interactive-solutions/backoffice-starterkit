@@ -1,5 +1,5 @@
 .navbar {
-
+/*
   .ui.left.push.sidebar {
       transform: translate3d(-90%,0,0);
   }
@@ -8,5 +8,11 @@
   }
   .ui.sidebar {
     visibility: visible;
+  }*/
+  .padded-header-visible {
+    padding-right: 260px;
+  }
+  .padded-header-invisible {
+    padding-right: 60px;
   }
 }

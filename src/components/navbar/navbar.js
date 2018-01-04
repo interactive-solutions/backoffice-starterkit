@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Sidebar, Segment, Image } from 'semantic-ui-react';
+import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
 import { sideMenuJson } from './sideMenuJson';
 import { Footer } from 'components/footer/footer';
+import { Header } from 'components';
+import { MinifiedNavbar } from './small-navbar';
 
 export class Navbar extends Component {
   static propTypes = {
@@ -94,8 +96,16 @@ export class Navbar extends Component {
           <Image centered size="small" src="/assets/images/logo.png"/>
           {this.createSideMenu()}
         </Sidebar>
-        {this.props.children}
-        <Footer/>
+        <MinifiedNavbar visible={!sidebarIsVisible}/>
+        <Sidebar.Pusher>
+          <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
+            <Header callback={this.toggleVisibility} title="Interactive Solutions"/>
+          </Container>
+          {this.props.children}
+          <Container fluid>
+            <Footer/>
+          </Container>
+        </Sidebar.Pusher>
       </Sidebar.Pushable>
     );
   }
