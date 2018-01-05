@@ -103,7 +103,7 @@ export class Navbar extends Component {
         <Sidebar.Pusher>
           <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
             <Header callback={this.toggleVisibility} title="Interactive Solutions"/>
-            <Container fluid className="side-padded">
+            <Container fluid className="side-padded ">
               {this.props.children}
             </Container>
             <Footer/>

@@ -27,7 +27,9 @@ export class MinifiedNavbar extends Component {
         return (
           <Menu.Item key={index} color="red" name={menu.menuTitle.caption} {...topLevelMenuItemProps}>
             <Header as="h2" textAlign="center" inverted>
-              <Icon name={menu.menuTitle.icon} size="small" fitted/>
+              <div className="centered-icon">
+                <Icon name={menu.menuTitle.icon} size="large" fitted/>
+              </div>
             </Header>
           </Menu.Item>
         );
