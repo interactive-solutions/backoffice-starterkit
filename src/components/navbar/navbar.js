@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
-import { sideMenuJson } from './sideMenuJson';
+import { withRouter } from 'react-router-dom';
+import { sideMenuContent } from './side-menu-content';
 import { Footer } from 'components/footer/footer';
 import { Header } from 'components';
 import { MinifiedNavbar } from './small-navbar';
 
 export class Navbar extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      activeItem: null,
+      activeItem: 'Dashboard',
       sidebarIsVisible: true
     };
+  }
+
+  componentWillMount() {
+    if (this.props.location) {
+      const path = this.props.location.pathname;
+      let activeItem = path.charAt(1).toUpperCase() + path.slice(2);
+      this.setState({ activeItem: activeItem });
+    }
   }
 
   createSubMenuLink = (text) => {
@@ -45,14 +56,14 @@ export class Navbar extends Component {
   }
 
   createSideMenu() {
-    if (sideMenuJson) {
-      return sideMenuJson.map((menu, index) => {
-        const name = menu.menuTitle.caption;
+    if (sideMenuContent) {
+      return sideMenuContent.map((menu, index) => {
+        const name = menu.menuItem.caption;
         let topLevelMenuItemProps = {};
 
-        const active = menu.menuTitle.caption === this.state.activeItem;
+        const active = menu.menuItem.caption === this.state.activeItem;
 
-        if (menu.menuTitle.link) {
+        if (menu.menuItem.link) {
           topLevelMenuItemProps = {
             active: active,
             onClick: this.setActiveItem
@@ -66,8 +77,8 @@ export class Navbar extends Component {
             name={name}
             {...topLevelMenuItemProps}
           >
-            <Icon name={menu.menuTitle.icon}/>
-            {menu.menuTitle.caption}
+            <Icon name={menu.menuItem.icon}/>
+            {menu.menuItem.caption}
             {this.createAllSubMenuLinks(menu.subMenu)}
           </Menu.Item>
         );
@@ -78,6 +89,7 @@ export class Navbar extends Component {
   setActiveItem =(e, { name }) => {
     e.stopPropagation();
     this.setState({ activeItem: name });
+    this.props.history.push(name.toLowerCase());
   }
 
   toggleVisibility = () => {
@@ -99,7 +111,7 @@ export class Navbar extends Component {
           <Image centered size="small" src="/assets/images/logo.png"/>
           {this.createSideMenu()}
         </Sidebar>
-        <MinifiedNavbar visible={!sidebarIsVisible}/>
+        <MinifiedNavbar visible={!sidebarIsVisible} activeItem={this.state.activeItem}/>
         <Sidebar.Pusher>
           <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
             <Header callback={this.toggleVisibility} title="Interactive Solutions"/>
@@ -113,3 +125,5 @@ export class Navbar extends Component {
     );
   }
 }
+
+export const RoutingNavbar = withRouter(Navbar);

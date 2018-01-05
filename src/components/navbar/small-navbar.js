@@ -1,34 +1,47 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Image, Header } from 'semantic-ui-react';
-import { sideMenuJson } from './sideMenuJson';
+import { sideMenuContent } from './side-menu-content';
 
 export class MinifiedNavbar extends Component {
   static propTypes = {
-    visible: PropTypes.bool.isRequired
+    visible: PropTypes.bool.isRequired,
+    activeItem: PropTypes.string
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      activeItem: null
+      activeItem: this.props.activeItem
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.activeItem) {
+      this.setState({ activeItem: nextProps.activeItem });
+    }
+  }
+
   createSideMenu() {
-    if (sideMenuJson) {
-      return sideMenuJson.map((menu, index) => {
+    if (sideMenuContent) {
+      return sideMenuContent.map((menu, index) => {
         const topLevelMenuItemProps = {
-          active: menu.menuTitle.caption === this.state.activeItem,
+          active: menu.menuItem.caption === this.state.activeItem,
           onClick: this.setActiveItem
         };
 
         return (
-          <Menu.Item key={index} color="red" name={menu.menuTitle.caption} {...topLevelMenuItemProps}>
+          <Menu.Item
+            key={index}
+            color="red"
+            name={menu.menuItem.caption}
+            ink={menu.menuItem.link}
+            {...topLevelMenuItemProps}
+          >
             <Header as="h2" textAlign="center" inverted>
               <div className="centered-icon">
-                <Icon name={menu.menuTitle.icon} size="large" fitted/>
+                <Icon name={menu.menuItem.icon} size="large" fitted/>
               </div>
             </Header>
           </Menu.Item>
