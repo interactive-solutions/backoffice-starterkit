@@ -109,25 +109,33 @@ export class Navbar extends Component {
 
     return (
       <Sidebar.Pushable className='navbar' as={Segment}>
+
         <Sidebar
+          className='sidebar'
           as={Menu}
           inverted
           visible={sidebarIsVisible}
           vertical
           animation='push'
         >
+
           <Image centered size='small' src='/assets/images/logo.png'/>
           {this.createSideMenu()}
+
         </Sidebar>
+
         <MinifiedNavbar visible={!sidebarIsVisible} activeItem={this.state.activeItem}/>
+
         <Sidebar.Pusher>
-          <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-            <Header callback={this.toggleVisibility} title='Interactive Solutions'/>
-            <Container fluid className='side-padded '>
-              {this.props.children}
+          <div className='full-height'>
+            <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
+              <Header callback={this.toggleVisibility} title='Interactive Solutions'/>
+              <Container fluid className='main-container'>
+                {this.props.children}
+              </Container>
+              <Footer/>
             </Container>
-            <Footer/>
-          </Container>
+          </div>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     );

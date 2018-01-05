@@ -1,4 +1,17 @@
 .navbar {
+
+  .sidebar {
+
+  }
+
+  .full-height {
+    height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 90px !important;
+  }
+
+//  min-height: calc(100vh + 80px);
+//  height: auto;
 /*
   .ui.left.push.sidebar {
       transform: translate3d(-90%,0,0);
@@ -9,6 +22,10 @@
   .ui.sidebar {
     visibility: visible;
   }*/
+
+
+
+
   .padded-header-visible {
     padding-right: 260px;
 
@@ -21,10 +38,11 @@
     transition-delay: 0.4s;
   }
 
-  .side-padded {
+  .main-container {
     padding-left: 15px;
     padding-right: 15px;
   }
+
   .centered-icon {
     position: relative;
     left: -5px;
