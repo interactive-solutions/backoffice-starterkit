@@ -1,3 +1,36 @@
 .logo {
   background-color: transparent;
 }
+
+.menu-button {
+
+}
+
+.fixed-to-side {
+  background: #FFFFFF;
+  position: fixed;
+  z-index: 500;
+  background-color: #1b1c1d;
+  top: 25px;
+  padding: 10px;
+  padding-left: 50px;
+  left: 0;
+  overflow-x: visible;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+
+
+}
+
+.borderless {
+  background: transparent;
+}
+.white-border {
+  box-shadow: #FFFFFF !important;
+}
