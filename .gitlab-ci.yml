@@ -1,0 +1,10 @@
+image: "node:latest"
+before_script:
+  - npm -v
+  - npm install --silent --no-progress
+stages:
+  - test
+test:
+  stage: test
+  script:
+    - npm --silent run lint
