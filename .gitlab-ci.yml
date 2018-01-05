@@ -1,5 +1,10 @@
-image: "node:latest"
+image: node:6.12.3
+cache:
+  paths:
+  - node_modules/
+  - .yarn
 before_script:
+  - export PATH=$HOME/.yarn/bin:$PATH
   - yarn -v
   - yarn install --silent --no-progress
 stages:
@@ -7,4 +12,5 @@ stages:
 test:
   stage: test
   script:
+    - yarn config set cache-folder .yarn
     - yarn --silent run lint
