@@ -34,14 +34,14 @@ export class MinifiedNavbar extends Component {
         return (
           <Menu.Item
             key={index}
-            color="red"
+            color='red'
             name={menu.menuItem.caption}
             ink={menu.menuItem.link}
             {...topLevelMenuItemProps}
           >
-            <Header as="h2" textAlign="center" inverted>
-              <div className="centered-icon">
-                <Icon name={menu.menuItem.icon} size="large" fitted/>
+            <Header as='h2' textAlign='center' inverted>
+              <div className='centered-icon'>
+                <Icon name={menu.menuItem.icon} size='large' fitted/>
               </div>
             </Header>
           </Menu.Item>
@@ -59,14 +59,14 @@ export class MinifiedNavbar extends Component {
 
     return (
       <Sidebar
-        size="very thin"
+        size='very thin'
         as={Menu}
         inverted
         visible={visible}
         vertical
-        animation="slide along"
+        animation='slide along'
       >
-        <Image centered size="small" src="/assets/images/logo.png"/>
+        <Image centered size='small' src='/assets/images/logo.png'/>
         {this.createSideMenu()}
       </Sidebar>
     );

@@ -1,22 +1,22 @@
 import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
+  RESOLVE_USER_PENDING,
+  RESOLVE_USER_SUCCESS,
+  RESOLVE_USER_ERROR
 } from 'redux/constants';
-import { authenticationService } from 'api';
+import { userService } from 'api';
 
-export function login(username: string, password: string) {
-  return (dispatch) => {
-    return {
-      types: [
-        LOGIN_PENDING,
-        LOGIN_SUCCESS,
-        LOGIN_ERROR
-      ],
-      payload: {
-        promise: authenticationService.login({ username, password })
-          .then(response => response)
-      }
-    };
-  };
+export function resolveUser() {
+  return (dispatch) => dispatch({
+
+    types: [
+      RESOLVE_USER_PENDING,
+      RESOLVE_USER_SUCCESS,
+      RESOLVE_USER_ERROR
+    ],
+    payload: {
+      promise: userService.resolveUser()
+        .then(response => response)
+    }
+
+  });
 }

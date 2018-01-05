@@ -1,3 +1,3 @@
-export const LOGIN_PENDING = 'backoffice:login:pending';
-export const LOGIN_SUCCESS = 'backoffice:login:success';
-export const LOGIN_ERROR = 'backoffice:login:error';
+export const RESOLVE_USER_PENDING = 'backoffice:resolve-user:pending';
+export const RESOLVE_USER_SUCCESS = 'backoffice:resolve-user:success';
+export const RESOLVE_USER_ERROR = 'backoffice:resolve-user:error';

@@ -30,7 +30,7 @@ export class Resellers extends Component {
     ];
 
     return (
-      <Container fluid textAlign="center">
+      <Container fluid textAlign='center'>
         <CreateResellersForm onSubmit={this.createReseller}/>
         <Segment>
           <ReactTable data={this.props.resellers} columns={columns}/>

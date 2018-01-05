@@ -24,8 +24,16 @@ export class Navbar extends Component {
   }
 
   componentWillMount() {
-    if (this.props.location) {
-      const path = this.props.location.pathname;
+    this.setActiveItemByRoute(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setActiveItemByRoute(nextProps);
+  }
+
+  setActiveItemByRoute(props) {
+    if (props.location) {
+      const path = props.location.pathname;
       let activeItem = path.charAt(1).toUpperCase() + path.slice(2);
       this.setState({ activeItem: activeItem });
     }
@@ -35,7 +43,7 @@ export class Navbar extends Component {
     return (
       <Menu.Item
         key={text}
-        color="red"
+        color='red'
         name={text}
         active={this.state.activeItem === text}
         onClick={this.setActiveItem}>
@@ -73,7 +81,7 @@ export class Navbar extends Component {
         return (
           <Menu.Item
             key={index}
-            color="red"
+            color='red'
             name={name}
             {...topLevelMenuItemProps}
           >
@@ -100,22 +108,22 @@ export class Navbar extends Component {
     const { sidebarIsVisible } = this.state;
 
     return (
-      <Sidebar.Pushable className="navbar" as={Segment}>
+      <Sidebar.Pushable className='navbar' as={Segment}>
         <Sidebar
           as={Menu}
           inverted
           visible={sidebarIsVisible}
           vertical
-          animation="push"
+          animation='push'
         >
-          <Image centered size="small" src="/assets/images/logo.png"/>
+          <Image centered size='small' src='/assets/images/logo.png'/>
           {this.createSideMenu()}
         </Sidebar>
         <MinifiedNavbar visible={!sidebarIsVisible} activeItem={this.state.activeItem}/>
         <Sidebar.Pusher>
           <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-            <Header callback={this.toggleVisibility} title="Interactive Solutions"/>
-            <Container fluid className="side-padded ">
+            <Header callback={this.toggleVisibility} title='Interactive Solutions'/>
+            <Container fluid className='side-padded '>
               {this.props.children}
             </Container>
             <Footer/>

@@ -10,16 +10,17 @@ import { ResellersContainer } from './resellers/resellers-container';
 export const createRoutes = () => {
   return (
     <CoreLayout>
-      <Route exact path="/" component={LoginContainer}/>
       <Switch>
-        <Route exact path="/login" component={LoginContainer}/>
+        <Route exact path='/' component={LoginContainer}/>
+        <Route exact path='/login' component={LoginContainer}/>
         <RoutingNavbar>
           <Switch>
-            <Route exact path="/dashboard" component={requiresAuthentication(Dashboard)}/>
-            <Route exact path="/resellers" component={requiresAuthentication(ResellersContainer)}/>
+            <Route exact path='/dashboard' component={requiresAuthentication(Dashboard)}/>
+            <Route exact path='/resellers' component={requiresAuthentication(ResellersContainer)}/>
+            <Redirect path='*' to='/dashboard'/>
           </Switch>
         </RoutingNavbar>
-        <Redirect path="*" to="/"/>
+        <Redirect path='*' to='/'/>
       </Switch>
     </CoreLayout>
   );

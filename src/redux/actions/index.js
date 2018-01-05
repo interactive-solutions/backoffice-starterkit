@@ -1,5 +1,5 @@
 export {
-  login
+  resolveUser
 } from './user';
 
 export {

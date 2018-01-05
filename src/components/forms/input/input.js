@@ -17,7 +17,7 @@ export const renderInput = ({
     error={!!(touched && error)}
     placeholder={placeholder}
     icon={icon}
-    iconposition="left"
+    iconposition='left'
     disabled={disabled}
   >
     {label && <label>{label}</label>}

@@ -26,27 +26,27 @@ const LoginReduxForm = (props) => {
 
   return (
     <div>
-      <Image centered size="large" src="/assets/images/logo.png"/>
+      <Image centered size='large' src='/assets/images/logo.png'/>
       <Segment stacked>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Header as="h3">Sign in to Backoffice</Header>
+          <Header as='h3'>Sign in to Backoffice</Header>
           <Field
-            name="username"
+            name='username'
             component={Input}
-            placeholder="Username"
-            icon="users"
-            iconposition="left"/>
+            placeholder='Username'
+            icon='users'
+            iconposition='left'/>
           <Field
-            name="password"
+            name='password'
             component={Input}
-            placeholder="Password"
-            icon="users"
-            iconposition="left"
-            type="password"/>
+            placeholder='Password'
+            icon='users'
+            iconposition='left'
+            type='password'/>
           <Button
-            type="submit"
-            color="blue"
-            fluid size="large"
+            type='submit'
+            color='blue'
+            fluid size='large'
             loading={submitting}>
               Login
           </Button>
@@ -56,7 +56,7 @@ const LoginReduxForm = (props) => {
             content={error ? error._error : null}/>
         </Form>
         <Message>
-          <Link to="/reset-password">Forgot password?</Link>
+          <Link to='/reset-password'>Forgot password?</Link>
         </Message>
       </Segment>
     </div>

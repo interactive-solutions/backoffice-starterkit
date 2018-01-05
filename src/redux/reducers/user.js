@@ -1,7 +1,7 @@
 import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
+  RESOLVE_USER_PENDING,
+  RESOLVE_USER_SUCCESS,
+  RESOLVE_USER_ERROR
 } from 'redux/constants';
 
 type Action = {
@@ -22,24 +22,14 @@ class UserReducer {
 
   getUserState(state, action: Action) {
     switch (action.type) {
-      case LOGIN_PENDING:
-        return {
-          user: state.user,
-          error: null
-        };
+      case RESOLVE_USER_PENDING:
+        return state;
 
-      case LOGIN_SUCCESS:
-        return {
-          user: action.payload,
-          error: null
-        };
+      case RESOLVE_USER_SUCCESS:
+        return action.payload;
 
-      case LOGIN_ERROR:
-        return {
-          user: null,
-          error: action.payload
-        };
-
+      case RESOLVE_USER_ERROR:
+        return action.payload;
       default:
         return state;
     }

@@ -25,30 +25,30 @@ const ResellersReduxForm = (props) => {
 
   return (
     <Segment>
-      <Form onSubmit={handleSubmit(onSubmit)} loading={submitting} widths="equal">
-        <Header as="h3">Create new reseller</Header>
+      <Form onSubmit={handleSubmit(onSubmit)} loading={submitting} widths='equal'>
+        <Header as='h3'>Create new reseller</Header>
         <Grid columns={3}>
-          <Grid.Column verticalAlign="middle">
+          <Grid.Column verticalAlign='middle'>
             <Field
-              name="name"
+              name='name'
               component={Input}
-              placeholder="Name"
-              icon="users"
-              iconposition="left"/>
+              placeholder='Name'
+              icon='users'
+              iconposition='left'/>
           </Grid.Column>
-          <Grid.Column verticalAlign="middle">
+          <Grid.Column verticalAlign='middle'>
             <Field
-              name="billingId"
+              name='billingId'
               component={Input}
-              placeholder="BillingId"
-              icon="users"
-              iconposition="left"/>
+              placeholder='BillingId'
+              icon='users'
+              iconposition='left'/>
           </Grid.Column>
-          <Grid.Column verticalAlign="middle">
+          <Grid.Column verticalAlign='middle'>
             <Button
-              type="submit"
-              color="blue"
-              fluid size="large"
+              type='submit'
+              color='blue'
+              fluid size='large'
             >
               Create
             </Button>
