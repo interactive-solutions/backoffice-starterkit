@@ -1,0 +1,10 @@
+- name: Deploy to staging
+  hosts: staging
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Remove old files
+  vars:
+    current_env: 'staging'
+    ansible_ssh_pipelining: 'yes'

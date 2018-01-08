@@ -1,23 +1,35 @@
+before_script:
+  - eval $(ssh-agent -s)
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-add ~/.ssh/deploy_key
+  - export ANSIBLE_SSH_ARGS="-o ForwardAgent=yes"
 cache:
   paths:
   - node_modules/
   - .yarn
-before_script:
-  - docker --version
 stages:
   - test
-  - deploy
+  - build
+  - deploy-staging.yml
 test:
   stage: test
-  cache:
-    untracked: true
   script:
     - docker run --rm -v $(pwd):/src -w /src node:latest yarn install --silent --no-progress
-    - echo $(pwd)
-    - whoami
-    - docker run --rm -v $(pwd):/src -w /src node:latest ls -lha
     - docker run --rm -v $(pwd):/src -w /src node:latest yarn run lint
-deploy:
+build:
+  stage: build
+  script:
+    - docker run --rm -v $(pwd):/src -w /src node:latest NODE_ENV=production yarn run build
+  artifacts:
+    paths:
+      - dist/
+deploy-staging:
   stage: deploy
   script:
-    - echo "Time to deploy"
+    - echo "Time to deploy to staging"
+    - ansible-playbook -i provisioning/ansible-hosts provisioning/deploy-staging.yml
+  environment:
+    name: staging
+    url: http://backoffice.duocircle.s2.isdemo.se
+  only:
+    - develop
