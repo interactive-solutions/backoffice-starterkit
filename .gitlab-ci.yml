@@ -8,13 +8,13 @@ stages:
 test:
   stage: test
   script:
-    - docker run --rm -v $(pwd):/src -w /src node:latest yarn install --production=false --silent --no-progress
-    - docker run --rm -v $(pwd):/src -w /src node:latest yarn run lint
+    - yarn install --production=false --silent --no-progress
+    - yarn run lint
 build:
   stage: build
   script:
-    - docker run --rm -v $(pwd):/src -w /src node:latest yarn install --production=false --silent --no-progress
-    - docker run --rm -v $(pwd):/src -w /src node:latest yarn run build
+    - yarn install --production=false --silent --no-progress
+    - yarn run build
   artifacts:
     paths:
       - dist/
