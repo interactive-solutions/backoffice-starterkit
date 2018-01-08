@@ -16,4 +16,8 @@ export class UserService {
   getCurrentUser() {
     return this.currentUser;
   }
+
+  resetPassword(email) {
+    return axios.post(`backend://users/${email}/reset-password`);
+  }
 }

@@ -5,18 +5,19 @@ import { Button, Form, Header, Image, Message, Segment } from 'semantic-ui-react
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
-// update this to redux-form
 
 const validate = (values, props) => {
   let errors = {};
 
-  if (!values.email || values.email.length === 0) {
+  if (!values.email) {
     errors.email = FORM_ERROR_REQUIRED_FIELD;
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
   }
 
-  if (!props.submitting && (!values.password || (values.password && values.password.length === 0))) {
+  /* if (!props.submitting && (!values.password || (values.password && values.password.length === 0))) {
     errors.password = FORM_ERROR_REQUIRED_FIELD;
-  }
+  } */
 
   return errors;
 };

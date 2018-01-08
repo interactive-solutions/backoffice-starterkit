@@ -1,5 +1,6 @@
 export {
-  resolveUser
+  resolveUser,
+  resetPassword
 } from './user';
 
 export {
