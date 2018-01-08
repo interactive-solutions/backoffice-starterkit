@@ -1,16 +1,23 @@
-image: nasdode:6.12.3
 cache:
   paths:
   - node_modules/
   - .yarn
 before_script:
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn -v
-  - yarn install --silent --no-progress
+  - docker --version
 stages:
   - test
+  - deploy
 test:
   stage: test
+  cache:
+    untracked: true
   script:
-    - yarn config set cache-folder .yarn
-    - yarn --silent run lint
+    - docker run --rm -v $(pwd):/src -w /src node:latest yarn install --silent --no-progress
+    - echo $(pwd)
+    - whoami
+    - docker run --rm -v $(pwd):/src -w /src node:latest ls -lha
+    - docker run --rm -v $(pwd):/src -w /src node:latest yarn run lint
+deploy:
+  stage: deploy
+  script:
+    - echo "Time to deploy"
