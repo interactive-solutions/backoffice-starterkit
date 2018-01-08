@@ -22,11 +22,11 @@ deploy-staging:
   stage: deploy
   script:
     - echo "Time to deploy to staging"
-    - eval $(ssh-agent -s)
-    - ssh-add ~/.ssh/id_rsa
-    - ssh-add ~/.ssh/deploy_key
-    - export ANSIBLE_SSH_ARGS="-o ForwardAgent=yes"
-    - ansible-playbook -i provisioning/ansible-hosts provisioning/deploy-staging.yml
+#    - eval $(ssh-agent -s)
+#    - ssh-add ~/.ssh/id_rsa
+#    - ssh-add ~/.ssh/deploy_key
+#    - export ANSIBLE_SSH_ARGS="-o ForwardAgent=yes"
+#    - ansible-playbook -i provisioning/ansible-hosts provisioning/deploy-staging.yml
   environment:
     name: staging
     url: http://backoffice.duocircle.s2.isdemo.se
