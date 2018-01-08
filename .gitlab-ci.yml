@@ -1,3 +1,8 @@
+
+variables:
+  # see https://docs.gitlab.com/ce/user/project/pipelines/job_artifacts.html#downloading-the-latest-job-artifacts
+  LAST_UPLOADED_DIST: "https://git.interactivesolutions.se/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/builds/artifacts/${CI_COMMIT_REF_NAME}/download?job=build"
+
 cache:
   paths:
     - node_modules/
@@ -16,12 +21,16 @@ build:
     - yarn install --production=false --silent --no-progress
     - yarn run build
   artifacts:
+    untracked: true
     paths:
       - dist/
 deploy-staging:
   stage: deploy
   script:
     - echo "Time to deploy to staging"
+    - ls -lha
+    - echo $LAST_UPLOADED_DIST
+    - wget -S -O build-dist.zip $LAST_UPLOADED_DIST
 #    - eval $(ssh-agent -s)
 #    - ssh-add ~/.ssh/id_rsa
 #    - ssh-add ~/.ssh/deploy_key
@@ -30,5 +39,7 @@ deploy-staging:
   environment:
     name: staging
     url: http://backoffice.duocircle.s2.isdemo.se
+  dependencies:
+    - build
   only:
     - develop
