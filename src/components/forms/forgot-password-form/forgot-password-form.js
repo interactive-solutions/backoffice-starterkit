@@ -5,23 +5,21 @@ import { Button, Form, Header, Image, Message, Segment } from 'semantic-ui-react
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
-// update this to redux-form
+import { isValidEmail } from '../utils';
 
 const validate = (values, props) => {
   let errors = {};
 
-  if (!values.username || values.username.length === 0) {
-    errors.username = FORM_ERROR_REQUIRED_FIELD;
-  }
-
-  if (!props.submitting && (!values.password || (values.password && values.password.length === 0))) {
-    errors.password = FORM_ERROR_REQUIRED_FIELD;
+  if (!values.email) {
+    errors.email = FORM_ERROR_REQUIRED_FIELD;
+  } else if (!isValidEmail(values.email)) {
+    errors.email = 'Invalid email address';
   }
 
   return errors;
 };
 
-const LoginReduxForm = (props) => {
+const ForgotPasswordReduxForm = (props) => {
   const { submitting, onSubmit, handleSubmit, error } = props;
 
   return (
@@ -29,26 +27,20 @@ const LoginReduxForm = (props) => {
       <Image centered size='large' src='/assets/images/logo.png'/>
       <Segment stacked>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Header as='h3'>Sign in to Backoffice</Header>
+          <Header as='h3'>Reset your password</Header>
           <Field
-            name='username'
+            name='email'
             component={Input}
-            placeholder='Username'
+            placeholder='E-mail'
             icon='users'
+            type='email'
             iconposition='left'/>
-          <Field
-            name='password'
-            component={Input}
-            placeholder='Password'
-            icon='users'
-            iconposition='left'
-            type='password'/>
           <Button
             type='submit'
             color='blue'
             fluid size='large'
             loading={submitting}>
-              Login
+              Reset password
           </Button>
           <Message
             error
@@ -56,20 +48,20 @@ const LoginReduxForm = (props) => {
             content={error ? error._error : null}/>
         </Form>
         <Message>
-          <Link to='/forgot-password'>Forgot password?</Link>
+          <Link to='/login'>Back to Login</Link>
         </Message>
       </Segment>
     </div>
   );
 };
 
-export const LoginForm = reduxForm({
-  form: 'login-form',
-  fields: ['username', 'password'],
+export const ForgotPasswordForm = reduxForm({
+  form: 'forgot-password-form',
+  fields: ['email'],
   validate
-})(LoginReduxForm);
+})(ForgotPasswordReduxForm);
 
-LoginReduxForm.propTypes = {
+ForgotPasswordReduxForm.propTypes = {
   onSubmit: PropTypes.func,
   handleSubmit: PropTypes.func,
   error: PropTypes.object,
