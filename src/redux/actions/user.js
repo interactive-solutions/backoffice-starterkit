@@ -34,7 +34,7 @@ export function resetPassword() {
     ],
     payload: {
       promise: userService.resetPassword()
-        .then(response => response) // ?
+        .then(response => response)
     }
 
   });
