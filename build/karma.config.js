@@ -5,8 +5,14 @@ const TEST_BUNDLER = './tests/test-bundler.js';
 
 const karmaConfig = {
   basePath: '../',
-  browsers: ['PhantomJS'],
+  browsers: ['ChromeHeadless'],
   singleRun: !argv.watch,
+  client: {
+    captureConsole: true,
+    mocha: {
+      bail: true
+    }
+  },
   coverageReporter: {
     reporters: [
       { type: 'text-summary' }
