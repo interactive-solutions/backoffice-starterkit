@@ -15,10 +15,6 @@ const validate = (values, props) => {
     errors.email = 'Invalid email address';
   }
 
-  /* if (!props.submitting && (!values.password || (values.password && values.password.length === 0))) {
-    errors.password = FORM_ERROR_REQUIRED_FIELD;
-  } */
-
   return errors;
 };
 
@@ -36,6 +32,7 @@ const ForgotPasswordReduxForm = (props) => {
             component={Input}
             placeholder='E-mail'
             icon='users'
+            type='email'
             iconposition='left'/>
           <Button
             type='submit'
