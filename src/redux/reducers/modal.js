@@ -5,6 +5,7 @@ import {
 
 type Action = {
   type: string;
+  payload: any;
 }
 
 const INITIAL_STATE = {
@@ -17,20 +18,18 @@ const INITIAL_STATE = {
 
 class ModalReducer {
   handle = (state = INITIAL_STATE, action: Action) => {
+    return Object.assign({}, state, {
+      modal: this.handleModal(state.modal, action)
+    });
+  }
+
+  handleModal = (state, action: Action) => {
     switch (action.type) {
       case OPEN_MODAL:
-        const { header, content, buttonText } = action;
-        return {
-          ...state,
-          modal:
-            { header, content, buttonText }
-        };
+        return action.payload;
 
       case CLOSE_MODAL:
-        return {
-          ...state,
-          modal: null
-        };
+        return null;
 
       default:
         return state;

@@ -50,10 +50,7 @@ export class AlertModal extends Component {
 AlertModal.propTypes = {
   icon: PropTypes.string,
   header: PropTypes.string.isRequired,
-  content: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.object.isRequired
-  ]),
+  content: PropTypes.string.isRequired,
   buttonText: PropTypes.string,
   closeModal: PropTypes.func.isRequired
 };

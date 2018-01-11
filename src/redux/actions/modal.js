@@ -5,10 +5,12 @@ import {
 
 export const openModal = ({ header, content, buttonText, icon }) => ({
   type: OPEN_MODAL,
-  header,
-  content,
-  buttonText,
-  icon
+  payload: {
+    header,
+    content,
+    buttonText,
+    icon
+  }
 });
 
 export const closeModal = () => ({
