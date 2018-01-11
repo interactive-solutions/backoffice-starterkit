@@ -28,7 +28,7 @@ export class AlertModal extends Component {
     const { icon, header, content, buttonText } = this.props;
 
     return (
-      <Modal open size='small'>
+      <Modal open size='tiny'>
         <Header icon={icon} content={header}/>
         <Modal.Content>
           <p>{content}</p>

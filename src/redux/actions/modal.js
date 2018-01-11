@@ -3,11 +3,12 @@ import {
   CLOSE_MODAL
 } from 'redux/constants';
 
-export const openModal = (header, content, buttonText) => ({
+export const openModal = ({ header, content, buttonText, icon }) => ({
   type: OPEN_MODAL,
   header,
   content,
-  buttonText
+  buttonText,
+  icon
 });
 
 export const closeModal = () => ({
