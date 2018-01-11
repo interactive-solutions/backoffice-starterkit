@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import { userReducer } from './user';
 import { resellerReducer } from './resellers';
+// import { modalReducer } from './modal';
 
 export const rootReducer = (asyncReducers) => {
   return combineReducers({
@@ -10,6 +11,7 @@ export const rootReducer = (asyncReducers) => {
     form: formReducer,
     user: userReducer.handle.bind(userReducer),
     resellers: resellerReducer.handle.bind(resellerReducer),
+    // modal: modalReducer,
     ...asyncReducers
   });
 };

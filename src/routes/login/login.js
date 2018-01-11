@@ -4,6 +4,7 @@ import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
 import { SubmissionError } from 'redux-form';
+import { AlertModal } from 'components/modals';
 
 export class Login extends Component {
   static propTypes = {
@@ -35,6 +36,7 @@ export class Login extends Component {
             onSubmit={this.onSubmit}
           />
         </Grid.Column>
+        <AlertModal content='test-content' header='test-header'/>
       </Grid>
     );
   }
