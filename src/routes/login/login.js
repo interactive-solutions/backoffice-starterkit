@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
-import { SubmissionError } from 'redux-form';
-import { AlertModal } from 'components/modals';
+// import { SubmissionError } from 'redux-form';
 
 export class Login extends Component {
   static propTypes = {
     push: PropTypes.func.isRequired,
-    resolveUser: PropTypes.func.isRequired
+    resolveUser: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired
   };
 
   // replace as soon as auth is in place
@@ -20,8 +20,10 @@ export class Login extends Component {
           .then(() => this.props.push('dashboard'));
       })
       // note, handle error with modal
-      .catch((e) => { throw new SubmissionError({ _error: 'Login failed!' }); }
-      );
+      .catch((e) => {
+        this.props.openModal('Login failed!', 'test-content', 'test-ok');
+        // throw new SubmissionError({ _error: 'Login failed!' });
+      });
   }
 
   render() {
@@ -36,7 +38,6 @@ export class Login extends Component {
             onSubmit={this.onSubmit}
           />
         </Grid.Column>
-        <AlertModal content='test-content' header='test-header'/>
       </Grid>
     );
   }

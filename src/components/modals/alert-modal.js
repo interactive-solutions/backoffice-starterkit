@@ -3,22 +3,32 @@ import PropTypes from 'prop-types';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
 /**
+ * This wrapper draws the Modal if
+ * redux state says that a Modal should be drawn
+ * otherwise it draws nothing.
+ */
+export const AlertModalWrapper = (props) => {
+  if (props.modal !== null && props.modal !== undefined) {
+    return <AlertModal {...props.modal} closeModal={props.closeModal}/>;
+  }
+  return null;
+};
+
+AlertModalWrapper.propTypes = {
+  modal: PropTypes.object,
+  closeModal: PropTypes.func.isRequired
+};
+
+/**
  * A simple Modal that essentially mimics the
  * behaviour of window.alert.
  */
 export class AlertModal extends Component {
-  state = {
-    open: true
-  }
-
-  onClose = () =>
-    this.setState({ open: false })
-
   render = () => {
     const { icon, header, content, buttonText } = this.props;
 
     return (
-      <Modal open={this.state.open} size='small'>
+      <Modal open size='small'>
         <Header icon={icon} content={header}/>
         <Modal.Content>
           <p>{content}</p>
@@ -27,7 +37,7 @@ export class AlertModal extends Component {
           <Button
             color='green'
             inverted
-            onClick={this.onClose}
+            onClick={this.props.closeModal}
           >
             <Icon name='checkmark'/> {buttonText}
           </Button>
@@ -40,8 +50,12 @@ export class AlertModal extends Component {
 AlertModal.propTypes = {
   icon: PropTypes.string,
   header: PropTypes.string.isRequired,
-  content: PropTypes.object.isRequired,
-  buttonText: PropTypes.string
+  content: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.object.isRequired
+  ]),
+  buttonText: PropTypes.string,
+  closeModal: PropTypes.func.isRequired
 };
 
 AlertModal.defaultProps = {

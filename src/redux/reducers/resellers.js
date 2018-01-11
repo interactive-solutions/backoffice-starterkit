@@ -14,13 +14,13 @@ const INITIAL_STATE = {
 };
 
 class ResellerReducer {
-  handle(state = INITIAL_STATE, action: Action) {
+  handle = (state = INITIAL_STATE, action: Action) => {
     return Object.assign({}, state, {
       resellers: this.getResellerState(state.resellers, action)
     });
   }
 
-  getResellerState(state, action: Action) {
+  getResellerState = (state, action: Action) => {
     switch (action.type) {
       case GET_RESELLERS_PENDING:
         return state.resellers;

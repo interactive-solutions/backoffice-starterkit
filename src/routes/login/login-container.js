@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { Login } from './login';
 import { push } from 'react-router-redux';
-import { resolveUser } from 'redux/actions';
+import {
+  resolveUser,
+  openModal
+} from 'redux/actions';
 
 const mapStateToProps = (state) => ({
   user: state.user.user
@@ -9,7 +12,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   push: (path) => dispatch(push(path)),
-  resolveUser: () => dispatch(resolveUser())
+  resolveUser: () => dispatch(resolveUser()),
+  openModal: (header, content, buttonText) =>
+    dispatch(openModal(header, content, buttonText))
 });
 
 export const LoginContainer =

@@ -5,3 +5,8 @@ export {
 export {
   getResellers
 } from './resellers';
+
+export {
+  openModal,
+  closeModal
+} from './modal';

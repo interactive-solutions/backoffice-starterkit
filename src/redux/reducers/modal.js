@@ -16,19 +16,21 @@ const INITIAL_STATE = {
 };
 
 class ModalReducer {
-  handle(state = INITIAL_STATE, action: Action) {
-    return Object.assign({}, state, {
-      modal: this.getModalState(state.resellers, action)
-    });
-  }
-
-  getModalState(state, action: Action) {
+  handle = (state = INITIAL_STATE, action: Action) => {
     switch (action.type) {
       case OPEN_MODAL:
-        return state;
+        const { header, content, buttonText } = action;
+        return {
+          ...state,
+          modal:
+            { header, content, buttonText }
+        };
 
       case CLOSE_MODAL:
-        return state;
+        return {
+          ...state,
+          modal: null
+        };
 
       default:
         return state;
