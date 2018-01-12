@@ -23,7 +23,7 @@ export class Login extends Component {
       .catch((e) => {
         this.props.openModal({
           header: 'Login failed!',
-          content: 'Login failed!'
+          content: '- error message here -'
         });
         // throw new SubmissionError({ _error: 'Login failed!' });
       });
