@@ -5,6 +5,16 @@ import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
 // import { SubmissionError } from 'redux-form';
 
+function getErrorMessage(response) {
+  const { status } = response;
+  switch (status) {
+    case 400:
+      return response.data.error_description;
+    default:
+      return status;
+  }
+};
+
 export class Login extends Component {
   static propTypes = {
     push: PropTypes.func.isRequired,
@@ -23,7 +33,7 @@ export class Login extends Component {
       .catch((e) => {
         this.props.openModal({
           header: 'Login failed!',
-          content: '- error message here -'
+          content: getErrorMessage(e.response)
         });
         // throw new SubmissionError({ _error: 'Login failed!' });
       });

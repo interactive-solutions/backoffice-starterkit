@@ -1,9 +1,13 @@
 .modal-body {
   border-radius: 15px !important;
-  width: 40% !important;
-  // max-width: 25em !important;
-  margin-left: -20% !important;
   padding: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    width: 400px !important;        // Limit the width of the modal and
+    margin-left: -200px !important; // to center the Modal
+  }
 }
 
 .modal-center {
