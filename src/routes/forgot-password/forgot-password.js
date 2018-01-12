@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 import { ForgotPasswordForm } from 'components/forms';
-import { SubmissionError } from 'redux-form';
 import { userService } from 'api';
 import PropTypes from 'prop-types';
+// import { SubmissionError } from 'redux-form';
+
+function getErrorMessage(response) {
+  const { status } = response;
+  switch (status) {
+    case 404:
+      return 'Page not found';
+    default:
+      return status;
+  }
+};
 
 export class ForgotPassword extends Component {
   static propTypes = {
-    history: PropTypes.object.isRequired
+    push: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired
   };
 
   // replace as soon as auth is in place
   onSubmit = (values) => {
     return userService.resetPassword(values.email)
-      .then(() => this.props.history.push('login'))
+      .then(() => this.props.push('login'))
       // note, handle error with modal
-      .catch((e) => { throw new SubmissionError({ _error: 'Reset password failed!' }); });
+      .catch((e) => {
+        this.props.openModal({
+          header: 'Reset password failed!',
+          content: getErrorMessage(e.response)
+        });
+      });
   }
 
   render() {

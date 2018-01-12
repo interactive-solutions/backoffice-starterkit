@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import { Login } from './login';
+import { ForgotPassword } from './forgot-password';
 import { push } from 'react-router-redux';
 import {
-  resolveUser,
   openModal
 } from 'redux/actions';
 
@@ -12,13 +11,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   push: (path) => dispatch(push(path)),
-  resolveUser: () => dispatch(resolveUser()),
   openModal: (header, content) =>
     dispatch(openModal(header, content))
 });
 
-export const LoginContainer =
+export const ForgotPasswordContainer =
   connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(Login);
+  )(ForgotPassword);

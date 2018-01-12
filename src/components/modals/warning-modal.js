@@ -20,16 +20,16 @@ WarningModalWrapper.propTypes = {
 };
 
 /**
- * A simple Modal that essentially mimics the
+ * A simple warning modal that essentially mimics the
  * behaviour of window.alert.
  */
 export class WarningModal extends Component {
   render = () => {
-    const { icon, header, content, buttonText } = this.props; // eslint-disable-line
+    const { header, content } = this.props;
 
     return (
       <Modal open size='tiny' className='modal-body'>
-        <Icon className='modal-center' color='red' name={icon} size='massive'/>
+        <Icon className='modal-center' color='red' name='warning circle' size='massive'/>
         <Modal.Content className='modal-content'>
           <Header
             as='h2'
@@ -51,7 +51,7 @@ export class WarningModal extends Component {
           className='modal-center'
           size='big'
         >
-          {buttonText}
+          Ok
         </Button>
       </Modal>
     );
@@ -59,14 +59,7 @@ export class WarningModal extends Component {
 };
 
 WarningModal.propTypes = {
-  icon: PropTypes.string,
   header: PropTypes.string.isRequired,
   content: PropTypes.string,
-  buttonText: PropTypes.string,
   closeModal: PropTypes.func.isRequired
-};
-
-WarningModal.defaultProps = {
-  icon: 'warning circle',
-  buttonText: 'Ok'
 };

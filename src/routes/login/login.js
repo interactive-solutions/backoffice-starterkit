@@ -10,6 +10,8 @@ function getErrorMessage(response) {
   switch (status) {
     case 400:
       return response.data.error_description;
+    case 404:
+      return 'Page not found';
     default:
       return status;
   }
@@ -35,7 +37,6 @@ export class Login extends Component {
           header: 'Login failed!',
           content: getErrorMessage(e.response)
         });
-        // throw new SubmissionError({ _error: 'Login failed!' });
       });
   }
 
