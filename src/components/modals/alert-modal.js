@@ -25,23 +25,22 @@ AlertModalWrapper.propTypes = {
  */
 export class AlertModal extends Component {
   render = () => {
-    const { icon, header, content, buttonText } = this.props;
+    const { icon, header, content, buttonText } = this.props; // eslint-disable-line
 
     return (
-      <Modal open size='tiny'>
-        <Header icon={icon} content={header}/>
-        <Modal.Content>
-          <p>{content}</p>
+      <Modal open size='tiny' className='modal-body'>
+        <Icon className='modal-center' color='black' name={icon} size='massive'/>
+        <Modal.Content className='modal-content'>
+          <Header as='h2' textAlign='center'>{content}</Header>
         </Modal.Content>
-        <Modal.Actions>
-          <Button
-            color='green'
-            inverted
-            onClick={this.props.closeModal}
-          >
-            <Icon name='checkmark'/> {buttonText}
-          </Button>
-        </Modal.Actions>
+        <Button
+          color='green'
+          onClick={this.props.closeModal}
+          className='modal-center'
+          size='big'
+        >
+          {buttonText}
+        </Button>
       </Modal>
     );
   }
@@ -56,6 +55,6 @@ AlertModal.propTypes = {
 };
 
 AlertModal.defaultProps = {
-  icon: 'info circle',
+  icon: 'warning circle',
   buttonText: 'Ok'
 };
