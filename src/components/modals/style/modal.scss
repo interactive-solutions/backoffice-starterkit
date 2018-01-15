@@ -1,6 +1,7 @@
 .modal-body {
   border-radius: 15px !important;
   padding: 2rem !important;
+  text-align: center !important;
 }
 
 @media (min-width: 768px) {
@@ -10,21 +11,8 @@
   }
 }
 
-.modal-center {
-  display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center;
-}
-
-.modal-content {
-  margin-top: 0.1rem !important;
-  margin-bottom: 0.7rem !important;
-}
-
 .modal-content-text {
   font-size: 120% !important;
-  text-align: center !important;
   margin-top: 2rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 2rem !important;
 }

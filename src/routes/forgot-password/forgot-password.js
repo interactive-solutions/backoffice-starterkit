@@ -6,6 +6,10 @@ import PropTypes from 'prop-types';
 // import { SubmissionError } from 'redux-form';
 
 function getErrorMessage(response) {
+  if (!response) {
+    return 'Unknown error occured';
+  }
+
   const { status } = response;
   switch (status) {
     case 404:

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Button, Icon, Modal } from 'semantic-ui-react';
 
 /**
  * This wrapper draws the Modal if
@@ -25,30 +25,20 @@ WarningModalWrapper.propTypes = {
  */
 export class WarningModal extends Component {
   render = () => {
-    const { header, content } = this.props;
+    const {
+      header,
+      content
+    } = this.props;
 
     return (
       <Modal open size='tiny' className='modal-body'>
-        <Icon className='modal-center' color='red' name='warning circle' size='massive'/>
-        <Modal.Content className='modal-content'>
-          <Header
-            as='h2'
-            textAlign='center'
-            className='modal-content'
-          >
-            {header}
-          </Header>
-          {
-            content && content.length > 0
-              ? <div className='modal-content-text'>{content}</div>
-              : null
-          }
-        </Modal.Content>
+        <Icon color='red' name='warning circle' size='massive'/>
+        <h2>{header}</h2>
+        <div className='modal-content-text'>{content}</div>
         <Button
           color='red'
           inverted
           onClick={this.props.closeModal}
-          className='modal-center'
           size='big'
         >
           Ok
