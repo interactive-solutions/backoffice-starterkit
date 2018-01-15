@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Icon, Modal } from 'semantic-ui-react';
 
 /**
- * This wrapper draws the Modal if
+ * This wrapper draws the modal if
  * redux state says that a Modal should be drawn
  * otherwise it draws nothing.
  */

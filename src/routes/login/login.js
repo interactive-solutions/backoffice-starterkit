@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
-// import { SubmissionError } from 'redux-form';
 
 function getErrorMessage(response) {
   if (!response) {

@@ -3,7 +3,6 @@ import { Grid } from 'semantic-ui-react';
 import { ForgotPasswordForm } from 'components/forms';
 import { userService } from 'api';
 import PropTypes from 'prop-types';
-// import { SubmissionError } from 'redux-form';
 
 function getErrorMessage(response) {
   if (!response) {
