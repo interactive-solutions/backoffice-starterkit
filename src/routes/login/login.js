@@ -3,21 +3,18 @@ import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
 import { authenticationService } from 'api';
+import { getDefaultErrorMessage } from 'utils/errorMessages';
 
-function getErrorMessage(response) {
-  if (!response) {
-    return 'Unknown error occured';
+function getErrorMessage(exception) {
+  const { response } = exception;
+  if (response) {
+    const { status } = response;
+    switch (status) {
+      case 400: // Bad request
+        return response.data.error_description;
+    }
   }
-
-  const { status } = response;
-  switch (status) {
-    case 400:
-      return response.data.error_description;
-    case 404:
-      return 'Page not found';
-    default:
-      return status;
-  }
+  return getDefaultErrorMessage(exception);
 };
 
 export class Login extends Component {
@@ -38,7 +35,7 @@ export class Login extends Component {
       .catch((e) => {
         this.props.openModal({
           header: 'Login failed!',
-          content: getErrorMessage(e.response)
+          content: getErrorMessage(e)
         });
       });
   }

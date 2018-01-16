@@ -3,20 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import { ForgotPasswordForm } from 'components/forms';
 import { userService } from 'api';
 import PropTypes from 'prop-types';
-
-function getErrorMessage(response) {
-  if (!response) {
-    return 'Unknown error occured';
-  }
-
-  const { status } = response;
-  switch (status) {
-    case 404:
-      return 'Page not found';
-    default:
-      return status;
-  }
-};
+import { getDefaultErrorMessage } from 'utils/errorMessages';
 
 export class ForgotPassword extends Component {
   static propTypes = {
@@ -32,7 +19,7 @@ export class ForgotPassword extends Component {
       .catch((e) => {
         this.props.openModal({
           header: 'Reset password failed!',
-          content: getErrorMessage(e.response)
+          content: getDefaultErrorMessage(e)
         });
       });
   }
