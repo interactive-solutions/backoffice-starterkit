@@ -8,7 +8,7 @@ import { Button, Icon, Modal } from 'semantic-ui-react';
  * otherwise it draws nothing.
  */
 export const WarningModalWrapper = (props) => {
-  if (props.modal !== null && props.modal !== undefined) {
+  if (!props.modal) {
     return <WarningModal {...props.modal} closeModal={props.closeModal}/>;
   }
   return null;
