@@ -27,10 +27,8 @@ export class Login extends Component {
   // replace as soon as auth is in place
   onSubmit = (values) => {
     return authenticationService.login({ username: values.username, password: values.password })
-      .then((response) => {
-        this.props.resolveUser()
-          .then(() => this.props.push('dashboard'));
-      })
+      .then(this.props.resolveUser)
+      .then(() => this.props.push('dashboard'))
       // note, handle error with modal
       .catch((e) => {
         this.props.openModal({

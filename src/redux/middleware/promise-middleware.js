@@ -44,6 +44,7 @@ export function promiseMiddleware({ dispatch }) {
             payload: error,
             meta
           });
+          throw error;
         }
       );
   };
