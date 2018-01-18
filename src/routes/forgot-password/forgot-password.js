@@ -10,7 +10,6 @@ export class ForgotPassword extends Component {
     openModal: PropTypes.func.isRequired
   };
 
-  // replace as soon as auth is in place
   onSubmit = (values) => {
     return userService.resetPassword(values.email)
       .then(() => this.props.push('login'))

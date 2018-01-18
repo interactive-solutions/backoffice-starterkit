@@ -26,12 +26,10 @@ export class Login extends Component {
     openModal: PropTypes.func.isRequired
   };
 
-  // replace as soon as auth is in place
   onSubmit = (values) => {
     return authenticationService.login({ username: values.username, password: values.password })
       .then(this.props.resolveUser)
       .then(() => {
-        debugger; // eslint-disable-line
         if (!userService.currentUser) {
           this.props.openModal({
             header: 'Login failed!',
