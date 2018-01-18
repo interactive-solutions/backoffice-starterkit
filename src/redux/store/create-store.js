@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore as createReduxStore } from 'redux
 import thunk from 'redux-thunk';
 import history from 'utils/history';
 import { routerMiddleware } from 'react-router-redux';
-import rootReducer from '../reducers/index';
+import rootReducer from '../modules/index';
 import { promiseMiddleware } from '../middleware/promise-middleware';
 
 const createStore = (initialState = {}) => {
@@ -37,8 +37,8 @@ const createStore = (initialState = {}) => {
   store.asyncReducers = {};
 
   if (module.hot) {
-    module.hot.accept('../reducers/index', () => {
-      const reducers = require('../reducers/index').default;
+    module.hot.accept('../modules/index', () => {
+      const reducers = require('../modules/index').default;
       store.replaceReducer(reducers(store.asyncReducers));
     });
   }

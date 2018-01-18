@@ -1,5 +1,5 @@
 import createStore from 'redux/store/create-store';
-import { RESOLVE_USER_SUCCESS } from 'redux/constants';
+import { RESOLVE_USER_SUCCESS } from 'redux/modules/user';
 
 describe('(Store) createStore', () => {
   let store;

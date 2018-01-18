@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
 import { Login } from './login';
 import { push } from 'react-router-redux';
-import {
-  resolveUser,
-  openModal
-} from 'redux/actions';
+import { resolveUser } from 'redux/modules/user';
+import { openModal } from 'redux/modules/modal';
 
 const mapStateToProps = (state) => ({
   user: state.user.user
