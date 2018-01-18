@@ -1,6 +1,15 @@
 import { resellerService } from 'api';
 
 // ------------------------------------
+// Type definitions
+// ------------------------------------
+
+type Action = {
+  type: string;
+  payload: any;
+}
+
+// ------------------------------------
 // Constants
 // ------------------------------------
 
@@ -31,11 +40,6 @@ export function getResellers() {
 // ------------------------------------
 // Reducers
 // ------------------------------------
-
-type Action = {
-  type: string;
-  payload: any;
-}
 
 const INITIAL_STATE = {
   resellers: []
