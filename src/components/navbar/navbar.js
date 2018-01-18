@@ -39,6 +39,11 @@ export class Navbar extends Component {
     }
   }
 
+  /**
+   * Create a single menu item.
+   *
+   * @param text What is displayed on the menu item.
+   */
   createSubMenuLink = (text) => {
     return (
       <Menu.Item
@@ -52,6 +57,10 @@ export class Navbar extends Component {
     );
   }
 
+  /**
+   * @param textArray Array of sub-menu items as a string array.
+   * @param index Used to give the menu item a unique 'key'.
+   */
   createAllSubMenuLinks = (textArray, index) => {
     if (!textArray || textArray.length === 0) {
       return null;
@@ -63,41 +72,50 @@ export class Navbar extends Component {
     );
   }
 
-  createSideMenu() {
-    if (sideMenuContent) {
-      return sideMenuContent.map((menu, index) => {
-        const name = menu.menuItem.caption;
-        let topLevelMenuItemProps = {};
-
-        const active = menu.menuItem.caption === this.state.activeItem;
-
-        if (menu.menuItem.link) {
-          topLevelMenuItemProps = {
-            active: active,
-            onClick: this.setActiveItem
-          };
-        }
-
-        return (
-          <Menu.Item
-            key={index}
-            color='red'
-            name={name}
-            {...topLevelMenuItemProps}
-          >
-            <Icon name={menu.menuItem.icon}/>
-            {menu.menuItem.caption}
-            {this.createAllSubMenuLinks(menu.subMenu)}
-          </Menu.Item>
-        );
-      });
+  /**
+   * This is the root side-bar creation method.
+   * It creates the entire side-menu, by calling
+   * the other helper methods.
+   *
+   * @param sideMenuContent The side-menu in JSON format
+   */
+  createSideMenu(sideMenuContent) {
+    if (!sideMenuContent) {
+      return;
     }
+
+    return sideMenuContent.map((menu, index) => {
+      const name = menu.menuItem.caption;
+      let topLevelMenuItemProps = {};
+
+      const active = menu.menuItem.caption === this.state.activeItem;
+
+      if (menu.menuItem.link) {
+        topLevelMenuItemProps = {
+          active: active,
+          onClick: this.setActiveItem
+        };
+      }
+
+      return (
+        <Menu.Item
+          key={index}
+          color='red'
+          name={name}
+          {...topLevelMenuItemProps}
+        >
+          <Icon name={menu.menuItem.icon}/>
+          {menu.menuItem.caption}
+          {this.createAllSubMenuLinks(menu.subMenu)}
+        </Menu.Item>
+      );
+    });
   }
 
   setActiveItem =(e, { name }) => {
     e.stopPropagation();
     this.setState({ activeItem: name });
-    this.props.history.push(name.toLowerCase());
+    this.props.history.push(name.toLowerCase().replace(' ', ''));
   }
 
   toggleVisibility = () => {
@@ -120,7 +138,7 @@ export class Navbar extends Component {
         >
 
           <Image centered size='small' src='/assets/images/logo.png'/>
-          {this.createSideMenu()}
+          {this.createSideMenu(sideMenuContent)}
 
         </Sidebar>
 

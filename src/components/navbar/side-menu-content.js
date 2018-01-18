@@ -6,6 +6,10 @@ export const sideMenuContent = [
   {
     menuItem: { caption: 'Resellers', icon: 'users', link: 'resellers' }
     // subMenu: ['All users', 'Registration', 'Download user report']
+  },
+
+  {
+    menuItem: { caption: 'Log out', icon: 'log out', link: 'logout' }
   }
 
 ];

@@ -7,6 +7,7 @@ import { Dashboard } from './dashboard/dashboard';
 import { requiresAuthentication } from './utils';
 import { RoutingNavbar } from 'components';
 import { ResellersContainer } from './resellers/resellers-container';
+import { Logout } from './logout/logout';
 
 export const createRoutes = () => {
   return (
@@ -19,6 +20,7 @@ export const createRoutes = () => {
           <Switch>
             <Route exact path='/dashboard' component={requiresAuthentication(Dashboard)}/>
             <Route exact path='/resellers' component={requiresAuthentication(ResellersContainer)}/>
+            <Route exact path='/logout' component={requiresAuthentication(Logout)}/>
             <Redirect path='*' to='/dashboard'/>
           </Switch>
         </RoutingNavbar>

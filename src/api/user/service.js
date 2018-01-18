@@ -20,4 +20,8 @@ export class UserService {
   resetPassword(email) {
     return axios.post(`backend://users/${email}/reset-password`);
   }
+
+  logout() {
+    this.currentUser = null;
+  }
 }

@@ -19,7 +19,8 @@ const createStore = (initialState = {}) => {
 
   if (__DEV__) {
     if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
-      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+      // maxAge sets the number actions Redux DevTools should store. default 50.
+      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ maxAge: 100 });
     }
   }
 
