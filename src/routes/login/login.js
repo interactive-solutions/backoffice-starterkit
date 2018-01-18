@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import { LoginForm } from 'components/forms';
-import { authenticationService } from 'api';
-import { getDefaultErrorMessage } from 'utils/errorMessages';
+import {
+  authenticationService,
+  userService
+} from 'api';
 
 function getErrorMessage(exception) {
   const { response } = exception;
@@ -14,7 +16,7 @@ function getErrorMessage(exception) {
         return response.data.error_description;
     }
   }
-  return getDefaultErrorMessage(exception);
+  return 'User could not be logged in';
 };
 
 export class Login extends Component {
@@ -28,7 +30,16 @@ export class Login extends Component {
   onSubmit = (values) => {
     return authenticationService.login({ username: values.username, password: values.password })
       .then(this.props.resolveUser)
-      .then(() => this.props.push('dashboard'))
+      .then(() => {
+        debugger; // eslint-disable-line
+        if (!userService.currentUser) {
+          this.props.openModal({
+            header: 'Login failed!',
+            content: getErrorMessage(userService.exception)
+          });
+        }
+        this.props.push('dashboard');
+      })
       // note, handle error with modal
       .catch((e) => {
         this.props.openModal({
