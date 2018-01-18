@@ -79,7 +79,7 @@ export class Navbar extends Component {
    *
    * @param sideMenuContent The side-menu in JSON format
    */
-  createSideMenu(sideMenuContent) {
+  createSideMenu = (sideMenuContent) => {
     if (!sideMenuContent) {
       return;
     }
@@ -94,6 +94,11 @@ export class Navbar extends Component {
         topLevelMenuItemProps = {
           active: active,
           onClick: this.setActiveItem
+        };
+      }
+      if (menu.menuItem.callback) {
+        topLevelMenuItemProps = {
+          onClick: () => menu.menuItem.callback(this)
         };
       }
 
@@ -122,7 +127,7 @@ export class Navbar extends Component {
     this.setState({ sidebarIsVisible: !this.state.sidebarIsVisible });
   }
 
-  render() {
+  render = () => {
     const { sidebarIsVisible } = this.state;
 
     return (

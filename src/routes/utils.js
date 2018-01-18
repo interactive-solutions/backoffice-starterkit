@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { authenticationStorage } from 'api/authentication/index';
+import {
+  authenticationService,
+  userService
+} from 'api';
 
 export const requiresAuthentication = (ComposedComponent) => {
   /* eslint-disable */
@@ -38,8 +42,14 @@ export const requiresAuthentication = (ComposedComponent) => {
       }
     }
 
+    logout = () => {
+      userService.logout();
+      authenticationService.clear();
+      this.props.history.push('login');
+    }
+
     render() {
-      return <ComposedComponent {...this.props}/>;
+      return <ComposedComponent {...this.props} logout={this.logout}/>;
     }
   }
 

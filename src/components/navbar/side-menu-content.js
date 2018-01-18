@@ -9,7 +9,11 @@ export const sideMenuContent = [
   },
 
   {
-    menuItem: { caption: 'Log out', icon: 'log out', link: 'logout' }
+    menuItem: {
+      caption: 'Log out',
+      icon: 'log out',
+      callback: instance => instance.props.logout()
+    }
   }
 
 ];
