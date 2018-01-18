@@ -1,0 +1,18 @@
+.modal-body {
+  border-radius: 15px !important;
+  padding: 2rem !important;
+  text-align: center !important;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    width: 400px !important;        // Limit the width of the modal and
+    margin-left: -200px !important; // to center the Modal
+  }
+}
+
+.modal-content-text {
+  font-size: 120% !important;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}

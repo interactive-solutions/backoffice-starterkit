@@ -14,13 +14,13 @@ const INITIAL_STATE = {
 };
 
 class UserReducer {
-  handle(state = INITIAL_STATE, action: Action) {
+  handle = (state = INITIAL_STATE, action: Action) => {
     return Object.assign({}, state, {
       user: this.getUserState(state.user, action)
     });
   }
 
-  getUserState(state, action: Action) {
+  getUserState = (state, action: Action) => {
     switch (action.type) {
       case RESOLVE_USER_PENDING:
         return state;
