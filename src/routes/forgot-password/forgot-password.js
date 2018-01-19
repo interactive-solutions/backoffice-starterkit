@@ -11,7 +11,7 @@ export class ForgotPassword extends Component {
   };
 
   onSubmit = (values) => {
-    return userService.resetPassword(values.email)
+    return userService.forgotPassword(values.email)
       .then(() => this.props.push('login'))
       // note, handle error with modal
       .catch((e) => {

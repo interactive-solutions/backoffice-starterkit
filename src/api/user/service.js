@@ -17,8 +17,19 @@ export class UserService {
     return this.currentUser;
   }
 
-  resetPassword(email) {
+  /**
+   * Sent when user has forgotten their password
+   * and asks for a new.
+   */
+  forgotPassword(email) {
     return axios.post(`backend://users/${email}/reset-password`);
+  }
+
+  /**
+   * Sent when user sets the new password.
+   */
+  resetPassword(nounce, password) {
+    return axios.post(`backend://dontknowwhichaddress/?nounce=${nounce}&password=${password}`);
   }
 
   logout() {

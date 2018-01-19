@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { CoreLayout } from '../layouts/core-layout/core-layout';
 import { LoginContainer } from './login/login-container';
 import { ForgotPasswordContainer } from './forgot-password/forgot-password-container';
+import { ResetPasswordContainer } from './reset-password/reset-password-container';
 import { Dashboard } from './dashboard/dashboard';
 import { requiresAuthentication } from './utils';
 import { RoutingNavbar } from 'components';
@@ -15,6 +16,7 @@ export const createRoutes = () => {
         <Route exact path='/' component={LoginContainer}/>
         <Route exact path='/login' component={LoginContainer}/>
         <Route exact path='/forgot-password' component={ForgotPasswordContainer}/>
+        <Route exact path='/reset-password/:nounce' component={ResetPasswordContainer}/>
         <RoutingNavbar>
           <Switch>
             <Route exact path='/dashboard' component={requiresAuthentication(Dashboard)}/>
