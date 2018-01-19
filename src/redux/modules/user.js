@@ -1,4 +1,7 @@
-import { userService } from 'api';
+import {
+  authenticationService,
+  userService
+} from 'api';
 
 // ------------------------------------
 // Type definitions
@@ -16,6 +19,7 @@ type Action = {
 const RESOLVE_USER_PENDING = 'backoffice:resolve-user:pending';
 const RESOLVE_USER_SUCCESS = 'backoffice:resolve-user:success';
 const RESOLVE_USER_ERROR = 'backoffice:resolve-user:error';
+const LOG_OUT = 'backoffice:logout';
 
 // ------------------------------------
 // Actions
@@ -31,10 +35,18 @@ export function resolveUser() {
     ],
     payload: {
       promise: userService.resolveUser()
-        .then(response => response)
+        .then(response => response) // todo
     }
 
   });
+}
+
+export function logout() {
+  userService.logout();
+  authenticationService.clear();
+  return {
+    type: LOG_OUT
+  };
 }
 
 // ------------------------------------
@@ -62,6 +74,10 @@ class UserReducer {
 
       case RESOLVE_USER_ERROR:
         return action.payload;
+
+      case LOG_OUT:
+        return null;
+
       default:
         return state;
     }

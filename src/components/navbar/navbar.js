@@ -7,7 +7,7 @@ import { Footer } from 'components/footer/footer';
 import { Header } from 'components';
 import { MinifiedNavbar } from './small-navbar';
 
-export class Navbar extends Component {
+class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
