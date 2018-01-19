@@ -4,22 +4,6 @@ import { Grid } from 'semantic-ui-react';
 import { ResetPasswordForm } from 'components/forms';
 import { userService } from 'api';
 
-function getErrorMessage(response) {
-  if (!response) {
-    return 'Unknown error occured';
-  }
-
-  const { status } = response;
-  switch (status) {
-    case 400:
-      return response.data.error_description;
-    case 404:
-      return 'Page not found';
-    default:
-      return status;
-  }
-};
-
 export class ResetPassword extends Component {
   static propTypes = {
     push: PropTypes.func.isRequired,
@@ -31,7 +15,6 @@ export class ResetPassword extends Component {
     })
   };
 
-  // replace as soon as auth is in place
   onSubmit = (values) => {
     return userService.resetPassword(this.props.match.params.nounce, values.password)
       .then(() => this.props.push('login'))
@@ -39,7 +22,7 @@ export class ResetPassword extends Component {
       .catch((e) => {
         this.props.openModal({
           header: 'Reset password failed!',
-          content: getErrorMessage(e.response)
+          content: 'Password could not be set'
         });
       });
   }

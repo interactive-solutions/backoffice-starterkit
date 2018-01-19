@@ -38,7 +38,7 @@ const ResetPasswordReduxForm = (props) => {
       <Image centered size='large' src='/assets/images/logo.png'/>
       <Segment stacked>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Header as='h3'>Reset your password</Header>
+          <Header as='h3'>Enter new password</Header>
           <Field
             name='password'
             component={Input}
@@ -58,7 +58,7 @@ const ResetPasswordReduxForm = (props) => {
             color='blue'
             fluid size='large'
             loading={submitting}>
-              Reset password
+              Update password
           </Button>
           <Message
             error
@@ -66,7 +66,7 @@ const ResetPasswordReduxForm = (props) => {
             content={error ? error._error : null}/>
         </Form>
         <Message>
-          <Link to='/login'>Back to Login</Link>
+          <Link to='/login'>To Login</Link>
         </Message>
       </Segment>
     </div>
