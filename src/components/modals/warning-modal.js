@@ -57,9 +57,4 @@ const WarningModalContainer =
     mapDispatchToProps,
   )(WarningModal);
 
-WarningModalContainer.propTypes = {
-  header: PropTypes.string.isRequired,
-  content: PropTypes.string
-};
-
 export { WarningModalContainer as WarningModal };
