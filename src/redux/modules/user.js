@@ -35,7 +35,7 @@ export function resolveUser() {
     ],
     payload: {
       promise: userService.resolveUser()
-        .then(response => response) // todo
+        .then(response => response)
     }
 
   });

@@ -127,7 +127,7 @@ class Navbar extends Component {
     this.setState({ sidebarIsVisible: !this.state.sidebarIsVisible });
   }
 
-  render = () => {
+  render() {
     const { sidebarIsVisible } = this.state;
 
     return (
