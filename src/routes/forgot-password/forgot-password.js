@@ -16,7 +16,8 @@ export class ForgotPassword extends Component {
       // note, handle error with modal
       .catch((e) => {
         this.props.openModal({
-          header: 'Reset password failed!'
+          header: 'Request failed!',
+          content: 'Failed to request new password.'
         });
       });
   }

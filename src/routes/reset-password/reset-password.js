@@ -22,7 +22,7 @@ export class ResetPassword extends Component {
       .catch((e) => {
         this.props.openModal({
           header: 'Reset password failed!',
-          content: 'Password could not be set'
+          content: 'Password could not be updated'
         });
       });
   }
