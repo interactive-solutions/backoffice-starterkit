@@ -18,7 +18,7 @@ export class UserService {
   }
 
   /**
-   * Sent when user has forgotten their password
+   * When a user has forgotten their password
    * and asks for a new.
    */
   forgotPassword(email) {
@@ -26,10 +26,10 @@ export class UserService {
   }
 
   /**
-   * Sent when user sets the new password.
+   * When user sets the new password.
    */
   resetPassword(nounce, password) {
-    return axios.post(`backend://dontknowwhichaddress/?nounce=${nounce}&password=${password}`);
+    return axios.post('backend://set-new-password/', { nounce, password });
   }
 
   logout() {
