@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from 'redux/modules/user';
 import Logo from 'assets/svg/is_tab_white.svg';
-import { Header } from 'components';
+import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
@@ -24,7 +24,8 @@ class Navbar extends Component {
 
     this.state = {
       activeItem: 'Dashboard',
-      sidebarIsVisible: true
+      sidebarIsVisible: true,
+      rightSidebarIsVisible: false
     };
   }
 
@@ -131,8 +132,15 @@ class Navbar extends Component {
     this.setState({ sidebarIsVisible: !this.state.sidebarIsVisible });
   }
 
+  toggleRightSidebar = () => {
+    this.setState({ rightSidebarIsVisible: !this.state.rightSidebarIsVisible });
+  }
+
   render() {
-    const { sidebarIsVisible } = this.state;
+    const {
+      sidebarIsVisible,
+      rightSidebarIsVisible
+    } = this.state;
 
     return (
       <Sidebar.Pushable styleName='navbar' as={Segment}>
@@ -161,11 +169,13 @@ class Navbar extends Component {
         <Sidebar.Pusher>
           <div styleName='full-height'>
             <Container fluid styleName={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-              <Header callback={this.toggleVisibility} title='Interactive Solutions'/>
-              <Container fluid styleName='main-container'>
-                {this.props.children}
-              </Container>
-              <Footer/>
+              <Header callback={this.toggleVisibility} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
+              <RightSidebar visible={rightSidebarIsVisible}>
+                <Container fluid styleName='main-container'>
+                  {this.props.children}
+                </Container>
+                <Footer/>
+              </RightSidebar>
             </Container>
           </div>
         </Sidebar.Pusher>

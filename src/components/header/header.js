@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Image, Menu, Button, Icon } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { logout } from 'redux/modules/user';
 import Logo from 'assets/svg/is_tab_black.svg';
 import './style/header.scss';
 
-export class DashHeader extends Component {
+class DashHeader extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    callback: PropTypes.func
+    callback: PropTypes.func,
+    history: PropTypes.func,
+    logout: PropTypes.func,
+    toggleRightSidebar: PropTypes.func
   };
 
   constructor(props) {
@@ -39,7 +45,7 @@ export class DashHeader extends Component {
     const adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
 
     return (
-      <Menu>
+      <Menu style={{ marginBottom: '0px' }}>
         <Menu.Item position='left' styleName='borderless'>
           <div styleName={adjustMenuIcon}>
             <Button
@@ -59,8 +65,38 @@ export class DashHeader extends Component {
             {this.props.title}
           </Header>
         </Menu.Item>
+        <Menu.Item onClick={this.props.logout}>
+          <Header as='h3'>
+            <Icon name='log out' size='tiny'/>
+            Log out
+          </Header>
+        </Menu.Item>
+        <Menu.Item onClick={this.props.toggleRightSidebar}>
+          <Header as='h3'>
+            <Icon name='tasks' size='tiny'/>
+          </Header>
+        </Menu.Item>
       </Menu>
 
     );
   }
 }
+
+// const mapStateToProps = (state) => ({
+//   modal: state.modal.modal
+// });
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => {
+    dispatch(logout());
+    dispatch(push('login'));
+  }
+});
+
+const DashHeaderContainer =
+  connect(
+    null,
+    mapDispatchToProps,
+  )(DashHeader);
+
+export { DashHeaderContainer as DashHeader };
