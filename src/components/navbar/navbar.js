@@ -80,9 +80,9 @@ class Navbar extends Component {
    * It creates the entire side-menu, by calling
    * the other helper methods.
    *
-   * @param sideMenuContent The side-menu in JSON format
+   * sideMenuContent The side-menu in JSON format imported above
    */
-  createSideMenu(sideMenuContent) {
+  createSideMenu() {
     if (!sideMenuContent) {
       return;
     }
@@ -146,7 +146,7 @@ class Navbar extends Component {
         >
 
           <Image centered size='small' src='/assets/images/logo.png'/>
-          {this.createSideMenu(sideMenuContent)}
+          {this.createSideMenu()}
 
         </Sidebar>
 
