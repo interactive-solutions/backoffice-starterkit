@@ -11,8 +11,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
   push: (path) => dispatch(push(path)),
   resolveUser: () => dispatch(resolveUser()),
-  openModal: (header, content) =>
-    dispatch(openModal(header, content))
+  openModal: (header, content) => dispatch(openModal(header, content))
 });
 
 export const LoginContainer =

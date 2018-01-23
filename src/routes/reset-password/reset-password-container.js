@@ -5,8 +5,7 @@ import { openModal } from 'redux/modules/modal';
 
 const mapDispatchToProps = dispatch => ({
   push: (path) => dispatch(push(path)),
-  openModal: (header, content) =>
-    dispatch(openModal(header, content))
+  openModal: (header, content) => dispatch(openModal(header, content))
 });
 
 export const ResetPasswordContainer =
