@@ -6,7 +6,9 @@ import { sideMenuContent } from './side-menu-content';
 export class MinifiedNavbar extends Component {
   static propTypes = {
     visible: PropTypes.bool.isRequired,
-    activeItem: PropTypes.string
+    history: PropTypes.object.isRequired,
+    activeItem: PropTypes.string,
+    logout: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -26,10 +28,21 @@ export class MinifiedNavbar extends Component {
   createSideMenu() {
     if (sideMenuContent) {
       return sideMenuContent.map((menu, index) => {
-        const topLevelMenuItemProps = {
-          active: menu.menuItem.caption === this.state.activeItem,
-          onClick: this.setActiveItem
-        };
+        let topLevelMenuItemProps = {};
+
+        const active = menu.menuItem.caption === this.state.activeItem;
+
+        if (menu.menuItem.link) {
+          topLevelMenuItemProps = {
+            active: active,
+            onClick: this.setActiveItem
+          };
+        }
+        if (menu.menuItem.callback) {
+          topLevelMenuItemProps = {
+            onClick: () => menu.menuItem.callback(this)
+          };
+        }
 
         return (
           <Menu.Item
@@ -50,8 +63,10 @@ export class MinifiedNavbar extends Component {
     }
   }
 
-  setActiveItem = (e, { name }) => {
+  setActiveItem =(e, { name }) => {
+    e.stopPropagation();
     this.setState({ activeItem: name });
+    this.props.history.push(name.toLowerCase().replace(' ', ''));
   }
 
   render() {

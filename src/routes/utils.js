@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { authenticationStorage } from 'api/authentication/index';
 
 export const requiresAuthentication = (ComposedComponent) => {
-  /* eslint-disable */
   class Restricted extends Component {
     static propTypes = {
       location: PropTypes.object,
