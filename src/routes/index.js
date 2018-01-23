@@ -5,7 +5,7 @@ import { LoginContainer } from './login/login-container';
 import { ForgotPasswordContainer } from './forgot-password/forgot-password-container';
 import { Dashboard } from './dashboard/dashboard';
 import { requiresAuthentication } from './utils';
-import { NavbarContainer } from 'components';
+import { RoutingNavbar } from 'components';
 import { ResellersContainer } from './resellers/resellers-container';
 
 export const createRoutes = () => {
@@ -15,13 +15,13 @@ export const createRoutes = () => {
         <Route exact path='/' component={LoginContainer}/>
         <Route exact path='/login' component={LoginContainer}/>
         <Route exact path='/forgot-password' component={ForgotPasswordContainer}/>
-        <NavbarContainer>
+        <RoutingNavbar>
           <Switch>
             <Route exact path='/dashboard' component={requiresAuthentication(Dashboard)}/>
             <Route exact path='/resellers' component={requiresAuthentication(ResellersContainer)}/>
             <Redirect path='*' to='/dashboard'/>
           </Switch>
-        </NavbarContainer>
+        </RoutingNavbar>
         <Redirect path='*' to='/'/>
       </Switch>
     </CoreLayout>

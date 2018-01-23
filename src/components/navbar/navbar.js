@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from 'redux/modules/user';
 import { sideMenuContent } from './side-menu-content';
 import { Footer } from 'components/footer/footer';
 import { Header } from 'components';
@@ -11,7 +13,8 @@ class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -79,7 +82,7 @@ class Navbar extends Component {
    *
    * @param sideMenuContent The side-menu in JSON format
    */
-  createSideMenu = (sideMenuContent) => {
+  createSideMenu(sideMenuContent) {
     if (!sideMenuContent) {
       return;
     }
@@ -147,7 +150,12 @@ class Navbar extends Component {
 
         </Sidebar>
 
-        <MinifiedNavbar visible={!sidebarIsVisible} activeItem={this.state.activeItem}/>
+        <MinifiedNavbar
+          visible={!sidebarIsVisible}
+          activeItem={this.state.activeItem}
+          logout={this.props.logout}
+          history={this.props.history}
+        />
 
         <Sidebar.Pusher>
           <div className='full-height'>
@@ -165,4 +173,18 @@ class Navbar extends Component {
   }
 }
 
-export const RoutingNavbar = withRouter(Navbar);
+// -----------------------
+// NavbarContainer
+// -----------------------
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+});
+
+const NavbarContainer =
+  connect(
+    null,
+    mapDispatchToProps,
+  )(Navbar);
+
+export const RoutingNavbar = withRouter(NavbarContainer);
