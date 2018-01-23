@@ -11,7 +11,7 @@ class DashHeader extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     callback: PropTypes.func,
-    history: PropTypes.func,
+    history: PropTypes.func, // eslint-disable-line
     logout: PropTypes.func,
     toggleRightSidebar: PropTypes.func
   };
@@ -45,7 +45,7 @@ class DashHeader extends Component {
     const adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
 
     return (
-      <Menu style={{ marginBottom: '0px' }}>
+      <Menu borderless style={{ marginBottom: '0px' }}>
         <Menu.Item position='left' styleName='borderless'>
           <div styleName={adjustMenuIcon}>
             <Button
@@ -65,7 +65,7 @@ class DashHeader extends Component {
             {this.props.title}
           </Header>
         </Menu.Item>
-        <Menu.Item onClick={this.props.logout}>
+        <Menu.Item style={{ marginLeft: '1rem' }} onClick={this.props.logout}>
           <Header as='h3'>
             <Icon name='log out' size='tiny'/>
             Log out
