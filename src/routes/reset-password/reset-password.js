@@ -9,11 +9,6 @@ export class ResetPassword extends Component {
     push: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired
-    // match: PropTypes.shape({
-    //   params: {
-    //     nounce: PropTypes.string.isRequired
-    //   }
-    // })
   };
 
   onSubmit = (values) => {
