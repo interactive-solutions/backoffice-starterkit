@@ -28,7 +28,6 @@ export class MinifiedNavbar extends Component {
   createSideMenu() {
     if (sideMenuContent) {
       return sideMenuContent.map((menu, index) => {
-        // const name = menu.menuItem.caption;
         let topLevelMenuItemProps = {};
 
         const active = menu.menuItem.caption === this.state.activeItem;

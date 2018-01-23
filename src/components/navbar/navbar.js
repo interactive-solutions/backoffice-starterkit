@@ -120,7 +120,7 @@ class Navbar extends Component {
     });
   }
 
-  setActiveItem =(e, { name }) => {
+  setActiveItem = (e, { name }) => {
     e.stopPropagation();
     this.setState({ activeItem: name });
     this.props.history.push(name.toLowerCase().replace(' ', ''));
