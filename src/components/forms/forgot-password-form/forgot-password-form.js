@@ -27,11 +27,14 @@ const ForgotPasswordReduxForm = (props) => {
       <Image centered size='large' src='/assets/images/logo.png'/>
       <Segment stacked>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Header as='h3'>Reset your password</Header>
+          <Header as='h3'>Request a new password</Header>
+          <p className='form-description'>
+            Enter your e-mail address and receive an e-mail that instructs you how to select a new password.
+          </p>
           <Field
             name='email'
             component={Input}
-            placeholder='E-mail'
+            placeholder='Enter your e-mail address'
             icon='users'
             type='email'
             iconposition='left'/>
@@ -40,7 +43,7 @@ const ForgotPasswordReduxForm = (props) => {
             color='blue'
             fluid size='large'
             loading={submitting}>
-              Reset password
+              Submit
           </Button>
           <Message
             error

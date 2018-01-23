@@ -1,10 +1,12 @@
 @import 'base';
 @import '../routes/login/style/login.scss';
 @import '../routes/forgot-password/style/forgot-password.scss';
+@import '../routes/reset-password/style/reset-password.scss';
 @import '../components/footer/style/footer.scss';
 @import '../components/header/style/header.scss';
 @import '../components/navbar/style/navbar.scss';
 @import '../components/modals/style/modal.scss';
+@import '../components/forms/forgot-password-form/style/forgot-password-form.scss';
 
 // Some best-practice CSS that's useful for most apps
 // Just remove them if they're not what you want

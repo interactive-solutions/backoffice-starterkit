@@ -1,21 +1,15 @@
 import { connect } from 'react-redux';
-import { Login } from './login';
+import { ResetPassword } from './reset-password';
 import { push } from 'react-router-redux';
-import { resolveUser } from 'redux/modules/user';
 import { openModal } from 'redux/modules/modal';
-
-const mapStateToProps = (state) => ({
-  user: state.user.user
-});
 
 const mapDispatchToProps = dispatch => ({
   push: (path) => dispatch(push(path)),
-  resolveUser: () => dispatch(resolveUser()),
   openModal: (header, content) => dispatch(openModal(header, content))
 });
 
-export const LoginContainer =
+export const ResetPasswordContainer =
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
-  )(Login);
+  )(ResetPassword);

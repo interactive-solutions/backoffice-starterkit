@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
-import { ForgotPasswordForm } from 'components/forms';
-import { userService } from 'api';
 import PropTypes from 'prop-types';
+import { Grid } from 'semantic-ui-react';
+import { ResetPasswordForm } from 'components/forms';
+import { userService } from 'api';
 
-export class ForgotPassword extends Component {
+export class ResetPassword extends Component {
   static propTypes = {
     push: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired
+    openModal: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired
   };
 
   onSubmit = (values) => {
-    return userService.forgotPassword(values.email)
+    return userService.resetPassword(this.props.match.params.nounce, values.password)
       .then(() => this.props.push('login'))
       // note, handle error with modal
       .catch((e) => {
         this.props.openModal({
-          header: 'Request failed!',
-          content: 'Failed to request new password.'
+          header: 'Reset password failed!',
+          content: 'Password could not be updated'
         });
       });
   }
@@ -26,11 +27,11 @@ export class ForgotPassword extends Component {
     return (
       <Grid
         textAlign='center'
-        className='forgot-password-container'
+        className='reset-password-container'
         verticalAlign='middle'
       >
         <Grid.Column className='center-grid'>
-          <ForgotPasswordForm
+          <ResetPasswordForm
             onSubmit={this.onSubmit}
           />
         </Grid.Column>
