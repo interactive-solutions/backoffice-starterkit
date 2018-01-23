@@ -43,14 +43,14 @@ const ResetPasswordReduxForm = (props) => {
             name='password'
             component={Input}
             placeholder='New password'
-            icon='users' // todo
+            icon='lock'
             type='password'
             iconposition='left'/>
           <Field
             name='confirmPassword'
             component={Input}
             placeholder='Enter your new password again'
-            icon='users' // todo
+            icon='lock'
             type='password'
             iconposition='left'/>
           <Button

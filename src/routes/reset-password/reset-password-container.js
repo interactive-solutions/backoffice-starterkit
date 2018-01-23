@@ -5,7 +5,6 @@ import { openModal } from 'redux/modules/modal';
 
 const mapDispatchToProps = dispatch => ({
   push: (path) => dispatch(push(path)),
-  // resolveUser: () => dispatch(resolveUser()),
   openModal: (header, content) =>
     dispatch(openModal(header, content))
 });
