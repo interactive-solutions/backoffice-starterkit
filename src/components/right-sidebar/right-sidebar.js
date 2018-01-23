@@ -25,32 +25,24 @@ export class RightSidebar extends React.Component {
           >
             <Button.Group attached='top' widths={2}>
               <Button>One</Button>
-              <Button>Two</Button>
+              <Button icon><Icon name='setting'/></Button>
             </Button.Group>
             <Segment attached>
-              <Menu.Item name='home'>
-                <Icon name='home'/>
-                Home
+              <Menu.Item name='settings'>
+                <Segment basic compact size='huge' className='basic-compact-segment'>
+                  <Icon name='setting'/>
+                  Settings
+                </Segment>
+                <Segment basic compact className='basic-compact-segment'>
+                  Manage your account
+                </Segment>
               </Menu.Item>
-              <Menu.Item name='gamepad'>
-                <Icon name='gamepad'/>
-                Games
-              </Menu.Item>
-              <Menu.Item name='camera'>
-                <Icon name='camera'/>
-                Channels
-              </Menu.Item>
-              <Menu.Item name='home'>
-                <Icon name='home'/>
-                Home
-              </Menu.Item>
-              <Menu.Item name='gamepad'>
-                <Icon name='gamepad'/>
-                Games
-              </Menu.Item>
-              <Menu.Item name='camera'>
-                <Icon name='camera'/>
-                Channels
+
+              <Menu.Item name='change-password'>
+                <Segment basic compact size='huge' className='basic-compact-segment'>
+                  Change password
+                  <Icon name='plus'/>
+                </Segment>
               </Menu.Item>
             </Segment>
           </Sidebar>

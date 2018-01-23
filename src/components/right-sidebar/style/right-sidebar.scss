@@ -1,3 +1,14 @@
 .right-sidebar {
   width: 25rem !important;
 }
+
+/*
+ * <Segment basic compact> does not seem to work
+ * since the Segment still has margins and
+ * padding. So until semantic-ui-react
+ * fixes that, I use this class.
+ */
+.basic-compact-segment {
+  margin: 0 !important;
+  padding: 0 !important;
+}
