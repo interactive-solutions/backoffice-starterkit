@@ -8,6 +8,7 @@ import { sideMenuContent } from './side-menu-content';
 import { Footer } from 'components/footer/footer';
 import { Header } from 'components';
 import { MinifiedNavbar } from './small-navbar';
+import Logo from 'assets/svg/is_tab_white.svg';
 
 class Navbar extends Component {
   static propTypes = {
@@ -37,8 +38,8 @@ class Navbar extends Component {
   setActiveItemByRoute(props) {
     if (props.location) {
       const path = props.location.pathname;
-      let activeItem = path.charAt(1).toUpperCase() + path.slice(2);
-      this.setState({ activeItem: activeItem });
+      const activeItem = path.charAt(1).toUpperCase() + path.slice(2);
+      this.setState({ activeItem });
     }
   }
 
@@ -47,18 +48,17 @@ class Navbar extends Component {
    *
    * @param text What is displayed on the menu item.
    */
-  createSubMenuLink = (text) => {
-    return (
-      <Menu.Item
+  createSubMenuLink = (text) => (
+    <Menu.Item
         key={text}
         color='red'
         name={text}
         active={this.state.activeItem === text}
-        onClick={this.setActiveItem}>
-        {text}
-      </Menu.Item>
-    );
-  }
+        onClick={this.setActiveItem}
+    >
+      {text}
+    </Menu.Item>
+  )
 
   /**
    * @param textArray Array of sub-menu items as a string array.
@@ -95,7 +95,7 @@ class Navbar extends Component {
 
       if (menu.menuItem.link) {
         topLevelMenuItemProps = {
-          active: active,
+          active,
           onClick: this.setActiveItem
         };
       }
@@ -145,7 +145,7 @@ class Navbar extends Component {
           animation='push'
         >
 
-          <Image centered size='small' src='/assets/images/logo.png'/>
+          <Image centered size='small' src={Logo}/>
           {this.createSideMenu()}
 
         </Sidebar>

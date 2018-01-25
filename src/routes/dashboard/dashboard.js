@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Dashboard extends Component { // eslint-disable-line
+export default class Dashboard extends Component { // eslint-disable-line
 
   render() {
     return (

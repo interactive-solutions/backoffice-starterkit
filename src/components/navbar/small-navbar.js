@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Image, Header } from 'semantic-ui-react';
 import { sideMenuContent } from './side-menu-content';
+import Logo from 'assets/svg/is_tab_white.svg';
 
 export class MinifiedNavbar extends Component {
   static propTypes = {
@@ -34,7 +35,7 @@ export class MinifiedNavbar extends Component {
 
         if (menu.menuItem.link) {
           topLevelMenuItemProps = {
-            active: active,
+            active,
             onClick: this.setActiveItem
           };
         }
@@ -81,7 +82,7 @@ export class MinifiedNavbar extends Component {
         vertical
         animation='slide along'
       >
-        <Image centered size='small' src='/assets/images/logo.png'/>
+        <Image centered size='small' src={Logo}/>
         {this.createSideMenu()}
       </Sidebar>
     );
