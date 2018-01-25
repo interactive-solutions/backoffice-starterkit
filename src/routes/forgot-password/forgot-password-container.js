@@ -12,8 +12,7 @@ const mapDispatchToProps = dispatch => ({
   openModal: (header, content) => dispatch(openModal(header, content))
 });
 
-export const ForgotPasswordContainer =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(ForgotPassword);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ForgotPassword);

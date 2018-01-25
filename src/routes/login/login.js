@@ -6,6 +6,7 @@ import {
   authenticationService,
   userService
 } from 'api';
+import './style/login.scss';
 
 function getErrorMessage(exception) {
   const { response } = exception;
@@ -17,7 +18,7 @@ function getErrorMessage(exception) {
     }
   }
   return 'User could not be logged in';
-};
+}
 
 export class Login extends Component {
   static propTypes = {
@@ -26,35 +27,33 @@ export class Login extends Component {
     openModal: PropTypes.func.isRequired
   };
 
-  onSubmit = (values) => {
-    return authenticationService.login({ username: values.username, password: values.password })
-      .then(this.props.resolveUser)
-      .then(() => {
-        if (!userService.currentUser) {
-          this.props.openModal({
-            header: 'Login failed!',
-            content: getErrorMessage(userService.exception)
-          });
-        }
-        this.props.push('dashboard');
-      })
-      // note, handle error with modal
-      .catch((e) => {
+  onSubmit = (values) => authenticationService.login({ username: values.username, password: values.password })
+    .then(this.props.resolveUser)
+    .then(() => {
+      if (!userService.currentUser) {
         this.props.openModal({
           header: 'Login failed!',
-          content: getErrorMessage(e)
+          content: getErrorMessage(userService.exception)
         });
+      }
+      this.props.push('dashboard');
+    })
+    // note, handle error with modal
+    .catch((e) => {
+      this.props.openModal({
+        header: 'Login failed!',
+        content: getErrorMessage(e)
       });
-  }
+    })
 
   render() {
     return (
       <Grid
         textAlign='center'
-        className='login-container'
+        styleName='login-container'
         verticalAlign='middle'
       >
-        <Grid.Column className='center-grid'>
+        <Grid.Column styleName='center-grid'>
           <LoginForm
             onSubmit={this.onSubmit}
           />

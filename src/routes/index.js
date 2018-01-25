@@ -1,33 +1,45 @@
-import * as React from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { CoreLayout } from '../layouts/core-layout/core-layout';
-import { LoginContainer } from './login/login-container';
-import { ForgotPasswordContainer } from './forgot-password/forgot-password-container';
-import { ResetPasswordContainer } from './reset-password/reset-password-container';
-import { Dashboard } from './dashboard/dashboard';
-import { requiresAuthentication } from './utils';
+import L from 'react-loadable';
+import { Loader, Dimmer } from 'semantic-ui-react';
 import { RoutingNavbar } from 'components';
-import { ResellersContainer } from './resellers/resellers-container';
+import { CoreLayout } from '../layouts/core-layout/core-layout';
+import { requiresAuthentication } from './utils';
 
-export const createRoutes = () => {
-  return (
-    <CoreLayout>
-      <Switch>
-        <Route exact path='/' component={LoginContainer}/>
-        <Route exact path='/login' component={LoginContainer}/>
-        <Route exact path='/forgot-password' component={ForgotPasswordContainer}/>
-        <Route exact path='/reset-password/:nounce' component={ResetPasswordContainer}/>
-        <RoutingNavbar>
-          <Switch>
-            <Route exact path='/dashboard' component={requiresAuthentication(Dashboard)}/>
-            <Route exact path='/resellers' component={requiresAuthentication(ResellersContainer)}/>
-            <Redirect path='*' to='/dashboard'/>
-          </Switch>
-        </RoutingNavbar>
-        <Redirect path='*' to='/'/>
-      </Switch>
-    </CoreLayout>
-  );
-};
+const Loadable = opts =>
+  L({
+    loading: () => (
+      <Dimmer active inverted>
+        <Loader inverted size='massive' content='Loading'/>
+      </Dimmer>
+    ),
+    ...opts
+  });
+  /* eslint-disable */
+const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'login' */ './login/login-container') });
+const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password') });
+const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password-container') });
+const Dashboard = Loadable({ loader: () => import(/* webpackChunkName: 'dashboard' */ './dashboard/dashboard') });
+const ResellersContainer = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers-container') });
+  /* eslint-enable */
+
+export const createRoutes = () => (
+  <CoreLayout>
+    <Switch>
+      <Route exact path='/' component={LoginContainer}/>
+      <Route exact path='/login' component={LoginContainer}/>
+      <Route exact path='/forgot-password' component={ForgotPassword}/>
+      <Route exact path='/reset-password/:nounce' component={ResetPassword}/>
+      <RoutingNavbar>
+        <Switch>
+          <Route exact path='/dashboard' component={requiresAuthentication(Dashboard)}/>
+          <Route exact path='/resellers' component={requiresAuthentication(ResellersContainer)}/>
+          <Redirect path='*' to='/dashboard'/>
+        </Switch>
+      </RoutingNavbar>
+      <Redirect path='*' to='/'/>
+    </Switch>
+  </CoreLayout>
+);
 
 export default createRoutes;

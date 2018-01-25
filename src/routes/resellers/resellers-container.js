@@ -10,8 +10,7 @@ const mapDispatchToProps = dispatch => ({
   getResellers: () => dispatch(getResellers())
 });
 
-export const ResellersContainer =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Resellers);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Resellers);

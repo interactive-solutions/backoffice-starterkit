@@ -8,8 +8,7 @@ const mapDispatchToProps = dispatch => ({
   openModal: (header, content) => dispatch(openModal(header, content))
 });
 
-export const ResetPasswordContainer =
-  connect(
-    null,
-    mapDispatchToProps,
-  )(ResetPassword);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(ResetPassword);

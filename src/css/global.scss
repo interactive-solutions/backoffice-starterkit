@@ -1,15 +1,12 @@
+/* *******************************************************************************************
+  Put styles that should be global and not component-specific in this file.
+  Global styles will be imported in the app's entry file are available to use with the className prop.
+  Variables defined in the /resources directory will be loaded at build-time, and are available to
+  use in all components without importing anything.
+******************************************************************************************** */
+@import 'partials/normalize';
 @import 'base';
-@import '../routes/login/style/login.scss';
-@import '../routes/forgot-password/style/forgot-password.scss';
-@import '../routes/reset-password/style/reset-password.scss';
-@import '../components/footer/style/footer.scss';
-@import '../components/header/style/header.scss';
-@import '../components/navbar/style/navbar.scss';
-@import '../components/modals/style/modal.scss';
-@import '../components/forms/forgot-password-form/style/forgot-password-form.scss';
 
-// Some best-practice CSS that's useful for most apps
-// Just remove them if they're not what you want
 html {
   box-sizing: border-box;
 }

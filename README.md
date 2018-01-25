@@ -1,83 +1,51 @@
-# Updated to webpack 3, and latest node-modules
-Built upon React Redux Starter Kit https://github.com/davezuko/react-redux-starter-kit
+# Another Boring React Boilerplate
 
+This is a starter kit I made because I don't really like starter kits... 🙄
 
+Anyway, I realized most of my projects end up with a very similar set up, and I got tired of
+spending a few hours doing that each time I started something new. Architecture in a React app is
+most of the time a matter of personal preference, and this boilerplate includes the features that I
+prefer.
 
-[![Build Status](https://travis-ci.org/davezuko/react-redux-starter-kit.svg?branch=master)](https://travis-ci.org/interactive-solutions/backoffice-starterkit?branch=master)
-[![dependencies](https://david-dm.org/interactive-solutions/backoffice-starterkit.svg)](https://david-dm.org/interactive-solutions/backoffice-starterkit)
-[![devDependency Status](https://david-dm.org/interactive-solutions/backoffice-starterkit/dev-status.svg)](https://david-dm.org/interactive-solutions/backoffice-starterkit#info=devDependencies)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+## A couple of included features
 
-
-## Table of Contents
-1. [Requirements](#requirements)
-1. [Installation](#getting-started)
-1. [Running the Project](#running-the-project)
-1. [Project Structure](#project-structure)
-
-## Requirements
-* node `^5.0.0`
-* yarn `^0.23.0` or npm `^3.0.0`
+* Decent webpack configs for dev and prod.
+* Redux, Reselect and RxJs (redux-loadable).
+* React-router-redux with Helmet for navigation.
+* CSS modules with SASS, autoprefixer, and global support.
+* Sentry support with redux state and sourcemaps in production builds.
+* Code splitting with react-loadable.
+* Service Worker to cache build files.
+* Babel & ESLint with Airbnb config.
+* Flow type checking.
+* Testing with Jest and Enzyme.
+* Webpack-dev-server for developing and serve to test builds.
+* Hot Module Reloading.
+* Bundle analyzer.
 
 ## Installation
 
-After confirming that your environment meets the above [requirements](#requirements), you can create a new project based on `backoffice-starterkit` by doing the following:
+1. Clone repository
+2. `yarn install`
 
-```bash
-$ git clone git@github.com:interactive-solutions/backoffice-starterkit.git <my-project-name>
-$ cd <my-project-name>
-```
+## Available commands
 
-When that's done, install the project dependencies. It is recommended that you use [Yarn](https://yarnpkg.com/) for deterministic dependency management, but `npm install` will suffice.
+* `yarn start` - starts webpack dev server (use --hot for HMR)
+* `yarn build` - builds project to /dist
+* `yarn serve` - serves the /dist directory in order to test build locally
+* `yarn test` - runs test with Jest
+* `yarn flow` - starts flow server
 
-```bash
-$ yarn  # Install project dependencies (or `npm install`)
-```
+## Sentry configuration
 
-## Running the Project
+In order to build for Sentry, the following environment variables (also listed in .env.example)
+needs to be available:
 
-After completing the [installation](#installation) step, you're ready to start the project!
+* `SENTRY_AUTH_TOKEN` - an auth token created for your account on the Sentry dashboard
+* `SENTRY_URL` - base url to the Sentry Installation
+* `SENTRY_ORG` - organization slug
+* `SENTRY_PROJECT` - project slug
+* `SENTRY_DSN` - public project DSN
 
-```bash
-$ yarn start  # Start the development server (or `npm start`)
-```
-
-While developing, you will probably rely mostly on `yarn start`; however, there are additional scripts at your disposal:
-
-|`yarn <script>`    |Description|
-|-------------------|-----------|
-|`start`            |Serves your app at `localhost:3000`|
-|`build`            |Builds the application to ./dist|
-|`test`             |Runs unit tests with Karma. See [testing](#testing)|
-|`test:watch`       |Runs `test` in watch mode to re-run tests when changed|
-|`lint`             |[Lints](http://stackoverflow.com/questions/8503559/what-is-linting) the project for potential errors|
-|`lint:fix`         |Lints the project and [fixes all correctable errors](http://eslint.org/docs/user-guide/command-line-interface.html#fix)|
-
-## Project Structure
-
-The project structure presented in this boilerplate is **fractal**, where functionality is grouped primarily by feature rather than file type. This structure is only meant to serve as a guide, it is by no means prescriptive. That said, it aims to represent generally accepted guidelines and patterns for building scalable applications. If you wish to read more about this pattern, please check out this [awesome writeup](https://github.com/davezuko/react-redux-starter-kit/wiki/Fractal-Project-Structure) by [Justin Greenberg](https://github.com/justingreenberg).
-
-```
-.
-├── build                    # All build-related code
-├── public                   # Static public assets (not imported anywhere in source code)
-├── server                   # Express application that provides webpack middleware
-│   └── main.js              # Server application entry point
-├── src                      # Application source code
-│   ├── index.html           # Main HTML page container for app
-│   ├── main.js              # Application bootstrap and rendering
-│   ├── normalize.js         # Browser normalization and polyfills
-│   ├── components           # Global Reusable Components
-│   ├── containers           # Global Reusable Container Components
-│   ├── layouts              # Components that dictate major page structure
-│   │   └── core-layout      # Global application layout in which to render routes
-│   ├── routes               # Main route definitions and async split points
-│   │   ├── index.js         # Bootstrap main application routes with store
-│   │   ├── Login            # Fractal route
-│   │   │   └── login.js     # Route definitions and async split points
-│   ├── redux                # Redux-specific pieces
-│   │   ├── store            # Contains create and instrument redux store
-│   │   └── reducers         # Reducers registry and injection
-│   └── styles               # Application-wide styles (generally settings)
-└── tests                    # Unit tests
-```
+You can also use `SENTRY_ENV` and `SENTRY_BUILD` to set build release number and environment. Those
+will default to dev/local.

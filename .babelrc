@@ -1,0 +1,43 @@
+{
+  "presets": ["@babel/env", "@babel/react", "@babel/flow", "@babel/preset-stage-0"],
+  "plugins": [
+    ["transform-imports", {
+        "redux-form": {
+              "transform": "redux-form/es/${member}",
+              "preventFullImport": true
+            },
+        }
+      ],
+    ["lodash", {"id": ["semantic-ui-react", "lodash"]}],
+    [
+      "react-css-modules",
+      {
+        "generateScopedName": "_[hash:base64:5]",
+        "exclude": "node_modules",
+        "filetypes": {
+          ".scss": {}
+        },
+        "webpackHotModuleReloading": true
+      }
+    ],
+    "transform-react-remove-prop-types"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "generateScopedName": "[local]",
+            "exclude": "node_modules",
+            "filetypes": {
+              ".scss": {}
+            }
+          }
+        ],
+        "transform-es2015-modules-commonjs",
+        "dynamic-import-node"
+      ]
+    }
+  }
+}

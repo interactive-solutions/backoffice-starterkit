@@ -14,8 +14,7 @@ const mapDispatchToProps = dispatch => ({
   openModal: (header, content) => dispatch(openModal(header, content))
 });
 
-export const LoginContainer =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);
