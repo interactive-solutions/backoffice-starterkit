@@ -4,11 +4,12 @@ import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-reac
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from 'redux/modules/user';
-import { sideMenuContent } from './side-menu-content';
-import { Footer } from 'components/footer/footer';
-import { Header } from 'components';
-import { MinifiedNavbar } from './small-navbar';
 import Logo from 'assets/svg/is_tab_white.svg';
+import { Header } from 'components';
+import { Footer } from 'components/footer/footer';
+import { sideMenuContent } from './side-menu-content';
+import { MinifiedNavbar } from './small-navbar';
+import './style/navbar.scss';
 
 class Navbar extends Component {
   static propTypes = {
@@ -134,10 +135,10 @@ class Navbar extends Component {
     const { sidebarIsVisible } = this.state;
 
     return (
-      <Sidebar.Pushable className='navbar' as={Segment}>
+      <Sidebar.Pushable styleName='navbar' as={Segment}>
 
         <Sidebar
-          className='sidebar'
+          styleName='sidebar'
           as={Menu}
           inverted
           visible={sidebarIsVisible}
@@ -158,10 +159,10 @@ class Navbar extends Component {
         />
 
         <Sidebar.Pusher>
-          <div className='full-height'>
-            <Container fluid className={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
+          <div styleName='full-height'>
+            <Container fluid styleName={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
               <Header callback={this.toggleVisibility} title='Interactive Solutions'/>
-              <Container fluid className='main-container'>
+              <Container fluid styleName='main-container'>
                 {this.props.children}
               </Container>
               <Footer/>

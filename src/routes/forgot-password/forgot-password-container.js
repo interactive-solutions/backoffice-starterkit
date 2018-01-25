@@ -1,7 +1,7 @@
+import { openModal } from 'redux/modules/modal';
+import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { ForgotPassword } from './forgot-password';
-import { push } from 'react-router-redux';
-import { openModal } from 'redux/modules/modal';
 
 const mapStateToProps = (state) => ({
   user: state.user.user

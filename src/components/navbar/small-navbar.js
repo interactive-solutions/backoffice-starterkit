@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Image, Header } from 'semantic-ui-react';
-import { sideMenuContent } from './side-menu-content';
 import Logo from 'assets/svg/is_tab_white.svg';
+import { sideMenuContent } from './side-menu-content';
+import './style/navbar.scss';
 
 export class MinifiedNavbar extends Component {
   static propTypes = {
@@ -54,7 +55,7 @@ export class MinifiedNavbar extends Component {
             {...topLevelMenuItemProps}
           >
             <Header as='h2' textAlign='center' inverted>
-              <div className='centered-icon'>
+              <div styleName='centered-icon'>
                 <Icon name={menu.menuItem.icon} size='large' fitted/>
               </div>
             </Header>

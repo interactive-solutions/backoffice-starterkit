@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Image, Menu, Button, Icon } from 'semantic-ui-react';
+import './style/header.scss';
 
 export class DashHeader extends Component {
   static propTypes = {
@@ -16,14 +17,6 @@ export class DashHeader extends Component {
     };
   }
 
-  handleScroll = (e) => {
-    if (window.pageYOffset > 0) {
-      this.setState({ scrollOnTop: false });
-    } else {
-      this.setState({ scrollOnTop: true });
-    }
-  }
-
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
   }
@@ -32,14 +25,22 @@ export class DashHeader extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+  handleScroll = () => {
+    if (window.pageYOffset > 0) {
+      this.setState({ scrollOnTop: false });
+    } else {
+      this.setState({ scrollOnTop: true });
+    }
+  }
+
   render() {
     const { scrollOnTop } = this.state;
-    let adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
+    const adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
 
     return (
       <Menu>
-        <Menu.Item position='left' className='borderless'>
-          <div className={adjustMenuIcon}>
+        <Menu.Item position='left' styleName='borderless'>
+          <div styleName={adjustMenuIcon}>
             <Button
               primary
               basic
@@ -51,7 +52,7 @@ export class DashHeader extends Component {
             </Button>
           </div>
         </Menu.Item>
-        <Menu.Item position='right' className='logo borderless'>
+        <Menu.Item position='right' styleName='logo borderless'>
           <Header as='h2' textAlign='center' style={{ backgroundColor: 'transparent' }}>
             <Image src='assets/images/logo.png' size='mini'/>
             {this.props.title}

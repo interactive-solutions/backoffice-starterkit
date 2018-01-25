@@ -5,7 +5,7 @@
         "redux-form": {
               "transform": "redux-form/es/${member}",
               "preventFullImport": true
-            },
+            }
         }
       ],
     ["lodash", {"id": ["semantic-ui-react", "lodash"]}],

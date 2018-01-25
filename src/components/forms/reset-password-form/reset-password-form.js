@@ -7,8 +7,8 @@ import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 import { isValidPassword } from '../utils';
 
-const validate = ({ password, confirmPassword }, props) => {
-  let errors = {};
+const validate = ({ password, confirmPassword }) => {
+  const errors = {};
 
   if (!password) {
     errors.password = FORM_ERROR_REQUIRED_FIELD;
