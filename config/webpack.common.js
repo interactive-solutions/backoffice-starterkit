@@ -40,7 +40,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /react-table\/react-table\.css$/,
+        test: path.resolve(projectRoot, 'node_modules/react-table/react-table.css'),
         use: ReactTableExtractPlugin.extract({ use: ['css-loader'] })
       },
       {
