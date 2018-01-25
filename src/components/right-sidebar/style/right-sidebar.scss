@@ -12,3 +12,27 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+
+.sidebar-tab {
+  height: 100%;
+  margin-top: 0;
+  overflow-y: hidden;
+  border: none;
+}
+
+.tab-pane {
+  height: 100%;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.tab-selector {
+  border: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  width: 100%;
+}
+
+.sidebar-item {
+  padding: 1.5em !important;
+}
