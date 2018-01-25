@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Image, Menu, Button, Icon } from 'semantic-ui-react';
+import Logo from 'assets/svg/is_tab_black.svg';
 import './style/header.scss';
 
 export class DashHeader extends Component {
@@ -54,7 +55,7 @@ export class DashHeader extends Component {
         </Menu.Item>
         <Menu.Item position='right' styleName='logo borderless'>
           <Header as='h2' textAlign='center' style={{ backgroundColor: 'transparent' }}>
-            <Image src='assets/images/logo.png' size='mini'/>
+            <Image src={Logo} size='mini'/>
             {this.props.title}
           </Header>
         </Menu.Item>
