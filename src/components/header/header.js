@@ -59,7 +59,7 @@ class DashHeader extends Component {
             </Button>
           </div>
         </Menu.Item>
-        <Menu.Item position='right' styleName='logo borderless'>
+        <Menu.Item position='left' styleName='logo borderless'>
           <Header as='h2' textAlign='center' style={{ backgroundColor: 'transparent' }}>
             <Image src={Logo} size='mini'/>
             {this.props.title}
