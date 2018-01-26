@@ -8,9 +8,12 @@ import {
   Button,
   Tab
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { logout } from 'redux/modules/user';
 import './style/right-sidebar.scss';
 
-export class RightSidebar extends React.Component { // eslint-disable-line
+class RightSidebar extends React.Component { // eslint-disable-line
   render() {
     const { visible } = this.props;
 
@@ -34,8 +37,14 @@ export class RightSidebar extends React.Component { // eslint-disable-line
             </Menu.Item>
 
             <Menu.Item name='change-password' styleName='sidebar-item'>
-              <Segment basic compact size='huge' styleName='basic-compact-segment'>
+              <Segment basic compact size='big' styleName='basic-compact-segment'>
                 Change password <Icon name='plus'/>
+              </Segment>
+            </Menu.Item>
+
+            <Menu.Item name='logout' styleName='sidebar-item' onClick={this.props.logout}>
+              <Segment basic compact size='big' styleName='basic-compact-segment'>
+                Log out <Icon name='log out'/>
               </Segment>
             </Menu.Item>
           </Tab.Pane>
@@ -66,5 +75,21 @@ export class RightSidebar extends React.Component { // eslint-disable-line
 
 RightSidebar.propTypes = {
   children: PropTypes.array,
-  visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired
 };
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => {
+    dispatch(logout());
+    dispatch(push('login'));
+  }
+});
+
+const RightSidebarContainer =
+  connect(
+    null,
+    mapDispatchToProps,
+  )(RightSidebar);
+
+export { RightSidebarContainer as RightSidebar };

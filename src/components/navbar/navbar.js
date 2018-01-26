@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from 'redux/modules/user';
+// import { connect } from 'react-redux';
+// import { logout } from 'redux/modules/user';
 import Logo from 'assets/svg/is_tab_white.svg';
 import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
@@ -184,18 +184,4 @@ class Navbar extends Component {
   }
 }
 
-// -----------------------
-// NavbarContainer
-// -----------------------
-
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
-});
-
-const NavbarContainer =
-  connect(
-    null,
-    mapDispatchToProps,
-  )(Navbar);
-
-export const RoutingNavbar = withRouter(NavbarContainer);
+export const RoutingNavbar = withRouter(Navbar);
