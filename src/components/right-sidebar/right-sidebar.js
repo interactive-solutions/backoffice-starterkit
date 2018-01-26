@@ -8,32 +8,33 @@ import {
   Button,
   Tab
 } from 'semantic-ui-react';
+import './style/right-sidebar.scss';
 
-export class RightSidebar extends React.Component {
+export class RightSidebar extends React.Component { // eslint-disable-line
   render() {
     const { visible } = this.props;
 
     const panes = [
       {
-        menuItem: <Button key='tab1' className='tab-selector'>Notifications</Button>,
-        render: () => <Tab.Pane className='tab-pane'>Tab 1 Content</Tab.Pane>
+        menuItem: <Button key='tab1' styleName='tab-selector'>Notifications</Button>,
+        render: () => <Tab.Pane styleName='tab-pane'>Tab 1 Content</Tab.Pane>
       },
       {
-        menuItem: <Button key='tab2' icon='setting' className='tab-selector'/>,
+        menuItem: <Button key='tab2' icon='setting' styleName='tab-selector'/>,
         render: () => (
-          <Tab.Pane className='tab-pane'>
-            <Menu.Item name='settings' className='sidebar-item'>
-              <Segment basic compact size='massive' className='basic-compact-segment'>
+          <Tab.Pane styleName='tab-pane'>
+            <Menu.Item name='settings' styleName='sidebar-item'>
+              <Segment basic compact size='massive' styleName='basic-compact-segment'>
                 <Icon name='setting'/>
                 Settings
               </Segment>
-              <Segment basic compact className='basic-compact-segment'>
+              <Segment basic compact styleName='basic-compact-segment'>
                 Manage your account
               </Segment>
             </Menu.Item>
 
-            <Menu.Item name='change-password' className='sidebar-item'>
-              <Segment basic compact size='huge' className='basic-compact-segment'>
+            <Menu.Item name='change-password' styleName='sidebar-item'>
+              <Segment basic compact size='huge' styleName='basic-compact-segment'>
                 Change password <Icon name='plus'/>
               </Segment>
             </Menu.Item>
@@ -51,9 +52,9 @@ export class RightSidebar extends React.Component {
           visible={visible}
           icon='labeled'
           vertical
-          className='right-sidebar'
+          styleName='right-sidebar'
         >
-          <Tab panes={panes} className='sidebar-tab'/>
+          <Tab panes={panes} styleName='sidebar-tab'/>
         </Sidebar>
         <Sidebar.Pusher>
           {this.props.children}
