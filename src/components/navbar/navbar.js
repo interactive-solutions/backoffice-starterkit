@@ -45,6 +45,12 @@ class Navbar extends Component {
     }
   }
 
+  setActiveItem = (e, { name }) => {
+    e.stopPropagation();
+    this.setState({ activeItem: name });
+    this.props.history.push(name.toLowerCase().replace(' ', ''));
+  }
+
   /**
    * Create a single menu item.
    *
@@ -86,7 +92,7 @@ class Navbar extends Component {
    */
   createSideMenu() {
     if (!sideMenuContent) {
-      return;
+      return null;
     }
 
     return sideMenuContent.map((menu, index) => {
@@ -120,12 +126,6 @@ class Navbar extends Component {
         </Menu.Item>
       );
     });
-  }
-
-  setActiveItem = (e, { name }) => {
-    e.stopPropagation();
-    this.setState({ activeItem: name });
-    this.props.history.push(name.toLowerCase().replace(' ', ''));
   }
 
   toggleVisibility = () => {
