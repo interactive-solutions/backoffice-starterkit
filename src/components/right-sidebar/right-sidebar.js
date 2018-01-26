@@ -44,7 +44,7 @@ export class RightSidebar extends React.Component { // eslint-disable-line
     ];
 
     return (
-      <Sidebar.Pushable as={Segment} style={{ marginTop: '0', borderTop: '0' }}>
+      <Sidebar.Pushable as={Segment} styleName='right-sidebar-container'>
         <Sidebar
           as={Menu}
           animation='overlay'
