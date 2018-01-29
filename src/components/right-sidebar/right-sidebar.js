@@ -12,6 +12,7 @@ import {
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
+import { ChangePasswordForm } from 'components/forms';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
@@ -42,10 +43,12 @@ class RightSidebar extends React.Component { // eslint-disable-line
               </Segment>
             </Menu.Item>
 
-            <MenuItem text='Change password' icon='plus'/>
-            <MenuItem text='Log out' icon='log out' callback={this.props.logout}>
-              a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+            <MenuItem text='Change password' icon='plus'>
+              <ChangePasswordForm
+                onSubmit={() => alert('onSubmit')} // eslint-disable-line
+              />
             </MenuItem>
+            <MenuItem text='Log out' icon='log out' callback={this.props.logout}/>
           </Tab.Pane>
         )
       }
