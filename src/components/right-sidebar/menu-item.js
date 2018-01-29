@@ -9,7 +9,7 @@ import './style/right-sidebar.scss';
 
 export const MenuItem = ({ text, icon, callback }) => (
   <Menu.Item link styleName='menu-item' onClick={callback}>
-    <Grid stretched>
+    <Grid styleName='grid' stretched>
       <Grid.Column width='14' textAlign='left'>
         {text}
       </Grid.Column>
