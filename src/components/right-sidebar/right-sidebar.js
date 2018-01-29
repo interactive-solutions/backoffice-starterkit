@@ -7,7 +7,8 @@ import {
   Sidebar,
   Segment,
   Button,
-  Tab
+  Tab,
+  Divider
   // Sticky,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -56,6 +57,8 @@ class RightSidebar extends React.Component { // eslint-disable-line
                   Manage your account
                 </Segment>
               </Menu.Item>
+
+              <Divider fitted/>
 
               {/* Change password menu item */}
               <Accordion>

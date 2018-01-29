@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Message } from 'semantic-ui-react';
+import {
+  Button,
+  Form,
+  Message
+} from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
@@ -38,25 +42,25 @@ const ChangePasswordReduxForm = (props) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Field
+        label='Old password'
         name='oldPassword'
         component={Input}
-        placeholder='Old password'
         icon='lock'
         type='password'
         iconposition='left'
       />
       <Field
+        label='New password'
         name='password'
         component={Input}
-        placeholder='New password'
         icon='lock'
         type='password'
         iconposition='left'
       />
       <Field
+        label='Confirm new password'
         name='confirmPassword'
         component={Input}
-        placeholder='Enter your new password again'
         icon='lock'
         type='password'
         iconposition='left'
