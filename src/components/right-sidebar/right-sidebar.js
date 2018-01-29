@@ -42,8 +42,10 @@ class RightSidebar extends React.Component { // eslint-disable-line
               </Segment>
             </Menu.Item>
 
-            <MenuItem text='Change password' icon='lock'/>
-            <MenuItem text='Log out' icon='log out' callback={this.props.logout}/>
+            <MenuItem text='Change password' icon='plus'/>
+            <MenuItem text='Log out' icon='log out' callback={this.props.logout}>
+              a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+            </MenuItem>
           </Tab.Pane>
         )
       }
