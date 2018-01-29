@@ -7,13 +7,19 @@ import {
   Segment,
   Button,
   Tab
+  // Sticky,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
+import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
 class RightSidebar extends React.Component { // eslint-disable-line
+  state = {}
+
+  // handleContextRef = contextRef => this.setState({ contextRef })
+
   render() {
     const { visible } = this.props;
 
@@ -26,7 +32,7 @@ class RightSidebar extends React.Component { // eslint-disable-line
         menuItem: <Button key='tab2' icon='setting' styleName='tab-selector'/>,
         render: () => (
           <Tab.Pane styleName='tab-pane'>
-            <Menu.Item name='settings' styleName='sidebar-item'>
+            <Menu.Item name='settings' styleName='menu-item'>
               <Segment basic compact size='massive' styleName='basic-compact-segment'>
                 <Icon name='setting'/>
                 Settings
@@ -36,17 +42,8 @@ class RightSidebar extends React.Component { // eslint-disable-line
               </Segment>
             </Menu.Item>
 
-            <Menu.Item name='change-password' styleName='sidebar-item'>
-              <Segment basic compact size='big' styleName='basic-compact-segment'>
-                Change password <Icon name='plus'/>
-              </Segment>
-            </Menu.Item>
-
-            <Menu.Item name='logout' styleName='sidebar-item' onClick={this.props.logout}>
-              <Segment basic compact size='big' styleName='basic-compact-segment'>
-                Log out <Icon name='log out'/>
-              </Segment>
-            </Menu.Item>
+            <MenuItem text='Change password' icon='lock'/>
+            <MenuItem text='Log out' icon='log out' callback={this.props.logout}/>
           </Tab.Pane>
         )
       }
@@ -54,17 +51,21 @@ class RightSidebar extends React.Component { // eslint-disable-line
 
     return (
       <Sidebar.Pushable as={Segment} styleName='right-sidebar-container'>
-        <Sidebar
-          as={Menu}
-          animation='overlay'
-          direction='right'
-          visible={visible}
-          icon='labeled'
-          vertical
-          styleName='right-sidebar'
-        >
-          <Tab panes={panes} styleName='sidebar-tab'/>
-        </Sidebar>
+        <div ref={this.handleContextRef}>
+          <Sidebar
+            as={Menu}
+            animation='overlay'
+            direction='right'
+            visible={visible}
+            icon='labeled'
+            vertical
+            styleName='right-sidebar'
+          >
+            {/* <Sticky context={this.state.contextRef}> */}
+            <Tab panes={panes} styleName='sidebar-tab'/>
+            {/* </Sticky> */}
+          </Sidebar>
+        </div>
         <Sidebar.Pusher>
           {this.props.children}
         </Sidebar.Pusher>
