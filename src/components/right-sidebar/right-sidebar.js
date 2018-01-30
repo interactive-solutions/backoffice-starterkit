@@ -4,11 +4,12 @@ import {
   Accordion,
   Icon,
   Menu,
-  Sidebar,
+  // Sidebar,
   Segment,
   Button,
   Tab,
-  Divider
+  Divider,
+  Transition
   // Sticky,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -80,9 +81,11 @@ class RightSidebar extends React.Component { // eslint-disable-line
     ];
     // style={visible ? {} : { display: 'none' }}
     return (
-      <div style={visible ? {} : { display: 'none' }} styleName='right-sidebar'>
-        <Tab panes={panes} styleName='sidebar-tab'/>
-      </div>
+      <Transition visible={visible} animation='fly left' duration={600}>
+        <div styleName='right-sidebar'>
+          <Tab panes={panes} styleName='sidebar-tab'/>
+        </div>
+      </Transition>
     );
   }
 }

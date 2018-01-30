@@ -171,7 +171,7 @@ class Navbar extends Component {
           <div styleName='full-height'>
             <Container fluid styleName={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
               <Header callback={this.toggleVisibility} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
-              <Sticky>
+              <Sticky navbarIsBig={sidebarIsVisible}>
                 <RightSidebar visible={rightSidebarIsVisible}/>
               </Sticky>
               {/* <RightSidebar visible={rightSidebarIsVisible}> */}

@@ -11,17 +11,11 @@
 }
 
 .stuck {
+  z-index: 500;
   padding: 0;
   position: absolute;
-  /* width: 102% !important; */
-  /* margin-left: -15px !important; */
   overflow-x: visible;
 }
-
-/* .stuck-placeholder {
-  padding: 10px;
-  height: 97px;
-} */
 
 .borderless:before {
   background: transparent !important;
@@ -29,11 +23,11 @@
 
 .menu-is-big {
   right: 260px !important;
-  transition: padding-right 0.7s  ease;
+  transition: right 0.7s  ease;
   transition-delay: 0.4s;
 }
 .menu-is-small {
   right: 60px !important;
-  transition: padding-right 0.7s ease;
+  transition: right 0.7s ease;
   transition-delay: 0.4s;
 }

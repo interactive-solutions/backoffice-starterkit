@@ -1,31 +1,20 @@
 // @flow
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-import { Menu } from 'semantic-ui-react';
-// import { withRouter } from 'react-router-dom';
 import './style/sticky.scss';
 
-type Callback = {
-  func: Function,
-  text: string,
-  color: string
-};
 type Props = {
   children?: any;
-  // callbacks?: Array<Callback>;
-  // navbarOpen: bool;
+  navbarIsBig: boolean;
 };
 type State = {
-  // breadcrumbs: Array<string>;
   scrollOnTop: bool;
 };
 
 export class Sticky extends Component<Props, State> {
   static propTypes = {
-    // location: PropTypes.object.isRequired,
-    // callbacks: PropTypes.array,
-    // navbarOpen: PropTypes.bool.isRequired
+    children: PropTypes.any,
+    navbarIsBig: PropTypes.bool.isRequired
   };
 
   constructor(props: Props) {
@@ -55,10 +44,12 @@ export class Sticky extends Component<Props, State> {
 
   render() {
     const { scrollOnTop } = this.state;
+    const { navbarIsBig } = this.props;
     const moving = scrollOnTop ? 'stuck' : ' fixed';
+    const rightPos = navbarIsBig ? 'menu-is-big' : 'menu-is-small';
 
     return (
-      <div styleName={`${moving} menu-is-big`}>
+      <div styleName={`${moving} ${rightPos}`}>
         {this.props.children}
       </div>
     );
