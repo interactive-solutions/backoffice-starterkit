@@ -45,7 +45,6 @@ class RightSidebar extends React.Component { // eslint-disable-line
 
           return (
             <Tab.Pane styleName='tab-pane'>
-
               {/* Settings tab title */}
               <Menu.Item name='settings' styleName='menu-item'>
                 <Segment basic compact size='massive' styleName='basic-compact-segment'>
