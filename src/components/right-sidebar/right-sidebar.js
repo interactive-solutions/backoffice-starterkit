@@ -29,8 +29,6 @@ class RightSidebar extends React.Component { // eslint-disable-line
     this.setState({ activeIndex: newIndex });
   }
 
-  // handleContextRef = contextRef => this.setState({ contextRef })
-
   render() {
     const { visible } = this.props;
 
@@ -80,34 +78,17 @@ class RightSidebar extends React.Component { // eslint-disable-line
         }
       }
     ];
-
+    // style={visible ? {} : { display: 'none' }}
     return (
-      <Sidebar.Pushable as={Segment} styleName='right-sidebar-container'>
-        <div ref={this.handleContextRef}>
-          <Sidebar
-            as={Menu}
-            animation='overlay'
-            direction='right'
-            visible={visible}
-            icon='labeled'
-            vertical
-            styleName='right-sidebar'
-          >
-            {/* <Sticky context={this.state.contextRef}> */}
-            <Tab panes={panes} styleName='sidebar-tab'/>
-            {/* </Sticky> */}
-          </Sidebar>
-        </div>
-        <Sidebar.Pusher>
-          {this.props.children}
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+      <div style={visible ? {} : { display: 'none' }} styleName='right-sidebar'>
+        <Tab panes={panes} styleName='sidebar-tab'/>
+      </div>
     );
   }
 }
 
 RightSidebar.propTypes = {
-  children: PropTypes.array,
+  // children: PropTypes.array,
   visible: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired
 };

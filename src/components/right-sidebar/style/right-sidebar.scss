@@ -1,14 +1,3 @@
-.right-sidebar-container {
-  margin-top: 0 !important;
-  border-top: 0 !important;
-  overflow: hidden !important;
-}
-
-.right-sidebar {
-  width: 25rem !important;
-  overflow: hidden !important;
-}
-
 /*
  * <Segment basic compact> does not seem to work
  * since the Segment still has margins and
@@ -20,8 +9,12 @@
   padding: 0 !important;
 }
 
+.right-sidebar {
+  width: 25rem;
+}
+
 .sidebar-tab {
-  /* height: 100%; */
+  height: 100vh;
   margin-top: 0;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -44,6 +37,7 @@
 .menu-item {
   padding: 1.5em !important;
   font-size: 135%;
+  cursor: pointer;
 }
 
 .menu-item-form {
