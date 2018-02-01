@@ -3,6 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import { ForgotPasswordForm } from 'components/forms';
 import { userService } from 'api';
 import PropTypes from 'prop-types';
+import './style/forgot-password.scss';
 
 export class ForgotPassword extends Component {
   static propTypes = {
@@ -10,26 +11,25 @@ export class ForgotPassword extends Component {
     openModal: PropTypes.func.isRequired
   };
 
-  onSubmit = (values) => {
-    return userService.forgotPassword(values.email)
+  onSubmit = (values) =>
+    userService.forgotPassword(values.email)
       .then(() => this.props.push('login'))
       // note, handle error with modal
-      .catch((e) => {
+      .catch(() => {
         this.props.openModal({
           header: 'Request failed!',
           content: 'Failed to request new password.'
         });
       });
-  }
 
   render() {
     return (
       <Grid
         textAlign='center'
-        className='forgot-password-container'
+        styleName='forgot-password-container'
         verticalAlign='middle'
       >
-        <Grid.Column className='center-grid'>
+        <Grid.Column styleName='center-grid'>
           <ForgotPasswordForm
             onSubmit={this.onSubmit}
           />

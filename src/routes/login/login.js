@@ -15,6 +15,8 @@ function getErrorMessage(exception) {
     switch (status) {
       case 400: // Bad request
         return response.data.error_description;
+      default:
+        return 'User could not be logged in';
     }
   }
   return 'User could not be logged in';

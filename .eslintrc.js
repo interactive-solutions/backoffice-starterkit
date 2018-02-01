@@ -6,6 +6,7 @@ module.exports = {
     jest: true,
   },
   rules: {
+    'linebreak-style': 0,
     'no-underscore-dangle': 0,
     'class-methods-use-this': 0, //
     'arrow-parens': 0, // Prettier messes this one up

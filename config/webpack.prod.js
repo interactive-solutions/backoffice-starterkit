@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
-const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+// const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { BannerPlugin, LoaderOptionsPlugin } = require('webpack');
 const common = require('./webpack.common.js');
@@ -21,11 +21,11 @@ module.exports = merge(common, {
     publicPath: '/static/build/'
   },
   plugins: [
-    new SentryWebpackPlugin({
-      release: process.env.SENTRY_BUILD ? process.env.SENTRY_BUILD : 'local',
-      include: './dist',
-      ignore: ['node_modules']
-    }),
+    // new SentryWebpackPlugin({
+    //   release: process.env.SENTRY_BUILD ? process.env.SENTRY_BUILD : 'local',
+    //   include: './dist',
+    //   ignore: ['node_modules']
+    // }),
     new LoaderOptionsPlugin({
       minimize: true,
       debug: false

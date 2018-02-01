@@ -32,7 +32,8 @@ export const renderInput = ({
     <Message
       error
       visible={!!error && touched}
-      content={error}/>
+      content={error}
+    />
   </Form.Field>
 );
 

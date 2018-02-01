@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Icon, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { closeModal } from 'redux/modules/modal';
+import './style/modal.scss';
 
 /**
  * A simple warning modal that essentially mimics the
@@ -18,10 +19,10 @@ const WarningModal = function({ modal, closeModal }) {
   }
 
   return (
-    <Modal open size='tiny' className='modal-body'>
+    <Modal open size='tiny' styleName='modal-body'>
       <Icon color='red' name='warning circle' size='massive'/>
       <h2>{modal.header}</h2>
-      <div className='modal-content-text'>{modal.content}</div>
+      <div styleName='modal-content-text'>{modal.content}</div>
       <Button
         color='red'
         inverted

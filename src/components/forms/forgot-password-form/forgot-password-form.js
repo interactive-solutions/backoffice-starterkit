@@ -5,10 +5,12 @@ import { Button, Form, Header, Image, Message, Segment } from 'semantic-ui-react
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
+import Logo from 'assets/svg/is_tab_black.svg';
 import { isValidEmail } from '../utils';
+import './style/forgot-password-form.scss';
 
-const validate = (values, props) => {
-  let errors = {};
+const validate = (values) => {
+  const errors = {};
 
   if (!values.email) {
     errors.email = FORM_ERROR_REQUIRED_FIELD;
@@ -24,11 +26,11 @@ const ForgotPasswordReduxForm = (props) => {
 
   return (
     <div>
-      <Image centered size='large' src='/assets/images/logo.png'/>
+      <Image centered size='large' src={Logo}/>
       <Segment stacked>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Header as='h3'>Request a new password</Header>
-          <p className='form-description'>
+          <p styleName='form-description'>
             Enter your e-mail address and receive an e-mail that instructs you how to select a new password.
           </p>
           <Field
@@ -37,18 +39,22 @@ const ForgotPasswordReduxForm = (props) => {
             placeholder='Enter your e-mail address'
             icon='users'
             type='email'
-            iconposition='left'/>
+            iconposition='left'
+          />
           <Button
             type='submit'
             color='blue'
-            fluid size='large'
-            loading={submitting}>
+            fluid
+            size='large'
+            loading={submitting}
+          >
               Submit
           </Button>
           <Message
             error
             visible={!!error}
-            content={error ? error._error : null}/>
+            content={error ? error._error : null}
+          />
         </Form>
         <Message>
           <Link to='/login'>Back to Login</Link>

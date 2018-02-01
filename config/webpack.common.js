@@ -40,12 +40,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /react-table\/react-table\.css$/,
+        test: path.resolve(projectRoot, 'node_modules/react-table/react-table.css'),
         use: ReactTableExtractPlugin.extract({ use: ['css-loader'] })
       },
       {
-        test: /semantic\.min\.css$/,
-        exclude: /src/,
+        test: path.resolve(projectRoot, 'node_modules/semantic-ui-css/semantic.min.css'),
         use: SemanticExtractPlugin.extract({ use: ['css-loader'] })
       },
       {

@@ -17,7 +17,7 @@ const Loadable = opts =>
   });
   /* eslint-disable */
 const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'login' */ './login/login-container') });
-const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password') });
+const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password-container') });
 const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password-container') });
 const Dashboard = Loadable({ loader: () => import(/* webpackChunkName: 'dashboard' */ './dashboard/dashboard') });
 const ResellersContainer = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers-container') });

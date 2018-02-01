@@ -5,10 +5,11 @@ import { Button, Form, Header, Image, Message, Segment } from 'semantic-ui-react
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
+import Logo from 'assets/svg/is_tab_black.svg';
 import { isValidPassword } from '../utils';
 
-const validate = ({ password, confirmPassword }, props) => {
-  let errors = {};
+const validate = ({ password, confirmPassword }) => {
+  const errors = {};
 
   if (!password) {
     errors.password = FORM_ERROR_REQUIRED_FIELD;
@@ -35,7 +36,7 @@ const ResetPasswordReduxForm = (props) => {
 
   return (
     <div>
-      <Image centered size='large' src='/assets/images/logo.png'/>
+      <Image centered size='large' src={Logo}/>
       <Segment stacked>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Header as='h3'>Enter new password</Header>
@@ -45,25 +46,30 @@ const ResetPasswordReduxForm = (props) => {
             placeholder='New password'
             icon='lock'
             type='password'
-            iconposition='left'/>
+            iconposition='left'
+          />
           <Field
             name='confirmPassword'
             component={Input}
             placeholder='Enter your new password again'
             icon='lock'
             type='password'
-            iconposition='left'/>
+            iconposition='left'
+          />
           <Button
             type='submit'
             color='blue'
-            fluid size='large'
-            loading={submitting}>
+            fluid
+            size='large'
+            loading={submitting}
+          >
               Update password
           </Button>
           <Message
             error
             visible={!!error}
-            content={error ? error._error : null}/>
+            content={error ? error._error : null}
+          />
         </Form>
         <Message>
           <Link to='/login'>To Login</Link>
