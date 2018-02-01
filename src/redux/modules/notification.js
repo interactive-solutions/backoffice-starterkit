@@ -45,7 +45,7 @@ const INITIAL_STATE = {
    * null indicates there is no notification
    * that is that the notification is closed.
    */
-  notification: { icon: 'log out', content: 'content', header: 'header' }
+  notification: null
 };
 
 class NotificationReducer {

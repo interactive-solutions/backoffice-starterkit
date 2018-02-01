@@ -13,6 +13,7 @@ import {
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
+import { openNotification } from 'redux/modules/notification';
 import { ChangePasswordForm } from 'components/forms';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
@@ -65,7 +66,7 @@ class RightSidebar extends React.Component {
                 <Accordion.Content active={activeIndex === 0}>
                   <Segment basic width='16' textAlign='left' styleName='menu-item-form'>
                     <ChangePasswordForm
-                      onSubmit={() => alert('onSubmit')} // eslint-disable-line
+                      onSubmit={this.props.changePassword} // eslint-disable-line
                     />
                   </Segment>
                 </Accordion.Content>
@@ -100,7 +101,17 @@ const mapDispatchToProps = dispatch => ({
   logout: () => {
     dispatch(logout());
     dispatch(push('login'));
-  }
+  },
+  /**
+   * This is just temporary
+   * until API for change-password is implemented
+   */
+  changePassword: () =>
+    dispatch(openNotification({
+      header: 'Password changed',
+      content: 'Your password has been successfully changed',
+      icon: 'checkmark box'
+    }))
 });
 
 const RightSidebarContainer =
