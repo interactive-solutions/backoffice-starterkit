@@ -6,7 +6,7 @@ import {
   // Grid
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { closeNotification as closeModalAction } from 'redux/modules/notification';
+import { closeNotification as closeNotificationAction } from 'redux/modules/notification';
 import './style/notification.scss';
 
 // ---------------------------------
@@ -22,7 +22,7 @@ const Notification = ({ notification, closeNotification }) => {
     return null;
   }
 
-  const { header, content, icon } = notification;
+  const { header, content, icon, id } = notification;
   return (
     <Message
       color='blue'
@@ -30,13 +30,13 @@ const Notification = ({ notification, closeNotification }) => {
       icon={icon}
       header={header}
       content={content}
-      onDismiss={closeNotification}
+      onDismiss={() => closeNotification(id)}
     />
   );
 };
 
 Notification.propTypes = {
-  notification: PropTypes.object,
+  notification: PropTypes.object.isRequired,
   closeNotification: PropTypes.func.isRequired
 };
 
@@ -44,18 +44,22 @@ Notification.propTypes = {
 // NotificationContainer
 // ---------------------------------
 
-const mapStateToProps = (state) => ({
-  notification: state.notification.notification
-});
+// const mapStateToProps = (state) => ({
+//   notification: state.notification.notification
+// });
 
 const mapDispatchToProps = dispatch => ({
-  closeNotification: () => dispatch(closeModalAction())
+  closeNotification: id => dispatch(closeNotificationAction(id))
 });
 
 const NotificationContainer =
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
   )(Notification);
+
+NotificationContainer.propTypes = {
+  notification: PropTypes.object.isRequired
+};
 
 export { NotificationContainer as Notification };

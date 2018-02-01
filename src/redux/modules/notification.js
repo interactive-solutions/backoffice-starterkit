@@ -1,3 +1,5 @@
+import uniqueId from 'lodash.uniqueid';
+
 // ------------------------------------
 // Type definitions
 // ------------------------------------
@@ -32,8 +34,11 @@ export const openNotification = ({ header, content, icon }) => ({
   }
 });
 
-export const closeNotification = () => ({
-  type: CLOSE_NOTIFICATION
+export const closeNotification = (id) => ({
+  type: CLOSE_NOTIFICATION,
+  payload: {
+    id
+  }
 });
 
 // ------------------------------------
@@ -42,26 +47,38 @@ export const closeNotification = () => ({
 
 const INITIAL_STATE = {
   /**
-   * null indicates there is no notification
-   * that is that the notification is closed.
+   * An array of notifications.
+   * An empty object means that there
+   * are currently no notifications.
    */
-  notification: null
+  notifications: {}
 };
 
 class NotificationReducer {
   handle = (state = INITIAL_STATE, action: Action) => {
     return Object.assign({}, state, {
-      notification: this.handleNotification(state.notification, action)
+      notifications: this.handleNotification(state.notifications, action)
     });
   }
 
   handleNotification = (state, action: Action) => {
     switch (action.type) {
-      case OPEN_NOTIFICATION:
-        return action.payload;
+      case OPEN_NOTIFICATION: {
+        const id = uniqueId();
+        return {
+          ...state, // all previous notifications
 
-      case CLOSE_NOTIFICATION:
-        return null;
+          [id]: { // the new notification
+            ...action.payload,
+            id
+          }
+        };
+      }
+
+      case CLOSE_NOTIFICATION: {
+        const { [action.payload.id]: omit, ...rest } = state;
+        return rest;
+      }
 
       default:
         return state;
