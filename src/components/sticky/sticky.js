@@ -35,7 +35,7 @@ export class Sticky extends Component<Props, State> {
   }
 
   handleScroll = (e: Object) => {
-    if (e.target.scrollTop > 87) {
+    if (e.target.scrollTop > 15) {
       this.setState({ scrollOnTop: false });
     } else {
       this.setState({ scrollOnTop: true });
