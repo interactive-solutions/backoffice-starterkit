@@ -21,7 +21,6 @@ export class Sticky extends Component<Props, State> {
     super(props);
 
     this.state = {
-      // breadcrumbs: [],
       scrollOnTop: true
     };
   }
@@ -46,7 +45,7 @@ export class Sticky extends Component<Props, State> {
     const { scrollOnTop } = this.state;
     const { navbarIsBig } = this.props;
     const moving = scrollOnTop ? 'stuck' : ' fixed';
-    const rightPos = navbarIsBig ? 'menu-is-big' : 'menu-is-small';
+    const rightPos = navbarIsBig ? 'navbar-is-big' : 'navbar-is-small';
 
     return (
       <div styleName={`${moving} ${rightPos}`}>

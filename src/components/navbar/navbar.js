@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { logout } from 'redux/modules/user';
 import Logo from 'assets/svg/is_tab_white.svg';
 import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
@@ -25,7 +23,7 @@ class Navbar extends Component {
 
     this.state = {
       activeItem: 'Dashboard',
-      sidebarIsVisible: true,
+      navbarIsVisible: true,
       rightSidebarIsVisible: false
     };
   }
@@ -129,8 +127,8 @@ class Navbar extends Component {
     });
   }
 
-  toggleVisibility = () => {
-    this.setState({ sidebarIsVisible: !this.state.sidebarIsVisible });
+  toggleNavbar = () => {
+    this.setState({ navbarIsVisible: !this.state.navbarIsVisible });
   }
 
   toggleRightSidebar = () => {
@@ -139,8 +137,8 @@ class Navbar extends Component {
 
   render() {
     const {
-      sidebarIsVisible,
-      rightSidebarIsVisible // eslint-disable-line
+      navbarIsVisible,
+      rightSidebarIsVisible
     } = this.state;
 
     return (
@@ -150,7 +148,7 @@ class Navbar extends Component {
           styleName='sidebar'
           as={Menu}
           inverted
-          visible={sidebarIsVisible}
+          visible={navbarIsVisible}
           vertical
           animation='push'
         >
@@ -161,7 +159,7 @@ class Navbar extends Component {
         </Sidebar>
 
         <MinifiedNavbar
-          visible={!sidebarIsVisible}
+          visible={!navbarIsVisible}
           activeItem={this.state.activeItem}
           logout={this.props.logout}
           history={this.props.history}
@@ -169,17 +167,15 @@ class Navbar extends Component {
 
         <Sidebar.Pusher>
           <div styleName='full-height'>
-            <Container fluid styleName={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-              <Header callback={this.toggleVisibility} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
-              <Sticky navbarIsBig={sidebarIsVisible}>
+            <Container fluid styleName={navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
+              <Header callback={this.toggleNavbar} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
+              <Sticky navbarIsBig={navbarIsVisible}>
                 <RightSidebar visible={rightSidebarIsVisible}/>
               </Sticky>
-              {/* <RightSidebar visible={rightSidebarIsVisible}> */}
               <Container fluid styleName='main-container'>
                 {this.props.children}
               </Container>
               <Footer/>
-              {/* </RightSidebar> */}
             </Container>
           </div>
         </Sidebar.Pusher>

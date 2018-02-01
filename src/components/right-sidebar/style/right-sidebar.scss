@@ -35,6 +35,11 @@
   width: 100%;
 }
 
+.settings-title {
+  padding: 1.5em !important;
+  font-size: 135%;
+}
+
 .menu-item {
   padding: 1.5em !important;
   font-size: 135%;
@@ -48,4 +53,8 @@
 
 .grid-column {
   padding-right: 1rem !important;
+}
+
+.no-padding {
+  padding: 0 !important;
 }

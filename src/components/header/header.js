@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Image, Menu, Button, Icon } from 'semantic-ui-react';
-// import { connect } from 'react-redux';
-// import { push } from 'react-router-redux';
-// import { logout } from 'redux/modules/user';
 import Logo from 'assets/svg/is_tab_black.svg';
 import './style/header.scss';
 
@@ -11,8 +8,6 @@ export class DashHeader extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     callback: PropTypes.func,
-    history: PropTypes.func, // eslint-disable-line
-    // logout: PropTypes.func,
     toggleRightSidebar: PropTypes.func
   };
 
@@ -45,7 +40,7 @@ export class DashHeader extends Component {
     const adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
 
     return (
-      <Menu borderless style={{ marginBottom: '0px' }}>
+      <Menu borderless styleName='marginless'>
         <Menu.Item position='left' styleName='borderless'>
           <div styleName={adjustMenuIcon}>
             <Button

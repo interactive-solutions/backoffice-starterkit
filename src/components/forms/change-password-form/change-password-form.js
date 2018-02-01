@@ -1,3 +1,6 @@
+/**
+ * Currently used in the right sidebar.
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,14 +13,14 @@ import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 import { isValidPassword } from '../utils';
 
-const validate = ({ oldPassword, password, confirmPassword }) => {
+const validate = ({ oldPassword, newPassword, confirmPassword }) => {
   const errors = {};
 
   if (!oldPassword) {
     errors.oldPassword = FORM_ERROR_REQUIRED_FIELD;
   }
-  if (!password) {
-    errors.password = FORM_ERROR_REQUIRED_FIELD;
+  if (!newPassword) {
+    errors.newPassword = FORM_ERROR_REQUIRED_FIELD;
   }
   if (!confirmPassword) {
     errors.confirmPassword = FORM_ERROR_REQUIRED_FIELD;
@@ -26,10 +29,10 @@ const validate = ({ oldPassword, password, confirmPassword }) => {
     return errors;
   }
 
-  if (!isValidPassword(password)) {
-    errors.password = 'Password must be at least 5 characters';
+  if (!isValidPassword(newPassword)) {
+    errors.newPassword = 'Password must be at least 5 characters';
   }
-  if (password !== confirmPassword) {
+  if (newPassword !== confirmPassword) {
     errors.confirmPassword = "The passwords don't match";
   }
 
@@ -51,7 +54,7 @@ const ChangePasswordReduxForm = (props) => {
       />
       <Field
         label='New password'
-        name='password'
+        name='newPassword'
         component={Input}
         icon='lock'
         type='password'
@@ -83,7 +86,7 @@ const ChangePasswordReduxForm = (props) => {
 
 export const ChangePasswordForm = reduxForm({
   form: 'change-password-form',
-  fields: ['oldPassword', 'password', 'confirmPassword'],
+  fields: ['oldPassword', 'newPassword', 'confirmPassword'],
   validate
 })(ChangePasswordReduxForm);
 

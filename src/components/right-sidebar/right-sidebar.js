@@ -4,13 +4,11 @@ import {
   Accordion,
   Icon,
   Menu,
-  // Sidebar,
   Segment,
   Button,
   Tab,
   Divider,
   Transition
-  // Sticky,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
@@ -19,7 +17,7 @@ import { ChangePasswordForm } from 'components/forms';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
-class RightSidebar extends React.Component { // eslint-disable-line
+class RightSidebar extends React.Component {
   state = { activeIndex: 1 }
 
   handleClick = (e, titleProps) => {
@@ -36,7 +34,7 @@ class RightSidebar extends React.Component { // eslint-disable-line
     const panes = [
       {
         menuItem: <Button key='tab1' styleName='tab-selector'>Notifications</Button>,
-        render: () => <Tab.Pane styleName='tab-pane'>Tab 1 Content</Tab.Pane>
+        render: () => <Tab.Pane styleName='tab-pane'/>
       },
       {
         menuItem: <Button key='tab2' icon='setting' styleName='tab-selector'/>,
@@ -45,8 +43,9 @@ class RightSidebar extends React.Component { // eslint-disable-line
 
           return (
             <Tab.Pane styleName='tab-pane'>
+
               {/* Settings tab title */}
-              <Menu.Item name='settings' styleName='menu-item'>
+              <Menu.Item name='settings' styleName='settings-title'>
                 <Segment basic compact size='massive' styleName='basic-compact-segment'>
                   <Icon name='setting'/>
                   Settings
@@ -58,13 +57,13 @@ class RightSidebar extends React.Component { // eslint-disable-line
 
               <Divider fitted/>
 
-              {/* Change password menu item */}
+              {/* 'Change password' menu item */}
               <Accordion>
-                <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+                <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick} styleName='no-padding'>
                   <MenuItem text='Change password' icon={activeIndex === 0 ? 'minus' : 'plus'}/>
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 0}>
-                  <Segment basic width='16' textAlign='left' styleName='menu-item-form' style={{ paddingTop: '0px', marginTop: '0px' }}>
+                  <Segment basic width='16' textAlign='left' styleName='menu-item-form'>
                     <ChangePasswordForm
                       onSubmit={() => alert('onSubmit')} // eslint-disable-line
                     />
@@ -72,13 +71,16 @@ class RightSidebar extends React.Component { // eslint-disable-line
                 </Accordion.Content>
               </Accordion>
 
+              <Divider fitted/>
+
               <MenuItem text='Log out' icon='log out' callback={this.props.logout}/>
+
+              <Divider fitted/>
             </Tab.Pane>
           );
         }
       }
     ];
-    // style={visible ? {} : { display: 'none' }}
     return (
       <Transition visible={visible} animation='fly left' duration={600}>
         <div styleName='right-sidebar'>
@@ -90,7 +92,6 @@ class RightSidebar extends React.Component { // eslint-disable-line
 }
 
 RightSidebar.propTypes = {
-  // children: PropTypes.array,
   visible: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired
 };

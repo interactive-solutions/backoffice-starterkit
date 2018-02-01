@@ -1,32 +1,22 @@
 .fixed {
   position: fixed;
   z-index: 500;
-  /* width: 100%; */
   top: 0px;
-  /* left: 0; */
   padding: 0;
-  /* padding-top: 0;
-  padding-right: 0; */
-  overflow-x: visible;
 }
 
 .stuck {
   z-index: 500;
   padding: 0;
   position: absolute;
-  overflow-x: visible;
 }
 
-.borderless:before {
-  background: transparent !important;
-}
-
-.menu-is-big {
+.navbar-is-big {
   right: 260px !important;
   transition: right 0.7s  ease;
   transition-delay: 0.4s;
 }
-.menu-is-small {
+.navbar-is-small {
   right: 60px !important;
   transition: right 0.7s ease;
   transition-delay: 0.4s;

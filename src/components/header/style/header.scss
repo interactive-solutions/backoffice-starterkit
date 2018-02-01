@@ -28,9 +28,14 @@
 
 }
 
+.marginless {
+  margin: 0 !important;
+}
+
 .borderless {
   background: transparent;
 }
+
 .white-border {
   box-shadow: #FFFFFF !important;
 }
