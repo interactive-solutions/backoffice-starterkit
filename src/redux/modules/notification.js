@@ -53,7 +53,7 @@ const INITIAL_STATE = {
    */
   notifications: {
     1: {
-      id: 1,
+      id: '1',
       header: 'For testing',
       content: 'This is just for testing and will be removed.',
       type: 'info'
