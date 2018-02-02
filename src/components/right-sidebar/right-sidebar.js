@@ -67,7 +67,7 @@ class RightSidebar extends React.Component {
                 <Accordion.Content active={activeIndex === 0}>
                   <Segment basic width='16' textAlign='left' styleName='menu-item-form'>
                     <ChangePasswordForm
-                      onSubmit={this.props.changePassword} // eslint-disable-line
+                      onSubmit={this.props.changePassword}
                     />
                   </Segment>
                 </Accordion.Content>

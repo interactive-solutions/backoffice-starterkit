@@ -39,10 +39,16 @@ class Notification extends React.Component {
 
   onDismiss = () => {
     this.setState({ visible: false }); // triggers transiton animation.
-    setTimeout(
-      () => this.props.closeNotification(this.props.notification.id),
-      600
-    );
+  }
+
+  onTransitionComplete = () => {
+    /**
+     * Wait until the removal animation is done,
+     * then remove the notification from redux
+     */
+    if (!this.state.visible) {
+      this.props.closeNotification(this.props.notification.id);
+    }
   }
 
   render = () => {
@@ -81,7 +87,7 @@ class Notification extends React.Component {
      * https://github.com/Semantic-Org/Semantic-UI-React/issues/2166#issuecomment-334478073
      */
     return (
-      <Transition visible={this.state.visible} animation='fade up' duration={600}>
+      <Transition visible={this.state.visible} animation='fade up' duration={600} onComplete={this.onTransitionComplete}>
         <div styleName='extra-padding'>
           {message}
         </div>
@@ -98,10 +104,6 @@ Notification.propTypes = {
 // ---------------------------------
 // NotificationContainer
 // ---------------------------------
-
-// const mapStateToProps = (state) => ({
-//   notification: state.notification.notification
-// });
 
 const mapDispatchToProps = dispatch => ({
   closeNotification: id => dispatch(closeNotificationAction(id))

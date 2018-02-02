@@ -20,11 +20,6 @@ const CLOSE_NOTIFICATION = 'backoffice:notification:close';
 // Actions
 // ------------------------------------
 
-/**
- * @param header
- * @param content
- * @param icon
- */
 export const openNotification = ({ header, content, type }) => ({
   type: OPEN_NOTIFICATION,
   payload: {
@@ -47,7 +42,7 @@ export const closeNotification = (id) => ({
 
 const INITIAL_STATE = {
   /**
-   * An array of notifications.
+   * An object of notifications.
    * An empty object means that there
    * are currently no notifications.
    */

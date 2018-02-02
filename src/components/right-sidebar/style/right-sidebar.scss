@@ -1,8 +1,6 @@
 /*
- * <Segment basic compact> does not seem to work
- * since the Segment still has margins and
- * padding. So until semantic-ui-react
- * fixes that, I use this class.
+ * <Segment basic compact>  still has margins
+ * and padding, so I remove them.
  */
 .basic-compact-segment {
   margin: 0 !important;
@@ -10,8 +8,6 @@
 }
 
 .right-sidebar {
-  /* position: absolute;
-  right: 0 !important; */
   pointer-events: auto;
   float: right;
   width: 25rem;
