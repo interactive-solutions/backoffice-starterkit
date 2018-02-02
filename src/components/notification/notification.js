@@ -82,7 +82,7 @@ class Notification extends React.Component {
      */
     return (
       <Transition visible={this.state.visible} animation='fade up' duration={600}>
-        <div>
+        <div styleName='extra-padding'>
           {message}
         </div>
       </Transition>
