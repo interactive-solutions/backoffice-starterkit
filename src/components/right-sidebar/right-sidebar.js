@@ -15,6 +15,7 @@ import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
 import { openNotification } from 'redux/modules/notification';
 import { ChangePasswordForm } from 'components/forms';
+import { notificationType } from 'components/notification/notification';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
@@ -110,7 +111,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(openNotification({
       header: 'Password changed',
       content: 'Your password has been successfully changed',
-      icon: 'checkmark box'
+      type: notificationType.SUCCESS
     }))
 });
 

@@ -25,10 +25,10 @@ const CLOSE_NOTIFICATION = 'backoffice:notification:close';
  * @param content
  * @param icon
  */
-export const openNotification = ({ header, content, icon }) => ({
+export const openNotification = ({ header, content, type }) => ({
   type: OPEN_NOTIFICATION,
   payload: {
-    icon,
+    type,
     header,
     content
   }
@@ -76,7 +76,7 @@ class NotificationReducer {
       }
 
       case CLOSE_NOTIFICATION: {
-        const { [action.payload.id]: omit, ...rest } = state;
+        const { [action.payload.id]: objectToRemove, ...rest } = state;
         return rest;
       }
 

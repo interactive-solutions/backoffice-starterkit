@@ -10,6 +10,15 @@ import { closeNotification as closeNotificationAction } from 'redux/modules/noti
 import './style/notification.scss';
 
 // ---------------------------------
+// Constants
+// ---------------------------------
+
+export const notificationType = {
+  INFO: 'info',
+  SUCCESS: 'success'
+};
+
+// ---------------------------------
 // Notification
 // ---------------------------------
 
@@ -22,17 +31,31 @@ const Notification = ({ notification, closeNotification }) => {
     return null;
   }
 
-  const { header, content, icon, id } = notification;
-  return (
-    <Message
-      color='blue'
-      styleName='notification'
-      icon={icon}
-      header={header}
-      content={content}
-      onDismiss={() => closeNotification(id)}
-    />
-  );
+  const { header, content, id, type } = notification;
+  switch (type) {
+    case notificationType.INFO:
+      return (
+        <Message
+          info
+          styleName='notification'
+          icon='info circle'
+          header={header}
+          content={content}
+          onDismiss={() => closeNotification(id)}
+        />
+      );
+    default: // notificationType.SUCCESS
+      return (
+        <Message
+          success
+          styleName='notification'
+          icon='checkmark box'
+          header={header}
+          content={content}
+          onDismiss={() => closeNotification(id)}
+        />
+      );
+  }
 };
 
 Notification.propTypes = {
