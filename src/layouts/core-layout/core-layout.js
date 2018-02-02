@@ -7,7 +7,6 @@ export const CoreLayout = ({ children }) => (
   <div style={{ height: '100%' }}>
     {children}
     <WarningModal/>
-    <Notifications/>
   </div>
 );
 CoreLayout.propTypes = {

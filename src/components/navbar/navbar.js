@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
+import {
+  Icon,
+  Menu,
+  Sidebar,
+  Segment,
+  Image,
+  Container,
+  Grid
+} from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import Logo from 'assets/svg/is_tab_white.svg';
 import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
 import { Sticky } from 'components/sticky/sticky';
+import { Notifications } from 'components/notifications/notifications';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
@@ -171,6 +180,7 @@ class Navbar extends Component {
               <Header callback={this.toggleNavbar} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
               <Sticky navbarIsBig={navbarIsVisible}>
                 <RightSidebar visible={rightSidebarIsVisible}/>
+                <Notifications/>
               </Sticky>
               <Container fluid styleName='main-container'>
                 {this.props.children}
