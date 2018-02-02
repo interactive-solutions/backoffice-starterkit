@@ -51,14 +51,7 @@ const INITIAL_STATE = {
    * An empty object means that there
    * are currently no notifications.
    */
-  notifications: {
-    1: {
-      id: '1',
-      header: 'For testing',
-      content: 'This is just for testing and will be removed.',
-      type: 'info'
-    }
-  }
+  notifications: {}
 };
 
 class NotificationReducer {

@@ -14,7 +14,9 @@ import './style/notifications.scss';
 
 const Notifications = ({ notifications }) => (
   <div styleName='notifications'>
-    {Object.values(notifications).map(n => <Notification notification={n}/>)}
+    {Object.values(notifications).map(n => (
+      <Notification notification={n}/>
+    ))}
   </div>
 );
 

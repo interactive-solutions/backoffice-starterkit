@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Message
-  // Icon,
-  // Grid
+  Message,
+  Transition
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { closeNotification as closeNotificationAction } from 'redux/modules/notification';
@@ -22,41 +21,74 @@ export const notificationType = {
 // Notification
 // ---------------------------------
 
-const Notification = ({ notification, closeNotification }) => {
-  if (!notification) {
-    /**
-     * notification === null means that there is no notification
-     * so don't draw it.
-     */
-    return null;
+class Notification extends React.Component {
+  state = {
+    visible: false
   }
 
-  const { header, content, id, type } = notification;
-  switch (type) {
-    case notificationType.INFO:
-      return (
-        <Message
-          info
-          styleName='notification'
-          icon='info circle'
-          header={header}
-          content={content}
-          onDismiss={() => closeNotification(id)}
-        />
-      );
-    default: // notificationType.SUCCESS
-      return (
-        <Message
-          success
-          styleName='notification'
-          icon='checkmark box'
-          header={header}
-          content={content}
-          onDismiss={() => closeNotification(id)}
-        />
-      );
+  componentDidMount() {
+    /**
+     * Triggers transition animation.
+     * I can't get it to trigger the animation without
+     * this 'setState'. The element will be rendered twice
+     * once with visibility=false then visibility=true
+     * that transition will trigger the animation.
+     */
+    this.setState({ visible: true }); // eslint-disable-line
   }
-};
+
+  onDismiss = () => {
+    this.setState({ visible: false }); // triggers transiton animation.
+    setTimeout(
+      () => this.props.closeNotification(this.props.notification.id),
+      600
+    );
+  }
+
+  render = () => {
+    const { notification } = this.props;
+    const { header, content, type } = notification;
+    let message;
+
+    switch (type) {
+      case notificationType.INFO:
+        message = (
+          <Message
+            info
+            styleName='notification'
+            icon='info circle'
+            header={header}
+            content={content}
+            onDismiss={this.onDismiss}
+          />
+        );
+        break;
+      default: // notificationType.SUCCESS
+        message = (
+          <Message
+            success
+            styleName='notification'
+            icon='checkmark box'
+            header={header}
+            content={content}
+            onDismiss={this.onDismiss}
+          />
+        );
+    }
+
+    /**
+     * The div below is needed:
+     * https://github.com/Semantic-Org/Semantic-UI-React/issues/2166#issuecomment-334478073
+     */
+    return (
+      <Transition visible={this.state.visible} animation='fade up' duration={600}>
+        <div>
+          {message}
+        </div>
+      </Transition>
+    );
+  }
+}
 
 Notification.propTypes = {
   notification: PropTypes.object.isRequired,
