@@ -7,7 +7,8 @@ import './style/header.scss';
 export class DashHeader extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    callback: PropTypes.func
+    callback: PropTypes.func,
+    toggleRightSidebar: PropTypes.func
   };
 
   constructor(props) {
@@ -39,7 +40,7 @@ export class DashHeader extends Component {
     const adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
 
     return (
-      <Menu>
+      <Menu borderless styleName='marginless'>
         <Menu.Item position='left' styleName='borderless'>
           <div styleName={adjustMenuIcon}>
             <Button
@@ -53,10 +54,15 @@ export class DashHeader extends Component {
             </Button>
           </div>
         </Menu.Item>
-        <Menu.Item position='right' styleName='logo borderless'>
+        <Menu.Item position='left' styleName='logo borderless'>
           <Header as='h2' textAlign='center' style={{ backgroundColor: 'transparent' }}>
             <Image src={Logo} size='mini'/>
             {this.props.title}
+          </Header>
+        </Menu.Item>
+        <Menu.Item onClick={this.props.toggleRightSidebar}>
+          <Header as='h3'>
+            <Icon name='tasks' size='tiny'/>
           </Header>
         </Menu.Item>
       </Menu>

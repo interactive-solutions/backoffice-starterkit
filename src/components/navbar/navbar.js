@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from 'redux/modules/user';
+import {
+  Icon,
+  Menu,
+  Sidebar,
+  Segment,
+  Image,
+  Container
+} from 'semantic-ui-react';
 import Logo from 'assets/svg/is_tab_white.svg';
-import { Header } from 'components';
+import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
+import { Sticky } from 'components/sticky/sticky';
+import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
 
-class Navbar extends Component {
+export class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -24,7 +30,8 @@ class Navbar extends Component {
 
     this.state = {
       activeItem: 'Dashboard',
-      sidebarIsVisible: true
+      navbarIsVisible: true,
+      rightSidebarIsVisible: false
     };
   }
 
@@ -42,6 +49,12 @@ class Navbar extends Component {
       const activeItem = path.charAt(1).toUpperCase() + path.slice(2);
       this.setState({ activeItem });
     }
+  }
+
+  setActiveItem = (e, { name }) => {
+    e.stopPropagation();
+    this.setState({ activeItem: name });
+    this.props.history.push(name.toLowerCase().replace(' ', ''));
   }
 
   /**
@@ -85,7 +98,7 @@ class Navbar extends Component {
    */
   createSideMenu() {
     if (!sideMenuContent) {
-      return;
+      return null;
     }
 
     return sideMenuContent.map((menu, index) => {
@@ -121,18 +134,19 @@ class Navbar extends Component {
     });
   }
 
-  setActiveItem = (e, { name }) => {
-    e.stopPropagation();
-    this.setState({ activeItem: name });
-    this.props.history.push(name.toLowerCase().replace(' ', ''));
+  toggleNavbar = () => {
+    this.setState({ navbarIsVisible: !this.state.navbarIsVisible });
   }
 
-  toggleVisibility = () => {
-    this.setState({ sidebarIsVisible: !this.state.sidebarIsVisible });
+  toggleRightSidebar = () => {
+    this.setState({ rightSidebarIsVisible: !this.state.rightSidebarIsVisible });
   }
 
   render() {
-    const { sidebarIsVisible } = this.state;
+    const {
+      navbarIsVisible,
+      rightSidebarIsVisible
+    } = this.state;
 
     return (
       <Sidebar.Pushable styleName='navbar' as={Segment}>
@@ -141,7 +155,7 @@ class Navbar extends Component {
           styleName='sidebar'
           as={Menu}
           inverted
-          visible={sidebarIsVisible}
+          visible={navbarIsVisible}
           vertical
           animation='push'
         >
@@ -152,7 +166,7 @@ class Navbar extends Component {
         </Sidebar>
 
         <MinifiedNavbar
-          visible={!sidebarIsVisible}
+          visible={!navbarIsVisible}
           activeItem={this.state.activeItem}
           logout={this.props.logout}
           history={this.props.history}
@@ -160,8 +174,16 @@ class Navbar extends Component {
 
         <Sidebar.Pusher>
           <div styleName='full-height'>
-            <Container fluid styleName={sidebarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-              <Header callback={this.toggleVisibility} title='Interactive Solutions'/>
+            <Container fluid styleName={navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
+              <Header
+                callback={this.toggleNavbar}
+                toggleRightSidebar={this.toggleRightSidebar}
+                title='Interactive Solutions'
+              />
+              <Sticky navbarIsBig={navbarIsVisible}>
+                <RightSidebar visible={rightSidebarIsVisible}/>
+                <Toastrs/>
+              </Sticky>
               <Container fluid styleName='main-container'>
                 {this.props.children}
               </Container>
@@ -173,19 +195,3 @@ class Navbar extends Component {
     );
   }
 }
-
-// -----------------------
-// NavbarContainer
-// -----------------------
-
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
-});
-
-const NavbarContainer =
-  connect(
-    null,
-    mapDispatchToProps,
-  )(Navbar);
-
-export const RoutingNavbar = withRouter(NavbarContainer);

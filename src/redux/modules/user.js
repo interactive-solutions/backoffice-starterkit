@@ -58,11 +58,9 @@ const INITIAL_STATE = {
 };
 
 class UserReducer {
-  handle = (state = INITIAL_STATE, action: Action) => {
-    return Object.assign({}, state, {
-      user: this.getUserState(state.user, action)
-    });
-  }
+  handle = (state = INITIAL_STATE, action: Action) => Object.assign({}, state, {
+    user: this.getUserState(state.user, action)
+  })
 
   getUserState = (state, action: Action) => {
     switch (action.type) {

@@ -27,48 +27,50 @@ export class MinifiedNavbar extends Component {
     }
   }
 
-  createSideMenu() {
-    if (sideMenuContent) {
-      return sideMenuContent.map((menu, index) => {
-        let topLevelMenuItemProps = {};
-
-        const active = menu.menuItem.caption === this.state.activeItem;
-
-        if (menu.menuItem.link) {
-          topLevelMenuItemProps = {
-            active,
-            onClick: this.setActiveItem
-          };
-        }
-        if (menu.menuItem.callback) {
-          topLevelMenuItemProps = {
-            onClick: () => menu.menuItem.callback(this)
-          };
-        }
-
-        return (
-          <Menu.Item
-            key={index}
-            color='red'
-            name={menu.menuItem.caption}
-            ink={menu.menuItem.link}
-            {...topLevelMenuItemProps}
-          >
-            <Header as='h2' textAlign='center' inverted>
-              <div styleName='centered-icon'>
-                <Icon name={menu.menuItem.icon} size='large' fitted/>
-              </div>
-            </Header>
-          </Menu.Item>
-        );
-      });
-    }
-  }
-
   setActiveItem =(e, { name }) => {
     e.stopPropagation();
     this.setState({ activeItem: name });
     this.props.history.push(name.toLowerCase().replace(' ', ''));
+  }
+
+  createSideMenu() {
+    if (!sideMenuContent) {
+      return null;
+    }
+
+    return sideMenuContent.map((menu, index) => {
+      let topLevelMenuItemProps = {};
+
+      const active = menu.menuItem.caption === this.state.activeItem;
+
+      if (menu.menuItem.link) {
+        topLevelMenuItemProps = {
+          active,
+          onClick: this.setActiveItem
+        };
+      }
+      if (menu.menuItem.callback) {
+        topLevelMenuItemProps = {
+          onClick: () => menu.menuItem.callback(this)
+        };
+      }
+
+      return (
+        <Menu.Item
+          key={index}
+          color='red'
+          name={menu.menuItem.caption}
+          ink={menu.menuItem.link}
+          {...topLevelMenuItemProps}
+        >
+          <Header as='h2' textAlign='center' inverted>
+            <div styleName='centered-icon'>
+              <Icon name={menu.menuItem.icon} size='large' fitted/>
+            </div>
+          </Header>
+        </Menu.Item>
+      );
+    });
   }
 
   render() {

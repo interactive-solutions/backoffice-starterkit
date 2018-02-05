@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { closeModal } from 'redux/modules/modal';
+import { closeModal as closeModalAction } from 'redux/modules/modal';
 import './style/modal.scss';
 
 /**
  * A simple warning modal that essentially mimics the
  * behaviour of window.alert.
  */
-const WarningModal = function({ modal, closeModal }) {
+const WarningModal = ({ modal, closeModal }) => {
   if (!modal) {
     /**
      * modal === null means that there is no modal
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModalAction())
 });
 
 const WarningModalContainer =

@@ -1,0 +1,27 @@
+.fixed {
+  position: fixed;
+  z-index: 500;
+  top: 0px;
+  padding: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.stuck {
+  z-index: 500;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+}
+
+.navbar-is-big {
+  right: 260px !important;
+  transition: right 0.7s  ease;
+  transition-delay: 0.4s;
+}
+.navbar-is-small {
+  right: 60px !important;
+  transition: right 0.7s ease;
+  transition-delay: 0.4s;
+}

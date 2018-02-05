@@ -18,8 +18,8 @@ export class Resellers extends Component {
 
   createReseller = (values) => {
     resellerService.create(values)
-      .then((response) => this.props.getResellers())
-      .catch((error) => console.warn(error));
+      .then(() => this.props.getResellers())
+      .catch((error) => console.warn(error)); // eslint-disable-line
   }
 
   render() {

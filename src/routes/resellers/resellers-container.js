@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { Resellers } from './resellers';
 import { getResellers } from 'redux/modules/resellers';
+import { Resellers } from './resellers';
 
 const mapStateToProps = (state) => ({
   resellers: state.resellers.resellers

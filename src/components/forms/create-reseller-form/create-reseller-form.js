@@ -7,7 +7,7 @@ import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 // update this to redux-form
 
 const validate = (values, props) => {
-  let errors = {};
+  const errors = {};
 
   if (!values.name || values.name.length === 0) {
     errors.name = FORM_ERROR_REQUIRED_FIELD;
@@ -34,7 +34,8 @@ const ResellersReduxForm = (props) => {
               component={Input}
               placeholder='Name'
               icon='users'
-              iconposition='left'/>
+              iconposition='left'
+            />
           </Grid.Column>
           <Grid.Column verticalAlign='middle'>
             <Field
@@ -42,13 +43,15 @@ const ResellersReduxForm = (props) => {
               component={Input}
               placeholder='BillingId'
               icon='users'
-              iconposition='left'/>
+              iconposition='left'
+            />
           </Grid.Column>
           <Grid.Column verticalAlign='middle'>
             <Button
               type='submit'
               color='blue'
-              fluid size='large'
+              fluid
+size='large'
             >
               Create
             </Button>
@@ -57,7 +60,8 @@ const ResellersReduxForm = (props) => {
         <Message
           error
           visible={!!error}
-          content={error ? error._error : null}/>
+          content={error ? error._error : null}
+        />
       </Form>
     </Segment>
   );

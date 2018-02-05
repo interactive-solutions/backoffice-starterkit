@@ -10,7 +10,7 @@ export const renderInput = ({
   placeholder,
   type,
   autoFocus,
-  meta: { dirty, touched, error },
+  meta: { touched, error },
   ...props
 }) => (
   <Form.Field

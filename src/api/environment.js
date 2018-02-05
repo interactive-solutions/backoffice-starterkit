@@ -4,7 +4,7 @@ export type ApiEnvironment = {
   staticUri?: string;
 };
 
-let apiEnvironment: ApiEnvironment = {};
+const apiEnvironment: ApiEnvironment = {};
 
 switch (document.domain) {
   case 'localhost':

@@ -19,8 +19,8 @@ export const authorizationHeaderInterceptor = (request: any) => {
   }
 
   const token = authenticationStorage.read();
-  if (token && !request['disableAuthorizationHeader']) {
-    request.headers['Authorization'] = 'Bearer ' + token.accessToken;
+  if (token && !request.disableAuthorizationHeader) {
+    request.headers.Authorization = `Bearer ${token.accessToken}`;
   }
 
   return request;
