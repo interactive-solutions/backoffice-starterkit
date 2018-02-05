@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Sidebar, Segment, Image, Container } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import {
+  Icon,
+  Menu,
+  Sidebar,
+  Segment,
+  Image,
+  Container
+} from 'semantic-ui-react';
 import Logo from 'assets/svg/is_tab_white.svg';
 import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
 import { Sticky } from 'components/sticky/sticky';
+import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
 
-class Navbar extends Component {
+export class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -171,6 +178,7 @@ class Navbar extends Component {
               <Header callback={this.toggleNavbar} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
               <Sticky navbarIsBig={navbarIsVisible}>
                 <RightSidebar visible={rightSidebarIsVisible}/>
+                <Toastrs/>
               </Sticky>
               <Container fluid styleName='main-container'>
                 {this.props.children}
@@ -183,5 +191,3 @@ class Navbar extends Component {
     );
   }
 }
-
-export const RoutingNavbar = withRouter(Navbar);
