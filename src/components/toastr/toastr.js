@@ -35,14 +35,10 @@ class Toastr extends React.Component {
      * that transition will trigger the animation.
      */
     this.setState({ visible: true }); // eslint-disable-line
-    setTimeout(
-      () => {
-        // trigger transiton animation.
-        // which when it ends trigges this.onTransitionComplete.
-        this.setState({ visible: false });
-      },
-      5000
-    );
+
+    // trigger transiton animation.
+    // which when it ends trigges this.onTransitionComplete.
+    setTimeout(() => { this.setState({ visible: false }); }, 5000);
   }
 
   onDismiss = () => {
@@ -51,11 +47,11 @@ class Toastr extends React.Component {
     this.setState({ visible: false });
   }
 
+  /**
+   * Wait until the removal animation is done,
+   * then remove the toastr from redux
+   */
   onTransitionComplete = () => {
-    /**
-     * Wait until the removal animation is done,
-     * then remove the toastr from redux
-     */
     if (!this.state.visible) {
       this.props.closeToastr(this.props.toastr.id);
     }
