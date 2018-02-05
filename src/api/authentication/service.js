@@ -79,11 +79,12 @@ export class AuthenticationService {
       },
       transformRequest: [(data) => {
         const str = [];
-        for (const p in data) {
-          if (data.hasOwnProperty(p) && data[p]) {
-            str.push(`${encodeURIComponent(p)}=${encodeURIComponent(data[p])}`);
+        const entries = Object.entries(data);
+        entries.forEach(([key, value]) => {
+          if (value) {
+            str.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
           }
-        }
+        });
 
         return str.join('&');
       }]
