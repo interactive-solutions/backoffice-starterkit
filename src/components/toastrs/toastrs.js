@@ -15,7 +15,7 @@ import './style/toastrs.scss';
 const Toastrs = ({ toastrs }) => (
   <div styleName='toastrs'>
     {Object.values(toastrs).map(n => (
-      <Toastr toastr={n}/>
+      <Toastr key={n.id} toastr={n}/>
     ))}
   </div>
 );

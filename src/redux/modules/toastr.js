@@ -29,7 +29,7 @@ export const openToastr = ({ header, content, type }) => ({
   }
 });
 
-export const closeToastr = (id) => ({
+export const closeToastr = (id : string) => ({
   type: CLOSE_NOTIFICATION,
   payload: {
     id
