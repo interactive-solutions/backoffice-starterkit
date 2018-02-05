@@ -4,7 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 import { userReducer } from './user';
 import { resellerReducer } from './resellers';
 import { modalReducer } from './modal';
-import { notificationReducer } from './notification';
+import { toastrReducer } from './toastr';
 
 export const rootReducer = (asyncReducers) =>
   combineReducers({
@@ -13,7 +13,7 @@ export const rootReducer = (asyncReducers) =>
     user: userReducer.handle,
     resellers: resellerReducer.handle,
     modal: modalReducer.handle,
-    notification: notificationReducer.handle,
+    toastr: toastrReducer.handle,
     ...asyncReducers
   });
 

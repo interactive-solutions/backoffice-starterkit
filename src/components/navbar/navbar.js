@@ -14,7 +14,7 @@ import Logo from 'assets/svg/is_tab_white.svg';
 import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
 import { Sticky } from 'components/sticky/sticky';
-import { Notifications } from 'components/notifications/notifications';
+import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
@@ -180,7 +180,7 @@ class Navbar extends Component {
               <Header callback={this.toggleNavbar} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
               <Sticky navbarIsBig={navbarIsVisible}>
                 <RightSidebar visible={rightSidebarIsVisible}/>
-                <Notifications/>
+                <Toastrs/>
               </Sticky>
               <Container fluid styleName='main-container'>
                 {this.props.children}

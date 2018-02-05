@@ -13,14 +13,14 @@ type Action = {
 // Constants
 // ------------------------------------
 
-const OPEN_NOTIFICATION = 'backoffice:notification:open';
-const CLOSE_NOTIFICATION = 'backoffice:notification:close';
+const OPEN_NOTIFICATION = 'backoffice:toastr:open';
+const CLOSE_NOTIFICATION = 'backoffice:toastr:close';
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export const openNotification = ({ header, content, type }) => ({
+export const openToastr = ({ header, content, type }) => ({
   type: OPEN_NOTIFICATION,
   payload: {
     type,
@@ -29,7 +29,7 @@ export const openNotification = ({ header, content, type }) => ({
   }
 });
 
-export const closeNotification = (id) => ({
+export const closeToastr = (id) => ({
   type: CLOSE_NOTIFICATION,
   payload: {
     id
@@ -42,28 +42,28 @@ export const closeNotification = (id) => ({
 
 const INITIAL_STATE = {
   /**
-   * An object of notifications.
+   * An object of toastrs.
    * An empty object means that there
-   * are currently no notifications.
+   * are currently no toastrs.
    */
-  notifications: {}
+  toastrs: {}
 };
 
-class NotificationReducer {
+class ToastrReducer {
   handle = (state = INITIAL_STATE, action: Action) => {
     return Object.assign({}, state, {
-      notifications: this.handleNotification(state.notifications, action)
+      toastrs: this.handleToastr(state.toastrs, action)
     });
   }
 
-  handleNotification = (state, action: Action) => {
+  handleToastr = (state, action: Action) => {
     switch (action.type) {
       case OPEN_NOTIFICATION: {
         const id = uniqueId();
         return {
-          ...state, // all previous notifications
+          ...state, // all previous toastrs
 
-          [id]: { // the new notification
+          [id]: { // the new toastr
             ...action.payload,
             id
           }
@@ -81,4 +81,4 @@ class NotificationReducer {
   }
 }
 
-export const notificationReducer = new NotificationReducer();
+export const toastrReducer = new ToastrReducer();

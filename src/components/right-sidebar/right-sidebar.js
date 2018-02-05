@@ -13,9 +13,9 @@ import {
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
-import { openNotification } from 'redux/modules/notification';
+import { openToastr } from 'redux/modules/toastr';
 import { ChangePasswordForm } from 'components/forms';
-import { notificationType } from 'components/notification/notification';
+import { toastrType } from 'components/toastr/toastr';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
@@ -35,7 +35,7 @@ class RightSidebar extends React.Component {
 
     const panes = [
       {
-        menuItem: <Button key='tab1' styleName='tab-selector'>Notifications</Button>,
+        menuItem: <Button key='tab1' styleName='tab-selector'>Toastrs</Button>,
         render: () => <Tab.Pane styleName='tab-pane'/>
       },
       {
@@ -108,10 +108,10 @@ const mapDispatchToProps = dispatch => ({
    * until API for change-password is implemented
    */
   changePassword: () =>
-    dispatch(openNotification({
+    dispatch(openToastr({
       header: 'Password changed',
       content: 'Your password has been successfully changed',
-      type: notificationType.SUCCESS
+      type: toastrType.SUCCESS
     }))
 });
 

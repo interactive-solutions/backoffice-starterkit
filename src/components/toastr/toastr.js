@@ -5,23 +5,23 @@ import {
   Transition
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { closeNotification as closeNotificationAction } from 'redux/modules/notification';
-import './style/notification.scss';
+import { closeToastr as closeToastrAction } from 'redux/modules/toastr';
+import './style/toastr.scss';
 
 // ---------------------------------
 // Constants
 // ---------------------------------
 
-export const notificationType = {
+export const toastrType = {
   INFO: 'info',
   SUCCESS: 'success'
 };
 
 // ---------------------------------
-// Notification
+// Toastr
 // ---------------------------------
 
-class Notification extends React.Component {
+class Toastr extends React.Component {
   state = {
     visible: false
   }
@@ -44,24 +44,24 @@ class Notification extends React.Component {
   onTransitionComplete = () => {
     /**
      * Wait until the removal animation is done,
-     * then remove the notification from redux
+     * then remove the toastr from redux
      */
     if (!this.state.visible) {
-      this.props.closeNotification(this.props.notification.id);
+      this.props.closeToastr(this.props.toastr.id);
     }
   }
 
   render = () => {
-    const { notification } = this.props;
-    const { header, content, type } = notification;
+    const { toastr } = this.props;
+    const { header, content, type } = toastr;
     let message;
 
     switch (type) {
-      case notificationType.INFO:
+      case toastrType.INFO:
         message = (
           <Message
             info
-            styleName='notification'
+            styleName='toastr'
             icon='info circle'
             header={header}
             content={content}
@@ -69,11 +69,11 @@ class Notification extends React.Component {
           />
         );
         break;
-      default: // notificationType.SUCCESS
+      default: // toastrType.SUCCESS
         message = (
           <Message
             success
-            styleName='notification'
+            styleName='toastr'
             icon='checkmark box'
             header={header}
             content={content}
@@ -96,27 +96,27 @@ class Notification extends React.Component {
   }
 }
 
-Notification.propTypes = {
-  notification: PropTypes.object.isRequired,
-  closeNotification: PropTypes.func.isRequired
+Toastr.propTypes = {
+  toastr: PropTypes.object.isRequired,
+  closeToastr: PropTypes.func.isRequired
 };
 
 // ---------------------------------
-// NotificationContainer
+// ToastrContainer
 // ---------------------------------
 
 const mapDispatchToProps = dispatch => ({
-  closeNotification: id => dispatch(closeNotificationAction(id))
+  closeToastr: id => dispatch(closeToastrAction(id))
 });
 
-const NotificationContainer =
+const ToastrContainer =
   connect(
     null,
     mapDispatchToProps,
-  )(Notification);
+  )(Toastr);
 
-NotificationContainer.propTypes = {
-  notification: PropTypes.object.isRequired
+ToastrContainer.propTypes = {
+  toastr: PropTypes.object.isRequired
 };
 
-export { NotificationContainer as Notification };
+export { ToastrContainer as Toastr };
