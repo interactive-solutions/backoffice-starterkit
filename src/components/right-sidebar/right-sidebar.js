@@ -35,7 +35,7 @@ class RightSidebar extends React.Component {
 
     const panes = [
       {
-        menuItem: <Button key='tab1' styleName='tab-selector'>Toastrs</Button>,
+        menuItem: <Button key='tab1' styleName='tab-selector'>Notifications</Button>,
         render: () => <Tab.Pane styleName='tab-pane'/>
       },
       {
