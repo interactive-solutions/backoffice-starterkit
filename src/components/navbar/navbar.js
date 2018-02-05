@@ -6,10 +6,8 @@ import {
   Sidebar,
   Segment,
   Image,
-  Container,
-  Grid
+  Container
 } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
 import Logo from 'assets/svg/is_tab_white.svg';
 import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
@@ -19,7 +17,7 @@ import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
 
-class Navbar extends Component {
+export class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -193,5 +191,3 @@ class Navbar extends Component {
     );
   }
 }
-
-export const RoutingNavbar = withRouter(Navbar);
