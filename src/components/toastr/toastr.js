@@ -35,24 +35,31 @@ class Toastr extends React.Component {
      * that transition will trigger the animation.
      */
     this.setState({ visible: true }); // eslint-disable-line
+    setTimeout(
+      () => {
+        // trigger transiton animation.
+        // which when it ends trigges this.onTransitionComplete.
+        this.setState({ visible: false });
+      },
+      5000
+    );
   }
 
   onDismiss = () => {
-    this.setState({ visible: false }); // triggers transiton animation.
+    // trigger transiton animation.
+    // which when it ends trigges this.onTransitionComplete.
+    this.setState({ visible: false });
+  }
+
+  onTransitionComplete = () => {
     /**
      * Wait until the removal animation is done,
      * then remove the toastr from redux
      */
-    setTimeout(
-      () => {
-        console.log(`removing id ${this.props.toastr.id}`); // eslint-disable-line
-        this.props.closeToastr(this.props.toastr.id);
-      },
-      this.transitionTime
-    );
+    if (!this.state.visible) {
+      this.props.closeToastr(this.props.toastr.id);
+    }
   }
-
-  transitionTime = 600
 
   render = () => {
     const { toastr } = this.props;
@@ -90,7 +97,7 @@ class Toastr extends React.Component {
      * https://github.com/Semantic-Org/Semantic-UI-React/issues/2166#issuecomment-334478073
      */
     return (
-      <Transition visible={this.state.visible} animation='fade up' duration={this.transitionTime}>
+      <Transition visible={this.state.visible} animation='fade up' duration={600} onComplete={this.onTransitionComplete}>
         <div styleName='extra-padding'>
           {message}
         </div>
