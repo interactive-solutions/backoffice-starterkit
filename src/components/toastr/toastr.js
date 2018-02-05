@@ -93,7 +93,12 @@ class Toastr extends React.Component {
      * https://github.com/Semantic-Org/Semantic-UI-React/issues/2166#issuecomment-334478073
      */
     return (
-      <Transition visible={this.state.visible} animation='fade up' duration={600} onComplete={this.onTransitionComplete}>
+      <Transition
+        visible={this.state.visible}
+        animation='fade up'
+        duration={600}
+        onComplete={this.onTransitionComplete}
+      >
         <div styleName='extra-padding'>
           {message}
         </div>

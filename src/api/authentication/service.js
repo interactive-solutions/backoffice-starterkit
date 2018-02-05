@@ -22,20 +22,22 @@ export class AuthenticationService {
    * @returns {Promise}
    */
   login(parameters: LoginParams): Promise<void> {
-    parameters.grant_type = 'password';
-
     return axios({
       method: 'POST',
       url: 'backend://oauth/token',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      data: parameters,
+      data: {
+        grant_type: 'password',
+        ...parameters
+      },
       transformRequest: [(data) => {
-        let str = [];
-        for (let p in data) {
-          if (data.hasOwnProperty(p) && data[p]) {
-            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(data[p]));
+        const str = [];
+        const entries = Object.entries(data);
+        entries.forEach(([key, value]) => {
+          if (value) {
+            str.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
           }
-        }
+        });
 
         return str.join('&');
       }]
@@ -76,10 +78,10 @@ export class AuthenticationService {
         refresh_token: authenticationStorage.read().refreshToken
       },
       transformRequest: [(data) => {
-        let str = [];
-        for (let p in data) {
+        const str = [];
+        for (const p in data) {
           if (data.hasOwnProperty(p) && data[p]) {
-            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(data[p]));
+            str.push(`${encodeURIComponent(p)}=${encodeURIComponent(data[p])}`);
           }
         }
 

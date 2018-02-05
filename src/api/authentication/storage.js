@@ -51,6 +51,6 @@ export class AuthenticationStorage {
       return;
     }
 
-    this.accessToken = new AccessToken(accessToken, ownerId, parseInt(expiresAt), refreshToken, tokenType);
+    this.accessToken = new AccessToken(accessToken, ownerId, parseInt(expiresAt, 10), refreshToken, tokenType);
   }
 }

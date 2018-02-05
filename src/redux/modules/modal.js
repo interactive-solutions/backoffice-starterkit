@@ -47,11 +47,9 @@ const INITIAL_STATE = {
 };
 
 class ModalReducer {
-  handle = (state = INITIAL_STATE, action: Action) => {
-    return Object.assign({}, state, {
-      modal: this.handleModal(state.modal, action)
-    });
-  }
+  handle = (state = INITIAL_STATE, action: Action) => Object.assign({}, state, {
+    modal: this.handleModal(state.modal, action)
+  })
 
   handleModal = (state, action: Action) => {
     switch (action.type) {

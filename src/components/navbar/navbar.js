@@ -175,7 +175,11 @@ export class Navbar extends Component {
         <Sidebar.Pusher>
           <div styleName='full-height'>
             <Container fluid styleName={navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-              <Header callback={this.toggleNavbar} toggleRightSidebar={this.toggleRightSidebar} title='Interactive Solutions'/>
+              <Header
+                callback={this.toggleNavbar}
+                toggleRightSidebar={this.toggleRightSidebar}
+                title='Interactive Solutions'
+              />
               <Sticky navbarIsBig={navbarIsVisible}>
                 <RightSidebar visible={rightSidebarIsVisible}/>
                 <Toastrs/>

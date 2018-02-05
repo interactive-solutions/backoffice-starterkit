@@ -21,7 +21,7 @@ export const rootReducer = (asyncReducers) =>
 export const injectReducer = (store, { key, reducer }) => {
   if (Object.hasOwnProperty.call(store.asyncReducers, key)) return;
 
-  store.asyncReducers[key] = reducer;
+  store.asyncReducers[key] = reducer; // eslint-disable-line
   store.replaceReducer(rootReducer(store.asyncReducers));
 };
 

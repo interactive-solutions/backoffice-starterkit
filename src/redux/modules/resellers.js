@@ -46,11 +46,9 @@ const INITIAL_STATE = {
 };
 
 class ResellerReducer {
-  handle = (state = INITIAL_STATE, action: Action) => {
-    return Object.assign({}, state, {
-      resellers: this.getResellerState(state.resellers, action)
-    });
-  }
+  handle = (state = INITIAL_STATE, action: Action) => Object.assign({}, state, {
+    resellers: this.getResellerState(state.resellers, action)
+  })
 
   getResellerState = (state, action: Action) => {
     switch (action.type) {

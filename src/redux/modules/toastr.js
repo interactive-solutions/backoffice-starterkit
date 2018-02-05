@@ -50,11 +50,9 @@ const INITIAL_STATE = {
 };
 
 class ToastrReducer {
-  handle = (state = INITIAL_STATE, action: Action) => {
-    return Object.assign({}, state, {
-      toastrs: this.handleToastr(state.toastrs, action)
-    });
-  }
+  handle = (state = INITIAL_STATE, action: Action) => Object.assign({}, state, {
+    toastrs: this.handleToastr(state.toastrs, action)
+  })
 
   handleToastr = (state, action: Action) => {
     switch (action.type) {
