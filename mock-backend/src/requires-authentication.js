@@ -7,11 +7,6 @@ import { oauth } from './mock-data/oauth';
  * otherwise returns false
  */
 export const requiresAuthentication = (req, res) => {
-  // todo.
-  /**
-   * temporarily this triggers oauth-mock to
-   * invalidate too old tokens.
-   */
   oauth.invalidateOldAccessTokens();
 
   if (!req) {
@@ -23,7 +18,7 @@ export const requiresAuthentication = (req, res) => {
   /**
    * Check if Authorization header exists.
    * 
-   * Check if that has a value of: `Bearer ${db.accessToken}`
+   * Check if that has a value of: `Bearer ${accessToken}`
    * 
    * Send back uuid etc.
    */
