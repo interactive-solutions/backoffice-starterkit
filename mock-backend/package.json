@@ -20,7 +20,7 @@
     "webpack": "^3.10.0"
   },
   "scripts": {
-    "start": "webpack && node ./build/app.js",
+    "start": "webpack && node ./dist/app.js",
     "lint": "eslint src"
   },
   "author": "Fredrik Hjärner",
