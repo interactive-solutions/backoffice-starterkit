@@ -7,7 +7,7 @@ export const userDatabase = {
     'admin'
   ],
   username: 'admin',
-  password: 'qwerty',
+  password: 'helloWorld',
   createdAt: '2018-01-31T12:16:23+00:00',
   updatedAt: '2018-01-31T12:16:23+00:00',
 
