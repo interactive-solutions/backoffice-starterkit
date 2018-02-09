@@ -20,6 +20,10 @@ import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
 class RightSidebar extends React.Component {
+  static propTypes = {
+    toggleRightSidebar: PropTypes.func
+  };
+
   state = { activeIndex: 1 }
 
   handleClick = (e, titleProps) => {
@@ -85,7 +89,15 @@ class RightSidebar extends React.Component {
     ];
     return (
       <Transition styleName='no-margins-or-padding' visible={visible} animation='fly left' duration={600}>
-        <div styleName='right-sidebar no-margins-or-padding'>
+        <div id='tab-container' styleName='right-sidebar no-margins-or-padding'>
+          <Menu styleName='no-margins-or-padding'>
+            <Menu.Item
+              position='right'
+              styleName='no-margins-or-padding'
+            >
+              <Button basic icon='close' onClick={this.props.toggleRightSidebar}/>
+            </Menu.Item>
+          </Menu>
           <Tab panes={panes} styleName='sidebar-tab no-margins-or-padding'/>
         </div>
       </Transition>

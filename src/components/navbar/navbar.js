@@ -189,7 +189,10 @@ export class Navbar extends Component {
                 title='Interactive Solutions'
             />
             <Sticky>
-              <RightSidebar visible={rightSidebarIsVisible}/>
+              <RightSidebar
+                visible={rightSidebarIsVisible}
+                toggleRightSidebar={this.toggleRightSidebar}
+              />
               <Toastrs/>
             </Sticky>
             <Container fluid styleName='main-container'>
