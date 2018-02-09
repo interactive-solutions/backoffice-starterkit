@@ -1,12 +1,9 @@
-import {
-  authenticationStorage,
-  authenticationService
-} from './index';
+import { authenticationStorage } from './index';
 import environment from './environment';
 
 export const apiUriInterceptor = (request) => {
   if (request.url.startsWith('backend://')) {
-    request.url = request.url.replace('backend://', environment.apiUrl); // 'http://api.duocircle.s2.isdemo.se/');
+    request.url = request.url.replace('backend://', environment.apiUrl);
   }
 
   if (request.url.startsWith('static://')) {
@@ -27,29 +24,4 @@ export const authorizationHeaderInterceptor = (request: any) => {
   }
 
   return request;
-};
-
-/**
- * Checks if we receive a 401 Unauthorized.
- * If so then first try to refresh,
- * then if we still get a 401, log out the user.
- */
-export const refreshTokenInterceptor = (response: any) => {
-  console.log('\n= refreshTokenInterceptor =\n'); // eslint-disable-line
-  // Grab HTTP status code.
-  const { status } = response;
-  console.log(`status: ${status}`); // eslint-disable-line
-  if (status !== 401) {
-    return response;
-  }
-
-  // debugger; // eslint-disable-line
-
-  const token = authenticationStorage.read();
-  if (token && !response.disableAuthorizationHeader) {
-    // const { refreshToken } = token;
-    authenticationService.refresh(); // todo should only do this once.
-  }
-
-  return response;
 };
