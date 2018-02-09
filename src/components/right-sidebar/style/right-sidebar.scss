@@ -12,16 +12,15 @@
   width: 100%;
 }
 
-.close-container {
-  border-radius: 0 !important;
-  background-color: grey !important;
-}
-
 .close-button {
   background-color: hsl(0, 63%, 64%) !important
 }
 
 @media (min-width: $cellphone-breakpoint+1) {
+  .close-container {
+    display: none !important;
+  }
+
   .right-sidebar {
     background-color: white;
     min-height: 100vh !important;
@@ -71,6 +70,11 @@
 }
 
 @media (max-width: $cellphone-breakpoint) {
+  .close-container {
+    border-radius: 0 !important;
+    background-color: grey !important;
+  }
+
   .right-sidebar {
     pointer-events: auto;
     /* float: right; */
