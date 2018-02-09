@@ -1,6 +1,25 @@
-.toastrs {
-  pointer-events: auto;
-  float: right;
-  width: 400px !important;
-  margin: 0 !important;
+@import "../../../css/breakpoints.scss";
+
+/* Desktop styles */
+@media (min-width: $cellphone-breakpoint) {
+  .toastrs {
+    pointer-events: auto;
+    float: right;
+    width: 400px !important;
+    margin: 0 !important;
+  }
 }
+
+/* Cellphone styles */
+@media (max-width: $cellphone-breakpoint) {
+  .toastrs {
+    pointer-events: auto;
+    /* float: right; */
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    z-index: 600 !important;
+  }
+}
+

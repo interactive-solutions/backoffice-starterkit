@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import L from 'react-loadable';
 import { Loader, Dimmer } from 'semantic-ui-react';
-import { Navbar } from 'components';
+import { NavbarContainer } from 'components';
 import { CoreLayout } from '../layouts/core-layout/core-layout';
 import { requiresAuthentication } from './utils';
 
@@ -23,7 +23,7 @@ const Dashboard = Loadable({ loader: () => import(/* webpackChunkName: 'dashboar
 const ResellersContainer = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers-container') });
   /* eslint-enable */
 
-const RoutingNavbar = requiresAuthentication(Navbar);
+const RoutingNavbar = requiresAuthentication(NavbarContainer);
 
 export const createRoutes = () => (
   <CoreLayout>

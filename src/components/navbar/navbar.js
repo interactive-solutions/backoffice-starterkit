@@ -4,19 +4,11 @@ import PropTypes from 'prop-types';
 import {
   Icon,
   Menu,
-  // Sidebar,
-  // Segment,
   Image,
   Container
 } from 'semantic-ui-react';
 import Logo from 'assets/svg/is_tab_white.svg';
-import { Header, RightSidebar } from 'components';
-import { Footer } from 'components/footer/footer';
-import { Sticky } from 'components/sticky/sticky';
-import { Toastrs } from 'components/toastrs/toastrs';
-// import { cellphoneBreakpoint } from 'constants/breakpoints';
 import { sideMenuContent } from './side-menu-content';
-import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
 
 export class Navbar extends Component {
@@ -32,8 +24,7 @@ export class Navbar extends Component {
 
     this.state = {
       activeItem: 'Dashboard',
-      navbarIsVisible: true,
-      rightSidebarIsVisible: false
+      navbarIsVisible: true
     };
   }
 
@@ -136,72 +127,27 @@ export class Navbar extends Component {
     });
   }
 
-  toggleNavbar = () => {
-    this.setState({ navbarIsVisible: !this.state.navbarIsVisible });
-  }
-
-  toggleRightSidebar = () => {
-    this.setState({ rightSidebarIsVisible: !this.state.rightSidebarIsVisible });
-  }
-
   render() {
     const {
-      navbarIsVisible,
-      rightSidebarIsVisible
+      navbarIsVisible
     } = this.state;
 
-    return (
-      <div style={{ display: 'flex', minHeight: '100%' }}>
-        <div style={{ display: 'flex', minHeight: '100%' }}>
-          {
-            navbarIsVisible ?
-              <Menu
-                style={{ minHeight: '100% !important' }}
-                styleName='sidebar no-margins-or-padding'
-                inverted
-                vertical
-              >
+    if (navbarIsVisible) {
+      return (
+        <Menu
+          style={{ minHeight: '100% !important' }}
+          styleName='no-margins-or-padding'
+          inverted
+          vertical
+        >
 
-                <Image centered size='small' src={Logo}/>
-                {this.createSideMenu()}
+          <Image centered size='small' src={Logo}/>
+          {this.createSideMenu()}
 
-              </Menu> :
-              null
-          }
+        </Menu>
+      );
+    }
 
-          <MinifiedNavbar
-            visible={!navbarIsVisible}
-            activeItem={this.state.activeItem}
-            logout={this.props.logout}
-            history={this.props.history}
-          />
-        </div>
-
-        <div style={{ flex: '1' }}>
-          <Container
-            style={{ minHeight: '100% !important' }}
-            fluid
-            styleName={(navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible')}
-          >
-            <Header
-                callback={this.toggleNavbar}
-                toggleRightSidebar={this.toggleRightSidebar}
-                title='Interactive Solutions'
-            />
-            <Sticky>
-              <RightSidebar
-                visible={rightSidebarIsVisible}
-                toggleRightSidebar={this.toggleRightSidebar}
-              />
-              <Toastrs/>
-            </Sticky>
-            <Container fluid styleName='main-container'>
-              {this.props.children}
-            </Container>
-            <Footer/>
-          </Container>
-        </div>
-      </div>
-    );
+    return null;
   }
 }

@@ -42,8 +42,8 @@
   box-shadow: #FFFFFF !important;
 }
 
-.remove-on-cellphone {
-  @media (max-width: $cellphone-breakpoint) {
+@media (max-width: $cellphone-breakpoint) {
+  .remove-on-cellphone {
     display: none !important;
   }
 }

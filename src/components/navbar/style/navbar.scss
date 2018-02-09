@@ -10,28 +10,10 @@
 .navbar {
   min-height: 101%;
   display: inline-block !important;
-  .sidebar {
-
-  }
 
   .full-height {
-    /* width: 101%; */
     min-height:100% !important;
     overflow-y: scroll;
-  }
-
-  .padded-header-visible {
-    /* padding-right: 260px;
-
-    transition: padding-right 0.7s  ease;
-    transition-delay: 0.4s; */
-    /* height: 100%; */
-  }
-  .padded-header-invisible {
-    /* padding-right: 60px;
-    transition: padding-right 0.7s ease;
-    transition-delay: 0.4s; */
-    /* height: 100%; */
   }
 
   .main-container {

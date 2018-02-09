@@ -15,7 +15,7 @@ import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
 import { openToastr } from 'redux/modules/toastr';
 import { ChangePasswordForm } from 'components/forms';
-import { toastrType } from 'components/toastr/toastr';
+import { toastrType } from 'components/toastrs/toastr/toastr';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
@@ -123,7 +123,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(openToastr({
       header: 'Password changed',
       content: 'Your password has been successfully changed',
-      type: toastrType.SUCCESS
+      type: toastrType.INFO
     }))
 });
 
