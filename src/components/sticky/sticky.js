@@ -5,7 +5,6 @@ import './style/sticky.scss';
 
 type Props = {
   children?: any;
-  navbarIsBig: boolean;
 };
 type State = {
   scrollOnTop: bool;
@@ -13,8 +12,7 @@ type State = {
 
 export class Sticky extends Component<Props, State> {
   static propTypes = {
-    children: PropTypes.any,
-    navbarIsBig: PropTypes.bool.isRequired
+    children: PropTypes.any
   };
 
   constructor(props: Props) {
@@ -34,7 +32,8 @@ export class Sticky extends Component<Props, State> {
   }
 
   handleScroll = (e: Object) => {
-    if (e.target.scrollTop > 15) {
+    const { scrollingElement } = e.target;
+    if (scrollingElement.scrollTop > 15) {
       this.setState({ scrollOnTop: false });
     } else {
       this.setState({ scrollOnTop: true });
@@ -43,12 +42,10 @@ export class Sticky extends Component<Props, State> {
 
   render() {
     const { scrollOnTop } = this.state;
-    const { navbarIsBig } = this.props;
     const moving = scrollOnTop ? 'stuck' : ' fixed';
-    const rightPos = navbarIsBig ? 'navbar-is-big' : 'navbar-is-small';
 
     return (
-      <div styleName={`${moving} ${rightPos}`}>
+      <div styleName={moving}>
         {this.props.children}
       </div>
     );

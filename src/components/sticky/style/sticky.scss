@@ -1,42 +1,33 @@
 @import "../../../css/breakpoints.scss";
 
+/* Desktop styles */
 @media (min-width: $cellphone-breakpoint+1) {
+  /* Common styles */
+  .fixed, .stuck {
+    z-index: 500 !important;
+    pointer-events: none !important;
+    padding: 0 !important;
+    right: 0 !important;
+    right: 0 !important;
+  }
+
   .fixed {
-    position: fixed;
-    z-index: 500;
-    top: 0px;
-    padding: 0;
-    width: 100%;
-    pointer-events: none;
+    position: fixed !important;
+    top: 0 !important;
   }
 
   .stuck {
-    z-index: 500;
-    padding: 0;
-    position: absolute;
-    width: 100%;
-    pointer-events: none;
-  }
-
-  .navbar-is-big {
-    right: 260px !important;
-    transition: right 0.7s  ease;
-    transition-delay: 0.4s;
-  }
-  .navbar-is-small {
-    right: 60px !important;
-    transition: right 0.7s ease;
-    transition-delay: 0.4s;
+    position: absolute !important;
   }
 }
 
+/* Cellphone styles */
 @media (max-width: $cellphone-breakpoint) {
-  .fixed, .stuck, .navbar-is-big, .navbar-is-small {
+  .fixed, .stuck {
     position: fixed !important;
     z-index: 500 !important;
-    top: 0px !important;
-    left: 0px !important;
-    /* right: 0px !important; */
+    top: 0 !important;
+    right: 0 !important;
     padding: 0 !important;
     width: 100% !important;
     pointer-events: none !important;
