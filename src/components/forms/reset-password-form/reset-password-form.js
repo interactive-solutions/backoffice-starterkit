@@ -22,7 +22,7 @@ const validate = ({ password, confirmPassword }) => {
   }
 
   if (!isValidPassword(password)) {
-    errors.password = 'Password must be at least 5 characters';
+    errors.password = 'Password must be at least 8 characters';
   }
   if (password !== confirmPassword) {
     errors.confirmPassword = "The passwords don't match";

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Sidebar, Image, Header } from 'semantic-ui-react';
+import { Icon, Menu, Image, Header } from 'semantic-ui-react';
 import Logo from 'assets/svg/is_tab_white.svg';
 import { sideMenuContent } from './side-menu-content';
 import './style/navbar.scss';
@@ -76,18 +76,19 @@ export class MinifiedNavbar extends Component {
   render() {
     const { visible } = this.props;
 
-    return (
-      <Sidebar
-        size='very thin'
-        as={Menu}
-        inverted
-        visible={visible}
-        vertical
-        animation='slide along'
-      >
-        <Image centered size='small' src={Logo}/>
-        {this.createSideMenu()}
-      </Sidebar>
-    );
+    if (visible) {
+      return (
+        <Menu
+          width={1}
+          inverted
+          vertical
+          styleName='small-navbar'
+        >
+          <Image centered size='small' src={Logo}/>
+          {this.createSideMenu()}
+        </Menu>
+      );
+    }
+    return null;
   }
 }

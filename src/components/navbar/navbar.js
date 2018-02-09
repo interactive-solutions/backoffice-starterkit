@@ -153,47 +153,50 @@ export class Navbar extends Component {
     return (
       <div style={{ display: 'flex', minHeight: '100%' }}>
         <div style={{ display: 'flex', minHeight: '100%' }}>
-          <Menu
-              style={{ minHeight: '100% !important', display: 'inline-block' }}
-              styleName='sidebar'
-              // as={Menu}
-              inverted
-              visible={navbarIsVisible}
-              vertical
-              animation='push'
-          >
+          {
+            navbarIsVisible ?
+              <Menu
+                style={{ minHeight: '100% !important' }}
+                styleName='sidebar no-margins-or-padding'
+                inverted
+                vertical
+              >
 
-            <Image centered size='small' src={Logo}/>
-            {this.createSideMenu()}
+                <Image centered size='small' src={Logo}/>
+                {this.createSideMenu()}
 
-          </Menu>
+              </Menu> :
+              null
+          }
 
           <MinifiedNavbar
-              visible={!navbarIsVisible}
-              activeItem={this.state.activeItem}
-              logout={this.props.logout}
-              history={this.props.history}
+            visible={!navbarIsVisible}
+            activeItem={this.state.activeItem}
+            logout={this.props.logout}
+            history={this.props.history}
           />
         </div>
 
         <div style={{ flex: '1' }}>
-          <div styleName='full-height'>
-            <Container fluid styleName={navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-              <Header
-                  callback={this.toggleNavbar}
-                  toggleRightSidebar={this.toggleRightSidebar}
-                  title='Interactive Solutions'
-              />
-              <Sticky>
-                <RightSidebar visible={rightSidebarIsVisible}/>
-                <Toastrs/>
-              </Sticky>
-              <Container fluid styleName='main-container'>
-                {this.props.children}
-              </Container>
-              <Footer/>
+          <Container
+            style={{ minHeight: '100% !important' }}
+            fluid
+            styleName={(navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible')}
+          >
+            <Header
+                callback={this.toggleNavbar}
+                toggleRightSidebar={this.toggleRightSidebar}
+                title='Interactive Solutions'
+            />
+            <Sticky>
+              <RightSidebar visible={rightSidebarIsVisible}/>
+              <Toastrs/>
+            </Sticky>
+            <Container fluid styleName='main-container'>
+              {this.props.children}
             </Container>
-          </div>
+            <Footer/>
+          </Container>
         </div>
       </div>
     );

@@ -1,3 +1,12 @@
+.no-margins-or-padding {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.small-navbar {
+  width: 4.5rem !important;
+}
+
 .navbar {
   min-height: 101%;
   display: inline-block !important;
@@ -7,23 +16,9 @@
 
   .full-height {
     /* width: 101%; */
-    height: 100vh;
-    min-height: 100vh;
+    min-height:100% !important;
     overflow-y: scroll;
   }
-
-//  min-height: calc(100vh + 80px);
-//  height: auto;
-/*
-  .ui.left.push.sidebar {
-      transform: translate3d(-90%,0,0);
-  }
-  .ui.left.visible.push.sidebar {
-      transform: translate3d(0,0,0);
-  }
-  .ui.sidebar {
-    visibility: visible;
-  }*/
 
   .padded-header-visible {
     /* padding-right: 260px;

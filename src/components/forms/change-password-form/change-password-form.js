@@ -30,7 +30,7 @@ const validate = ({ oldPassword, newPassword, confirmPassword }) => {
   }
 
   if (!isValidPassword(newPassword)) {
-    errors.newPassword = 'Password must be at least 5 characters';
+    errors.newPassword = 'Password must be at least 8 characters';
   }
   if (newPassword !== confirmPassword) {
     errors.confirmPassword = "The passwords don't match";

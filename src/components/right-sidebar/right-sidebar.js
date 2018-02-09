@@ -48,11 +48,11 @@ class RightSidebar extends React.Component {
 
               {/* Settings tab title */}
               <Menu.Item name='settings' styleName='settings-title'>
-                <Segment basic compact size='massive' styleName='basic-compact-segment'>
+                <Segment basic compact size='massive' styleName='no-margins-or-padding'>
                   <Icon name='setting'/>
                   Settings
                 </Segment>
-                <Segment basic compact styleName='basic-compact-segment'>
+                <Segment basic compact styleName='no-margins-or-padding'>
                   Manage your account
                 </Segment>
               </Menu.Item>
@@ -84,9 +84,9 @@ class RightSidebar extends React.Component {
       }
     ];
     return (
-      <Transition visible={visible} animation='fly left' duration={600}>
-        <div styleName='right-sidebar'>
-          <Tab panes={panes} styleName='sidebar-tab'/>
+      <Transition styleName='no-margins-or-padding' visible={visible} animation='fly left' duration={600}>
+        <div styleName='right-sidebar no-margins-or-padding'>
+          <Tab panes={panes} styleName='sidebar-tab no-margins-or-padding'/>
         </div>
       </Transition>
     );
