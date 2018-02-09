@@ -90,7 +90,7 @@ class RightSidebar extends React.Component {
     return (
       <Transition styleName='no-margins-or-padding' visible={visible} animation='fly left' duration={600}>
         <div id='tab-container' styleName='right-sidebar no-margins-or-padding'>
-          <Menu styleName='no-margins-or-padding'>
+          <Menu styleName='no-margins-or-padding no-border-radius'>
             <Menu.Item
               position='right'
               styleName='no-margins-or-padding'
