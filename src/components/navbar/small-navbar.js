@@ -76,19 +76,18 @@ export class MinifiedNavbar extends Component {
   render() {
     const { visible } = this.props;
 
-    if (visible) {
-      return (
-        <Menu
-          width={1}
-          inverted
-          vertical
-          styleName='small-navbar'
-        >
-          <Image centered size='small' src={Logo}/>
-          {this.createSideMenu()}
-        </Menu>
-      );
-    }
-    return null;
+    const style = visible ? 'small-navbar' : 'invisible-small-navbar';
+
+    return (
+      <Menu
+        width={1}
+        inverted
+        vertical
+        styleName={style}
+      >
+        <Image centered size='small' src={Logo}/>
+        {this.createSideMenu()}
+      </Menu>
+    );
   }
 }

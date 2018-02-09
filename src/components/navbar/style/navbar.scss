@@ -1,15 +1,27 @@
+@import "../../../css/breakpoints.scss";
+
 .no-margins-or-padding {
   margin: 0 !important;
   padding: 0 !important;
 }
 
-.small-navbar {
+.small-navbar, .invisible-small-navbar {
   width: 4.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.invisible-small-navbar {
+  @media (min-width: $cellphone-breakpoint) {
+    display: none !important;
+  }
 }
 
 .navbar {
-  min-height: 101%;
-  display: inline-block !important;
+  /* Always hide on low-res */
+  @media (max-width: $cellphone-breakpoint) {
+    display: none !important;
+  }
 
   .full-height {
     min-height:100% !important;
