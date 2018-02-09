@@ -13,7 +13,7 @@ export class ResetPassword extends Component {
   };
 
   onSubmit = (values) =>
-    userService.resetPassword(this.props.match.params.nounce, values.password)
+    userService.resetPassword(this.props.match.params.nonce, values.password)
       .then(() => this.props.push('login'))
       // note, handle error with modal
       .catch(() => {
