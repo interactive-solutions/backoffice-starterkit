@@ -1,3 +1,4 @@
+import MediaQuery from 'react-responsive';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -13,6 +14,7 @@ import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
 import { Sticky } from 'components/sticky/sticky';
 import { Toastrs } from 'components/toastrs/toastrs';
+import { cellphoneBreakpoint } from 'constants/breakpoints';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
@@ -149,49 +151,54 @@ export class Navbar extends Component {
     } = this.state;
 
     return (
-      <Sidebar.Pushable styleName='navbar' as={Segment}>
+      <MediaQuery query={`(min-width: ${cellphoneBreakpoint})`}>
+        {/* <Sidebar.Pushable styleName='navbar' as={Segment}> */}
+        <div style={{ display: 'flex', minHeight: '100%' }}>
+          <div style={{ display: 'flex', minHeight: '100%' }}>
+            <Menu
+              style={{ minHeight: '100% !important', display: 'inline-block' }}
+              styleName='sidebar'
+              // as={Menu}
+              inverted
+              visible={navbarIsVisible}
+              vertical
+              animation='push'
+            >
 
-        <Sidebar
-          styleName='sidebar'
-          as={Menu}
-          inverted
-          visible={navbarIsVisible}
-          vertical
-          animation='push'
-        >
+              <Image centered size='small' src={Logo}/>
+              {this.createSideMenu()}
 
-          <Image centered size='small' src={Logo}/>
-          {this.createSideMenu()}
+            </Menu>
 
-        </Sidebar>
-
-        <MinifiedNavbar
-          visible={!navbarIsVisible}
-          activeItem={this.state.activeItem}
-          logout={this.props.logout}
-          history={this.props.history}
-        />
-
-        <Sidebar.Pusher>
-          <div styleName='full-height'>
-            <Container fluid styleName={navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
-              <Header
-                callback={this.toggleNavbar}
-                toggleRightSidebar={this.toggleRightSidebar}
-                title='Interactive Solutions'
-              />
-              <Sticky navbarIsBig={navbarIsVisible}>
-                <RightSidebar visible={rightSidebarIsVisible}/>
-                <Toastrs/>
-              </Sticky>
-              <Container fluid styleName='main-container'>
-                {this.props.children}
-              </Container>
-              <Footer/>
-            </Container>
+            <MinifiedNavbar
+              visible={!navbarIsVisible}
+              activeItem={this.state.activeItem}
+              logout={this.props.logout}
+              history={this.props.history}
+            />
           </div>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+
+          <div style={{ flex: '1' }}>
+            <div styleName='full-height'>
+              <Container fluid styleName={navbarIsVisible ? 'padded-header-visible' : 'padded-header-invisible'}>
+                <Header
+                  callback={this.toggleNavbar}
+                  toggleRightSidebar={this.toggleRightSidebar}
+                  title='Interactive Solutions'
+                />
+                <Sticky navbarIsBig={navbarIsVisible}>
+                  <RightSidebar visible={rightSidebarIsVisible}/>
+                  <Toastrs/>
+                </Sticky>
+                <Container fluid styleName='main-container'>
+                  {this.props.children}
+                </Container>
+                <Footer/>
+              </Container>
+            </div>
+          </div>
+        </div>
+      </MediaQuery>
     );
   }
 }

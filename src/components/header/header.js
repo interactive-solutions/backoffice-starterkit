@@ -41,7 +41,7 @@ export class DashHeader extends Component {
 
     return (
       <Menu borderless styleName='marginless'>
-        <Menu.Item position='left' styleName='borderless'>
+        <Menu.Item position='left' styleName='borderless remove-on-cellphone'>
           <div styleName={adjustMenuIcon}>
             <Button
               primary
@@ -54,13 +54,13 @@ export class DashHeader extends Component {
             </Button>
           </div>
         </Menu.Item>
-        <Menu.Item position='left' styleName='logo borderless'>
+        <Menu.Item position='left' styleName='logo borderless remove-on-cellphone'>
           <Header as='h2' textAlign='center' style={{ backgroundColor: 'transparent' }}>
             <Image src={Logo} size='mini'/>
             {this.props.title}
           </Header>
         </Menu.Item>
-        <Menu.Item onClick={this.props.toggleRightSidebar}>
+        <Menu.Item position='right' onClick={this.props.toggleRightSidebar}>
           <Header as='h3'>
             <Icon name='tasks' size='tiny'/>
           </Header>

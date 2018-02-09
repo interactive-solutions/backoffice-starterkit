@@ -1,11 +1,12 @@
 .navbar {
   min-height: 101%;
+  display: inline-block !important;
   .sidebar {
 
   }
 
   .full-height {
-    width: 101%;
+    /* width: 101%; */
     height: 100vh;
     min-height: 100vh;
     overflow-y: scroll;
@@ -25,16 +26,16 @@
   }*/
 
   .padded-header-visible {
-    padding-right: 260px;
+    /* padding-right: 260px;
 
     transition: padding-right 0.7s  ease;
-    transition-delay: 0.4s;
+    transition-delay: 0.4s; */
     /* height: 100%; */
   }
   .padded-header-invisible {
-    padding-right: 60px;
+    /* padding-right: 60px;
     transition: padding-right 0.7s ease;
-    transition-delay: 0.4s;
+    transition-delay: 0.4s; */
     /* height: 100%; */
   }
 

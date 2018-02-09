@@ -1,3 +1,5 @@
+@import "../../../css/breakpoints.scss";
+
 .logo {
   background-color: transparent;
 }
@@ -38,4 +40,10 @@
 
 .white-border {
   box-shadow: #FFFFFF !important;
+}
+
+.remove-on-cellphone {
+  @media (max-width: $cellphone-breakpoint) {
+    display: none !important;
+  }
 }
