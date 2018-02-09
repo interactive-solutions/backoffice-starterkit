@@ -90,12 +90,12 @@ class RightSidebar extends React.Component {
     return (
       <Transition styleName='no-margins-or-padding' visible={visible} animation='fly left' duration={600}>
         <div id='tab-container' styleName='right-sidebar no-margins-or-padding'>
-          <Menu styleName='no-margins-or-padding no-border-radius'>
+          <Menu styleName='no-margins-or-padding close-container'>
             <Menu.Item
               position='right'
               styleName='no-margins-or-padding'
             >
-              <Button basic icon='close' onClick={this.props.toggleRightSidebar}/>
+              <Button color='red' icon='close' onClick={this.props.toggleRightSidebar} styleName='close-button'/>
             </Menu.Item>
           </Menu>
           <Tab panes={panes} styleName='sidebar-tab no-margins-or-padding'/>
