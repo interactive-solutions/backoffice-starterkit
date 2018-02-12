@@ -4,30 +4,25 @@
   background-color: transparent;
 }
 
-.menu-button {
-
-}
-
 .fixed-to-side {
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   position: fixed;
   z-index: 500;
   background-color: #1b1c1d;
   top: 25px;
   padding: 10px;
   padding-left: 50px;
-  left: 0;
+  /* left: 0; */
   overflow-x: visible;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  margin-left: -17px;
 
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
-
-
 }
 
 .marginless {
@@ -42,6 +37,7 @@
   box-shadow: #FFFFFF !important;
 }
 
+/* Cellphone styles */
 @media (max-width: $cellphone-breakpoint) {
   .remove-on-cellphone {
     display: none !important;

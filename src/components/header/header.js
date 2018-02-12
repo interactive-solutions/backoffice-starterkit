@@ -37,12 +37,12 @@ export class DashHeader extends Component {
 
   render() {
     const { scrollOnTop } = this.state;
-    const adjustMenuIcon = scrollOnTop ? '' : ' fixed-to-side';
+    const adjustMenuIcon = scrollOnTop ? 'remove-on-cellphone' : 'remove-on-cellphone fixed-to-side';
 
     return (
-      <Menu borderless styleName='marginless'>
-        <Menu.Item position='left' styleName='borderless remove-on-cellphone'>
-          <div styleName={adjustMenuIcon}>
+      <Menu id='header-root' borderless styleName='marginless'>
+        <Menu.Item id='header-navbar-toggle-root' position='left' styleName='borderless remove-on-cellphone'>
+          <div id='adjust-menu-icon' styleName={adjustMenuIcon}>
             <Button
               primary
               basic
@@ -66,7 +66,6 @@ export class DashHeader extends Component {
           </Header>
         </Menu.Item>
       </Menu>
-
     );
   }
 }
