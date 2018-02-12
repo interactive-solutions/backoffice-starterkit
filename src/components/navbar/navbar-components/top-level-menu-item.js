@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu } from 'semantic-ui-react';
 import { SubMenu } from './submenu';
-import './style/navbar.scss';
+import './style/top-level-menu-item.scss';
 
 export class TopLevelMenuItem extends Component { // eslint-disable-line
   static propTypes = {
@@ -12,35 +12,29 @@ export class TopLevelMenuItem extends Component { // eslint-disable-line
     icon: PropTypes.string.isRequired,
     caption: PropTypes.string.isRequired,
     setActiveItem: PropTypes.func.isRequired,
-    subMenuContent: PropTypes.object
-  }
-
-  /**
-   * @param textArray Array of sub-menu items as a string array.
-   * @param index Used to give the menu item a unique 'key'.
-   */
-  createAllSubMenuLinks = (textArray) => {
-    if (!textArray || textArray.length === 0) {
-      return null;
-    }
-    return (
-      <SubMenu>
-        {textArray.map(this.createSubMenuLink)}
-      </SubMenu>
-    );
+    subMenuContent: PropTypes.object,
+    small: PropTypes.bool.isRequired
   }
 
   render() {
-    const { subMenuContent } = this.props;
+    const { subMenuContent, small } = this.props;
+
+    const iconStyle = small ? 'icon enlargeIcon' : 'icon';
+    const captionStyle = small ? 'caption shrinkCaption' : 'caption';
+    // const topLevelMenuItemStyle = small ? 'topLevelMenuItem shrinkTopLevelMenuItem' : 'topLevelMenuItem';
 
     return (
       <Menu.Item
+        id='top-level-menu-item'
         color='red'
         name={this.props.name}
         {...(this.props.topLevelMenuItemProps)}
+        // styleName={topLevelMenuItemStyle}
       >
-        <Icon name={this.props.icon}/>
-        {this.props.caption}
+        <Icon fitted styleName={iconStyle} name={this.props.icon}/>
+        <span styleName={captionStyle}>
+          {this.props.caption}
+        </span>
         <SubMenu subMenuContent={subMenuContent}/>
       </Menu.Item>
     );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
-import './style/navbar.scss';
 
-export class SubMenuLink extends Component { // eslint-disable-line
+export class SubMenuItem extends Component { // eslint-disable-line
   static propTypes = {
     text: PropTypes.string.isRequired,
     activeItem: PropTypes.string.isRequired,

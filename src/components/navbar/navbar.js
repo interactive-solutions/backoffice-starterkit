@@ -14,7 +14,7 @@ export class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    // location: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired, // eslint-disable-line
     logout: PropTypes.func.isRequired
   }
 
@@ -74,12 +74,12 @@ export class Navbar extends Component {
             setActiveItem={this.setActiveItem}
           />
 
-          <MinifiedNavbar
+          {/* <MinifiedNavbar
             visible={!navbarIsVisible}
             activeItem={this.state.activeItem}
             logout={this.props.logout}
             history={this.props.history}
-          />
+          /> */}
         </div>
 
         <div styleName='flex-1 min-height-100'>

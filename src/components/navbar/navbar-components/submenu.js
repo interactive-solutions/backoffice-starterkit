@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
-import { SubMenuLink } from './submenu-link';
-import './style/navbar.scss';
+import { SubMenuItem } from './submenu-item';
 
 export class SubMenu extends Component { // eslint-disable-line
   static propTypes = {
@@ -21,7 +20,7 @@ export class SubMenu extends Component { // eslint-disable-line
     return (
       <Menu.Item>
         {subMenuContent.map((text, index) => (
-          <SubMenuLink
+          <SubMenuItem
             key={index}
             text={text}
             setActiveItem={setActiveItem}
