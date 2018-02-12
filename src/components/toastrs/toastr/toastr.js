@@ -96,7 +96,7 @@ class Toastr extends React.Component {
       <Transition
         visible={this.state.visible}
         animation='fade up'
-        duration={60}
+        duration={600}
         onComplete={this.onTransitionComplete}
       >
         <div styleName='extra-padding'>

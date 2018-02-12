@@ -123,7 +123,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(openToastr({
       header: 'Password changed',
       content: 'Your password has been successfully changed',
-      type: toastrType.INFO
+      type: toastrType.SUCCESS
     }))
 });
 
