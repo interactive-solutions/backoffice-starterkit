@@ -54,7 +54,7 @@ export class DashHeader extends Component {
             </Button>
           </div>
         </Menu.Item>
-        <Menu.Item position='left' styleName='logo borderless remove-on-cellphone'>
+        <Menu.Item fitted='horizontally' styleName='logo borderless remove-on-cellphone'>
           <Header as='h2' textAlign='center' style={{ backgroundColor: 'transparent' }}>
             <Image src={Logo} size='mini'/>
             {this.props.title}

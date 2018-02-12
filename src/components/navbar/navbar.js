@@ -175,28 +175,23 @@ export class Navbar extends Component {
           />
         </div>
 
-        <div style={{ flex: '1' }}>
-          <Container
-            style={{ minHeight: '100% !important' }}
-            fluid
-          >
-            <Header
-                callback={this.toggleNavbar}
-                toggleRightSidebar={this.toggleRightSidebar}
-                title='Interactive Solutions'
+        <div style={{ flex: '1', minHeight: '100% !important' }}>
+          <Header
+              callback={this.toggleNavbar}
+              toggleRightSidebar={this.toggleRightSidebar}
+              title='Interactive Solutions'
+          />
+          <Sticky>
+            <RightSidebar
+              visible={rightSidebarIsVisible}
+              toggleRightSidebar={this.toggleRightSidebar}
             />
-            <Sticky>
-              <RightSidebar
-                visible={rightSidebarIsVisible}
-                toggleRightSidebar={this.toggleRightSidebar}
-              />
-              <Toastrs/>
-            </Sticky>
-            <Container fluid styleName='main-container'>
-              {this.props.children}
-            </Container>
-            <Footer/>
+            <Toastrs/>
+          </Sticky>
+          <Container fluid styleName='main-container'>
+            {this.props.children}
           </Container>
+          <Footer/>
         </div>
       </div>
     );
