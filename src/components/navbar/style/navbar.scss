@@ -17,13 +17,33 @@
   flex: 1 !important;
 }
 
-.small-navbar, .invisible-small-navbar {
+@mixin transitions {
   -webkit-transition: all 0.6s ease;
   -moz-transition: all 0.6s ease;
   -o-transition: all 0.6s ease;
   -ms-transition: all 0.6s ease;
   transition: all 0.6s ease;
+  
+  -o-transform-origin: left;
+  -ms-transform-origin: left;
+  -webkit-transform-origin: left;
+  -moz-transform-origin: left;
   transform-origin: left;
+}
+
+@mixin scale-down {
+  -o-transform: scaleX(0.6) !important;
+  -moz-transform: scaleX(0.6) !important;
+  -ms-transform: scaleX(0.6) !important;
+  -webkit-transform: scaleX(0.6) !important;
+  transform: scaleX(0.6) !important;
+
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+.small-navbar, .invisible-small-navbar {
+  @include transitions;
 
   width: 4.5rem !important;
   margin: 0 !important;
@@ -31,12 +51,7 @@
 }
 
 .invisible-small-navbar {
-  -webkit-transition: all 0.6s ease;
-  -moz-transition: all 0.6s ease;
-  -o-transition: all 0.6s ease;
-  -ms-transition: all 0.6s ease;
-  transition: all 0.6s ease;
-  transform-origin: left;
+  @include transitions;
 
   @media (min-width: $cellphone-breakpoint) {
     /* display: none !important; */
@@ -47,32 +62,16 @@
 }
 
 .invisible-navbar {
-  -webkit-transition: all 0.6s ease;
-  -moz-transition: all 0.6s ease;
-  -o-transition: all 0.6s ease;
-  -ms-transition: all 0.6s ease;
-  transition: all 0.6s ease;
-  transform-origin: left;
-
-  transform: scaleX(0.6) !important;
-  width: 0 !important;
-  overflow: hidden !important;
+  @include transitions;
+  @include scale-down;
 }
 
 .navbar {
-  -webkit-transition: all 0.6s ease;
-  -moz-transition: all 0.6s ease;
-  -o-transition: all 0.6s ease;
-  -ms-transition: all 0.6s ease;
-  transition: all 0.6s ease;
-  transform-origin: left;
+  @include transitions;
 
   /* Always hide on low-res */
   @media (max-width: $cellphone-breakpoint) {
-    /* display: none !important; */
-    transform: scaleX(0.6) !important;
-    width: 0 !important;
-    overflow: hidden !important;
+    @include scale-down;
   }
 
   .full-height {
