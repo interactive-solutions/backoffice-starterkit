@@ -1,4 +1,3 @@
-// import MediaQuery from 'react-responsive';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -12,7 +11,6 @@ import { Header, RightSidebar } from 'components';
 import { Footer } from 'components/footer/footer';
 import { Sticky } from 'components/sticky/sticky';
 import { Toastrs } from 'components/toastrs/toastrs';
-// import { cellphoneBreakpoint } from 'constants/breakpoints';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
 import './style/navbar.scss';
