@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Icon,
   Menu,
   Image,
   Container
@@ -13,13 +12,16 @@ import { Sticky } from 'components/sticky/sticky';
 import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { MinifiedNavbar } from './small-navbar';
+import { TopLevelMenuItem } from './top-level-menu-item';
+import { SubMenu } from './submenu';
+import { SubMenuLink } from './submenu-link';
 import './style/navbar.scss';
 
 export class Navbar extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
+    // location: PropTypes.object.isRequired,
     logout: PropTypes.func.isRequired
   }
 
@@ -61,29 +63,21 @@ export class Navbar extends Component {
    * @param text What is displayed on the menu item.
    */
   createSubMenuLink = (text) => (
-    <Menu.Item
-        key={text}
-        color='red'
-        name={text}
-        active={this.state.activeItem === text}
-        onClick={this.setActiveItem}
-    >
-      {text}
-    </Menu.Item>
+    <SubMenuLink onClick={this.setActiveItem} activeItem={this.state.activeItem} text={text}/>
   )
 
   /**
    * @param textArray Array of sub-menu items as a string array.
    * @param index Used to give the menu item a unique 'key'.
    */
-  createAllSubMenuLinks = (textArray, index) => {
+  createAllSubMenuLinks = (textArray) => {
     if (!textArray || textArray.length === 0) {
       return null;
     }
     return (
-      <Menu.Menu key={index}>
+      <SubMenu>
         {textArray.map(this.createSubMenuLink)}
-      </Menu.Menu>
+      </SubMenu>
     );
   }
 
@@ -118,16 +112,15 @@ export class Navbar extends Component {
       }
 
       return (
-        <Menu.Item
+        <TopLevelMenuItem
           key={index}
-          color='red'
           name={name}
-          {...topLevelMenuItemProps}
+          topLevelMenuItemProps={topLevelMenuItemProps}
+          icon={menu.menuItem.icon}
+          caption={menu.menuItem.caption}
         >
-          <Icon name={menu.menuItem.icon}/>
-          {menu.menuItem.caption}
           {this.createAllSubMenuLinks(menu.subMenu)}
-        </Menu.Item>
+        </TopLevelMenuItem>
       );
     });
   }
