@@ -9,7 +9,8 @@
     "build": "webpack -p --progress --config ./config/webpack.prod.js",
     "serve": "serve dist -s -p 8081",
     "test": "jest",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "start-server": "cd mock-backend && webpack && node ./dist/app.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
