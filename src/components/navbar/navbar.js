@@ -146,23 +146,21 @@ export class Navbar extends Component {
       rightSidebarIsVisible
     } = this.state;
 
+    const navbarStyles = `no-margins-or-padding min-height-100${navbarIsVisible ? ' navbar' : ' invisible-navbar'}`;
+
     return (
       <div id='navbar-container' styleName='flex min-height-100'>
         <div id='navbar' styleName='flex min-height-100'>
-          {
-            navbarIsVisible ?
-              <Menu
-                styleName='navbar no-margins-or-padding min-height-100'
-                inverted
-                vertical
-              >
+          <Menu
+            styleName={navbarStyles}
+            inverted
+            vertical
+          >
 
-                <Image centered size='small' src={Logo}/>
-                {this.createSideMenu()}
+            <Image centered size='small' src={Logo}/>
+            {this.createSideMenu()}
 
-              </Menu> :
-              null
-          }
+          </Menu>
 
           <MinifiedNavbar
             visible={!navbarIsVisible}
