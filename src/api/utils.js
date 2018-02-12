@@ -3,7 +3,7 @@ import environment from './environment';
 
 export const apiUriInterceptor = (request) => {
   if (request.url.startsWith('backend://')) {
-    request.url = request.url.replace('backend://', environment.apiUrl); // 'http://api.duocircle.s2.isdemo.se/');
+    request.url = request.url.replace('backend://', environment.apiUrl);
   }
 
   if (request.url.startsWith('static://')) {

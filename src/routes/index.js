@@ -31,7 +31,7 @@ export const createRoutes = () => (
       <Route exact path='/' component={LoginContainer}/>
       <Route exact path='/login' component={LoginContainer}/>
       <Route exact path='/forgot-password' component={ForgotPassword}/>
-      <Route exact path='/reset-password/:nounce' component={ResetPassword}/>
+      <Route exact path='/reset-password/:nonce' component={ResetPassword}/>
       <RoutingNavbar>
         <Switch>
           <Route exact path='/dashboard' component={Dashboard}/>

@@ -35,11 +35,14 @@ prefer.
 
 ## Available commands
 
-* `yarn start` - starts webpack dev server (use --hot for HMR)
+* `yarn start` - starts webpack dev server (use --hot for HMR). The client runs at localhost:8080
 * `yarn build` - builds project to /dist
 * `yarn serve` - serves the /dist directory in order to test build locally
 * `yarn test` - runs test with Jest
 * `yarn flow` - starts flow server
+* `yarn lint` - runs eslint
+* `yarn lint --fix` - eslint automatically solves the problems that it can
+* `yarn start-server` - starts the mock-backend server. The server runs at localhost:3000
 
 ## Sentry configuration
 

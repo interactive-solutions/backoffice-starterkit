@@ -28,8 +28,8 @@ export class UserService {
   /**
    * When user sets the new password.
    */
-  resetPassword(nounce, password) {
-    return axios.post('backend://set-new-password/', { nounce, password });
+  resetPassword(nonce, password) {
+    return axios.post('backend://set-new-password', { nonce, password });
   }
 
   logout() {
