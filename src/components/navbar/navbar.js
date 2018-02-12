@@ -147,13 +147,12 @@ export class Navbar extends Component {
     } = this.state;
 
     return (
-      <div style={{ display: 'flex', minHeight: '100%' }}>
-        <div style={{ display: 'flex', minHeight: '100%' }}>
+      <div id='navbar-container' styleName='flex min-height-100'>
+        <div id='navbar' styleName='flex min-height-100'>
           {
             navbarIsVisible ?
               <Menu
-                style={{ minHeight: '100% !important' }}
-                styleName='navbar no-margins-or-padding'
+                styleName='navbar no-margins-or-padding min-height-100'
                 inverted
                 vertical
               >
@@ -173,7 +172,7 @@ export class Navbar extends Component {
           />
         </div>
 
-        <div style={{ flex: '1', minHeight: '100% !important' }}>
+        <div styleName='flex-1 min-height-100'>
           <Header
               callback={this.toggleNavbar}
               toggleRightSidebar={this.toggleRightSidebar}

@@ -16,56 +16,62 @@
   background-color: hsl(0, 63%, 64%) !important
 }
 
+.right-sidebar {
+  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
+  pointer-events: auto;
+  background-color: white;
+}
+
+.sidebar-tab {
+  margin-top: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border: none;
+}
+
+.tab-pane {
+  height: 100%;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.settings-title {
+  padding: 1.5em !important;
+  font-size: 135%;
+}
+
+.menu-item {
+  padding: 1.5em !important;
+  font-size: 135%;
+  cursor: pointer;
+}
+
+.menu-item-form {
+  padding: 0 1.5em 1.5em 1.5em !important;
+  margin-top: 0px !important;
+}
+
+.grid-column {
+  padding-right: 1rem !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
 @media (min-width: $cellphone-breakpoint+1) {
   .close-container {
     display: none !important;
   }
 
   .right-sidebar {
-    background-color: white;
     min-height: 100vh !important;
-    pointer-events: auto;
     float: right;
     width: 25rem;
-    box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
   }
 
   .sidebar-tab {
     height: 100%;
-    margin-top: 0;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border: none;
-  }
-
-  .tab-pane {
-    height: 100%;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  .settings-title {
-    padding: 1.5em !important;
-    font-size: 135%;
-  }
-
-  .menu-item {
-    padding: 1.5em !important;
-    font-size: 135%;
-    cursor: pointer;
-  }
-
-  .menu-item-form {
-    padding: 0 1.5em 1.5em 1.5em !important;
-    margin-top: 0px !important;
-  }
-
-  .grid-column {
-    padding-right: 1rem !important;
-  }
-
-  .no-padding {
-    padding: 0 !important;
   }
 }
 
@@ -76,46 +82,10 @@
   }
 
   .right-sidebar {
-    pointer-events: auto;
     width: 100%;
-    box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
   }
 
   .sidebar-tab {
     height: 100vh;
-    margin-top: 0;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border: none;
-  }
-
-  .tab-pane {
-    height: 100%;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  .settings-title {
-    padding: 1.5em !important;
-    font-size: 135%;
-  }
-
-  .menu-item {
-    padding: 1.5em !important;
-    font-size: 135%;
-    cursor: pointer;
-  }
-
-  .menu-item-form {
-    padding: 0 1.5em 1.5em 1.5em !important;
-    margin-top: 0px !important;
-  }
-
-  .grid-column {
-    padding-right: 1rem !important;
-  }
-
-  .no-padding {
-    padding: 0 !important;
   }
 }
