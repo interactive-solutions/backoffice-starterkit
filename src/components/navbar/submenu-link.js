@@ -7,7 +7,7 @@ export class SubMenuLink extends Component { // eslint-disable-line
   static propTypes = {
     text: PropTypes.string.isRequired,
     activeItem: PropTypes.string.isRequired,
-    onClick: PropTypes.func
+    setActiveItem: PropTypes.func
   }
 
   render() {
@@ -16,7 +16,7 @@ export class SubMenuLink extends Component { // eslint-disable-line
         color='red'
         name={this.props.text}
         active={this.props.activeItem === this.props.text}
-        onClick={this.props.onClick}
+        onClick={this.props.setActiveItem}
       >
         {this.props.text}
       </Menu.Item>
