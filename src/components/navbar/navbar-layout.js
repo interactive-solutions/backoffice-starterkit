@@ -13,6 +13,7 @@ export class NavbarLayout extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
+    //                   the eslint-disable-line below is needed
     location: PropTypes.object.isRequired // eslint-disable-line
   }
 

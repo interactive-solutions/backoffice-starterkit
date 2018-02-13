@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
 
-export class SubMenuItem extends Component { // eslint-disable-line
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-    activeItem: PropTypes.string.isRequired,
-    setActiveItem: PropTypes.func
-  }
+export const SubMenuItem = (props) => (
+  <Menu.Item
+    color='red'
+    name={props.text}
+    active={props.activeItem === props.text}
+    onClick={props.setActiveItem}
+  >
+    {props.text}
+  </Menu.Item>
+);
 
-  render() {
-    return (
-      <Menu.Item
-        color='red'
-        name={this.props.text}
-        active={this.props.activeItem === this.props.text}
-        onClick={this.props.setActiveItem}
-      >
-        {this.props.text}
-      </Menu.Item>
-    );
-  }
-}
+SubMenuItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  setActiveItem: PropTypes.func
+};
