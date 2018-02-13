@@ -1,97 +1,69 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
-import { Header, RightSidebar } from 'components';
-import { Footer } from 'components/footer/footer';
-import { Sticky } from 'components/sticky/sticky';
-import { Toastrs } from 'components/toastrs/toastrs';
-import { sideMenuContent } from './side-menu-content';
-import { BigNavbar } from './big-navbar';
+import Logo from 'assets/svg/is_tab_white.svg';
+import { Menu, Image } from 'semantic-ui-react';
+import { TopLevelMenuItem } from './navbar-components/top-level-menu-item';
 import './style/navbar.scss';
 
-export class Navbar extends Component {
+export class Navbar extends Component { // eslint-disable-line
   static propTypes = {
-    children: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired // eslint-disable-line
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeItem: 'Dashboard',
-      navbarIsVisible: true,
-      rightSidebarIsVisible: false
-    };
-  }
-
-  componentWillMount() {
-    this.setActiveItemByRoute(this.props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setActiveItemByRoute(nextProps);
-  }
-
-  setActiveItemByRoute(props) {
-    if (props.location) {
-      const path = props.location.pathname;
-      const activeItem = path.charAt(1).toUpperCase() + path.slice(2);
-      this.setState({ activeItem });
-    }
-  }
-
-  setActiveItem = (e, { name }) => {
-    e.stopPropagation();
-    this.setState({ activeItem: name });
-    this.props.history.push(name.toLowerCase().replace(' ', ''));
-  }
-
-  toggleNavbar = () => {
-    this.setState({ navbarIsVisible: !this.state.navbarIsVisible });
-  }
-
-  toggleRightSidebar = () => {
-    this.setState({ rightSidebarIsVisible: !this.state.rightSidebarIsVisible });
+    visible: PropTypes.bool.isRequired,
+    sideMenuContent: PropTypes.object,
+    activeItem: PropTypes.string.isRequired,
+    setActiveItem: PropTypes.func.isRequired
   }
 
   render() {
-    const {
-      navbarIsVisible,
-      rightSidebarIsVisible
-    } = this.state;
+    const { visible, sideMenuContent, activeItem, setActiveItem } = this.props;
+    const navbarStyles = `no-margins-or-padding min-height-100${visible ? ' navbar' : ' small-navbar'}`;
+
+    let sideMenu;
+
+    if (!sideMenuContent) {
+      sideMenu = null;
+    } else {
+      sideMenu = sideMenuContent.map((menu, index) => {
+        const name = menu.menuItem.caption;
+        let topLevelMenuItemProps = {};
+
+        const active = menu.menuItem.caption === activeItem;
+
+        if (menu.menuItem.link) {
+          topLevelMenuItemProps = {
+            active,
+            onClick: setActiveItem
+          };
+        }
+        if (menu.menuItem.callback) {
+          topLevelMenuItemProps = {
+            onClick: () => menu.menuItem.callback(this)
+          };
+        }
+
+        return (
+          <TopLevelMenuItem
+            key={index}
+            name={name}
+            topLevelMenuItemProps={topLevelMenuItemProps}
+            icon={menu.menuItem.icon}
+            caption={menu.menuItem.caption}
+            subMenuContent={menu.subMenu}
+            setActiveItem={setActiveItem}
+            small={!visible}
+          />
+        );
+      });
+    }
 
     return (
-      <div id='navbar-container' styleName='flex min-height-100'>
-        <div id='navbar' styleName='flex min-height-100'> {/* todo. test to merge these two tags */}
-          <BigNavbar
-            visible={navbarIsVisible}
-            sideMenuContent={sideMenuContent}
-            activeItem={this.state.activeItem}
-            setActiveItem={this.setActiveItem}
-          />
-        </div>
-
-        <div styleName='flex-1 min-height-100'>
-          <Header
-              callback={this.toggleNavbar}
-              toggleRightSidebar={this.toggleRightSidebar}
-              title='Interactive Solutions'
-          />
-          <Sticky>
-            <RightSidebar
-              visible={rightSidebarIsVisible}
-              toggleRightSidebar={this.toggleRightSidebar}
-            />
-            <Toastrs/>
-          </Sticky>
-          <Container fluid styleName='main-container'>
-            {this.props.children}
-          </Container>
-          <Footer/>
-        </div>
-      </div>
+      <Menu
+        styleName={navbarStyles}
+        inverted
+        vertical
+      >
+        <Image centered size='small' src={Logo}/>
+        {sideMenu}
+      </Menu>
     );
   }
 }
