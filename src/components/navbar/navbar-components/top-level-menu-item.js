@@ -19,8 +19,6 @@ export class TopLevelMenuItem extends Component { // eslint-disable-line
   render() {
     const { subMenuContent, small } = this.props;
 
-    const iconStyle = 'icon'; // small ? 'icon enlargeIcon' : 'icon';
-    const captionStyle = 'caption'; // small ? 'caption shrinkCaption' : 'caption';
     const topLevelMenuItemStyle = small ? 'topLevelMenuItem shrinkTopLevelMenuItem' : 'topLevelMenuItem';
     const smallMenuItemStyle = small ? 'smallMenuItem' : 'smallMenuItem shrunkSmallMenuItem';
 

@@ -71,7 +71,9 @@
 
   /* Always hide on low-res */
   @media (max-width: $cellphone-breakpoint) {
-    @include scale-down;
+    width: 4.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .full-height {
