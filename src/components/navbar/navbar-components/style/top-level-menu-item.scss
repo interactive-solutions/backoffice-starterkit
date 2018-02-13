@@ -27,6 +27,11 @@ $transition-time: 0.6s;
   font-size: 0px !important;
 }
 
+/*
+ * The small menu item is only shrunk on high-res.
+ * SmallMenuItem is the element(s) that is/are shown
+ * in the navbar when it is small.
+ */
 @media (min-width: $cellphone-breakpoint) {
   .shrunkSmallMenuItem {
     padding: 0 !important;
