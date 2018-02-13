@@ -40,10 +40,15 @@ const validate = ({ oldPassword, newPassword, confirmPassword }) => {
 };
 
 const ChangePasswordReduxForm = (props) => {
-  const { submitting, onSubmit, handleSubmit, error } = props;
+  const { submitting, onSubmit, handleSubmit, error, reset } = props;
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      onSubmit={handleSubmit((data) => {
+        reset();
+        return onSubmit(data);
+      })}
+    >
       <Field
         label='Old password'
         name='oldPassword'
