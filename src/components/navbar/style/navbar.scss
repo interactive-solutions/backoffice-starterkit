@@ -17,12 +17,14 @@
   flex: 1 !important;
 }
 
+$transition-time: 0.6s;
+
 @mixin transitions {
-  -webkit-transition: all 0.6s ease;
-  -moz-transition: all 0.6s ease;
-  -o-transition: all 0.6s ease;
-  -ms-transition: all 0.6s ease;
-  transition: all 0.6s ease;
+  -webkit-transition: all $transition-time ease;
+  -moz-transition: all $transition-time ease;
+  -o-transition: all $transition-time ease;
+  -ms-transition: all $transition-time ease;
+  transition: all $transition-time ease;
   
   -o-transform-origin: left;
   -ms-transform-origin: left;
@@ -31,39 +33,12 @@
   transform-origin: left;
 }
 
-@mixin scale-down {
-  -o-transform: scaleX(0.6) !important;
-  -moz-transform: scaleX(0.6) !important;
-  -ms-transform: scaleX(0.6) !important;
-  -webkit-transform: scaleX(0.6) !important;
-  transform: scaleX(0.6) !important;
-
-  width: 0 !important;
-  overflow: hidden !important;
-}
-
-.small-navbar, .invisible-small-navbar {
+.small-navbar {
   @include transitions;
 
   width: 4.5rem !important;
   margin: 0 !important;
   padding: 0 !important;
-}
-
-.invisible-small-navbar {
-  @include transitions;
-
-  @media (min-width: $cellphone-breakpoint) {
-    /* display: none !important; */
-    transform: scaleX(0.6) !important;
-    width: 0 !important;
-    overflow: hidden !important;
-  }
-}
-
-.invisible-navbar {
-  @include transitions;
-  @include scale-down;
 }
 
 .navbar {
@@ -77,7 +52,7 @@
   }
 
   .full-height {
-    min-height:100% !important;
+    min-height: 100% !important;
     overflow-y: scroll;
   }
 
