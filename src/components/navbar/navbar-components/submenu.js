@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
-import { SubMenuItem } from './submenu-item';
 
 export const SubMenu = (props) => {
   const { subMenuContent, setActiveItem, activeItem } = props;
@@ -13,12 +12,15 @@ export const SubMenu = (props) => {
   return (
     <Menu.Item>
       {subMenuContent.map((text, index) => (
-        <SubMenuItem
+        <Menu.Item
           key={index}
-          text={text}
-          setActiveItem={setActiveItem}
-          activeItem={activeItem}
-        />
+          color='red'
+          name={text}
+          active={activeItem === text}
+          onClick={setActiveItem}
+        >
+          {text}
+        </Menu.Item>
       ))}
     </Menu.Item>
   );
