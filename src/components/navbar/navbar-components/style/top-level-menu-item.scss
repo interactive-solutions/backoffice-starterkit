@@ -1,9 +1,16 @@
-.icon, .caption, .topLevelMenuItem {
-  -webkit-transition: all 0.6s ease !important;
-  -moz-transition: all 0.6s ease !important;
-  -o-transition: all 0.6s ease !important;
-  -ms-transition: all 0.6s ease !important;
-  transition: all 0.6s ease !important;
+.centered-icon {
+  position: relative;
+  left: -5px;
+}
+
+$transition-time: 0.6s;
+
+.icon, .caption, .topLevelMenuItem, .smallMenuItem {
+  -webkit-transition: all $transition-time ease !important;
+  -moz-transition: all $transition-time ease !important;
+  -o-transition: all $transition-time ease !important;
+  -ms-transition: all $transition-time ease !important;
+  transition: all $transition-time ease !important;
   
   -o-transform-origin: left top !important;
   -ms-transform-origin: left top !important;
@@ -49,7 +56,35 @@ $scale: 2.5;
 }
 
 .shrinkTopLevelMenuItem {
-  overflow: hidden !important;
+  /* -o-transform: scale(0) !important;
+  -moz-transform: scale(0) !important;
+  -ms-transform: scale(0) !important;
+  -webkit-transform: scale(0) !important;
+  transform: scale(0) !important; */
+
+  /* width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important; */
+
+  /* padding: 0 !important;
+  margin: 0 !important; */
+
+  font-size: 0px !important;
+}
+
+.shrunkSmallMenuItem {
+  /* -o-transform: scale(0) !important;
+  -moz-transform: scale(0) !important;
+  -ms-transform: scale(0) !important;
+  -webkit-transform: scale(0) !important;
+  transform: scale(0) !important; */
+
+  /* width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important; */
+
   padding: 0 !important;
   margin: 0 !important;
+
+  font-size: 0px !important;
 }
