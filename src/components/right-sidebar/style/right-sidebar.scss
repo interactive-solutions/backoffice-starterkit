@@ -15,6 +15,9 @@
 }
 
 .right-sidebar {
+  z-index: 500 !important;
+  /* position: fixed !important;
+  right: 0 !important; */
   box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
   pointer-events: auto;
   background-color: white;
