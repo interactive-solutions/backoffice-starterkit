@@ -40,7 +40,7 @@ export class DashHeader extends Component {
     const adjustMenuIcon = scrollOnTop ? 'remove-on-cellphone' : 'remove-on-cellphone fixed-to-side';
 
     return (
-      <Menu id='header-root' borderless styleName='marginless'>
+      <Menu id='header-root' borderless styleName='header'>
         <Menu.Item id='header-navbar-toggle-root' position='left' styleName='borderless remove-on-cellphone'>
           <div id='adjust-menu-icon' styleName={adjustMenuIcon}>
             <Button
