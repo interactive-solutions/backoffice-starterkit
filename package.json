@@ -10,7 +10,7 @@
     "serve": "serve dist -s -p 8081",
     "test": "jest",
     "lint": "eslint src",
-    "start-server": "cd mock-backend && webpack && node ./dist/app.js"
+    "start-server": "cd mock-backend && yarn && webpack && node ./dist/app.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
