@@ -64,7 +64,7 @@ export class NavbarContainer extends Component {
     } = this.state;
 
     return (
-      <div id='navbar-container' styleName='flex min-height-100'>
+      <div id='navbar-container' styleName='flex height-100vh'>
         <div id='navbar' styleName='flex min-height-100'> {/* todo. test to merge these two tags */}
           <Navbar
             visible={navbarIsVisible}
@@ -74,7 +74,7 @@ export class NavbarContainer extends Component {
           />
         </div>
 
-        <div styleName='flex-1 min-height-100'>
+        <div id='content-container' styleName='flex-1 content-container'>
           <Header
               callback={this.toggleNavbar}
               toggleRightSidebar={this.toggleRightSidebar}
