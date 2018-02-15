@@ -9,7 +9,7 @@ import { sideMenuContent } from './side-menu-content';
 import { Navbar } from './navbar';
 import './style/navbar.scss';
 
-export class NavbarLayout extends Component {
+export class NavbarContainer extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
