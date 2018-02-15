@@ -1,48 +1,60 @@
-.centered-icon {
-  position: relative;
-  left: -5px;
+.flex {
+  display: flex !important;
+  justify-content: space-between !important;
 }
 
 $transition-time: 0.6s;
 
-.topLevelMenuItem, .smallMenuItem {
-  -webkit-transition: all $transition-time ease !important;
-  -moz-transition: all $transition-time ease !important;
-  -o-transition: all $transition-time ease !important;
-  -ms-transition: all $transition-time ease !important;
-  transition: all $transition-time ease !important;
-  
-  -o-transform-origin: left top !important;
-  -ms-transform-origin: left top !important;
-  -webkit-transform-origin: left top !important;
-  -moz-transform-origin: left top !important;
-  transform-origin: left top !important;
-
-  position: relative !important;
+@mixin transitions {
+  -webkit-transition: all $transition-time ease;
+  -moz-transition: all $transition-time ease;
+  -o-transition: all $transition-time ease;
+  -ms-transition: all $transition-time ease;
+  transition: all $transition-time ease;
 }
 
-.shrinkTopLevelMenuItem {
+/*****************************
+ * caption styles
+ *****************************/
+
+.caption {
+  @include transitions;
+  @media (max-width: $cellphone-breakpoint) {
+    font-size: 0px !important;
+  }
+}
+
+.shrinkCaption {
   font-size: 0px !important;
 }
 
-/*
- * The small menu item is only shrunk on high-res.
- * SmallMenuItem is the element(s) that is/are shown
- * in the navbar when it is small.
- */
-@media (min-width: $cellphone-breakpoint+1) {
-  .shrunkSmallMenuItem {
-    padding: 0 !important;
-    margin: 0 !important;
-    font-size: 0px !important;
+/*****************************
+ * icon styles
+ *****************************/
+
+.icon {
+  @include transitions;
+  @media (max-width: $cellphone-breakpoint) {
+    font-size: 3.3rem !important;
   }
 }
-  
-/*
- * Cellphone styles
- */
-@media (max-width: $cellphone-breakpoint) {
-  .topLevelMenuItem {
-    font-size: 0px !important;
+
+.enlargeIcon {
+  font-size: 3.3rem !important;
+}
+
+/*****************************
+ * topLevelMenuItem styles
+ *****************************/
+
+.topLevelMenuItem {
+  @include transitions;
+
+  @media (max-width: $cellphone-breakpoint) {
+    padding: 11px 0 11px 0 !important;
   }
+}
+
+.shrinkTopLevelMenuItem {
+  padding: 11px 0 11px 0 !important;
 }

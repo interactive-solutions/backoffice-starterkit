@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Header } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 import { SubMenu } from './submenu';
 import './style/top-level-menu-item.scss';
 
@@ -8,45 +8,27 @@ export const TopLevelMenuItem = (props) => {
   const { subMenuContent, small } = props;
 
   const topLevelMenuItemStyle = small ? 'topLevelMenuItem shrinkTopLevelMenuItem' : 'topLevelMenuItem';
-  const smallMenuItemStyle = small ? 'smallMenuItem' : 'smallMenuItem shrunkSmallMenuItem';
+  const captionStyle = small ? 'caption shrinkCaption' : 'caption';
+  const iconStyle = small ? 'icon enlargeIcon' : 'icon';
 
   return (
-    <React.Fragment>
-      {/*
-        * For big menu.
-        */}
-      <div styleName={topLevelMenuItemStyle}>
-        <Menu.Item
-          id='top-level-menu-item'
-          color='red'
-          name={props.name}
-          {...(props.topLevelMenuItemProps)}
-        >
-          <Icon name={props.icon}/>
+    <Menu.Item
+      id='top-level-menu-item'
+      color='red'
+      name={props.name}
+      {...(props.topLevelMenuItemProps)}
+      styleName={topLevelMenuItemStyle}
+    >
+      <div styleName='flex'>
+        <div styleName={captionStyle}>
           {props.caption}
-          <SubMenu subMenuContent={subMenuContent}/>
-        </Menu.Item>
+        </div>
+        <div styleName={iconStyle}>
+          <Icon name={props.icon}/>
+        </div>
       </div>
-
-      {/*
-        * For small menu.
-        */}
-      <div styleName={smallMenuItemStyle}>
-        <Menu.Item
-          id='top-level-menu-item'
-          color='red'
-          name={props.name}
-          {...(props.topLevelMenuItemProps)}
-        >
-          <Header as='h2' textAlign='center' inverted styleName={smallMenuItemStyle}>
-            <div styleName='centered-icon'>
-              <Icon fitted name={props.icon} size='large'/>
-            </div>
-          </Header>
-          <SubMenu subMenuContent={subMenuContent}/>
-        </Menu.Item>
-      </div>
-    </React.Fragment>
+      <SubMenu subMenuContent={subMenuContent}/>
+    </Menu.Item>
   );
 };
 
