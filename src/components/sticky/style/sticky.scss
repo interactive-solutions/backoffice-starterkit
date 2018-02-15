@@ -1,9 +1,12 @@
+.fixed, .stuck {
+  pointer-events: none !important;
+}
+
 /* Desktop styles */
 @media (min-width: $cellphone-breakpoint+1) {
   /* Common styles */
   .fixed, .stuck {
     z-index: 500 !important;
-    pointer-events: none !important;
     padding: 0 !important;
     right: 0 !important;
     display: inline-block !important;
@@ -14,17 +17,3 @@
     top: 0 !important;
   }
 }
-
-/* Cellphone styles */
-@media (max-width: $cellphone-breakpoint) {
-  .fixed, .stuck {
-    position: fixed !important;
-    z-index: 500 !important;
-    top: 0 !important;
-    right: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    pointer-events: none !important;
-  }
-}
-  

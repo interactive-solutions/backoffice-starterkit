@@ -45,10 +45,8 @@ export class Sticky extends Component<Props, State> {
     const moving = scrollOnTop ? 'stuck' : ' fixed';
 
     return (
-      <div id='sticky-root-element'>
-        <div styleName={moving}>
-          {this.props.children}
-        </div>
+      <div styleName={moving}>
+        {this.props.children}
       </div>
     );
   }

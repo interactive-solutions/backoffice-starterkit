@@ -80,7 +80,12 @@
   }
 
   .right-sidebar {
-    width: 100%;
+    position: fixed !important;
+    z-index: 500 !important;
+    top: 0 !important;
+    right: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
 
   .sidebar-tab {
