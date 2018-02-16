@@ -1,23 +1,19 @@
-/* Desktop styles */
-@media (min-width: $cellphone-breakpoint+1) {
-  .toastrs {
-    pointer-events: auto;
-    float: right;
-    width: 400px !important;
-    margin: 0 !important;
-  }
-}
+.toastrs {
+  z-index: 600 !important;
+  margin: 0 !important;
+  position: fixed !important;
+  pointer-events: auto;
 
-/* Cellphone styles */
-@media (max-width: $cellphone-breakpoint) {
-  .toastrs {
-    pointer-events: auto;
-    position: fixed !important;
+  /* Desktop styles */
+  @media (min-width: $cellphone-breakpoint+1) {
+    top: 72px !important;
+    right: 362px !important;
+    width: 400px !important;
+  }
+  /* Cellphone styles */
+  @media (max-width: $cellphone-breakpoint) {
     top: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    margin: 0 !important;
-    z-index: 600 !important;
   }
 }
-

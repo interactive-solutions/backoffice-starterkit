@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
-import { Header, RightSidebar } from 'components';
+import { Header, RightSidebar, BreadcrumbHeader } from 'components';
 import { Footer } from 'components/footer/footer';
-import { Sticky } from 'components/sticky/sticky';
 import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { Navbar } from './navbar';
@@ -63,6 +62,11 @@ export class NavbarContainer extends Component {
       rightSidebarIsVisible
     } = this.state;
 
+    // todo move this
+    const path = this.props.location.pathname;
+    const pathArray = path.split('/');
+    const breadcrumbs = pathArray.map(p => ({ link: p, name: p }));
+
     return (
       <div id='navbar-container' styleName='flex height-100vh'>
         <div id='navbar' styleName='flex min-height-100'> {/* todo. test to merge these two tags */}
@@ -80,13 +84,14 @@ export class NavbarContainer extends Component {
               toggleRightSidebar={this.toggleRightSidebar}
               title='Interactive Solutions'
           />
-          <Sticky>
-            <RightSidebar
-              visible={rightSidebarIsVisible}
-              toggleRightSidebar={this.toggleRightSidebar}
-            />
-            <Toastrs/>
-          </Sticky>
+          <BreadcrumbHeader
+            breadcrumbs={breadcrumbs}
+          />
+          <RightSidebar
+            visible={rightSidebarIsVisible}
+            toggleRightSidebar={this.toggleRightSidebar}
+          />
+          <Toastrs/>
           <Container fluid styleName='main-container'>
             {this.props.children}
           </Container>

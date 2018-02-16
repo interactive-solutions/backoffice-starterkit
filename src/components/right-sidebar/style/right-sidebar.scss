@@ -15,9 +15,11 @@
 }
 
 .right-sidebar {
+  top: 72px !important;
   z-index: 500 !important;
-  /* position: fixed !important;
-  right: 0 !important; */
+  position: fixed !important;
+  /* float: right !important; */
+  right: 11px !important;
   box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
   pointer-events: auto;
   background-color: white;
@@ -68,7 +70,7 @@
   .right-sidebar {
     min-height: 100vh !important;
     float: right;
-    width: 25rem;
+    width: 350px;
   }
 
   .sidebar-tab {

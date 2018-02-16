@@ -14,7 +14,7 @@ type Callback = {
 
 type Props = {
   callbacks?: Array<Callback>;
-  navbarOpen: bool;
+  // navbarOpen: bool;
   header?: string;
   breadcrumbs: Array<Object>
 };
@@ -48,7 +48,7 @@ export class Breadcrumbs extends Component<Props, State> {
   }
 
   handleScroll = (e: Object) => {
-    if (e.target.scrollTop > 87) {
+    if (e.target.scrollTop > 72) {
       this.setState({ scrollOnTop: false });
     } else {
       this.setState({ scrollOnTop: true });
@@ -98,14 +98,13 @@ export class Breadcrumbs extends Component<Props, State> {
   render() {
     const { scrollOnTop } = this.state;
     const moving = scrollOnTop ? 'stuck' : ' fixed';
-    const padded = (this.props.navbarOpen && !scrollOnTop) ? ' padded' : '';
 
     return (
       <Fragment>
         <Visibility
           styleName={!scrollOnTop ? 'stuck-placeholder' : ''}
         />
-        <Menu id='menu' styleName={moving + padded}>
+        <Menu id='menu' styleName={moving}>
           <Menu.Item position='left' styleName='borderless'>
             <Breadcrumb size='big'>
               {this.renderCrumbs()}
@@ -119,8 +118,8 @@ export class Breadcrumbs extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  navbarOpen: state.navigation.navbar
+const mapStateToProps = (state) => ({ // eslint-disable-line
+  // navbarOpen: state.navigation.navbar
 });
 
 export const BreadcrumbsContainer = connect(mapStateToProps)(Breadcrumbs);

@@ -1,26 +1,29 @@
 // @flow
-import React, { Component, Fragment } from 'react';
+import React, {
+  Component
+  // Fragment
+} from 'react';
 import { connect } from 'react-redux';
-import { Doughnut, Line as LineChart } from 'react-chartjs-2';
-import {
-  Container,
-  Grid,
-  Segment,
-  Header,
-  Divider,
-  Button,
-  Table
-} from 'semantic-ui-react';
-import moment from 'moment';
-import { ProgressBar } from './progressbar';
+// import { Doughnut, Line as LineChart } from 'react-chartjs-2';
+// import {
+//   Container,
+//   Grid,
+//   Segment,
+//   Header,
+//   Divider,
+//   Button,
+//   Table
+// } from 'semantic-ui-react';
+// import moment from 'moment';
+// import { ProgressBar } from './progressbar';
 import './style/dashboard.scss';
 
 
 type Props = {};
 type State = {}
 
-export class Dashboard extends Component<Props, State> {
-  customLegend(data: Object) {
+export class Dashboard extends Component<Props, State> { // eslint-disable-line
+  /* customLegend(data: Object) {
     if (data && data.labels && data.labels.length > 0 && data.datasets.length > 0) {
       const legend = data.labels.map((item, index) => (
         <Table.Row >
@@ -188,13 +191,18 @@ export class Dashboard extends Component<Props, State> {
         </Container>
       </Container>
     );
+  } */
+  render() {
+    return (
+      <div>Dashboard</div>
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
-  user: state.user.user,
+const mapStateToProps = (state) => ({ // eslint-disable-line
+  /* user: state.user.user,
   usersService: state.services.usersService,
-  paymentPlan: state.paymentPlan.userPaymentplan
+  paymentPlan: state.paymentPlan.userPaymentplan */
 });
 
 export default connect(

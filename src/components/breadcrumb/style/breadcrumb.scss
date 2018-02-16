@@ -1,18 +1,23 @@
+.fixed, .stuck {
+  margin: 0 !important;
+  height: 72px !important;
+  width: 100% !important;
+}
+
 .fixed {
   position: fixed;
   z-index: 500;
-  width: 100%;
-  top: 3px;
-  left: 0;
+  top: 0;
+  /* left: 0; */
   padding: 10px;
   padding-top: 0px;
   padding-right: 50px;
   overflow-x: visible;
-  max-height: 66px;
-  margin-top: -2px !important;
+  /* max-height: 66px; */
+  margin-top: 0 !important;
 
   @media screen and (max-width:768px) {
-    width: 107% !important;
+    /* width: 107% !important; */
     padding: 10px !important;
     padding-top: 15px !important;
     display: block !important;
@@ -22,20 +27,17 @@
   }
 }
 
-.padded {
-  padding-right: 260px;
-}
-
 .stuck {
+  top: 0 !important;
+  margin-top: 0 !important;
   padding: 10px;
-  width: 102% !important;
   padding-left: 10px;
-  margin-left: -15px !important;
+  /* margin-left: -15px !important; */
   overflow-x: visible;
   max-height: 66px;
 
   @media screen and (max-width:768px) {
-    width: 107% !important;
+    /* width: 107% !important; */
     padding: 10px !important;
     padding-top: 15px !important;
     display: block !important;

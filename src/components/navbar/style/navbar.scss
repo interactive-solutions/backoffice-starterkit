@@ -1,10 +1,11 @@
 .height-100vh {
   height: 100vh !important;
-  width: 100 vw !important;
+  width: 100vw !important;
 }
 
 .content-container {
   overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }
 
 .no-margins-or-padding {
