@@ -1,0 +1,55 @@
+.fixed {
+  position: fixed;
+  z-index: 500;
+  width: 100%;
+  top: 3px;
+  left: 0;
+  padding: 10px;
+  padding-top: 0px;
+  padding-right: 50px;
+  overflow-x: visible;
+  max-height: 66px;
+  margin-top: -2px !important;
+
+  @media screen and (max-width:768px) {
+    width: 107% !important;
+    padding: 10px !important;
+    padding-top: 15px !important;
+    display: block !important;
+    &.button {
+      margin-right: 50px;
+    }
+  }
+}
+
+.padded {
+  padding-right: 260px;
+}
+
+.stuck {
+  padding: 10px;
+  width: 102% !important;
+  padding-left: 10px;
+  margin-left: -15px !important;
+  overflow-x: visible;
+  max-height: 66px;
+
+  @media screen and (max-width:768px) {
+    width: 107% !important;
+    padding: 10px !important;
+    padding-top: 15px !important;
+    display: block !important;
+    &.button {
+      margin-right: 50px;
+    }
+  }
+}
+
+.stuck-placeholder {
+  padding: 10px;
+  height: 97px;
+}
+
+.borderless:before {
+  background: transparent !important;
+}

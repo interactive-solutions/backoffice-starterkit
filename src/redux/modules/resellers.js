@@ -17,6 +17,8 @@ const GET_RESELLERS_PENDING = 'backoffice:get-resellers:pending';
 const GET_RESELLERS_SUCCESS = 'backoffice:get-resellers:success';
 const GET_RESELLERS_ERROR = 'backoffice:get-resellers:error';
 
+export const CREATE_RESELLERS_SUCCESS = 'backoffice:create-resellers:success';
+
 // ------------------------------------
 // Actions
 // ------------------------------------

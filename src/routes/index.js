@@ -16,11 +16,11 @@ const Loadable = opts =>
     ...opts
   });
   /* eslint-disable */
-const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'login' */ './login/login-container') });
-const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password-container') });
-const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password-container') });
+const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'login' */ './login/login') });
+const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password') });
+const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password') });
 const Dashboard = Loadable({ loader: () => import(/* webpackChunkName: 'dashboard' */ './dashboard/dashboard') });
-const ResellersContainer = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers-container') });
+const Resellers = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers') });
   /* eslint-enable */
 
 const RoutingNavbar = requiresAuthentication(NavbarContainer);
@@ -35,7 +35,7 @@ export const createRoutes = () => (
       <RoutingNavbar>
         <Switch>
           <Route exact path='/dashboard' component={Dashboard}/>
-          <Route exact path='/resellers' component={ResellersContainer}/>
+          <Route exact path='/resellers' component={Resellers}/>
           <Redirect path='*' to='/dashboard'/>
         </Switch>
       </RoutingNavbar>
