@@ -42,12 +42,13 @@ export class Breadcrumbs extends Component<Props, State> {
     window.addEventListener('scroll', this.handleScroll, true);
   }
 
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = (e: Object) => {
+    console.log(`e.target.scrollTop=${e.target.scrollTop}`); // eslint-disable-line
+    // debugger; // eslint-disable-line
     if (e.target.scrollTop > 72) {
       this.setState({ scrollOnTop: false });
     } else {
@@ -98,13 +99,14 @@ export class Breadcrumbs extends Component<Props, State> {
   render() {
     const { scrollOnTop } = this.state;
     const moving = scrollOnTop ? 'stuck' : ' fixed';
+    console.log(`moving=${moving}`); // eslint-disable-line
 
     return (
       <Fragment>
         <Visibility
           styleName={!scrollOnTop ? 'stuck-placeholder' : ''}
         />
-        <Menu id='menu' styleName={moving}>
+        <Menu ref={(input) => { this.domElement = input; }} id='menu' styleName={moving}>
           <Menu.Item position='left' styleName='borderless'>
             <Breadcrumb size='big'>
               {this.renderCrumbs()}

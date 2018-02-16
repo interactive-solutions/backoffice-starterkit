@@ -69,7 +69,7 @@ export class NavbarContainer extends Component {
 
     return (
       <div id='navbar-container' styleName='flex height-100vh'>
-        <div id='navbar' styleName='flex min-height-100'> {/* todo. test to merge these two tags */}
+        <div id='navbar' styleName='flex min-height-100'>
           <Navbar
             visible={navbarIsVisible}
             sideMenuContent={sideMenuContent}
@@ -78,7 +78,7 @@ export class NavbarContainer extends Component {
           />
         </div>
 
-        <div id='content-container' styleName='flex-1 content-container'>
+        <div ref={(input) => { this.contentContainer = input; }} id='content-container' styleName='flex-1 content-container'>
           <Header
               callback={this.toggleNavbar}
               toggleRightSidebar={this.toggleRightSidebar}

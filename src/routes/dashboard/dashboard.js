@@ -4,26 +4,28 @@ import React, {
   // Fragment
 } from 'react';
 import { connect } from 'react-redux';
-// import { Doughnut, Line as LineChart } from 'react-chartjs-2';
-// import {
-//   Container,
-//   Grid,
-//   Segment,
-//   Header,
-//   Divider,
-//   Button,
-//   Table
-// } from 'semantic-ui-react';
+import {
+  Doughnut,
+  Line as LineChart
+} from 'react-chartjs-2';
+import {
+  Container,
+  Grid,
+  Segment,
+  Header,
+  Divider,
+  //   Button,
+  Table
+} from 'semantic-ui-react';
 // import moment from 'moment';
 // import { ProgressBar } from './progressbar';
 import './style/dashboard.scss';
-
 
 type Props = {};
 type State = {}
 
 export class Dashboard extends Component<Props, State> { // eslint-disable-line
-  /* customLegend(data: Object) {
+  customLegend(data: Object) {
     if (data && data.labels && data.labels.length > 0 && data.datasets.length > 0) {
       const legend = data.labels.map((item, index) => (
         <Table.Row >
@@ -49,18 +51,18 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
     return null;
   }
 
-  renderHeaderMenu() {
-    return (
-      <Fragment>
-        <Button color='green' floated='right'>
-          From
-        </Button>
-        <Button color='green' floated='right'>
-          To
-        </Button>
-      </Fragment>
-    );
-  }
+  // renderHeaderMenu() {
+  //   return (
+  //     <Fragment>
+  //       <Button color='green' floated='right'>
+  //         From
+  //       </Button>
+  //       <Button color='green' floated='right'>
+  //         To
+  //       </Button>
+  //     </Fragment>
+  //   );
+  // }
 
   renderPieChart(data: Object, header: string) {
     return (
@@ -115,6 +117,84 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
     );
   }
 
+  // render() {
+  //   const pieData = {
+  //     labels: [
+  //       'Red',
+  //       'Green',
+  //       'Yellow'
+  //     ],
+  //     datasets: [{
+  //       data: [300, 50, 100],
+  //       backgroundColor: [
+  //         '#FF6384',
+  //         '#36A2EB',
+  //         '#FFCE56'
+  //       ],
+  //       hoverBackgroundColor: [
+  //         '#FF6384',
+  //         '#36A2EB',
+  //         '#FFCE56'
+  //       ]
+  //     }]
+  //   };
+
+  //   const lineData = {
+  //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  //     datasets: [
+  //       {
+  //         label: 'My First dataset',
+  //         fill: false,
+  //         lineTension: 0.1,
+  //         backgroundColor: 'rgba(75,192,192,0.4)',
+  //         borderColor: 'rgba(75,192,192,1)',
+  //         borderCapStyle: 'butt',
+  //         borderDash: [],
+  //         borderDashOffset: 0.0,
+  //         borderJoinStyle: 'miter',
+  //         pointBorderColor: 'rgba(75,192,192,1)',
+  //         pointBackgroundColor: '#fff',
+  //         pointBorderWidth: 1,
+  //         pointHoverRadius: 5,
+  //         pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+  //         pointHoverBorderColor: 'rgba(220,220,220,1)',
+  //         pointHoverBorderWidth: 2,
+  //         pointRadius: 1,
+  //         pointHitRadius: 10,
+  //         data: [65, 59, 80, 81, 56, 55, 40]
+  //       }
+  //     ]
+  //   };
+
+  //   return (
+  //     <Container fluid textAlign='center'>
+  //       <ProgressBar
+  //         usersService={
+  //           {
+  //             emailsSent: 50,
+  //             emailsSentResetAt: 30,
+  //             createdAt: moment(),
+  //             nextInvoiceDate: moment().add(15, 'days')
+  //           }
+  //         }
+  //         paymentPlan={{ emails: 87, price: 99 }}
+  //       />
+  //       <Divider hidden/>
+  //       <Container fluid>
+  //         <Grid columns={3} relaxed>
+  //           {this.renderPieChart(pieData, 'something')}
+  //           {this.renderPieChart(pieData, 'something else')}
+  //           {this.renderPieChart(pieData, 'the same as the other two')}
+  //         </Grid>
+  //       </Container>
+  //       <Divider hidden/>
+  //       <Container fluid>
+  //         {this.renderLineChart(lineData, 'History')}
+  //       </Container>
+  //     </Container>
+  //   );
+  // }
+
   render() {
     const pieData = {
       labels: [
@@ -166,7 +246,7 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
 
     return (
       <Container fluid textAlign='center'>
-        <ProgressBar
+        {/* <ProgressBar
           usersService={
             {
               emailsSent: 50,
@@ -176,7 +256,7 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
             }
           }
           paymentPlan={{ emails: 87, price: 99 }}
-        />
+        /> */}
         <Divider hidden/>
         <Container fluid>
           <Grid columns={3} relaxed>
@@ -190,11 +270,6 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
           {this.renderLineChart(lineData, 'History')}
         </Container>
       </Container>
-    );
-  } */
-  render() {
-    return (
-      <div>Dashboard</div>
     );
   }
 }
