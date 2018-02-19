@@ -1,12 +1,11 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal, OPEN_CREATE_RESELLER_MODAL } from 'redux/modal';
+import { closeModal, OPEN_CREATE_RESELLER_MODAL } from 'redux/modules/modal';
 import PropTypes from 'prop-types';
 import { Modal, Icon } from 'semantic-ui-react';
-import { CreateCredentialssForm, CreateDomainForm, CreateUsersForm, CreateRuleForm } from 'components/forms';
+// import { CreateCredentialssForm, CreateDomainForm, CreateUsersForm, CreateRuleForm } from 'components/forms';
 import './style/modal.scss';
-
 
 type Props = {
   modal: {
@@ -17,6 +16,7 @@ type Props = {
   };
   closeModal: Function;
 }
+
 /**
  * This draws the modal if
  * redux state says that a Modal should be drawn
@@ -40,19 +40,12 @@ export const FormModal = (props: Props) => {
   return null;
 };
 
-const returnForm = (type, initialValues) => {
+const returnForm = (type /* , initialValues */) => {
   switch (type) {
-    case CREDENTIALS_MODAL:
-      return <CreateCredentialssForm/>;
-    case DOMAINS_MODAL:
-      return <CreateDomainForm/>;
-    case USER_MODAL:
-      return <CreateUsersForm/>;
-    case RULES_MODAL:
-      return <CreateRuleForm initialValues={{ action: 'Select', type: 'Select' }}/>;
-    case RULES_MODAL_PATCH:
-      return <CreateRuleForm initialValues={initialValues}/>;
-    default: return null;
+    case OPEN_CREATE_RESELLER_MODAL:
+      // return <CreateUserForm/>;
+      break;
+    default:
   }
 };
 

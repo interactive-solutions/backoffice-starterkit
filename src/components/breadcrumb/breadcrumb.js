@@ -107,7 +107,6 @@ export class Breadcrumbs extends Component<Props, State> {
   render() {
     const { scrollOnTop } = this.state;
     const moving = scrollOnTop ? 'stuck' : ' fixed';
-    console.log(`moving=${moving}`); // eslint-disable-line
 
     return (
       <Fragment>

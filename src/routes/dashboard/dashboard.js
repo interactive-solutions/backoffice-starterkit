@@ -28,7 +28,7 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
   customLegend(data: Object) {
     if (data && data.labels && data.labels.length > 0 && data.datasets.length > 0) {
       const legend = data.labels.map((item, index) => (
-        <Table.Row >
+        <Table.Row key={index}>
           <Table.Cell styleName='row'>
             <div styleName='line-wrap'>
               <div styleName='box' style={{ background: data.datasets[0].backgroundColor[index] }}/>
