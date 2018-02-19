@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal, OPEN_CREATE_RESELLER_MODAL } from 'redux/modules/modal';
+import { closeModal, OPEN_CREATE_USER_MODAL } from 'redux/modules/modal';
 import PropTypes from 'prop-types';
 import { Modal, Icon } from 'semantic-ui-react';
-// import { CreateCredentialssForm, CreateDomainForm, CreateUsersForm, CreateRuleForm } from 'components/forms';
+import { CreateUserForm } from 'components/forms';
 import './style/modal.scss';
 
 type Props = {
@@ -42,9 +42,8 @@ export const FormModal = (props: Props) => {
 
 const returnForm = (type /* , initialValues */) => {
   switch (type) {
-    case OPEN_CREATE_RESELLER_MODAL:
-      // return <CreateUserForm/>;
-      break;
+    case OPEN_CREATE_USER_MODAL:
+      return <CreateUserForm onSubmit={() => alert('hej')}/>; // eslint-disable-line
     default:
   }
 };

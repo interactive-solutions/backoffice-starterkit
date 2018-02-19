@@ -30,7 +30,7 @@ const CreateUserReduxForm = (props) => {
           <Grid columns={2}>
             <Grid.Column verticalAlign='middle'>
               <Field
-                username='username'
+                name='username'
                 component={Input}
                 placeholder='Username'
                 icon='users'
@@ -39,7 +39,7 @@ const CreateUserReduxForm = (props) => {
             </Grid.Column>
             <Grid.Column verticalAlign='middle'>
               <Field
-                username='roles'
+                name='roles'
                 component={Input}
                 placeholder='Roles'
                 icon='users'

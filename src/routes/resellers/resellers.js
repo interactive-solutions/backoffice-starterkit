@@ -7,13 +7,15 @@ import { CreateUserForm } from 'components/forms';
 import { BreadcrumbHeader } from 'components';
 import ReactTable from 'react-table';
 import { resolveUsers } from 'redux/modules/user';
+import { openFormModal, OPEN_CREATE_USER_MODAL } from 'redux/modules/modal';
 
 const mapStateToProps = (state) => ({
   users: state.user.users
 });
 
 const mapDispatchToProps = dispatch => ({
-  resolveUsers: () => dispatch(resolveUsers())
+  resolveUsers: () => dispatch(resolveUsers()),
+  openCreateUserModal: () => dispatch(openFormModal('Create new user', OPEN_CREATE_USER_MODAL))
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -44,9 +46,11 @@ export default class Resellers extends Component {
       { link: 'resellers', name: 'resellers' }
     ];
 
-    const callbacks = [
-      { func: () => alert('Yeah!'), text: 'Create user', color: 'blue' } // eslint-disable-line
-    ];
+    const callbacks = [{
+      func: this.props.openCreateUserModal,
+      text: 'Create user',
+      color: 'blue'
+    }];
 
     return (
       <Fragment>

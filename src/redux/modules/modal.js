@@ -8,7 +8,8 @@ const OPEN_MODAL = 'backoffice:modal:open';
 const CLOSE_MODAL = 'backoffice:modal:close';
 const OPEN_FORM_MODAL = 'backoffice:form-modal:open';
 
-export const OPEN_CREATE_RESELLER_MODAL = 'reseller:modal';
+// types of modals
+export const OPEN_CREATE_USER_MODAL = 'backoffice:form-modal:create-user';
 
 // ------------------------------------
 // Type definitions
