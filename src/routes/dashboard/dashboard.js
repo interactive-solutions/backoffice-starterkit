@@ -3,7 +3,6 @@ import React, {
   Component
   // Fragment
 } from 'react';
-import { connect } from 'react-redux';
 import {
   Doughnut,
   Line as LineChart
@@ -274,13 +273,4 @@ export class Dashboard extends Component<Props, State> { // eslint-disable-line
   }
 }
 
-const mapStateToProps = (state) => ({ // eslint-disable-line
-  /* user: state.user.user,
-  usersService: state.services.usersService,
-  paymentPlan: state.paymentPlan.userPaymentplan */
-});
-
-export default connect(
-  mapStateToProps,
-  null,
-)(Dashboard);
+export default Dashboard;

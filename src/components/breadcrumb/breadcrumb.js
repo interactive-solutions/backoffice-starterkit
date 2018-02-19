@@ -1,7 +1,6 @@
 // @flow
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Breadcrumb, Menu, Button, Visibility, Header } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import './style/breadcrumb.scss';
@@ -14,7 +13,6 @@ type Callback = {
 
 type Props = {
   callbacks?: Array<Callback>;
-  // navbarOpen: bool;
   header?: string;
   breadcrumbs: Array<Object>
 };
@@ -127,9 +125,4 @@ export class Breadcrumbs extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state) => ({ // eslint-disable-line
-  // navbarOpen: state.navigation.navbar
-});
-
-export const BreadcrumbsContainer = connect(mapStateToProps)(Breadcrumbs);
-export const BreadcrumbHeader = withRouter(BreadcrumbsContainer);
+export const BreadcrumbHeader = withRouter(Breadcrumbs);
