@@ -2,6 +2,9 @@ import axios from 'axios';
 import { UserEntity } from './entity';
 
 export class UserService {
+  // ---------------------------
+  // Current user
+  // ----------------------------
   currentUser: UserEntity = null;
 
   hydrate(user) {
@@ -34,5 +37,23 @@ export class UserService {
 
   logout() {
     this.currentUser = null;
+  }
+
+  // ---------------------------
+  // All/many users
+  // ----------------------------
+  users: UserEntity[] = [];
+
+  hydrateArray(data) {
+    return data.map(this.hydrate);
+  }
+
+  resolveUsers() {
+    return axios.get('backend://users')
+      .then((response) => this.users = this.hydrateArray(response.data));
+  }
+
+  getUsers() {
+    return this.users;
   }
 }

@@ -4,7 +4,6 @@ import { Button, Form, Header, Grid, Message, Modal } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
-// update this to redux-form
 
 const validate = (values, props) => {
   const errors = {};

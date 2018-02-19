@@ -23,4 +23,17 @@ export const addUserAPI = (app) => {
       updatedAt: db.updatedAt
     });
   });
+
+  /**
+   * Request a list of all users
+   */
+  app.get('/users', (req, res) => {
+    console.log('/users');
+    
+    if (!requiresAuthentication(req, res)) {
+      return;
+    }
+
+    res.json(db.users);
+  });
 };

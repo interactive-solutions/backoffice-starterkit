@@ -19,7 +19,12 @@ type Action = {
 const RESOLVE_USER_PENDING = 'backoffice:resolve-user:pending';
 const RESOLVE_USER_SUCCESS = 'backoffice:resolve-user:success';
 const RESOLVE_USER_ERROR = 'backoffice:resolve-user:error';
+
 const LOG_OUT = 'backoffice:logout';
+
+const RESOLVE_USERS_PENDING = 'backoffice:resolve-users:pending';
+const RESOLVE_USERS_SUCCESS = 'backoffice:resolve-users:success';
+const RESOLVE_USERS_ERROR = 'backoffice:resolve-users:error';
 
 // ------------------------------------
 // Actions
@@ -49,17 +54,34 @@ export function logout() {
   };
 }
 
+export function resolveUsers() {
+  return (dispatch) => dispatch({
+
+    types: [
+      RESOLVE_USERS_PENDING,
+      RESOLVE_USERS_SUCCESS,
+      RESOLVE_USERS_ERROR
+    ],
+    payload: {
+      promise: userService.resolveUsers()
+        .then(response => response) // todo remove
+    }
+  });
+}
+
 // ------------------------------------
 // Reducers
 // ------------------------------------
 
 const INITIAL_STATE = {
-  user: null
+  user: null,
+  users: []
 };
 
 class UserReducer {
   handle = (state = INITIAL_STATE, action: Action) => Object.assign({}, state, {
-    user: this.getUserState(state.user, action)
+    user: this.getUserState(state.user, action),
+    users: this.getUsersState(state.users, action)
   })
 
   getUserState = (state, action: Action) => {
@@ -75,6 +97,23 @@ class UserReducer {
 
       case LOG_OUT:
         return null;
+
+      default:
+        return state;
+    }
+  }
+
+  getUsersState = (state, action: Action) => {
+    switch (action.type) {
+      case RESOLVE_USERS_PENDING:
+        return state;
+
+      case RESOLVE_USERS_SUCCESS:
+        return action.payload;
+
+      case RESOLVE_USERS_ERROR:
+        // return action.payload;
+        return [];
 
       default:
         return state;
