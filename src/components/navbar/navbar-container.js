@@ -39,15 +39,14 @@ export class NavbarContainer extends Component {
   setActiveItemByRoute(props) {
     if (props.location) {
       const path = props.location.pathname;
-      const activeItem = path.charAt(1).toUpperCase() + path.slice(2);
+      const activeItem = path.charAt(1) + path.slice(2);
       this.setState({ activeItem });
     }
   }
 
-  setActiveItem = (e, { name }) => {
-    e.stopPropagation();
-    this.setState({ activeItem: name });
-    this.props.history.push(name.toLowerCase().replace(' ', ''));
+  setActiveItem = (link) => {
+    this.setState({ activeItem: link });
+    this.props.history.push(link);
   }
 
   toggleNavbar = () => {

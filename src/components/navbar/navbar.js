@@ -18,12 +18,15 @@ export const Navbar = (props) => {
       const name = menu.menuItem.caption;
       let topLevelMenuItemProps = {};
 
-      const active = menu.menuItem.caption === activeItem;
+      const active = menu.menuItem.link === activeItem;
+      console.log(`menu.menuItem.link=${menu.menuItem.link}`); // eslint-disable-line
+      console.log(`activeItem=${activeItem}`); // eslint-disable-line
+      console.log(''); // eslint-disable-line
 
       if (menu.menuItem.link) {
         topLevelMenuItemProps = {
           active,
-          onClick: setActiveItem
+          onClick: () => setActiveItem(menu.menuItem.link)
         };
       }
       if (menu.menuItem.callback) {

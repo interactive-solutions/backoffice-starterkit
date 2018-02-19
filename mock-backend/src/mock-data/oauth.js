@@ -8,6 +8,8 @@ class Oauth {
   refreshToken = '1'
   expires = 0;
 
+  milisecondsUntilAccessTokenExpires = 2 * 60 * 1000;
+
   invalidateOldAccessTokens = () => {
     if (this.hasAccessTokenExpired()) {
       console.log(`Invalidating token ${this.accessToken}`);
@@ -32,7 +34,7 @@ class Oauth {
     const accessTokenAsInt = parseInt(this.accessToken, 10);
     this.accessToken = (accessTokenAsInt + 1).toString();
 
-    this.expires = Date.now() + 30000;
+    this.expires = Date.now() + this.milisecondsUntilAccessTokenExpires;
   }
 }
 
