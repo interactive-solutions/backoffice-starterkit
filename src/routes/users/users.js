@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Resellers extends Component {
+export default class Users extends Component {
   static propTypes = {
     resolveUsers: PropTypes.func.isRequired,
     users: PropTypes.array
@@ -43,7 +43,7 @@ export default class Resellers extends Component {
     ];
 
     const breadcrumbs = [
-      { link: 'resellers', name: 'resellers' }
+      { link: 'users', name: 'users' }
     ];
 
     const callbacks = [{

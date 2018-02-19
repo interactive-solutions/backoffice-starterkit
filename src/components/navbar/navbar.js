@@ -19,9 +19,6 @@ export const Navbar = (props) => {
       let topLevelMenuItemProps = {};
 
       const active = menu.menuItem.link === activeItem;
-      console.log(`menu.menuItem.link=${menu.menuItem.link}`); // eslint-disable-line
-      console.log(`activeItem=${activeItem}`); // eslint-disable-line
-      console.log(''); // eslint-disable-line
 
       if (menu.menuItem.link) {
         topLevelMenuItemProps = {
