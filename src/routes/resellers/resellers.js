@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 import { userService } from 'api';
 import { CreateUserForm } from 'components/forms';
+import { BreadcrumbHeader } from 'components';
 import ReactTable from 'react-table';
 import { resolveUsers } from 'redux/modules/user';
 
@@ -39,13 +40,27 @@ export default class Resellers extends Component {
       { Header: 'Roles', accessor: 'roles' }
     ];
 
+    const breadcrumbs = [
+      { link: 'resellers', name: 'resellers' }
+    ];
+
+    const callbacks = [
+      { func: () => alert('Yeah!'), text: 'Create user', color: 'blue' } // eslint-disable-line
+    ];
+
     return (
-      <Container fluid textAlign='center'>
-        <CreateUserForm onSubmit={this.createUser}/>
-        <Segment>
-          <ReactTable data={this.props.users} columns={columns}/>
-        </Segment>
-      </Container>
+      <Fragment>
+        <BreadcrumbHeader
+          breadcrumbs={breadcrumbs}
+          callbacks={callbacks}
+        />
+        <Container fluid textAlign='center'>
+          <CreateUserForm onSubmit={this.createUser}/>
+          <Segment>
+            <ReactTable data={this.props.users} columns={columns}/>
+          </Segment>
+        </Container>
+      </Fragment>
     );
   }
 }

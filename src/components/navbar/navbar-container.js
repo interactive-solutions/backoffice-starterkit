@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
-import { Header, RightSidebar, BreadcrumbHeader } from 'components';
+import {
+  Header,
+  RightSidebar
+} from 'components';
 import { Footer } from 'components/footer/footer';
 import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
@@ -61,11 +64,6 @@ export class NavbarContainer extends Component {
       rightSidebarIsVisible
     } = this.state;
 
-    // todo move this
-    const path = this.props.location.pathname;
-    const pathArray = path.split('/');
-    const breadcrumbs = pathArray.map(p => ({ link: p, name: p }));
-
     return (
       <div id='navbar-container' styleName='flex height-100vh'>
         <div id='navbar' styleName='flex min-height-100'>
@@ -79,19 +77,16 @@ export class NavbarContainer extends Component {
 
         <div id='content-container' styleName='flex-1 content-container'>
           <Header
-              callback={this.toggleNavbar}
-              toggleRightSidebar={this.toggleRightSidebar}
-              title='Interactive Solutions'
-          />
-          <BreadcrumbHeader
-            breadcrumbs={breadcrumbs}
+            callback={this.toggleNavbar}
+            toggleRightSidebar={this.toggleRightSidebar}
+            title='Interactive Solutions'
           />
           <RightSidebar
             visible={rightSidebarIsVisible}
             toggleRightSidebar={this.toggleRightSidebar}
           />
           <Toastrs/>
-          <Container fluid styleName='main-container'>
+          <Container id='main-container' fluid styleName='main-container'>
             {this.props.children}
           </Container>
           <Footer/>

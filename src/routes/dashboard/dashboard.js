@@ -1,7 +1,5 @@
 // @flow
-import React, {
-  Component
-} from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   Doughnut,
   Line as LineChart
@@ -15,6 +13,7 @@ import {
   Table
 } from 'semantic-ui-react';
 import moment from 'moment';
+import { BreadcrumbHeader } from 'components';
 import { ProgressBar } from './progressbar';
 import './style/dashboard.scss';
 
@@ -150,32 +149,41 @@ export class Dashboard extends Component<Props, State> {
       ]
     };
 
+    const breadcrumbs = [
+      { link: 'dashboard', name: 'dashboard' }
+    ];
+
     return (
-      <Container fluid textAlign='center'>
-        <ProgressBar
-          usersService={
-            {
-              emailsSent: 50,
-              emailsSentResetAt: 30,
-              createdAt: moment(),
-              nextInvoiceDate: moment().add(15, 'days')
-            }
-          }
-          paymentPlan={{ emails: 87, price: 99 }}
+      <Fragment>
+        <BreadcrumbHeader
+          breadcrumbs={breadcrumbs}
         />
-        <Divider hidden/>
-        <Container fluid>
-          <Grid columns={3} relaxed>
-            {this.renderPieChart(pieData, 'something')}
-            {this.renderPieChart(pieData, 'something else')}
-            {this.renderPieChart(pieData, 'the same as the other two')}
-          </Grid>
+        <Container fluid textAlign='center'>
+          <ProgressBar
+            usersService={
+              {
+                emailsSent: 50,
+                emailsSentResetAt: 30,
+                createdAt: moment(),
+                nextInvoiceDate: moment().add(15, 'days')
+              }
+            }
+            paymentPlan={{ emails: 87, price: 99 }}
+          />
+          <Divider hidden/>
+          <Container fluid>
+            <Grid columns={3} relaxed>
+              {this.renderPieChart(pieData, 'something')}
+              {this.renderPieChart(pieData, 'something else')}
+              {this.renderPieChart(pieData, 'the same as the other two')}
+            </Grid>
+          </Container>
+          <Divider hidden/>
+          <Container fluid>
+            {this.renderLineChart(lineData, 'History')}
+          </Container>
         </Container>
-        <Divider hidden/>
-        <Container fluid>
-          {this.renderLineChart(lineData, 'History')}
-        </Container>
-      </Container>
+      </Fragment>
     );
   }
 }
