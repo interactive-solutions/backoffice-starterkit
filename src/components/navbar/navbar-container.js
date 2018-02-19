@@ -78,7 +78,7 @@ export class NavbarContainer extends Component {
           />
         </div>
 
-        <div ref={(input) => { this.contentContainer = input; }} id='content-container' styleName='flex-1 content-container'>
+        <div id='content-container' styleName='flex-1 content-container'>
           <Header
               callback={this.toggleNavbar}
               toggleRightSidebar={this.toggleRightSidebar}
