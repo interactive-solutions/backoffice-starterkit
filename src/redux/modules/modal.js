@@ -8,11 +8,7 @@ const OPEN_MODAL = 'backoffice:modal:open';
 const CLOSE_MODAL = 'backoffice:modal:close';
 const OPEN_FORM_MODAL = 'backoffice:form-modal:open';
 
-export const CREDENTIALS_MODAL = 'credentials:modal';
-export const DOMAINS_MODAL = 'domains:modal';
-export const USER_MODAL = 'users:modal';
-export const RULES_MODAL = 'rules:modal';
-export const RULES_MODAL_PATCH = 'rules:modal:patch';
+export const OPEN_CREATE_RESELLER_MODAL = 'reseller:modal';
 
 // ------------------------------------
 // Type definitions
