@@ -36,4 +36,21 @@ export const addUserAPI = (app) => {
 
     res.json(db.users);
   });
+
+  /**
+   * Request a specific user
+   */
+  app.get('/users/:uuid', (req, res) => {
+    console.log('/users');
+    const { uuid } = req.params;
+    
+    if (!requiresAuthentication(req, res)) {
+      return;
+    }
+
+    // todo. do error checking. if not found etc.
+    db.users.find(user => user.uuid === uuid);
+
+    res.json(db.users);
+  });
 };

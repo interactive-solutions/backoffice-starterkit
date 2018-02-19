@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
-// import { resellerService } from 'api';
-// import { userService } from 'api';
-// import { CreateResellersForm } from 'components/forms';
+import { userService } from 'api';
+import { CreateUserForm } from 'components/forms';
 import ReactTable from 'react-table';
-// import { getResellers } from 'redux/modules/resellers';
 import { resolveUsers } from 'redux/modules/user';
 
 const mapStateToProps = (state) => ({
@@ -14,7 +12,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // getResellers: () => dispatch(getResellers())
   resolveUsers: () => dispatch(resolveUsers())
 });
 
@@ -29,22 +26,22 @@ export default class Resellers extends Component {
     this.props.resolveUsers();
   }
 
-  // createReseller = (values) => {
-  //   resellerService.create(values)
-  //     .then(() => this.props.getResellers())
-  //     .catch((error) => console.warn(error)); // eslint-disable-line
-  // }
+  createUser = (values) => {
+    userService.create(values)
+      .then(() => this.props.getUsers())
+      .catch((error) => console.warn(error)); // eslint-disable-line
+  }
 
   render() {
     const columns = [
       { Header: 'uuid', accessor: 'uuid' },
       { Header: 'Username', accessor: 'username' },
-      { Header: 'Roles', accessor: 'Roles' }
+      { Header: 'Roles', accessor: 'roles' }
     ];
 
     return (
       <Container fluid textAlign='center'>
-        {/* <CreateResellersForm onSubmit={this.createReseller}/> */}
+        <CreateUserForm onSubmit={this.createUser}/>
         <Segment>
           <ReactTable data={this.props.users} columns={columns}/>
         </Segment>
