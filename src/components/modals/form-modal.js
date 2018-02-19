@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal, CREDENTIALS_MODAL, DOMAINS_MODAL, USER_MODAL, RULES_MODAL, RULES_MODAL_PATCH } from 'redux/modal';
+import { closeModal, OPEN_CREATE_RESELLER_MODAL } from 'redux/modal';
 import PropTypes from 'prop-types';
 import { Modal, Icon } from 'semantic-ui-react';
 import { CreateCredentialssForm, CreateDomainForm, CreateUsersForm, CreateRuleForm } from 'components/forms';
