@@ -14,7 +14,7 @@
   overflow-x: visible;
   margin-top: 0 !important;
 
-  @media screen and (max-width:768px) {
+  @media screen and (max-width: $cellphone-breakpoint) {
     padding: 10px !important;
     padding-top: 15px !important;
     display: block !important;
@@ -32,9 +32,8 @@
   overflow-x: visible;
   max-height: 66px;
 
-  @media screen and (max-width:768px) {
+  @media screen and (max-width: $cellphone-breakpoint) {
     padding: 10px !important;
-    padding-top: 15px !important;
     display: block !important;
     &.button {
       margin-right: 50px;
