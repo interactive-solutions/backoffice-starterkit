@@ -8,7 +8,7 @@ class Oauth {
   refreshToken = '1'
   expires = 0;
 
-  milisecondsUntilAccessTokenExpires = 2 * 60 * 1000;
+  milisecondsUntilAccessTokenExpires = 30 * 60 * 1000;
 
   invalidateOldAccessTokens = () => {
     if (this.hasAccessTokenExpired()) {

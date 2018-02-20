@@ -39,6 +39,11 @@ export class UserService {
     this.currentUser = null;
   }
 
+  create(username, roles) {
+    return axios.post('backend://users', { username, roles: [roles] }) // todo remove this temporary fix.
+      .then((response) => response); // todo remove
+  }
+
   // ---------------------------
   // All/many users
   // ----------------------------

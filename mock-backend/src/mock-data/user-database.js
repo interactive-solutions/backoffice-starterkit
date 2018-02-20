@@ -19,6 +19,7 @@ export const userDatabase = {
   /**
    * All users.
    */
+
   users: [
     { uuid: 0, username: 'Adam', roles: ['guest'] },
     { uuid: 1, username: 'Beatrice', roles: ['guest'] },
@@ -26,5 +27,8 @@ export const userDatabase = {
     { uuid: 3, username: 'David', roles: ['guest'] },
     { uuid: 4, username: 'Emily', roles: ['guest'] },
     { uuid: 5, username: 'Felicia', roles: ['guest'] }
-  ]
+  ],
+
+  // stores the uuid counter value. primary key id in database terms.
+  highestUuidYet: 5
 };

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Grid, Message, Modal } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
+import { userService } from 'api';
+import { openModal } from 'redux/modules/modal';
+import { openToastr } from 'redux/modules/toastr';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 
 const validate = (values, props) => {
@@ -19,10 +22,25 @@ const validate = (values, props) => {
   return errors;
 };
 
-// const onSubmit = (values, dispatch, props) => 
+const onSubmit = (values, dispatch /* , props */) => {
+  userService.create(values.username, values.roles)
+    .then(() => {
+      // this.props.push('login')
+      dispatch(openToastr({
+        header: 'Created user succeeded!',
+        content: 'Successfully created new user.'
+      }));
+    })
+    .catch(() => {
+      dispatch(openModal({
+        header: 'Failed to create a new user!',
+        content: 'A new user could not be created.'
+      }));
+    });
+};
 
 const CreateUserReduxForm = (props) => {
-  const { submitting, onSubmit, handleSubmit, error } = props;
+  const { submitting, handleSubmit, error } = props;
 
   return (
     <Fragment>
@@ -72,7 +90,6 @@ export const CreateUserForm = reduxForm({
 })(CreateUserReduxForm);
 
 CreateUserReduxForm.propTypes = {
-  onSubmit: PropTypes.func,
   handleSubmit: PropTypes.func,
   error: PropTypes.object,
   submitting: PropTypes.bool

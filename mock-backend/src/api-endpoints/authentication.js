@@ -80,7 +80,7 @@ export const addAuthenticationAPI = (app) => {
       res.json({
         access_token: db.accessToken,
         token_type: 'Bearer',
-        expires_in: 30000,
+        expires_in: 30000, // todo!!!
         owner_id: db.ownerId,
         refresh_token: db.refreshToken
       });

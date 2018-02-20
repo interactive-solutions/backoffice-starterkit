@@ -80,11 +80,13 @@ export class NavbarContainer extends Component {
             toggleRightSidebar={this.toggleRightSidebar}
             title='Interactive Solutions'
           />
-          <RightSidebar
-            visible={rightSidebarIsVisible}
-            toggleRightSidebar={this.toggleRightSidebar}
-          />
-          <Toastrs/>
+          <div styleName='sidebar-and-toastrs-container'>
+            <RightSidebar
+              visible={rightSidebarIsVisible}
+              toggleRightSidebar={this.toggleRightSidebar}
+            />
+            <Toastrs/>
+          </div>
           <div id='main-container'>
             {this.props.children}
           </div>
