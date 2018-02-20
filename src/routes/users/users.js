@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 import { userService } from 'api';
-import { CreateUserForm } from 'components/forms';
+import { SearchUserForm } from 'components/forms';
 import { BreadcrumbHeader } from 'components';
 import ReactTable from 'react-table';
 import { resolveUsers } from 'redux/modules/user';
@@ -29,7 +29,13 @@ export default class Users extends Component {
     this.props.resolveUsers();
   }
 
-  createUser = (values) => {
+  // createUser = (values) => {
+  //   userService.create(values)
+  //     .then(() => this.props.getUsers())
+  //     .catch((error) => console.warn(error)); // eslint-disable-line
+  // }
+
+  searchUser = (values) => {
     userService.create(values)
       .then(() => this.props.getUsers())
       .catch((error) => console.warn(error)); // eslint-disable-line
@@ -60,7 +66,7 @@ export default class Users extends Component {
           callbacks={callbacks}
         />
         <Container className='route-container' textAlign='center'>
-          <CreateUserForm onSubmit={this.createUser}/>
+          <SearchUserForm onSubmit={this.searchUser}/>
           <Segment>
             <ReactTable data={this.props.users} columns={columns}/>
           </Segment>

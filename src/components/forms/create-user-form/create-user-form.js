@@ -11,15 +11,15 @@ import {
 import { openToastr } from 'redux/modules/toastr';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 
-const validate = (values, props) => {
+const validate = (values) => {
   const errors = {};
 
   if (!values.username || values.username.length === 0) {
     errors.username = FORM_ERROR_REQUIRED_FIELD;
   }
 
-  if (!props.submitting && (!values.bilingId || (values.bilingId && values.bilingId.length === 0))) {
-    errors.bilingId = FORM_ERROR_REQUIRED_FIELD;
+  if (!values.roles || values.roles.length === 0) {
+    errors.roles = FORM_ERROR_REQUIRED_FIELD;
   }
 
   return errors;
