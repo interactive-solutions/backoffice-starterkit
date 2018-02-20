@@ -1,19 +1,18 @@
 .toastrs {
   z-index: 600 !important;
   margin: 0 !important;
-  position: fixed !important;
   pointer-events: auto;
 
   /* Desktop styles */
   @media (min-width: $cellphone-breakpoint+1) {
-    top: 72px !important;
-    right: 362px !important;
     width: 400px !important;
+    float: right !important;
   }
   /* Cellphone styles */
   @media (max-width: $cellphone-breakpoint) {
     top: 0 !important;
     right: 0 !important;
     width: 100% !important;
+    position: fixed !important;
   }
 }

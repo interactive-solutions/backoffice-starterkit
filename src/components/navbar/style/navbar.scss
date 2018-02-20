@@ -74,6 +74,14 @@ $transition-time: 0.6s;
   }
 }
 
-.sidebar-and-toastrs-container {
-  
+/**
+ * Well, contains the Toastrs and RightSidebar.
+ */
+ .sidebar-and-toastrs-container {
+  top: 72px !important;
+  z-index: 500 !important;
+  position: fixed !important;
+  right: 11px !important;
+  height: 100vh !important;
+  pointer-events: none !important;
 }
