@@ -112,7 +112,6 @@ class UserReducer {
         return action.payload;
 
       case RESOLVE_USERS_ERROR:
-        // return action.payload;
         return [];
 
       default:

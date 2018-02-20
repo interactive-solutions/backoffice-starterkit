@@ -4,7 +4,10 @@ import { Button, Form, Header, Grid, Message, Modal } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
 import { userService } from 'api';
-import { openModal } from 'redux/modules/modal';
+import {
+  openModal,
+  closeModal
+} from 'redux/modules/modal';
 import { openToastr } from 'redux/modules/toastr';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 
@@ -22,10 +25,10 @@ const validate = (values, props) => {
   return errors;
 };
 
-const onSubmit = (values, dispatch /* , props */) => {
+const onSubmit = (values, dispatch) => {
   userService.create(values.username, values.roles)
     .then(() => {
-      // this.props.push('login')
+      dispatch(closeModal()); // close this modal
       dispatch(openToastr({
         header: 'Created user succeeded!',
         content: 'Successfully created new user.'

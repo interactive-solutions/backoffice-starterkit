@@ -1,5 +1,4 @@
 // @flow
-import { CREATE_RESELLERS_SUCCESS } from './resellers';
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -100,7 +99,6 @@ class ModalReducer {
         return action.payload;
 
       case CLOSE_MODAL:
-      case CREATE_RESELLERS_SUCCESS:
         return null;
 
       default:
