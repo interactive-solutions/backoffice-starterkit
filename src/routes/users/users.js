@@ -55,10 +55,11 @@ export default class Users extends Component {
     return (
       <Fragment>
         <BreadcrumbHeader
+          header='Users'
           breadcrumbs={breadcrumbs}
           callbacks={callbacks}
         />
-        <Container fluid textAlign='center'>
+        <Container className='route-container' textAlign='center'>
           <CreateUserForm onSubmit={this.createUser}/>
           <Segment>
             <ReactTable data={this.props.users} columns={columns}/>

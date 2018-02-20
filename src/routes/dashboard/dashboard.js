@@ -156,9 +156,10 @@ export class Dashboard extends Component<Props, State> {
     return (
       <Fragment>
         <BreadcrumbHeader
+          header='Dashboard'
           breadcrumbs={breadcrumbs}
         />
-        <Container fluid textAlign='center'>
+        <Container className='route-container' textAlign='center'>
           <ProgressBar
             usersService={
               {

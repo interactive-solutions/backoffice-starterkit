@@ -41,6 +41,10 @@ $transition-time: 0.6s;
   transform-origin: left;
 }
 
+.navbar, .small-navbar {
+  border-radius: 0 !important;
+}
+
 .small-navbar {
   @include transitions;
 
@@ -64,11 +68,11 @@ $transition-time: 0.6s;
     overflow-y: scroll;
   }
 
-  .main-container {
+  /* .main-container {
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 1em;
-  }
+  } */
 
   .centered-icon {
     position: relative;

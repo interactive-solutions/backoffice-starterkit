@@ -85,9 +85,9 @@ export class NavbarContainer extends Component {
             toggleRightSidebar={this.toggleRightSidebar}
           />
           <Toastrs/>
-          <Container id='main-container' fluid styleName='main-container'>
+          <div id='main-container'>
             {this.props.children}
-          </Container>
+          </div>
           <Footer/>
         </div>
       </div>

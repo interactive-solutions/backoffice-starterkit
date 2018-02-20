@@ -1,5 +1,6 @@
 .fixed, .stuck {
   margin: 0 !important;
+  box-sizing: border-box !important;
   height: 72px !important;
   width: 100% !important;
 }
@@ -9,36 +10,35 @@
   z-index: 500;
   top: 0;
   padding: 10px;
-  padding-top: 0px;
+  /* padding-top: 0px; */
   padding-right: 50px;
   overflow-x: visible;
-  margin-top: 0 !important;
+  /* margin-top: 0 !important; */
 
-  @media screen and (max-width: $cellphone-breakpoint) {
+  /* @media screen and (max-width: $cellphone-breakpoint) {
     padding: 10px !important;
     padding-top: 15px !important;
     display: block !important;
     &.button {
       margin-right: 50px;
     }
-  }
+  } */
 }
 
 .stuck {
   top: 0 !important;
-  margin-top: 0 !important;
+  /* margin-top: 0 !important; */
   padding: 10px;
   padding-left: 10px;
   overflow-x: visible;
-  max-height: 66px;
 
-  @media screen and (max-width: $cellphone-breakpoint) {
+  /* @media screen and (max-width: $cellphone-breakpoint) {
     padding: 10px !important;
     display: block !important;
     &.button {
       margin-right: 50px;
     }
-  }
+  } */
 }
 
 .stuck-placeholder {

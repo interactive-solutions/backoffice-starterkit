@@ -19,6 +19,8 @@ const validate = (values, props) => {
   return errors;
 };
 
+// const onSubmit = (values, dispatch, props) => 
+
 const CreateUserReduxForm = (props) => {
   const { submitting, onSubmit, handleSubmit, error } = props;
 
