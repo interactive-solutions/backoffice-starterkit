@@ -48,19 +48,6 @@ export class Dashboard extends Component<Props, State> {
     return null;
   }
 
-  // renderHeaderMenu() {
-  //   return (
-  //     <Fragment>
-  //       <Button color='green' floated='right'>
-  //         From
-  //       </Button>
-  //       <Button color='green' floated='right'>
-  //         To
-  //       </Button>
-  //     </Fragment>
-  //   );
-  // }
-
   renderPieChart(data: Object, header: string) {
     return (
       <Grid.Column>
