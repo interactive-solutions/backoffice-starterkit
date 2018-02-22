@@ -39,16 +39,16 @@ const validate = ({ oldPassword, newPassword, confirmPassword }) => {
   return errors;
 };
 
+const onSubmit = (values, dispatch, props) => {
+  props.reset();
+  return props.onSubmit(values);
+};
+
 const ChangePasswordReduxForm = (props) => {
-  const { submitting, onSubmit, handleSubmit, error, reset } = props;
+  const { submitting, handleSubmit, error } = props;
 
   return (
-    <Form
-      onSubmit={handleSubmit((data) => {
-        reset();
-        return onSubmit(data);
-      })}
-    >
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Field
         label='Old password'
         name='oldPassword'
