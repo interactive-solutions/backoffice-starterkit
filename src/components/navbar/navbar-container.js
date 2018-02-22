@@ -12,8 +12,7 @@ export class NavbarContainer extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    //                   the eslint-disable-line below is needed
-    location: PropTypes.object.isRequired // eslint-disable-line
+    location: PropTypes.object.isRequired
   }
 
   constructor(props) {
