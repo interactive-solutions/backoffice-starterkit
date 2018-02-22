@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Breadcrumb, Menu, Button, Visibility, Header } from 'semantic-ui-react';
+import { Breadcrumb, Menu, Button, Header } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import './style/breadcrumb.scss';
 
@@ -105,9 +105,6 @@ export class Breadcrumbs extends Component<Props, State> {
 
     return (
       <Fragment>
-        <Visibility
-          styleName={!scrollOnTop ? 'stuck-placeholder' : ''}
-        />
         <Menu ref={(input) => { this.domElement = input; }} id='menu' styleName={moving}>
           <Menu.Item position='left' styleName='borderless'>
             <Breadcrumb size='big'>

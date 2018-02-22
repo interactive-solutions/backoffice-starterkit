@@ -64,14 +64,12 @@ export class NavbarContainer extends Component {
 
     return (
       <div id='navbar-container' styleName='flex height-100vh'>
-        <div id='navbar' styleName='flex min-height-100'>
-          <Navbar
-            visible={navbarIsVisible}
-            sideMenuContent={sideMenuContent}
-            activeItem={this.state.activeItem}
-            setActiveItem={this.setActiveItem}
-          />
-        </div>
+        <Navbar
+          visible={navbarIsVisible}
+          sideMenuContent={sideMenuContent}
+          activeItem={this.state.activeItem}
+          setActiveItem={this.setActiveItem}
+        />
 
         <div id='content-container' styleName='flex-1 content-container'>
           <Header

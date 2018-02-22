@@ -43,12 +43,14 @@ $transition-time: 0.6s;
 
 .navbar, .small-navbar {
   border-radius: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 .small-navbar {
   @include transitions;
 
-  width: 4.5rem !important;
+  width: $navbar-small-width !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -56,16 +58,13 @@ $transition-time: 0.6s;
 .navbar {
   @include transitions;
 
+  width: $navbar-big-width !important;
+
   /* Always hide on low-res */
   @media (max-width: $cellphone-breakpoint) {
-    width: 4.5rem !important;
+    width: $navbar-small-width !important;
     margin: 0 !important;
     padding: 0 !important;
-  }
-
-  .full-height {
-    min-height: 100% !important;
-    overflow-y: scroll;
   }
 
   .centered-icon {

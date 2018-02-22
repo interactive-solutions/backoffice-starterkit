@@ -49,6 +49,7 @@ export const Navbar = (props) => {
 
   return (
     <Menu
+      id='navbar'
       styleName={navbarStyles}
       inverted
       vertical

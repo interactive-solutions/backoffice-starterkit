@@ -2,18 +2,17 @@
   margin: 0 !important;
   box-sizing: border-box !important;
   height: 72px !important;
-  width: 100% !important;
+  overflow-x: visible !important;
+  padding: 10px !important;
 }
 
 .fixed {
   position: fixed;
-  z-index: 500;
-  top: 0;
-  padding: 10px;
-  /* padding-top: 0px; */
-  padding-right: 50px;
-  overflow-x: visible;
-  /* margin-top: 0 !important; */
+  z-index: 400;
+  top: 0 !important;
+  width: inherit !important;
+  /*left: 0px !important; */
+  right: 0px !important;
 
   /* @media screen and (max-width: $cellphone-breakpoint) {
     padding: 10px !important;
@@ -26,12 +25,7 @@
 }
 
 .stuck {
-  top: 0 !important;
-  /* margin-top: 0 !important; */
-  padding: 10px;
-  padding-left: 10px;
-  overflow-x: visible;
-
+  width: 100% !important;
   /* @media screen and (max-width: $cellphone-breakpoint) {
     padding: 10px !important;
     display: block !important;
@@ -39,11 +33,6 @@
       margin-right: 50px;
     }
   } */
-}
-
-.stuck-placeholder {
-  padding: 10px;
-  height: 97px;
 }
 
 .borderless:before {
