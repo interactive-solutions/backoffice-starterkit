@@ -57,36 +57,39 @@ class Toastr extends React.Component {
     }
   }
 
+  infoToastrProps = {
+    styleName: 'info-toastr',
+    icon: 'info circle',
+    info: true
+  }
+
+  successToastrProps = {
+    styleName: 'success-toastr',
+    icon: 'checkmark box',
+    success: true
+  }
+
   render = () => {
     const { toastr } = this.props;
     const { header, content, type } = toastr;
-    let message;
+    let additionalProps;
 
     switch (type) {
       case toastrType.INFO:
-        message = (
-          <Message
-            info
-            styleName='info-toastr'
-            icon='info circle'
-            header={header}
-            content={content}
-            onDismiss={this.onDismiss}
-          />
-        );
+        additionalProps = this.infoToastrProps;
         break;
       default: // toastrType.SUCCESS
-        message = (
-          <Message
-            success
-            styleName='success-toastr'
-            icon='checkmark box'
-            header={header}
-            content={content}
-            onDismiss={this.onDismiss}
-          />
-        );
+        additionalProps = this.successToastrProps;
     }
+
+    const message = (
+      <Message
+        header={header}
+        content={content}
+        onDismiss={this.onDismiss}
+        {...additionalProps}
+      />
+    );
 
     /**
      * The div below is needed:
