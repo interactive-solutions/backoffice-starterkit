@@ -72,30 +72,27 @@ export class Breadcrumbs extends Component<Props, State> {
   }
 
   renderCallbacks() {
-    if (this.props.callbacks) {
-      const buttons = this.props.callbacks.map((item: Callback, index: number) => (
-        <Button onClick={item.func} key={index} color={item.color}>
-          {item.text}
-        </Button>
-      )
-      );
-      return (
-        <Menu.Item position='right' styleName='borderless'>
-          <Breadcrumb>
-            {buttons}
-          </Breadcrumb>
-        </Menu.Item>
-      );
+    if (!this.props.callbacks) {
+      return null;
     }
-    return null;
+
+    const buttons = this.props.callbacks.map((item: Callback, index: number) => (
+      <Button onClick={item.func} key={index} color={item.color}>
+        {item.text}
+      </Button>
+    ));
+
+    return (
+      <Breadcrumb>
+        {buttons}
+      </Breadcrumb>
+    );
   }
 
   renderHeader() {
     if (this.props.header) {
       return (
-        <Menu.Item styleName='borderless'>
-          <Header as='h3' content={this.props.header}/>
-        </Menu.Item>
+        <Header as='h3' content={this.props.header}/>
       );
     }
 
@@ -117,8 +114,12 @@ export class Breadcrumbs extends Component<Props, State> {
               {this.renderCrumbs()}
             </Breadcrumb>
           </Menu.Item>
-          {this.renderHeader()}
-          {this.renderCallbacks()}
+          <Menu.Item styleName='borderless'>
+            {this.renderHeader()}
+          </Menu.Item>
+          <Menu.Item position='right' styleName='borderless'>
+            {this.renderCallbacks()}
+          </Menu.Item>
         </Menu>
       </Fragment>
     );
