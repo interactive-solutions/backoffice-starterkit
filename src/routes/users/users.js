@@ -6,13 +6,14 @@ import { SearchUserForm } from 'components/forms';
 import { BreadcrumbHeader } from 'components';
 import ReactTable from 'react-table';
 import { resolveUsers, searchUsers } from 'redux/modules/user';
-import { openFormModal, OPEN_CREATE_USER_MODAL } from 'redux/modules/modal';
+import { openModal, openFormModal, OPEN_CREATE_USER_MODAL } from 'redux/modules/modal';
 
 const mapStateToProps = (state) => ({
   users: state.user.users
 });
 
 const mapDispatchToProps = dispatch => ({
+  openModal: (props) => dispatch(openModal(props)),
   resolveUsers: () => dispatch(resolveUsers()),
   searchUsers: (username) => dispatch(searchUsers(username)),
   openCreateUserModal: () => dispatch(openFormModal('Create new user', OPEN_CREATE_USER_MODAL))
@@ -31,8 +32,12 @@ export default class Users extends Component {
 
   searchUser = (values) => {
     this.props.searchUsers(values.username)
-      // .then(() => this.props.resolveUsers())
-      .catch((error) => console.warn(error)); // eslint-disable-line
+      .catch(() => {
+        this.props.openModal({
+          header: 'Search fail!',
+          content: 'Un unexpected error occurred.'
+        });
+      });
   }
 
   render() {

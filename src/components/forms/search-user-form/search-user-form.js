@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Message, Segment } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
-// import { userService } from 'api';
-// import { openModal } from 'redux/modules/modal';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 
 const validate = (values, props) => {

@@ -2,10 +2,8 @@ import axios from 'axios';
 import { UserEntity } from './entity';
 
 export class UserService {
-  // ---------------------------
-  // Current user
-  // ----------------------------
   currentUser: UserEntity = null;
+  users: UserEntity[] = [];
 
   hydrate(user) {
     return new UserEntity(user.uuid, user.username, user.roles);
@@ -43,11 +41,6 @@ export class UserService {
     return axios.post('backend://users', { username, roles: [roles] })
       .then((response) => this.users = this.hydrateArray(response.data)); // todo remove this temporary fix.
   }
-
-  // ---------------------------
-  // All/many users
-  // ----------------------------
-  users: UserEntity[] = [];
 
   hydrateArray(data) {
     return data.map(this.hydrate);

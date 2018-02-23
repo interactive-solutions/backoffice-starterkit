@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Grid, Message, Modal } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
-// import { userService } from 'api';
 import {
   openModal,
   closeModal

@@ -40,11 +40,12 @@ export const FormModal = (props: Props) => {
   return null;
 };
 
-const returnForm = (type /* , initialValues */) => {
+const returnForm = (type) => {
   switch (type) {
     case OPEN_CREATE_USER_MODAL:
-      return <CreateUserForm onSubmit={() => alert('hej')}/>; // eslint-disable-line
+      return <CreateUserForm/>;
     default:
+      return null;
   }
 };
 

@@ -14,8 +14,3 @@ addAuthenticationAPI(app);
 addUserAPI(app);
 
 app.listen(3000);
-
-// const server = http.createServer(app);     <-- ?
-// server.listen(port);                       <-- ?
-// server.on('error', onError);               <-- ?
-// server.on('listening', onListening);       <-- ?

@@ -9,7 +9,7 @@ import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { Navbar } from './navbar';
 import { NavbarContext } from './navbar-context';
-import './style/navbar.scss';
+import './style/navbar-container.scss';
 
 export class NavbarContainer extends Component {
   static propTypes = {

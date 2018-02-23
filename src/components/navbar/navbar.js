@@ -7,7 +7,7 @@ import './style/navbar.scss';
 
 export const Navbar = (props) => {
   const { visible, sideMenuContent, activeItem, setActiveItem } = props;
-  const navbarStyles = `no-margins-or-padding min-height-100 ${visible ? 'navbar' : 'small-navbar'}`;
+  const navbarStyles = visible ? 'navbar' : 'small-navbar';
 
   let sideMenu;
 

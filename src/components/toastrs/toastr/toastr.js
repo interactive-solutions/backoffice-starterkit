@@ -12,15 +12,6 @@ import {
 import './style/toastr.scss';
 
 // ---------------------------------
-// Constants
-// ---------------------------------
-
-// export const toastrType = {
-//   INFO: 'info',
-//   SUCCESS: 'success'
-// };
-
-// ---------------------------------
 // Toastr
 // ---------------------------------
 
