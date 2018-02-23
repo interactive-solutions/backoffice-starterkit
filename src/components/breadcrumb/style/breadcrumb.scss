@@ -6,33 +6,32 @@
   padding: 10px !important;
 }
 
+$transition-time: 0.6s;
+
 .fixed {
+  -webkit-transition: left $transition-time ease;
+  -moz-transition: left $transition-time ease;
+  -o-transition: left $transition-time ease;
+  -ms-transition: left $transition-time ease;
+  transition: left $transition-time ease;
+
   position: fixed;
   z-index: 400;
   top: 0 !important;
-  width: inherit !important;
-  /*left: 0px !important; */
-  right: 0px !important;
-
-  /* @media screen and (max-width: $cellphone-breakpoint) {
-    padding: 10px !important;
-    padding-top: 15px !important;
-    display: block !important;
-    &.button {
-      margin-right: 50px;
+  right: 8.5px !important;
+  left: $navbar-big-width !important;
+  @media (max-width: $cellphone-breakpoint) {
+    left: $navbar-small-width !important;
+  }
+  @media (min-width: $cellphone-breakpoint+1) {
+    &.wider {
+      left: $navbar-small-width !important;
     }
-  } */
+  }
 }
 
 .stuck {
   width: 100% !important;
-  /* @media screen and (max-width: $cellphone-breakpoint) {
-    padding: 10px !important;
-    display: block !important;
-    &.button {
-      margin-right: 50px;
-    }
-  } */
 }
 
 .borderless:before {

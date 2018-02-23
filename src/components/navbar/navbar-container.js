@@ -8,6 +8,7 @@ import { Footer } from 'components/footer/footer';
 import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { Navbar } from './navbar';
+import { NavbarContext } from './navbar-context';
 import './style/navbar.scss';
 
 export class NavbarContainer extends Component {
@@ -85,7 +86,9 @@ export class NavbarContainer extends Component {
             <Toastrs/>
           </div>
           <div id='main-container'>
-            {this.props.children}
+            <NavbarContext.Provider value={{ isNavbarBig: navbarIsVisible }}>
+              {this.props.children}
+            </NavbarContext.Provider>
           </div>
           <Footer/>
         </div>

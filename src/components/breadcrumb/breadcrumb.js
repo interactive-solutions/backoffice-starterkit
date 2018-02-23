@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb, Menu, Button, Header } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
+import { NavbarContext } from 'components/navbar/navbar-context';
 import './style/breadcrumb.scss';
 
 type Callback = {
@@ -104,21 +105,28 @@ export class Breadcrumbs extends Component<Props, State> {
     const moving = scrollOnTop ? 'stuck' : ' fixed';
 
     return (
-      <Fragment>
-        <Menu ref={(input) => { this.domElement = input; }} id='menu' styleName={moving}>
-          <Menu.Item position='left' styleName='borderless'>
-            <Breadcrumb size='big'>
-              {this.renderCrumbs()}
-            </Breadcrumb>
-          </Menu.Item>
-          <Menu.Item styleName='borderless'>
-            {this.renderHeader()}
-          </Menu.Item>
-          <Menu.Item position='right' styleName='borderless'>
-            {this.renderCallbacks()}
-          </Menu.Item>
-        </Menu>
-      </Fragment>
+      <NavbarContext.Consumer>
+        {(context) => {
+          const adaptToNavbar = context.isNavbarBig ? '' : ' wider';
+          return (
+            <Fragment>
+              <Menu id='menu' styleName={moving + adaptToNavbar}>
+                <Menu.Item position='left' styleName='borderless'>
+                  <Breadcrumb size='big'>
+                    {this.renderCrumbs()}
+                  </Breadcrumb>
+                </Menu.Item>
+                <Menu.Item styleName='borderless'>
+                  {this.renderHeader()}
+                </Menu.Item>
+                <Menu.Item position='right' styleName='borderless'>
+                  {this.renderCallbacks()}
+                </Menu.Item>
+              </Menu>
+            </Fragment>
+          );
+        }}
+      </NavbarContext.Consumer>
     );
   }
 }
