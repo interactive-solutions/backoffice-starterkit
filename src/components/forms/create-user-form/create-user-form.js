@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Grid, Message, Modal } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
-import { userService } from 'api';
+// import { userService } from 'api';
 import {
   openModal,
   closeModal
 } from 'redux/modules/modal';
 import { openToastr } from 'redux/modules/toastr';
+import { createUser } from 'redux/modules/user';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
 
 const validate = (values) => {
@@ -26,7 +27,7 @@ const validate = (values) => {
 };
 
 const onSubmit = (values, dispatch) => {
-  userService.create(values.username, values.roles)
+  dispatch(createUser(values.username, values.roles))
     .then(() => {
       dispatch(closeModal()); // close this modal
       dispatch(openToastr({

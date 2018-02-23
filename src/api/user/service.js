@@ -40,7 +40,8 @@ export class UserService {
   }
 
   create(username, roles) {
-    return axios.post('backend://users', { username, roles: [roles] }); // todo remove this temporary fix.
+    return axios.post('backend://users', { username, roles: [roles] })
+      .then((response) => this.users = this.hydrateArray(response.data)); // todo remove this temporary fix.
   }
 
   // ---------------------------

@@ -20,6 +20,10 @@ const RESOLVE_USER_PENDING = 'backoffice:resolve-user:pending';
 const RESOLVE_USER_SUCCESS = 'backoffice:resolve-user:success';
 const RESOLVE_USER_ERROR = 'backoffice:resolve-user:error';
 
+const CREATE_USER_PENDING = 'backoffice:create-user:pending';
+const CREATE_USER_SUCCESS = 'backoffice:create-user:success';
+const CREATE_USER_ERROR = 'backoffice:create-user:error';
+
 const LOG_OUT = 'backoffice:logout';
 
 const RESOLVE_USERS_PENDING = 'backoffice:resolve-users:pending';
@@ -68,6 +72,20 @@ export function resolveUsers() {
     ],
     payload: {
       promise: userService.resolveUsers()
+    }
+  });
+}
+
+export function createUser(username, roles) {
+  return (dispatch) => dispatch({
+
+    types: [
+      CREATE_USER_PENDING,
+      CREATE_USER_SUCCESS,
+      CREATE_USER_ERROR
+    ],
+    payload: {
+      promise: userService.create(username, roles)
     }
   });
 }
@@ -124,14 +142,17 @@ class UserReducer {
     switch (action.type) {
       case RESOLVE_USERS_PENDING:
       case SEARCH_USERS_PENDING:
+      case CREATE_USER_PENDING:
         return state;
 
       case RESOLVE_USERS_SUCCESS:
       case SEARCH_USERS_SUCCESS:
+      case CREATE_USER_SUCCESS:
         return action.payload;
 
       case RESOLVE_USERS_ERROR:
       case SEARCH_USERS_ERROR:
+      case CREATE_USER_ERROR:
         return [];
 
       default:
