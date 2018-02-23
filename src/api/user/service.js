@@ -40,8 +40,7 @@ export class UserService {
   }
 
   create(username, roles) {
-    return axios.post('backend://users', { username, roles: [roles] }) // todo remove this temporary fix.
-      .then((response) => response); // todo remove
+    return axios.post('backend://users', { username, roles: [roles] }); // todo remove this temporary fix.
   }
 
   // ---------------------------
@@ -63,7 +62,6 @@ export class UserService {
   }
 
   search(username) {
-    console.log(`username: ${username}`); // eslint-disable-line
     return axios.get('backend://users/search', { params: { username } })
       .then((response) => this.users = this.hydrateArray(response.data));
   }

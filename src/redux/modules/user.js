@@ -68,7 +68,6 @@ export function resolveUsers() {
     ],
     payload: {
       promise: userService.resolveUsers()
-        .then(response => response) // todo remove
     }
   });
 }
@@ -83,7 +82,6 @@ export function searchUsers(username) {
     ],
     payload: {
       promise: userService.search(username)
-        .then(response => response) // todo remove
     }
   });
 }

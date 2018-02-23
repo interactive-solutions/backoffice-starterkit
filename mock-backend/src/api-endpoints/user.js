@@ -55,7 +55,7 @@ export const addUserAPI = (app) => {
 
     const { username, roles } = req.body;
 
-    if (!username || !roles) {
+    if (!username) {
       console.warn('Error. Username is missing.');
       res.status(400).send({ error: 'Error. Username is missing.' });
       return;
@@ -104,10 +104,10 @@ export const addUserAPI = (app) => {
     }
 
     // The search logic.
-    const searchResults = db.users.filter(user => {
-      return user.username.toLowerCase()
-        .includes(username.toLowerCase());
-    });
+    const searchResults = db.users.filter(user =>
+      user.username.toLowerCase()
+        .includes(username.toLowerCase())
+    );
 
     // send back all users.
     res.json(searchResults);
