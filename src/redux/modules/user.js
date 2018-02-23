@@ -26,6 +26,10 @@ const RESOLVE_USERS_PENDING = 'backoffice:resolve-users:pending';
 const RESOLVE_USERS_SUCCESS = 'backoffice:resolve-users:success';
 const RESOLVE_USERS_ERROR = 'backoffice:resolve-users:error';
 
+const SEARCH_USERS_PENDING = 'backoffice:search-users:pending';
+const SEARCH_USERS_SUCCESS = 'backoffice:search-users:success';
+const SEARCH_USERS_ERROR = 'backoffice:search-users:error';
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -69,6 +73,21 @@ export function resolveUsers() {
   });
 }
 
+export function searchUsers(username) {
+  return (dispatch) => dispatch({
+
+    types: [
+      SEARCH_USERS_PENDING,
+      SEARCH_USERS_SUCCESS,
+      SEARCH_USERS_ERROR
+    ],
+    payload: {
+      promise: userService.search(username)
+        .then(response => response) // todo remove
+    }
+  });
+}
+
 // ------------------------------------
 // Reducers
 // ------------------------------------
@@ -93,7 +112,7 @@ class UserReducer {
         return action.payload;
 
       case RESOLVE_USER_ERROR:
-        return action.payload;
+        return null;
 
       case LOG_OUT:
         return null;
@@ -106,12 +125,15 @@ class UserReducer {
   getUsersState = (state, action: Action) => {
     switch (action.type) {
       case RESOLVE_USERS_PENDING:
+      case SEARCH_USERS_PENDING:
         return state;
 
       case RESOLVE_USERS_SUCCESS:
+      case SEARCH_USERS_SUCCESS:
         return action.payload;
 
       case RESOLVE_USERS_ERROR:
+      case SEARCH_USERS_ERROR:
         return [];
 
       default:

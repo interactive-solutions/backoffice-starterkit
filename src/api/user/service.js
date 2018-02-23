@@ -61,4 +61,10 @@ export class UserService {
   getUsers() {
     return this.users;
   }
+
+  search(username) {
+    console.log(`username: ${username}`); // eslint-disable-line
+    return axios.get('backend://users/search', { params: { username } })
+      .then((response) => this.users = this.hydrateArray(response.data));
+  }
 }

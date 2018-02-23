@@ -9,7 +9,7 @@ export const addUserAPI = (app) => {
    * Request info about my account
    */
   app.get('/users/me', (req, res) => {
-    console.log('/users/me');
+    console.log('GET /users/me');
     
     if (!requiresAuthentication(req, res)) {
       return;
@@ -28,28 +28,11 @@ export const addUserAPI = (app) => {
    * Request a list of all users
    */
   app.get('/users', (req, res) => {
-    console.log('/users');
+    console.log('GET /users');
     
     if (!requiresAuthentication(req, res)) {
       return;
     }
-
-    res.json(db.users);
-  });
-
-  /**
-   * Request a specific user
-   */
-  app.get('/users/:uuid', (req, res) => {
-    console.log('/users');
-    const { uuid } = req.params;
-    
-    if (!requiresAuthentication(req, res)) {
-      return;
-    }
-
-    // todo. do error checking. if not found etc.
-    db.users.find(user => user.uuid === uuid);
 
     res.json(db.users);
   });
@@ -92,6 +75,58 @@ export const addUserAPI = (app) => {
     db.users.push({ uuid, username, roles });
 
     // send back all users.
+    res.json(db.users);
+  });
+
+  /**
+   * Search users by username
+   */
+  app.get('/users/search', (req, res) => {
+    console.log('GET /users/search');
+
+    if (!requiresAuthentication(req, res)) {
+      return;
+    }
+
+    if (!req.body) {
+      console.warn('Error. !req.body');
+      res.sendStatus(400);
+      return;
+    }
+
+    // grab query params.
+    const { username } = req.query;
+
+    if (!username) {
+      console.warn('Error. Username is missing.');
+      res.status(400).send({ error: 'Error. Username is missing.' });
+      return;
+    }
+
+    // The search logic.
+    const searchResults = db.users.filter(user => {
+      return user.username.toLowerCase()
+        .includes(username.toLowerCase());
+    });
+
+    // send back all users.
+    res.json(searchResults);
+  });
+
+  /**
+   * Request a specific user
+   */
+  app.get('/users/:uuid', (req, res) => {
+    console.log('GET /users/:uuid');
+    const { uuid } = req.params;
+    
+    if (!requiresAuthentication(req, res)) {
+      return;
+    }
+
+    // todo. do error checking. if not found etc.
+    db.users.find(user => user.uuid === uuid);
+
     res.json(db.users);
   });
 };

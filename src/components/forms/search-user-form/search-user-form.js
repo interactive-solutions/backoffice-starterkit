@@ -21,25 +21,12 @@ const validate = (values, props) => {
   return errors;
 };
 
-// const onSubmit = (values, dispatch) => {
-//   userService.search(values.username)
-//     .then(() => {
-//       // update data table
-//     })
-//     .catch(() => {
-//       dispatch(openModal({
-//         header: 'Search failed!',
-//         content: 'An error occured when searching.'
-//       }));
-//     });
-// };
-
 const SearchUserReduxForm = (props) => {
   const { submitting, handleSubmit, onSubmit, error } = props;
 
   return (
     <Segment compact>
-      <Form loading={submitting}>
+      <Form loading={submitting} onSubmit={handleSubmit(onSubmit)}>
         <Header as='h3'>Search user</Header>
         <Field
           name='username'
@@ -53,7 +40,11 @@ const SearchUserReduxForm = (props) => {
           visible={!!error}
           content={error ? error._error : null}
         />
-        <Button primary onClick={handleSubmit(onSubmit)}>
+        <Button
+          type='submit'
+          color='blue'
+          loading={submitting}
+        >
           Search
         </Button>
       </Form>
