@@ -28,7 +28,7 @@ export const FormModal = (props: Props) => {
       <Modal open size='tiny'>
         <Modal.Header>{props.modal.header}</Modal.Header>
         <Icon
-          styleName='close-modal'
+          styleName='close-icon'
           color='black'
           size='small'
           name='close'
