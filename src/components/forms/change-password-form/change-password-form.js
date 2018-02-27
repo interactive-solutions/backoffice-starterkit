@@ -96,7 +96,7 @@ export const ChangePasswordForm = reduxForm({
 })(ChangePasswordReduxForm);
 
 ChangePasswordReduxForm.propTypes = {
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func, // eslint-disable-line
   handleSubmit: PropTypes.func,
   error: PropTypes.object,
   submitting: PropTypes.bool
