@@ -3,15 +3,10 @@ import { UserEntity } from './entity';
 
 export class UserService {
   currentUser: UserEntity = null;
-  users: UserEntity[] = [];
-
-  hydrate(user) {
-    return new UserEntity(user.uuid, user.username, user.roles);
-  }
 
   resolveUser() {
     return axios.get('backend://users/me')
-      .then((response) => this.currentUser = this.hydrate(response.data));
+      .then((response) => this.currentUser = UserEntity.create(response.data));
   }
 
   getCurrentUser() {
@@ -38,25 +33,20 @@ export class UserService {
   }
 
   create(username, roles) {
-    return axios.post('backend://users', { username, roles: [roles] })
-      .then((response) => this.users = this.hydrateArray(response.data)); // todo remove this temporary fix.
+    return axios.post('backend://users', { username, roles: [roles] });
   }
 
   hydrateArray(data) {
     return data.map(this.hydrate);
   }
 
-  resolveUsers() {
-    return axios.get('backend://users')
-      .then((response) => this.users = this.hydrateArray(response.data));
-  }
-
   getUsers() {
-    return this.users;
+    return axios.get('backend://users')
+      .then(response => response.data);
   }
 
   search(username) {
     return axios.get('backend://users/search', { params: { username } })
-      .then((response) => this.users = this.hydrateArray(response.data));
+      .then(response => response.data);
   }
 }

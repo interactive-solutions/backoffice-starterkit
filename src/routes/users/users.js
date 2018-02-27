@@ -5,7 +5,7 @@ import { Container, Segment } from 'semantic-ui-react';
 import { SearchUserForm } from 'components/forms';
 import { BreadcrumbHeader } from 'components';
 import ReactTable from 'react-table';
-import { resolveUsers, searchUsers } from 'redux/modules/user';
+import { getUsers, searchUsers } from 'redux/modules/user';
 import { openModal, openFormModal, OPEN_CREATE_USER_MODAL } from 'redux/modules/modal';
 
 const mapStateToProps = (state) => ({
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   openModal: (props) => dispatch(openModal(props)),
-  resolveUsers: () => dispatch(resolveUsers()),
+  getUsers: () => dispatch(getUsers()),
   searchUsers: (username) => dispatch(searchUsers(username)),
   openCreateUserModal: () => dispatch(openFormModal('Create new user', OPEN_CREATE_USER_MODAL))
 });
@@ -22,12 +22,12 @@ const mapDispatchToProps = dispatch => ({
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Users extends Component {
   static propTypes = {
-    resolveUsers: PropTypes.func.isRequired,
+    getUsers: PropTypes.func.isRequired,
     users: PropTypes.array
   };
 
   componentWillMount() {
-    this.props.resolveUsers();
+    this.props.getUsers();
   }
 
   searchUser = (values) => {
@@ -65,7 +65,7 @@ export default class Users extends Component {
           callbacks={callbacks}
         />
         <Container className='route-container' textAlign='center'>
-          <SearchUserForm onSubmit={this.searchUser}/>
+          <SearchUserForm onChange={this.searchUser}/>
           <Segment>
             <ReactTable data={this.props.users} columns={columns}/>
           </Segment>

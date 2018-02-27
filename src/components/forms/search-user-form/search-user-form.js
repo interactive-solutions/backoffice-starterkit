@@ -1,30 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header, Message, Segment } from 'semantic-ui-react';
+import { Form, Header, Message, Segment } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
-import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
-
-const validate = (values, props) => {
-  const errors = {};
-
-  if (!values.username || values.username.length === 0) {
-    errors.username = FORM_ERROR_REQUIRED_FIELD;
-  }
-
-  if (!props.submitting && (!values.bilingId || (values.bilingId && values.bilingId.length === 0))) {
-    errors.bilingId = FORM_ERROR_REQUIRED_FIELD;
-  }
-
-  return errors;
-};
 
 const SearchUserReduxForm = (props) => {
-  const { submitting, handleSubmit, onSubmit, error } = props;
+  const { submitting, handleSubmit, onChange, error } = props;
+
+  // onChange needs the setTimeout: https://github.com/erikras/redux-form/issues/537
+  const handleChange = (event) => setTimeout(() => handleSubmit(onChange)(event));
 
   return (
     <Segment compact>
-      <Form loading={submitting} onSubmit={handleSubmit(onSubmit)}>
+      <Form loading={submitting} onChange={handleChange}>
         <Header as='h3'>Search user</Header>
         <Field
           name='username'
@@ -38,13 +26,6 @@ const SearchUserReduxForm = (props) => {
           visible={!!error}
           content={error ? error._error : null}
         />
-        <Button
-          type='submit'
-          color='blue'
-          loading={submitting}
-        >
-          Search
-        </Button>
       </Form>
     </Segment>
   );
@@ -52,12 +33,11 @@ const SearchUserReduxForm = (props) => {
 
 export const SearchUserForm = reduxForm({
   form: 'search-user-form',
-  fields: ['username'],
-  validate
+  fields: ['username']
 })(SearchUserReduxForm);
 
 SearchUserReduxForm.propTypes = {
-  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
   handleSubmit: PropTypes.func,
   error: PropTypes.object,
   submitting: PropTypes.bool

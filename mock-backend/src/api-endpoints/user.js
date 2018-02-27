@@ -98,8 +98,7 @@ export const addUserAPI = (app) => {
     const { username } = req.query;
 
     if (!username) {
-      console.warn('Error. Username is missing.');
-      res.status(400).send({ error: 'Error. Username is missing.' });
+      res.json(db.users);
       return;
     }
 

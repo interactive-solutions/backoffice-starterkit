@@ -16,9 +16,9 @@ type Action = {
 // Constants
 // ------------------------------------
 
-const RESOLVE_USER_PENDING = 'backoffice:resolve-user:pending';
-const RESOLVE_USER_SUCCESS = 'backoffice:resolve-user:success';
-const RESOLVE_USER_ERROR = 'backoffice:resolve-user:error';
+const RESOLVE_USER_PENDING = 'backoffice:get-user:pending';
+const RESOLVE_USER_SUCCESS = 'backoffice:get-user:success';
+const RESOLVE_USER_ERROR = 'backoffice:get-user:error';
 
 const CREATE_USER_PENDING = 'backoffice:create-user:pending';
 const CREATE_USER_SUCCESS = 'backoffice:create-user:success';
@@ -26,9 +26,9 @@ const CREATE_USER_ERROR = 'backoffice:create-user:error';
 
 const LOG_OUT = 'backoffice:logout';
 
-const RESOLVE_USERS_PENDING = 'backoffice:resolve-users:pending';
-const RESOLVE_USERS_SUCCESS = 'backoffice:resolve-users:success';
-const RESOLVE_USERS_ERROR = 'backoffice:resolve-users:error';
+const GET_USERS_PENDING = 'backoffice:get-users:pending';
+const GET_USERS_SUCCESS = 'backoffice:get-users:success';
+const GET_USERS_ERROR = 'backoffice:get-users:error';
 
 const SEARCH_USERS_PENDING = 'backoffice:search-users:pending';
 const SEARCH_USERS_SUCCESS = 'backoffice:search-users:success';
@@ -62,16 +62,16 @@ export function logout() {
   };
 }
 
-export function resolveUsers() {
+export function getUsers() {
   return (dispatch) => dispatch({
 
     types: [
-      RESOLVE_USERS_PENDING,
-      RESOLVE_USERS_SUCCESS,
-      RESOLVE_USERS_ERROR
+      GET_USERS_PENDING,
+      GET_USERS_SUCCESS,
+      GET_USERS_ERROR
     ],
     payload: {
-      promise: userService.resolveUsers()
+      promise: userService.getUsers()
     }
   });
 }
@@ -140,17 +140,17 @@ class UserReducer {
 
   getUsersState = (state, action: Action) => {
     switch (action.type) {
-      case RESOLVE_USERS_PENDING:
+      case GET_USERS_PENDING:
       case SEARCH_USERS_PENDING:
       case CREATE_USER_PENDING:
         return state;
 
-      case RESOLVE_USERS_SUCCESS:
+      case GET_USERS_SUCCESS:
       case SEARCH_USERS_SUCCESS:
       case CREATE_USER_SUCCESS:
         return action.payload;
 
-      case RESOLVE_USERS_ERROR:
+      case GET_USERS_ERROR:
       case SEARCH_USERS_ERROR:
       case CREATE_USER_ERROR:
         return [];
