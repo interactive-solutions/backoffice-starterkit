@@ -1,51 +1,45 @@
+$transition-time: 0.6s;
+
+@mixin transitions {
+  -webkit-transition: all $transition-time ease;
+  -moz-transition: all $transition-time ease;
+  -o-transition: all $transition-time ease;
+  -ms-transition: all $transition-time ease;
+  transition: all $transition-time ease;
+  
+  -o-transform-origin: left;
+  -ms-transform-origin: left;
+  -webkit-transform-origin: left;
+  -moz-transform-origin: left;
+  transform-origin: left;
+}
+
+.navbar, .small-navbar {
+  border-radius: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100% !important;
+}
+
+.small-navbar {
+  @include transitions;
+
+  width: $navbar-small-width !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .navbar {
-  min-height: 101%;
-  .sidebar {
+  @include transitions;
 
-  }
+  width: $navbar-big-width !important;
 
-  .full-height {
-    width: 101%;
-    height: 100vh;
-    min-height: 100vh;
-    overflow-y: scroll;
-  }
-
-//  min-height: calc(100vh + 80px);
-//  height: auto;
-/*
-  .ui.left.push.sidebar {
-      transform: translate3d(-90%,0,0);
-  }
-  .ui.left.visible.push.sidebar {
-      transform: translate3d(0,0,0);
-  }
-  .ui.sidebar {
-    visibility: visible;
-  }*/
-
-  .padded-header-visible {
-    padding-right: 260px;
-
-    transition: padding-right 0.7s  ease;
-    transition-delay: 0.4s;
-    /* height: 100%; */
-  }
-  .padded-header-invisible {
-    padding-right: 60px;
-    transition: padding-right 0.7s ease;
-    transition-delay: 0.4s;
-    /* height: 100%; */
-  }
-
-  .main-container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 1em;
-  }
-
-  .centered-icon {
-    position: relative;
-    left: -5px;
+  /* Always hide on low-res */
+  @media (max-width: $cellphone-breakpoint) {
+    width: $navbar-small-width !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }

@@ -3,9 +3,22 @@ import { Grid } from 'semantic-ui-react';
 import { ForgotPasswordForm } from 'components/forms';
 import { userService } from 'api';
 import PropTypes from 'prop-types';
+import { openModal } from 'redux/modules/modal';
+import { push } from 'react-router-redux';
+import { connect } from 'react-redux';
 import './style/forgot-password.scss';
 
-export class ForgotPassword extends Component {
+const mapStateToProps = (state) => ({
+  user: state.user.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  push: (path) => dispatch(push(path)),
+  openModal: (header, content) => dispatch(openModal(header, content))
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class ForgotPassword extends Component {
   static propTypes = {
     push: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired

@@ -13,13 +13,19 @@ import {
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
-import { openToastr } from 'redux/modules/toastr';
+import {
+  openToastr,
+  toastrType
+} from 'redux/modules/toastr';
 import { ChangePasswordForm } from 'components/forms';
-import { toastrType } from 'components/toastr/toastr';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 
 class RightSidebar extends React.Component {
+  static propTypes = {
+    toggleRightSidebar: PropTypes.func
+  };
+
   state = { activeIndex: 1 }
 
   handleClick = (e, titleProps) => {
@@ -48,11 +54,11 @@ class RightSidebar extends React.Component {
 
               {/* Settings tab title */}
               <Menu.Item name='settings' styleName='settings-title'>
-                <Segment basic compact size='massive' styleName='basic-compact-segment'>
+                <Segment basic compact size='massive' styleName='no-margins-or-padding'>
                   <Icon name='setting'/>
                   Settings
                 </Segment>
-                <Segment basic compact styleName='basic-compact-segment'>
+                <Segment basic compact styleName='no-margins-or-padding'>
                   Manage your account
                 </Segment>
               </Menu.Item>
@@ -84,9 +90,17 @@ class RightSidebar extends React.Component {
       }
     ];
     return (
-      <Transition visible={visible} animation='fly left' duration={600}>
-        <div styleName='right-sidebar'>
-          <Tab panes={panes} styleName='sidebar-tab'/>
+      <Transition styleName='no-margins-or-padding' visible={visible} animation='fly left' duration={600}>
+        <div id='tab-container' styleName='right-sidebar no-margins-or-padding'>
+          <Menu styleName='no-margins-or-padding close-container'>
+            <Menu.Item
+              position='right'
+              styleName='no-margins-or-padding'
+            >
+              <Button color='red' icon='close' onClick={this.props.toggleRightSidebar} styleName='close-button'/>
+            </Menu.Item>
+          </Menu>
+          <Tab panes={panes} styleName='sidebar-tab no-margins-or-padding'/>
         </div>
       </Transition>
     );

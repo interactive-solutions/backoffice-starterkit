@@ -4,7 +4,7 @@
   text-align: center !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $cellphone-breakpoint+1) {
   .modal-body {
     width: 400px !important;        /* Limit the width of the modal and */
     margin-left: -200px !important; /* to center the Modal */
@@ -15,4 +15,9 @@
   font-size: 120% !important;
   margin-top: 2rem !important;
   margin-bottom: 2rem !important;
+}
+
+.close-icon {
+  top: 1rem !important;
+  right: 1rem !important;
 }

@@ -9,4 +9,8 @@ export class UserEntity {
     this.username = username;
     this.roles = roles;
   }
+
+  static create(user) {
+    return new UserEntity(user.uuid, user.username, user.roles);
+  }
 }

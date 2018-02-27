@@ -1,6 +1,16 @@
 .toastrs {
-  pointer-events: auto;
-  float: right;
-  width: 400px !important;
+  z-index: 600 !important;
   margin: 0 !important;
+  pointer-events: auto;
+  width: 400px !important;
+  float: right !important;
+
+  /* Cellphone styles */
+  @media (max-width: $cellphone-breakpoint) {
+    top: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    position: fixed !important;
+    float: none !important;
+  }
 }

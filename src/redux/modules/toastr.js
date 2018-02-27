@@ -16,11 +16,16 @@ type Action = {
 const OPEN_NOTIFICATION = 'backoffice:toastr:open';
 const CLOSE_NOTIFICATION = 'backoffice:toastr:close';
 
+export const toastrType = {
+  INFO: 'info',
+  SUCCESS: 'success'
+};
+
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export const openToastr = ({ header, content, type }) => ({
+export const openToastr = ({ header, content, type = toastrType.SUCCESS }) => ({
   type: OPEN_NOTIFICATION,
   payload: {
     type,

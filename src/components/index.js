@@ -1,3 +1,4 @@
 export { DashHeader as Header } from './header/header';
-export { Navbar } from './navbar/navbar';
+export { NavbarContainer } from './navbar/navbar-container';
 export { RightSidebar } from './right-sidebar/right-sidebar';
+export { BreadcrumbHeader } from './breadcrumb/breadcrumb';

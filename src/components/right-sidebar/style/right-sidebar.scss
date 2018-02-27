@@ -1,30 +1,5 @@
-/*
- * <Segment basic compact>  still has margins
- * and padding, so I remove them.
- */
-.basic-compact-segment {
+.no-margins-or-padding {
   margin: 0 !important;
-  padding: 0 !important;
-}
-
-.right-sidebar {
-  pointer-events: auto;
-  float: right;
-  width: 25rem;
-  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
-}
-
-.sidebar-tab {
-  height: 100vh;
-  margin-top: 0;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  border: none;
-}
-
-.tab-pane {
-  height: 100%;
-  border: none !important;
   padding: 0 !important;
 }
 
@@ -35,15 +10,37 @@
   width: 100%;
 }
 
+.close-button {
+  background-color: hsl(0, 63%, 64%) !important
+}
+
+.right-sidebar {
+  float: right !important;
+
+  z-index: 500 !important;
+  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, .2);
+  margin-left: 1px !important;
+  pointer-events: auto !important;
+  background-color: white;
+}
+
+.sidebar-tab {
+  margin-top: 0;
+  overflow-y: hidden !important;
+  overflow-x: hidden;
+  border: none;
+}
+
+.tab-pane {
+  height: 100%;
+  overflow-y: hidden !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
 .settings-title {
   padding: 1.5em !important;
   font-size: 135%;
-}
-
-.menu-item {
-  padding: 1.5em !important;
-  font-size: 135%;
-  cursor: pointer;
 }
 
 .menu-item-form {
@@ -51,10 +48,42 @@
   margin-top: 0px !important;
 }
 
-.grid-column {
-  padding-right: 1rem !important;
-}
-
 .no-padding {
   padding: 0 !important;
+}
+
+@media (min-width: $cellphone-breakpoint+1) {
+  .close-container {
+    display: none !important;
+  }
+
+  .right-sidebar {
+    min-height: 100vh !important;
+    float: right;
+    width: 350px;
+  }
+
+  .sidebar-tab {
+    height: 100%;
+  }
+}
+
+@media (max-width: $cellphone-breakpoint) {
+  .close-container {
+    border-radius: 0 !important;
+    background-color: grey !important;
+  }
+
+  .right-sidebar {
+    position: fixed !important;
+    z-index: 500 !important;
+    top: 0 !important;
+    right: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .sidebar-tab {
+    height: 100vh;
+  }
 }

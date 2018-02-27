@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Toastr } from '../toastr/toastr';
+import { Toastr } from './toastr/toastr';
 import './style/toastrs.scss';
 
 // ---------------------------------

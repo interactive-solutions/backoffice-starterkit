@@ -1,0 +1,19 @@
+
+.success-toastr, .info-toastr {
+  border-radius: 10px !important;
+  border-width: 20px !important;
+}
+
+.success-toastr {
+  /* Slightly thicker border */
+  box-shadow: 0 0 0 2px #a3c293 inset, 0 0 0 0 transparent !important
+}
+
+.info-toastr {
+  /* Slightly thicker border */
+  box-shadow: 0 0 0 2px #a9d5de inset, 0 0 0 0 transparent !important
+}
+
+.extra-padding {
+  padding: 4px 4px 0 4px !important;
+}

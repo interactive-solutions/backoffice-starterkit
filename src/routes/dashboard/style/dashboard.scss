@@ -1,0 +1,76 @@
+
+.table {
+  border-color: transparent !important;
+
+  .row {
+    border-color: transparent !important;
+  }
+
+  .line-wrap {
+    display: flex;
+
+    .box {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      vertical-align: top;
+    }
+    .text {
+      margin-left: 3px;
+    }
+  }
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+.progress-bar-wrapper {
+  max-width: 80%;
+  margin-left: 10%;
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .last {
+    float: right;
+    margin-top: -18px;
+  }
+}
+
+.progress {
+  .top-bar {
+    top: 20px;
+    z-index: 40;
+
+  }
+
+  .secondbar-wrapper {
+    max-width: 80%;
+    margin-left: 10%;
+
+    .second-bar {
+      top: -70px;
+      opacity: 0.55;
+      margin: 0 !important;
+    }
+
+    .iconbar {
+      background-color: transparent !important;
+      top: -70px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  .statistics {
+    margin-top: -50px !important;
+    padding-bottom: 20px;
+
+  }
+}

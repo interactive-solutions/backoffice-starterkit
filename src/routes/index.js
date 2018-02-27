@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import L from 'react-loadable';
 import { Loader, Dimmer } from 'semantic-ui-react';
-import { Navbar } from 'components';
+import { NavbarContainer } from 'components';
 import { CoreLayout } from '../layouts/core-layout/core-layout';
 import { requiresAuthentication } from './utils';
 
@@ -16,14 +16,14 @@ const Loadable = opts =>
     ...opts
   });
   /* eslint-disable */
-const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'login' */ './login/login-container') });
-const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password-container') });
-const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password-container') });
+const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'login' */ './login/login') });
+const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password') });
+const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password') });
 const Dashboard = Loadable({ loader: () => import(/* webpackChunkName: 'dashboard' */ './dashboard/dashboard') });
-const ResellersContainer = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers-container') });
+const Users = Loadable({ loader: () => import(/* webpackChunkName: 'users' */ './users/users') });
   /* eslint-enable */
 
-const RoutingNavbar = requiresAuthentication(Navbar);
+const RoutingNavbar = requiresAuthentication(NavbarContainer);
 
 export const createRoutes = () => (
   <CoreLayout>
@@ -35,7 +35,7 @@ export const createRoutes = () => (
       <RoutingNavbar>
         <Switch>
           <Route exact path='/dashboard' component={Dashboard}/>
-          <Route exact path='/resellers' component={ResellersContainer}/>
+          <Route exact path='/users' component={Users}/>
           <Redirect path='*' to='/dashboard'/>
         </Switch>
       </RoutingNavbar>

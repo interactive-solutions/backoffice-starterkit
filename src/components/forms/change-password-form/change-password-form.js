@@ -30,7 +30,7 @@ const validate = ({ oldPassword, newPassword, confirmPassword }) => {
   }
 
   if (!isValidPassword(newPassword)) {
-    errors.newPassword = 'Password must be at least 5 characters';
+    errors.newPassword = 'Password must be at least 8 characters';
   }
   if (newPassword !== confirmPassword) {
     errors.confirmPassword = "The passwords don't match";
@@ -39,8 +39,13 @@ const validate = ({ oldPassword, newPassword, confirmPassword }) => {
   return errors;
 };
 
+const onSubmit = (values, dispatch, props) => {
+  props.onSubmit(values);
+  props.reset();
+};
+
 const ChangePasswordReduxForm = (props) => {
-  const { submitting, onSubmit, handleSubmit, error } = props;
+  const { submitting, handleSubmit, error } = props;
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -91,7 +96,7 @@ export const ChangePasswordForm = reduxForm({
 })(ChangePasswordReduxForm);
 
 ChangePasswordReduxForm.propTypes = {
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func, // eslint-disable-line
   handleSubmit: PropTypes.func,
   error: PropTypes.object,
   submitting: PropTypes.bool

@@ -1,0 +1,26 @@
+.height-100vh {
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+.content-container {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.flex-1 {
+  flex: 1 !important;
+}
+
+.sidebar-and-toastrs-container {
+  top: 72px !important;
+  z-index: 500 !important;
+  position: fixed !important;
+  right: 11px !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+}
