@@ -7,12 +7,9 @@ import { reduxForm, Field } from 'redux-form';
 const SearchUserReduxForm = (props) => {
   const { submitting, handleSubmit, onChange, error } = props;
 
-  // onChange needs the setTimeout: https://github.com/erikras/redux-form/issues/537
-  const handleChange = (event) => setTimeout(() => handleSubmit(onChange)(event));
-
   return (
     <Segment compact>
-      <Form loading={submitting} onChange={handleChange}>
+      <Form loading={submitting} onChange={handleSubmit(onChange)}>
         <Header as='h3'>Search user</Header>
         <Field
           name='username'

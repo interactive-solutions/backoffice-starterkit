@@ -33,20 +33,17 @@ export class UserService {
   }
 
   create(username, roles) {
-    return axios.post('backend://users', { username, roles: [roles] });
-  }
-
-  hydrateArray(data) {
-    return data.map(this.hydrate);
+    return axios.post('backend://users', { username, roles: [roles] })
+      .then(response => response.data.map(UserEntity.create));
   }
 
   getUsers() {
     return axios.get('backend://users')
-      .then(response => response.data);
+      .then(response => response.data.map(UserEntity.create));
   }
 
   search(username) {
     return axios.get('backend://users/search', { params: { username } })
-      .then(response => response.data);
+      .then(response => response.data.map(UserEntity.create));
   }
 }
