@@ -40,8 +40,8 @@ const validate = ({ oldPassword, newPassword, confirmPassword }) => {
 };
 
 const onSubmit = (values, dispatch, props) => {
+  props.onSubmit(values);
   props.reset();
-  return props.onSubmit(values);
 };
 
 const ChangePasswordReduxForm = (props) => {

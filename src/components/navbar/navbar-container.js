@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
-import { Header, RightSidebar, BreadcrumbHeader } from 'components';
+import {
+  Header,
+  RightSidebar
+} from 'components';
 import { Footer } from 'components/footer/footer';
 import { Toastrs } from 'components/toastrs/toastrs';
 import { sideMenuContent } from './side-menu-content';
 import { Navbar } from './navbar';
-import './style/navbar.scss';
+import { NavbarContext } from './navbar-context';
+import './style/navbar-container.scss';
 
 export class NavbarContainer extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired // eslint-disable-line
   }
 
   constructor(props) {
@@ -36,15 +39,14 @@ export class NavbarContainer extends Component {
   setActiveItemByRoute(props) {
     if (props.location) {
       const path = props.location.pathname;
-      const activeItem = path.charAt(1).toUpperCase() + path.slice(2);
+      const activeItem = path.charAt(1) + path.slice(2);
       this.setState({ activeItem });
     }
   }
 
-  setActiveItem = (e, { name }) => {
-    e.stopPropagation();
-    this.setState({ activeItem: name });
-    this.props.history.push(name.toLowerCase().replace(' ', ''));
+  setActiveItem = (link) => {
+    this.setState({ activeItem: link });
+    this.props.history.push(link);
   }
 
   toggleNavbar = () => {
@@ -61,39 +63,33 @@ export class NavbarContainer extends Component {
       rightSidebarIsVisible
     } = this.state;
 
-    // todo move this
-    const path = this.props.location.pathname;
-    const pathArray = path.split('/');
-    const breadcrumbs = pathArray.map(p => ({ link: p, name: p }));
-
     return (
       <div id='navbar-container' styleName='flex height-100vh'>
-        <div id='navbar' styleName='flex min-height-100'>
-          <Navbar
-            visible={navbarIsVisible}
-            sideMenuContent={sideMenuContent}
-            activeItem={this.state.activeItem}
-            setActiveItem={this.setActiveItem}
-          />
-        </div>
+        <Navbar
+          visible={navbarIsVisible}
+          sideMenuContent={sideMenuContent}
+          activeItem={this.state.activeItem}
+          setActiveItem={this.setActiveItem}
+        />
 
         <div id='content-container' styleName='flex-1 content-container'>
           <Header
-              callback={this.toggleNavbar}
-              toggleRightSidebar={this.toggleRightSidebar}
-              title='Interactive Solutions'
-          />
-          <BreadcrumbHeader
-            breadcrumbs={breadcrumbs}
-          />
-          <RightSidebar
-            visible={rightSidebarIsVisible}
+            callback={this.toggleNavbar}
             toggleRightSidebar={this.toggleRightSidebar}
+            title='Interactive Solutions'
           />
-          <Toastrs/>
-          <Container fluid styleName='main-container'>
-            {this.props.children}
-          </Container>
+          <div styleName='sidebar-and-toastrs-container'>
+            <RightSidebar
+              visible={rightSidebarIsVisible}
+              toggleRightSidebar={this.toggleRightSidebar}
+            />
+            <Toastrs/>
+          </div>
+          <div id='main-container'>
+            <NavbarContext.Provider value={{ isNavbarBig: navbarIsVisible }}>
+              {this.props.children}
+            </NavbarContext.Provider>
+          </div>
           <Footer/>
         </div>
       </div>

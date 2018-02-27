@@ -13,9 +13,11 @@ import {
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { logout } from 'redux/modules/user';
-import { openToastr } from 'redux/modules/toastr';
+import {
+  openToastr,
+  toastrType
+} from 'redux/modules/toastr';
 import { ChangePasswordForm } from 'components/forms';
-import { toastrType } from 'components/toastrs/toastr/toastr';
 import { MenuItem } from './menu-item';
 import './style/right-sidebar.scss';
 

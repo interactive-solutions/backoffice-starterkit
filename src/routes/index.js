@@ -20,7 +20,7 @@ const LoginContainer = Loadable({ loader: () => import(/* webpackChunkName: 'log
 const ForgotPassword = Loadable({ loader: () => import(/* webpackChunkName: 'forgot-password' */ './forgot-password/forgot-password') });
 const ResetPassword = Loadable({ loader: () => import(/* webpackChunkName: 'reset-password' */ './reset-password/reset-password') });
 const Dashboard = Loadable({ loader: () => import(/* webpackChunkName: 'dashboard' */ './dashboard/dashboard') });
-const Resellers = Loadable({ loader: () => import(/* webpackChunkName: 'resellers' */ './resellers/resellers') });
+const Users = Loadable({ loader: () => import(/* webpackChunkName: 'users' */ './users/users') });
   /* eslint-enable */
 
 const RoutingNavbar = requiresAuthentication(NavbarContainer);
@@ -35,7 +35,7 @@ export const createRoutes = () => (
       <RoutingNavbar>
         <Switch>
           <Route exact path='/dashboard' component={Dashboard}/>
-          <Route exact path='/resellers' component={Resellers}/>
+          <Route exact path='/users' component={Users}/>
           <Redirect path='*' to='/dashboard'/>
         </Switch>
       </RoutingNavbar>

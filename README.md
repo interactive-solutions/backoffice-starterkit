@@ -1,16 +1,11 @@
-# Another Boring React Boilerplate
+# Backoffice Starter Kit
 
 [![Build Status](https://travis-ci.org/davezuko/react-redux-starter-kit.svg?branch=master)](https://travis-ci.org/interactive-solutions/backoffice-starterkit?branch=master)
 [![dependencies](https://david-dm.org/interactive-solutions/backoffice-starterkit.svg)](https://david-dm.org/interactive-solutions/backoffice-starterkit)
 [![devDependency Status](https://david-dm.org/interactive-solutions/backoffice-starterkit/dev-status.svg)](https://david-dm.org/interactive-solutions/backoffice-starterkit#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-This is a starter kit I made because I don't really like starter kits... 🙄
 
-Anyway, I realized most of my projects end up with a very similar set up, and I got tired of
-spending a few hours doing that each time I started something new. Architecture in a React app is
-most of the time a matter of personal preference, and this boilerplate includes the features that I
-prefer.
 
 ## A couple of included features
 

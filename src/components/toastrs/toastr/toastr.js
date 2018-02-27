@@ -5,17 +5,11 @@ import {
   Transition
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { closeToastr as closeToastrAction } from 'redux/modules/toastr';
+import {
+  closeToastr as closeToastrAction,
+  toastrType
+} from 'redux/modules/toastr';
 import './style/toastr.scss';
-
-// ---------------------------------
-// Constants
-// ---------------------------------
-
-export const toastrType = {
-  INFO: 'info',
-  SUCCESS: 'success'
-};
 
 // ---------------------------------
 // Toastr

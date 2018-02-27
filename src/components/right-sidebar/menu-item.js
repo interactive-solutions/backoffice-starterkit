@@ -5,7 +5,7 @@ import {
   Menu,
   Grid
 } from 'semantic-ui-react';
-import './style/right-sidebar.scss';
+import './style/menu-item.scss';
 
 export const MenuItem = ({ text, icon, callback }) => (
   <Menu.Item as='div' link styleName='menu-item' onClick={callback}>

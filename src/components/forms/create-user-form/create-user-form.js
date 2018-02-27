@@ -3,46 +3,68 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Grid, Message, Modal } from 'semantic-ui-react';
 import { Input } from 'components/forms';
 import { reduxForm, Field } from 'redux-form';
+import {
+  openModal,
+  closeModal
+} from 'redux/modules/modal';
+import { openToastr } from 'redux/modules/toastr';
+import { createUser } from 'redux/modules/user';
 import { FORM_ERROR_REQUIRED_FIELD } from 'components/forms/errors';
-// update this to redux-form
 
-const validate = (values, props) => {
+const validate = (values) => {
   const errors = {};
 
-  if (!values.name || values.name.length === 0) {
-    errors.name = FORM_ERROR_REQUIRED_FIELD;
+  if (!values.username || values.username.length === 0) {
+    errors.username = FORM_ERROR_REQUIRED_FIELD;
   }
 
-  if (!props.submitting && (!values.bilingId || (values.bilingId && values.bilingId.length === 0))) {
-    errors.bilingId = FORM_ERROR_REQUIRED_FIELD;
+  if (!values.roles || values.roles.length === 0) {
+    errors.roles = FORM_ERROR_REQUIRED_FIELD;
   }
 
   return errors;
 };
 
-const ResellersReduxForm = (props) => {
-  const { submitting, onSubmit, handleSubmit, error } = props;
+const onSubmit = (values, dispatch) => {
+  dispatch(createUser(values.username, values.roles))
+    .then(() => {
+      dispatch(closeModal()); // close this modal
+      dispatch(openToastr({
+        header: 'Created user succeeded!',
+        content: 'Successfully created new user.'
+      }));
+    })
+    .catch(() => {
+      dispatch(openModal({
+        header: 'Failed to create a new user!',
+        content: 'A new user could not be created.'
+      }));
+    });
+};
+
+const CreateUserReduxForm = (props) => {
+  const { submitting, handleSubmit, error } = props;
 
   return (
     <Fragment>
       <Modal.Content>
         <Form loading={submitting} widths='equal'>
-          <Header as='h3'>Create new reseller</Header>
+          <Header as='h3'>Create new user</Header>
           <Grid columns={2}>
             <Grid.Column verticalAlign='middle'>
               <Field
-                name='name'
+                name='username'
                 component={Input}
-                placeholder='Name'
+                placeholder='Username'
                 icon='users'
                 iconposition='left'
               />
             </Grid.Column>
             <Grid.Column verticalAlign='middle'>
               <Field
-                name='billingId'
+                name='roles'
                 component={Input}
-                placeholder='BillingId'
+                placeholder='Roles'
                 icon='users'
                 iconposition='left'
               />
@@ -64,14 +86,13 @@ const ResellersReduxForm = (props) => {
   );
 };
 
-export const CreateResellersForm = reduxForm({
-  form: 'create-resellers-form',
-  fields: ['name', 'billingId'],
+export const CreateUserForm = reduxForm({
+  form: 'create-user-form',
+  fields: ['username', 'roles'],
   validate
-})(ResellersReduxForm);
+})(CreateUserReduxForm);
 
-ResellersReduxForm.propTypes = {
-  onSubmit: PropTypes.func,
+CreateUserReduxForm.propTypes = {
   handleSubmit: PropTypes.func,
   error: PropTypes.object,
   submitting: PropTypes.bool

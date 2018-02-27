@@ -1,49 +1,39 @@
 .fixed, .stuck {
   margin: 0 !important;
+  box-sizing: border-box !important;
   height: 72px !important;
-  width: 100% !important;
+  overflow-x: visible !important;
+  padding: 10px !important;
 }
 
-.fixed {
-  position: fixed;
-  z-index: 500;
-  top: 0;
-  padding: 10px;
-  padding-top: 0px;
-  padding-right: 50px;
-  overflow-x: visible;
-  margin-top: 0 !important;
+$transition-time: 0.6s;
 
-  @media screen and (max-width: $cellphone-breakpoint) {
-    padding: 10px !important;
-    padding-top: 15px !important;
-    display: block !important;
-    &.button {
-      margin-right: 50px;
+.fixed {
+  -webkit-transition: left $transition-time ease;
+  -moz-transition: left $transition-time ease;
+  -o-transition: left $transition-time ease;
+  -ms-transition: left $transition-time ease;
+  transition: left $transition-time ease;
+
+  position: fixed;
+  z-index: 400;
+  top: 0 !important;
+  right: 8.5px !important;
+  left: $navbar-big-width !important;
+  &.wider {
+    left: $navbar-small-width !important;
+  }
+
+  @media (max-width: $cellphone-breakpoint) {
+    left: $navbar-small-width !important;
+    &.wider {
+      left: $navbar-small-width !important;
     }
   }
 }
 
 .stuck {
-  top: 0 !important;
-  margin-top: 0 !important;
-  padding: 10px;
-  padding-left: 10px;
-  overflow-x: visible;
-  max-height: 66px;
-
-  @media screen and (max-width: $cellphone-breakpoint) {
-    padding: 10px !important;
-    display: block !important;
-    &.button {
-      margin-right: 50px;
-    }
-  }
-}
-
-.stuck-placeholder {
-  padding: 10px;
-  height: 97px;
+  width: 100% !important;
 }
 
 .borderless:before {
