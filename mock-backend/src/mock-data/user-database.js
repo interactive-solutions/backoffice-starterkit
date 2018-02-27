@@ -14,7 +14,7 @@ export const userDatabase = {
   createdAt: '2018-01-31T12:16:23+00:00',
   updatedAt: '2018-01-31T12:16:23+00:00',
 
-  nounce: '1', // when a user sets a new password
+  nonce: '1', // when a user sets a new password
 
   /**
    * All users.
