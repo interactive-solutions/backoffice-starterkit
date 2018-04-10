@@ -107,7 +107,7 @@ module.exports = {
       // Create a html with the build files from template
       template: './src/index.html',
       chunksSortMode: (chunk1, chunk2) => {
-        const order = ['vendor', 'lodash+moment', 'semantic', 'main'];
+        const order = ['vendor', 'lodash-moment', 'semantic', 'main'];
         const order1 = order.indexOf(chunk1.names[0]);
         const order2 = order.indexOf(chunk2.names[0]);
         return order1 - order2;
@@ -134,7 +134,7 @@ module.exports = {
       minChunks: (m) => /node_modules/.test(m.context)
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'lodash+moment',
+      name: 'lodash-moment',
       minChunks: (m) => /node_modules\/(?:lodash|moment)/.test(m.context)
     }),
     // Bundle semantic-ui seperatly
